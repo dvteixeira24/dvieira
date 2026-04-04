@@ -1,0 +1,48 @@
+---
+import NavigationButton from './NavigationButton.astro'
+---
+
+<script is:inline data-astro-rerun type="module">
+    console.log('Rerun')
+
+    var links = document.querySelectorAll('.navigation a')
+    var currentPath = window.location.pathname
+
+    links.forEach(link => {
+        const href = link.getAttribute('href')
+        if (href === currentPath) {
+            link.setAttribute('data-selected', '')
+        }
+    })
+</script>
+
+<nav class="navigation">
+    <ul>
+        <NavigationButton href="/" label="Home" />
+        <NavigationButton href="/biography" label="Biography" />
+        <NavigationButton href="/experience" label="Experience" />
+        <NavigationButton href="/contact" label="Contact" />
+    </ul>
+</nav>
+
+<style lang="scss">
+    .navigation {
+        position: fixed;
+        bottom: 24px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin: 0 auto;
+            background-color: var(--color-orange-3);
+            padding: 1rem;
+            box-shadow: 3.5px 3.5px 0px 0px var(--color-primary-9);
+        }
+    }
+</style>

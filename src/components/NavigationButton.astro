@@ -1,0 +1,37 @@
+---
+const { href, label } = Astro.props
+---
+
+<li>
+    <a href={href}>{label}</a>
+</li>
+
+<style lang="scss">
+    a {
+        font-family: var(--font-serif);
+        text-transform: lowercase;
+        text-decoration: none;
+        color: var(--color-primary-9);
+        font-size: 16px;
+        font-weight: 600;
+        padding: 0.5rem;
+        transition:
+            color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        box-shadow: 0 0 0 0 var(--color-primary-9);
+        transform: translate(0, 0);
+        position: relative;
+        display: inline-block;
+
+        &[data-selected],
+        &:hover {
+            box-shadow: 2px 2px 0 0 var(--color-primary-9);
+            background-color: var(--color-orange-3);
+        }
+
+        &:not([data-selected]):hover {
+            transform: translate(-2px, -2px);
+        }
+    }
+</style>
