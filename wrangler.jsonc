@@ -8,7 +8,6 @@
 	],
 	"workers_dev": false,
 	"preview_urls": false,
-	"route": "https://dvieira.xyz/*",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": "./dist"
