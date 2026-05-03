@@ -34,5 +34,18 @@
 	],
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{
+			"pattern": "https://dvieira.xyz/*",
+			"zone_name": "dvieira.xyz"
+		},
+		{
+			"pattern": "dvieira.xyz",
+			"zone_name": "dvieira.xyz",
+			"custom_domain": true,
+			"enabled": true,
+			"previews_enabled": false
+		}
+	]
 }
