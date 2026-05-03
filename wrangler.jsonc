@@ -1,0 +1,35 @@
+{
+	"name": "dvieira",
+	"main": "./src/worker.ts",
+	"compatibility_date": "2026-05-03",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"workers_dev": false,
+	"preview_urls": false,
+	"route": "https://dvieira.xyz/*",
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./dist"
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "CONTACT_RATE_LIMITER",
+				"class_name": "ContactRateLimiterDurableObject"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1-contact-rate-limiter",
+			"new_sqlite_classes": [
+				"ContactRateLimiterDurableObject"
+			]
+		}
+	],
+	"observability": {
+		"enabled": true
+	}
+}

@@ -1,40 +1,356 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import { actions, isInputError } from 'astro:actions'
+import githubIcon from '../../assets/icons/github.png'
+import linkedinIcon from '../../assets/icons/linkedin.png'
+import pinIcon from '../../assets/icons/pin.png'
+
+export const prerender = false
+
+const result = Astro.getActionResult(actions.contact.submit)
+const actionError = result?.error
+const inputErrors = isInputError(actionError) ? actionError.fields : {}
+const hasGenericError = actionError ? !isInputError(actionError) : false
+const isSuccess = Boolean(result && !actionError)
+const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
 ---
 
 <Layout title="Contact | Daniel Vieira Teixeira">
     <main>
         <h1>Contact</h1>
-        <section>
-            <p><strong>Daniel Vieira Teixeira</strong></p>
-            <p>Cape Town, South Africa</p>
-            <p>
-                For privacy, direct phone number and email are not published on
-                this public site.
-            </p>
-            <ul>
-                <li>
-                    LinkedIn:
-                    <a
-                        href="https://linkedin.com/in/daniel-vieira-teixeira"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        linkedin.com/in/daniel-vieira-teixeira
-                    </a>
-                </li>
-                <li>
-                    GitHub:
-                    <a
-                        href="https://github.com/dvteixeira24"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        github.com/dvteixeira24
-                    </a>
-                </li>
-            </ul>
-            <p>Please reach out via LinkedIn for direct contact details.</p>
+        <section class="contact-profile">
+            <div>
+                <p class="name">Daniel Vieira Teixeira</p>
+                <p class="location">
+                    <img src={pinIcon.src} alt="" aria-hidden="true" />
+                    Cape Town, South Africa
+                </p>
+            </div>
+            <div class="social-links">
+                <a
+                    href="https://github.com/dvteixeira24"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit Daniel's GitHub profile"
+                >
+                    <img src={githubIcon.src} alt="" aria-hidden="true" />
+                </a>
+                <a
+                    href="https://linkedin.com/in/daniel-vieira-teixeira"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit Daniel's LinkedIn profile"
+                >
+                    <img src={linkedinIcon.src} alt="" aria-hidden="true" />
+                </a>
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            {
+                isSuccess && (
+                    <p class="feedback success">
+                        Message sent successfully. Thank you for reaching out.
+                    </p>
+                )
+            }
+
+            {
+                hasGenericError && (
+                    <p class="feedback error">
+                        Unable to submit right now. Please try again.
+                    </p>
+                )
+            }
+
+            <form method="POST" action={actions.contact.submit} novalidate>
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    maxlength="254"
+                    transition:persist
+                    aria-invalid={Boolean(inputErrors.email)}
+                    aria-describedby={inputErrors.email
+                        ? 'email-error'
+                        : undefined}
+                />
+                {
+                    inputErrors.email && (
+                        <p id="email-error" class="field-error">
+                            {inputErrors.email.join(' ')}
+                        </p>
+                    )
+                }
+
+                <label for="message">Your Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    required
+                    minlength="20"
+                    maxlength="2000"
+                    rows="8"
+                    transition:persist
+                    aria-invalid={Boolean(inputErrors.message)}
+                    aria-describedby={inputErrors.message
+                        ? 'message-error'
+                        : undefined}></textarea>
+                {
+                    inputErrors.message && (
+                        <p id="message-error" class="field-error">
+                            {inputErrors.message.join(' ')}
+                        </p>
+                    )
+                }
+
+                <div class="honeypot-wrapper" aria-hidden="true">
+                    <label for="website">Leave this field empty</label>
+                    <input
+                        id="website"
+                        name="website"
+                        type="text"
+                        tabindex="-1"
+                    />
+                </div>
+
+                {
+                    hCaptchaSiteKey ? (
+                        <div class="captcha-wrapper">
+                            <div
+                                class="h-captcha"
+                                data-sitekey={hCaptchaSiteKey}
+                            />
+                        </div>
+                    ) : (
+                        <p class="feedback error">
+                            Captcha is not configured. Please try again later.
+                        </p>
+                    )
+                }
+
+                <div class="submit-row">
+                    <button type="submit">submit</button>
+                </div>
+            </form>
         </section>
     </main>
 </Layout>
+
+<script is:inline data-astro-rerun>
+    ;(() => {
+        const CAPTCHA_SELECTOR = '.h-captcha'
+        const SCRIPT_ID = 'hcaptcha-api-script'
+        const API_SRC = 'https://js.hcaptcha.com/1/api.js?render=explicit'
+
+        const renderCaptcha = () => {
+            const container = document.querySelector(CAPTCHA_SELECTOR)
+            if (!container || container.querySelector('iframe')) {
+                return
+            }
+
+            if (window.hcaptcha && typeof window.hcaptcha.render === 'function') {
+                window.hcaptcha.render(container)
+            }
+        }
+
+        const ensureCaptcha = () => {
+            if (window.hcaptcha && typeof window.hcaptcha.render === 'function') {
+                renderCaptcha()
+                return
+            }
+
+            let script = document.getElementById(SCRIPT_ID)
+            if (!script) {
+                script = document.createElement('script')
+                script.id = SCRIPT_ID
+                script.src = API_SRC
+                script.async = true
+                script.defer = true
+                script.addEventListener('load', renderCaptcha, { once: true })
+                document.head.append(script)
+                return
+            }
+
+            script.addEventListener('load', renderCaptcha, { once: true })
+        }
+
+        if (window.__contactEnsureCaptcha) {
+            document.removeEventListener(
+                'astro:page-load',
+                window.__contactEnsureCaptcha,
+            )
+        }
+
+        window.__contactEnsureCaptcha = ensureCaptcha
+        document.addEventListener('astro:page-load', ensureCaptcha)
+        ensureCaptcha()
+    })()
+</script>
+
+<style>
+    .contact-profile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .name {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .location {
+        margin-top: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    .location img {
+        width: 0.95rem;
+        height: 0.95rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .social-links a {
+        width: 4rem;
+        height: 4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.2rem;
+        background-color: var(--color-orange-3);
+        box-shadow: 0 0 0 0 var(--color-primary-9);
+        transform: translate(0, 0);
+        transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus-visible {
+        box-shadow: 2px 2px 0 0 var(--color-primary-9);
+    }
+
+    .social-links a:hover {
+        transform: translate(-2px, -2px);
+    }
+
+    .social-links a:focus-visible {
+        outline: none;
+    }
+
+    .social-links img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .contact-form-section form {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .contact-form-section label {
+        font-weight: 500;
+        margin-top: 0.35rem;
+    }
+
+    .contact-form-section input,
+    .contact-form-section textarea {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid var(--color-primary-6);
+        background-color: var(--color-gray-0);
+        color: var(--color-primary-9);
+        font-family: var(--font-sans);
+        font-size: 1rem;
+    }
+
+    .contact-form-section textarea {
+        resize: vertical;
+        min-height: 10rem;
+    }
+
+    .captcha-wrapper {
+        margin-top: 0.9rem;
+    }
+
+    .submit-row {
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .submit-row button {
+        border: none;
+        background-color: var(--color-orange-3);
+        color: var(--color-primary-9);
+        padding: 0.45rem 1.15rem;
+        font-family: var(--font-serif);
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: lowercase;
+        cursor: pointer;
+        box-shadow: 0 0 0 0 var(--color-primary-9);
+        transform: translate(0, 0);
+        transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .submit-row button:hover,
+    .submit-row button:focus-visible {
+        box-shadow: 2px 2px 0 0 var(--color-primary-9);
+    }
+
+    .submit-row button:hover {
+        transform: translate(-2px, -2px);
+    }
+
+    .submit-row button:focus-visible {
+        outline: none;
+    }
+
+    .feedback {
+        margin-bottom: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    .feedback.success {
+        color: var(--color-green-8);
+    }
+
+    .feedback.error,
+    .field-error {
+        color: var(--color-red-8);
+    }
+
+    .field-error {
+        font-size: 0.88rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .honeypot-wrapper {
+        position: absolute;
+        left: -10000px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+        .contact-profile {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
