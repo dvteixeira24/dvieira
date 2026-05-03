@@ -1,0 +1,154 @@
+# AGENTS.md
+
+Guidance for AI coding agents (and humans) working in this repository. Keep it short, current, and practical — update it when conventions change.
+
+## Project Overview
+
+Personal resume / portfolio site built with **Astro 6** in **server output** mode, deployed to **Cloudflare Workers** via `@astrojs/cloudflare`. The contact page uses **Astro Actions** for server-side form handling, with **hCaptcha** verification, a **Durable Object** rate limiter, and **Telegram** delivery.
+
+- **Runtime**: Cloudflare Workers (NOT Node.js) — code runs on V8 with Workers APIs.
+- **Frontend**: Astro `.astro` components, scoped SCSS, vanilla JS islands (no React/Vue/Svelte).
+- **Server**: Astro Actions in `src/actions/`, custom Worker entry in `src/worker.ts` (with the rate-limiter Durable Object class).
+- **Package manager**: `pnpm` only. Do not introduce `npm` or `yarn` lockfiles.
+
+## Commands
+
+Run from the project root.
+
+| Command                       | What it does                                     |
+| ----------------------------- | ------------------------------------------------ |
+| `pnpm install`                | Install dependencies                             |
+| `pnpm dev`                    | Astro dev server at `http://localhost:4321`      |
+| `pnpm build`                  | Build to `./dist/`                               |
+| `pnpm preview`                | Preview the production build locally             |
+| `pnpm astro check`            | Type-check `.astro` and TS files                 |
+| `pnpm astro -- --help`        | Astro CLI help                                   |
+| `pnpm wrangler ...`           | Cloudflare CLI (e.g. `secret put`, `tail`)       |
+
+Always run `pnpm astro check` after making changes to `.astro` or `.ts` files. There is no test suite, no ESLint, and no Vitest yet.
+
+## Project Structure
+
+```
+src/
+  actions/         # Astro Actions (server-only). All server-side form/API logic lives here.
+    index.ts       # Exports `server.contact.submit` action
+  assets/          # Imported via Astro's image pipeline (use `import x from '../assets/...'`)
+  components/      # Reusable .astro components (presentational)
+  layouts/         # Page layouts (Layout.astro defines fonts, color tokens, ClientRouter)
+  lib/             # Pure helpers (no Astro imports). Group by feature, e.g. `lib/contact/`.
+  pages/           # File-based routing (`pages/contact/index.astro` -> `/contact`)
+  env.d.ts         # Declares `cloudflare:workers` env type
+  worker.ts        # Worker entry + Durable Object classes
+public/            # Served as-is at site root (favicon, fonts)
+wrangler.jsonc     # Worker config: bindings, routes, DO migrations
+astro.config.mjs   # `output: 'server'`, Cloudflare adapter
+.dev.vars          # Local dev secrets — gitignored, never commit
+```
+
+## Code Style
+
+Prettier config is in `package.json` and is the source of truth. Match it:
+
+- 4-space indent, no tabs
+- Single quotes, no semicolons, trailing commas everywhere
+- `arrowParens: 'avoid'` (e.g. `value => value.trim()`)
+- `prettier-plugin-astro` formats `.astro` files
+
+TypeScript:
+
+- Strict TypeScript everywhere; prefer explicit types on exported functions and action handlers.
+- Use `z` from `astro/zod` (already a transitive dep) inside actions instead of adding a separate `zod` dependency.
+- For runtime env access in Workers, import `env` from `cloudflare:workers` and cast to the `Env` interface defined in `src/worker.ts`.
+
+Comments: only explain non-obvious intent or constraints. Don't narrate what the code does.
+
+## Astro Conventions
+
+- **Server output**: This site is `output: 'server'`. Pages are rendered on the Worker by default. Mark a page `export const prerender = true` only if it has zero per-request logic and no action results to read.
+- **Dynamic pages with actions** (e.g. `src/pages/contact/index.astro`) MUST set `export const prerender = false` so `Astro.getActionResult(...)` works.
+- **View transitions**: `Layout.astro` includes `<ClientRouter />`. Client scripts that must re-run on navigation should use `<script is:inline data-astro-rerun>` and listen to `astro:page-load`. See `src/pages/contact/index.astro` for the hCaptcha pattern (idempotent init, removes prior listeners).
+- **Styles**: prefer scoped `<style lang="scss">` per component. Global styles live in `Layout.astro` under `<style is:global lang="scss">`. Reuse existing CSS custom properties (`--color-*`, `--font-*`) instead of hardcoding values.
+- **Assets**: import images from `src/assets/` and use the resulting `.src`. Don't reference them by raw path.
+- **Public env**: only variables prefixed with `PUBLIC_` are exposed to client code via `import.meta.env`.
+
+## Astro Actions (Server-Side)
+
+All server-side form and API logic goes in `src/actions/index.ts` under the `server` export. Pattern:
+
+```ts
+import { ActionError, defineAction } from 'astro:actions'
+import { z } from 'astro/zod'
+import { env } from 'cloudflare:workers'
+import type { Env } from '../worker'
+
+export const server = {
+    feature: {
+        doThing: defineAction({
+            accept: 'form', // or 'json'
+            input: z.object({ /* ... */ }),
+            handler: async (input, context) => {
+                const runtimeEnv = env as Env
+                // ...
+                if (badInput) {
+                    throw new ActionError({
+                        code: 'BAD_REQUEST',
+                        message: 'Generic, user-safe message.',
+                    })
+                }
+                return { success: true }
+            },
+        }),
+    },
+}
+```
+
+Rules of thumb:
+
+- **Never leak internals in error messages**. Use a single generic message constant for user-facing errors; log details server-side only.
+- **Always validate with zod**. Trim and normalize strings inside the schema (see `contactFormSchema`).
+- **Use `context.request`** for headers (e.g. `CF-Connecting-IP`); do not trust client-supplied IPs.
+- **Read action results** in the page with `Astro.getActionResult(actions.feature.doThing)` and `isInputError(...)` for field-level errors.
+- **Forms** should `POST` to `actions.feature.doThing` and use `novalidate` to let the action drive validation messaging.
+
+## Cloudflare Workers Conventions
+
+- **Worker entry** is `src/worker.ts`. It re-exports `handle` from `@astrojs/cloudflare/handler` and any Durable Object classes referenced in `wrangler.jsonc`.
+- **Bindings** declared in `wrangler.jsonc` must also appear on the `Env` interface in `src/worker.ts`. Update both together.
+- **Durable Objects**: each new DO class needs a binding in `wrangler.jsonc`, an entry in `migrations`, an export from `src/worker.ts`, and a typed field on `Env`.
+- **Compatibility**: `nodejs_compat` is enabled, but prefer Web/Workers APIs (`fetch`, `crypto.subtle`, `URLSearchParams`) over Node built-ins. Don't import `node:*` modules unless there's no Workers-native alternative.
+- **Routes**: production traffic is bound to `https://dvieira.xyz/*` via `wrangler.jsonc`.
+
+## Secrets & Configuration
+
+- Local development secrets live in `.dev.vars` (gitignored). Never commit it, never paste its contents into chat or code.
+- Production secrets are set with `pnpm wrangler secret put NAME`. Public values can go in `wrangler.jsonc` under `vars`.
+- Required vars (see README): `HCAPTCHA_SECRET`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `PUBLIC_HCAPTCHA_SITE_KEY`. Optional: `CONTACT_ALLOW_DEV_CAPTCHA_BYPASS`.
+- When adding a new secret, update: `Env` interface (`src/worker.ts`), README "Required variables" table, and `.dev.vars` locally.
+
+## Security Guardrails
+
+The contact pipeline already implements: honeypot field, disposable-domain block, IP + email rate limiting (Durable Object), hCaptcha verification, masked logging. When extending it:
+
+- Keep the honeypot (`website` field) and reject any non-empty value.
+- Don't log raw email addresses or message bodies; use `maskEmail` and a short truncated preview.
+- Don't echo zod error details to the user for the contact action — return the generic message and let `isInputError` surface field hints only for explicitly user-friendly schemas.
+- Any new outbound `fetch` from a handler must tolerate failure without throwing the user-facing flow into a 500 if delivery is best-effort (see `sendToTelegram`).
+
+## Things to Avoid
+
+- Don't add React/Vue/Svelte/Solid integrations unless explicitly requested — the site is intentionally vanilla Astro + light JS.
+- Don't switch the package manager or lockfile format.
+- Don't introduce Node-only libraries (e.g. `fs`, `crypto` from Node) into action handlers; they won't run on Workers.
+- Don't add a separate top-level `zod` dependency; use `astro/zod`.
+- Don't disable `security.checkOrigin` in `astro.config.mjs`.
+- Don't add tracking/analytics scripts without an explicit ask.
+
+## When You're Done
+
+Before declaring a change complete:
+
+1. `pnpm astro check` passes with no new errors.
+2. `pnpm build` succeeds (catches Workers-incompatible imports).
+3. If you touched the contact action, manually exercise `/contact` against `pnpm dev` with `CONTACT_ALLOW_DEV_CAPTCHA_BYPASS=true` in `.dev.vars`.
+4. Update this file if you've changed a convention, added a binding, or introduced a new top-level pattern.
