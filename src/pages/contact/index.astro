@@ -48,94 +48,126 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
 
         <section class="contact-form-section">
             {
-                isSuccess && (
-                    <p class="feedback success">
-                        Message sent successfully. Thank you for reaching out.
-                    </p>
-                )
-            }
-
-            {
-                hasGenericError && (
-                    <p class="feedback error">
-                        Unable to submit right now. Please try again.
-                    </p>
-                )
-            }
-
-            <form method="POST" action={actions.contact.submit} novalidate>
-                <label for="email">Email</label>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    required
-                    maxlength="254"
-                    transition:persist
-                    aria-invalid={Boolean(inputErrors.email)}
-                    aria-describedby={inputErrors.email
-                        ? 'email-error'
-                        : undefined}
-                />
-                {
-                    inputErrors.email && (
-                        <p id="email-error" class="field-error">
-                            {inputErrors.email.join(' ')}
-                        </p>
-                    )
-                }
-
-                <label for="message">Your Message</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    required
-                    minlength="20"
-                    maxlength="2000"
-                    rows="8"
-                    transition:persist
-                    aria-invalid={Boolean(inputErrors.message)}
-                    aria-describedby={inputErrors.message
-                        ? 'message-error'
-                        : undefined}></textarea>
-                {
-                    inputErrors.message && (
-                        <p id="message-error" class="field-error">
-                            {inputErrors.message.join(' ')}
-                        </p>
-                    )
-                }
-
-                <div class="honeypot-wrapper" aria-hidden="true">
-                    <label for="website">Leave this field empty</label>
-                    <input
-                        id="website"
-                        name="website"
-                        type="text"
-                        tabindex="-1"
-                    />
-                </div>
-
-                {
-                    hCaptchaSiteKey ? (
-                        <div class="captcha-wrapper">
-                            <div
-                                class="h-captcha"
-                                data-sitekey={hCaptchaSiteKey}
+                isSuccess ? (
+                    <div class="success-message">
+                        <svg
+                            class="success-icon"
+                            viewBox="0 0 1024 1024"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
+                            <path
+                                d="M512 599.6L107.9 311.1v19.7L512 619.3l404.1-288.6V311L512 599.6z"
+                                fill="currentColor"
                             />
-                        </div>
-                    ) : (
-                        <p class="feedback error">
-                            Captcha is not configured. Please try again later.
+                            <path
+                                d="M63.9 187v650h896.2V187H63.9z m852.2 598.5L672.2 611.3l-13.8 9.8L899.1 793H125.5l240.6-171.8-13.8-9.8-244.4 174.5V231h808.2v554.5z"
+                                fill="currentColor"
+                            />
+                            <path
+                                d="M512.9 536.7m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0Z"
+                                fill="currentColor"
+                            />
+                        </svg>
+                        <p>
+                            Message sent successfully.
+                            <span class="success-subtitle">
+                                Thank you for reaching out.
+                            </span>
                         </p>
-                    )
-                }
+                    </div>
+                ) : (
+                    <>
+                        {hasGenericError && (
+                            <p class="feedback error">
+                                Unable to submit right now. Please try again.
+                            </p>
+                        )}
 
-                <div class="submit-row">
-                    <button type="submit">submit</button>
-                </div>
-            </form>
+                        <form
+                            method="POST"
+                            action={actions.contact.submit}
+                            novalidate
+                        >
+                            <label for="email">Email</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                autocomplete="email"
+                                required
+                                maxlength="254"
+                                placeholder="you@example.com"
+                                transition:persist
+                                aria-invalid={Boolean(inputErrors.email)}
+                                aria-describedby={
+                                    inputErrors.email
+                                        ? 'email-error'
+                                        : undefined
+                                }
+                            />
+                            {inputErrors.email && (
+                                <p id="email-error" class="field-error">
+                                    {inputErrors.email.join(' ')}
+                                </p>
+                            )}
+
+                            <label for="message">Your Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                required
+                                minlength="20"
+                                maxlength="2000"
+                                rows="8"
+                                placeholder="Tell me about your project, opportunity, or just say hi..."
+                                transition:persist
+                                aria-invalid={Boolean(inputErrors.message)}
+                                aria-describedby={
+                                    inputErrors.message
+                                        ? 'message-error'
+                                        : undefined
+                                }
+                            />
+                            {inputErrors.message && (
+                                <p id="message-error" class="field-error">
+                                    {inputErrors.message.join(' ')}
+                                </p>
+                            )}
+
+                            <div class="honeypot-wrapper" aria-hidden="true">
+                                <label for="website">
+                                    Leave this field empty
+                                </label>
+                                <input
+                                    id="website"
+                                    name="website"
+                                    type="text"
+                                    tabindex="-1"
+                                />
+                            </div>
+
+                            {hCaptchaSiteKey ? (
+                                <div class="captcha-wrapper">
+                                    <div
+                                        class="h-captcha"
+                                        data-sitekey={hCaptchaSiteKey}
+                                    />
+                                </div>
+                            ) : (
+                                <p class="feedback error">
+                                    Captcha is not configured. Please try again
+                                    later.
+                                </p>
+                            )}
+                            <div class="submit-row">
+                                <button type="submit">submit</button>
+                            </div>
+                        </form>
+                    </>
+                )
+            }
         </section>
     </main>
 </Layout>
@@ -152,13 +184,19 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
                 return
             }
 
-            if (window.hcaptcha && typeof window.hcaptcha.render === 'function') {
+            if (
+                window.hcaptcha &&
+                typeof window.hcaptcha.render === 'function'
+            ) {
                 window.hcaptcha.render(container)
             }
         }
 
         const ensureCaptcha = () => {
-            if (window.hcaptcha && typeof window.hcaptcha.render === 'function') {
+            if (
+                window.hcaptcha &&
+                typeof window.hcaptcha.render === 'function'
+            ) {
                 renderCaptcha()
                 return
             }
@@ -283,6 +321,9 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
 
     .captcha-wrapper {
         margin-top: 0.9rem;
+        display: flex;
+        justify-content: end;
+        align-items: center;
     }
 
     .submit-row {
@@ -295,7 +336,7 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
         border: none;
         background-color: var(--color-orange-3);
         color: var(--color-primary-9);
-        padding: 0.45rem 1.15rem;
+        padding: 0.85rem 1.5rem;
         font-family: var(--font-serif);
         font-size: 16px;
         font-weight: 600;
@@ -326,13 +367,52 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
         font-size: 0.95rem;
     }
 
-    .feedback.success {
-        color: var(--color-green-8);
-    }
-
     .feedback.error,
     .field-error {
         color: var(--color-red-8);
+    }
+
+    .success-message {
+        color: var(--color-green-8);
+        font-family: var(--font-sans);
+        font-size: 2.25rem;
+        font-weight: 600;
+        line-height: 1.25;
+        text-align: center;
+        margin: 2.5rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .success-icon {
+        width: 144px;
+        height: auto;
+        display: block;
+    }
+
+    .success-subtitle {
+        display: block;
+        margin-top: 0.4rem;
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+        .success-message {
+            font-size: 1.6rem;
+            margin: 1.5rem 0;
+        }
+
+        .success-icon {
+            width: 96px;
+        }
+
+        .success-subtitle {
+            font-size: 1rem;
+        }
     }
 
     .field-error {
