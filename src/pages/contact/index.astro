@@ -1,9 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { actions, isInputError } from 'astro:actions'
+import { env } from 'cloudflare:workers'
 import githubIcon from '../../assets/icons/github.png'
 import linkedinIcon from '../../assets/icons/linkedin.png'
+import messageIcon from '../../assets/icons/message.svg'
 import pinIcon from '../../assets/icons/pin.png'
+import { shouldBypassDevContactGuards } from '../../lib/contact/dev-bypass'
+import type { Env } from '../../worker'
 
 export const prerender = false
 
@@ -12,7 +16,15 @@ const actionError = result?.error
 const inputErrors = isInputError(actionError) ? actionError.fields : {}
 const hasGenericError = actionError ? !isInputError(actionError) : false
 const isSuccess = Boolean(result && !actionError)
-const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
+const runtimeEnv = env as Env
+const allowDevContactBypass = shouldBypassDevContactGuards(
+    runtimeEnv,
+    import.meta.env.DEV,
+)
+const hCaptchaSiteKey =
+    runtimeEnv.PUBLIC_HCAPTCHA_SITE_KEY ?? import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
+const shouldRenderCaptcha = Boolean(hCaptchaSiteKey) && !allowDevContactBypass
+const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
 ---
 
 <Layout title="Contact | Daniel Vieira Teixeira">
@@ -50,26 +62,12 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
             {
                 isSuccess ? (
                     <div class="success-message">
-                        <svg
+                        <img
                             class="success-icon"
-                            viewBox="0 0 1024 1024"
-                            xmlns="http://www.w3.org/2000/svg"
+                            src={messageIcon.src}
+                            alt=""
                             aria-hidden="true"
-                            focusable="false"
-                        >
-                            <path
-                                d="M512 599.6L107.9 311.1v19.7L512 619.3l404.1-288.6V311L512 599.6z"
-                                fill="currentColor"
-                            />
-                            <path
-                                d="M63.9 187v650h896.2V187H63.9z m852.2 598.5L672.2 611.3l-13.8 9.8L899.1 793H125.5l240.6-171.8-13.8-9.8-244.4 174.5V231h808.2v554.5z"
-                                fill="currentColor"
-                            />
-                            <path
-                                d="M512.9 536.7m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0Z"
-                                fill="currentColor"
-                            />
-                        </svg>
+                        />
                         <p>
                             Message sent successfully.
                             <span class="success-subtitle">
@@ -89,6 +87,7 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
                             method="POST"
                             action={actions.contact.submit}
                             novalidate
+                            data-contact-form
                         >
                             <label for="email">Email</label>
                             <input
@@ -148,21 +147,27 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
                                 />
                             </div>
 
-                            {hCaptchaSiteKey ? (
+                            {shouldRenderCaptcha ? (
                                 <div class="captcha-wrapper">
                                     <div
                                         class="h-captcha"
                                         data-sitekey={hCaptchaSiteKey}
                                     />
                                 </div>
-                            ) : (
+                            ) : shouldShowCaptchaConfigError ? (
                                 <p class="feedback error">
                                     Captcha is not configured. Please try again
                                     later.
                                 </p>
-                            )}
+                            ) : null}
                             <div class="submit-row">
-                                <button type="submit">submit</button>
+                                <button type="submit" data-contact-submit>
+                                    <span class="submit-label">submit</span>
+                                    <span
+                                        class="submit-spinner"
+                                        aria-hidden="true"
+                                    />
+                                </button>
                             </div>
                         </form>
                     </>
@@ -226,6 +231,70 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
         window.__contactEnsureCaptcha = ensureCaptcha
         document.addEventListener('astro:page-load', ensureCaptcha)
         ensureCaptcha()
+    })()
+</script>
+
+<script is:inline data-astro-rerun>
+    ;(() => {
+        const FORM_SELECTOR = 'form[data-contact-form]'
+        const SUBMIT_SELECTOR = '[data-contact-submit]'
+        const LABEL_SELECTOR = '.submit-label'
+        const SUBMITTING_LABEL = 'submitting...'
+        const IDLE_LABEL = 'submit'
+
+        const setupForm = () => {
+            const form = document.querySelector(FORM_SELECTOR)
+            if (!form) return
+
+            const submitButton = form.querySelector(SUBMIT_SELECTOR)
+            const label = submitButton
+                ? submitButton.querySelector(LABEL_SELECTOR)
+                : null
+
+            const resetState = () => {
+                form.classList.remove('is-submitting')
+                form.removeAttribute('aria-busy')
+                if (submitButton) {
+                    submitButton.disabled = false
+                    submitButton.removeAttribute('aria-disabled')
+                }
+                if (label) label.textContent = IDLE_LABEL
+                form.dataset.submitting = ''
+            }
+
+            resetState()
+
+            if (form.dataset.contactBound === 'true') return
+            form.dataset.contactBound = 'true'
+
+            form.addEventListener('submit', event => {
+                if (form.dataset.submitting === 'true') {
+                    event.preventDefault()
+                    return
+                }
+
+                form.dataset.submitting = 'true'
+                form.classList.add('is-submitting')
+                form.setAttribute('aria-busy', 'true')
+
+                if (submitButton) {
+                    submitButton.disabled = true
+                    submitButton.setAttribute('aria-disabled', 'true')
+                }
+                if (label) label.textContent = SUBMITTING_LABEL
+            })
+        }
+
+        if (window.__contactSetupForm) {
+            document.removeEventListener(
+                'astro:page-load',
+                window.__contactSetupForm,
+            )
+        }
+
+        window.__contactSetupForm = setupForm
+        document.addEventListener('astro:page-load', setupForm)
+        setupForm()
     })()
 </script>
 
@@ -314,6 +383,10 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
         font-size: 1rem;
     }
 
+    .contact-form-section form.is-submitting {
+        cursor: progress;
+    }
+
     .contact-form-section textarea {
         resize: vertical;
         min-height: 10rem;
@@ -347,19 +420,57 @@ const hCaptchaSiteKey = import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
         transition:
             box-shadow 0.3s ease,
             transform 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        min-width: 9rem;
     }
 
-    .submit-row button:hover,
-    .submit-row button:focus-visible {
+    .submit-row button:not(:disabled):hover,
+    .submit-row button:not(:disabled):focus-visible {
         box-shadow: 2px 2px 0 0 var(--color-primary-9);
     }
 
-    .submit-row button:hover {
+    .submit-row button:not(:disabled):hover {
         transform: translate(-2px, -2px);
     }
 
     .submit-row button:focus-visible {
         outline: none;
+    }
+
+    .submit-row button:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+        box-shadow: 0 0 0 0 var(--color-primary-9);
+        transform: none;
+    }
+
+    .submit-spinner {
+        display: none;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: contact-spin 0.8s linear infinite;
+    }
+
+    .is-submitting .submit-spinner {
+        display: inline-block;
+    }
+
+    @keyframes contact-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .submit-spinner {
+            animation: none;
+        }
     }
 
     .feedback {

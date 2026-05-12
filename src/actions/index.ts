@@ -2,6 +2,7 @@ import { ActionError, defineAction } from 'astro:actions'
 import { z } from 'astro/zod'
 import { env } from 'cloudflare:workers'
 import type { Env } from '../worker'
+import { shouldBypassDevContactGuards } from '../lib/contact/dev-bypass'
 import { isDisposableEmailDomain } from '../lib/contact/disposable-email-domains'
 
 type RateLimitResult = {
@@ -212,33 +213,44 @@ export const server = {
                 const clientIp = getClientIp(context.request)
                 const ipKey = `contact:ip:${clientIp}`
                 const emailKey = `contact:email:${await sha256Hex(normalizedEmail)}`
-
-                const ipLongWindow = await enforceRateLimit(runtimeEnv, ipKey, 5, 15 * 60)
-                const ipBurstWindow = await enforceRateLimit(
+                const allowDevContactBypass = shouldBypassDevContactGuards(
                     runtimeEnv,
-                    `${ipKey}:burst`,
-                    2,
-                    60,
-                )
-                const emailWindow = await enforceRateLimit(
-                    runtimeEnv,
-                    `${emailKey}:hour`,
-                    3,
-                    60 * 60,
+                    import.meta.env.DEV,
                 )
 
-                if (!ipLongWindow.allowed || !ipBurstWindow.allowed || !emailWindow.allowed) {
-                    throw new ActionError({
-                        code: 'TOO_MANY_REQUESTS',
-                        message: GENERIC_SUBMISSION_ERROR,
-                    })
+                if (!allowDevContactBypass) {
+                    const ipLongWindow = await enforceRateLimit(
+                        runtimeEnv,
+                        ipKey,
+                        5,
+                        15 * 60,
+                    )
+                    const ipBurstWindow = await enforceRateLimit(
+                        runtimeEnv,
+                        `${ipKey}:burst`,
+                        2,
+                        60,
+                    )
+                    const emailWindow = await enforceRateLimit(
+                        runtimeEnv,
+                        `${emailKey}:hour`,
+                        3,
+                        60 * 60,
+                    )
+
+                    if (
+                        !ipLongWindow.allowed ||
+                        !ipBurstWindow.allowed ||
+                        !emailWindow.allowed
+                    ) {
+                        throw new ActionError({
+                            code: 'TOO_MANY_REQUESTS',
+                            message: GENERIC_SUBMISSION_ERROR,
+                        })
+                    }
                 }
 
-                const allowDevCaptchaBypass =
-                    import.meta.env.DEV &&
-                    runtimeEnv.CONTACT_ALLOW_DEV_CAPTCHA_BYPASS === 'true'
-
-                if (!allowDevCaptchaBypass) {
+                if (!allowDevContactBypass) {
                     const captchaToken = input['h-captcha-response']
                     if (!captchaToken || !runtimeEnv.HCAPTCHA_SECRET) {
                         throw new ActionError({

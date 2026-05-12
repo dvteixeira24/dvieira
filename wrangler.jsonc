@@ -12,9 +12,9 @@
 		"binding": "ASSETS",
 		"directory": "./dist"
 	},
-	"vars": {
-		"PUBLIC_HCAPTCHA_SITE_KEY": "93d0e2ea-248c-4f28-8514-cc664b50f052"
-	},
+    "vars": {
+        "PUBLIC_HCAPTCHA_SITE_KEY": "93d0e2ea-248c-4f28-8514-cc664b50f052"
+    },
 	"durable_objects": {
 		"bindings": [
 			{

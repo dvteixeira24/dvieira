@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   class="success-icon"
+   viewBox="0 0 1024 1024"
+   aria-hidden="true"
+   focusable="false"
+   data-astro-cid-ahc3q4vw=""
+   version="1.1"
+   id="svg3"
+   width="1048576"
+   height="1048576"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <path
+     d="M 512,581.6 105.9,293.1 v 37.7 L 512,619.3 918.1,330.7 V 293 Z"
+     fill="currentColor"
+     data-astro-cid-ahc3q4vw=""
+     id="path1"
+     style="fill:#2f9e44;fill-opacity:1" />
+  <path
+     d="M 63.9,187 V 837 H 960.1 V 187 Z M 916.1,771.5 674.2,599.3 658.4,621.1 899.1,793 H 125.5 L 366.1,621.2 350.3,599.4 107.9,771.9 V 231 h 808.2 z"
+     fill="currentColor"
+     data-astro-cid-ahc3q4vw=""
+     id="path2"
+     style="fill:#2f9e44;fill-opacity:1" />
+  <path
+     d="m 512.9,522.7 m -18.52383,0 a 18.523835,18.523835 0 1 0 37.04766,0 18.523835,18.523835 0 1 0 -37.04766,0 z"
+     fill="currentColor"
+     data-astro-cid-ahc3q4vw=""
+     id="path3"
+     style="fill:#2f9e44;fill-opacity:1;stroke-width:1.85238" />
+</svg>
