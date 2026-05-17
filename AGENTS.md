@@ -117,7 +117,7 @@ Rules of thumb:
 - **Bindings** declared in `wrangler.jsonc` must also appear on the `Env` interface in `src/worker.ts`. Update both together.
 - **Durable Objects**: each new DO class needs a binding in `wrangler.jsonc`, an entry in `migrations`, an export from `src/worker.ts`, and a typed field on `Env`.
 - **Compatibility**: `nodejs_compat` is enabled, but prefer Web/Workers APIs (`fetch`, `crypto.subtle`, `URLSearchParams`) over Node built-ins. Don't import `node:*` modules unless there's no Workers-native alternative.
-- **Routes**: production traffic is bound to `https://dvieira.xyz/*` via `wrangler.jsonc`.
+- **Routes**: production traffic is bound to `https://dvieira.dev/*` via `wrangler.jsonc`.
 
 ## Secrets & Configuration
 

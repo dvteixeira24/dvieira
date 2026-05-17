@@ -1,50 +1,45 @@
 {
-	"name": "dvieira",
-	"main": "./src/worker.ts",
-	"compatibility_date": "2026-05-03",
-	"compatibility_flags": [
-		"nodejs_compat",
-		"global_fetch_strictly_public"
-	],
-	"workers_dev": false,
-	"preview_urls": false,
-	"assets": {
-		"binding": "ASSETS",
-		"directory": "./dist"
-	},
-    "vars": {
-        "PUBLIC_HCAPTCHA_SITE_KEY": "93d0e2ea-248c-4f28-8514-cc664b50f052"
+    "name": "dvieira",
+    "main": "./src/worker.ts",
+    "compatibility_date": "2026-05-03",
+    "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+    "workers_dev": false,
+    "preview_urls": false,
+    "assets": {
+        "binding": "ASSETS",
+        "directory": "./dist",
     },
-	"durable_objects": {
-		"bindings": [
-			{
-				"name": "CONTACT_RATE_LIMITER",
-				"class_name": "ContactRateLimiterDurableObject"
-			}
-		]
-	},
-	"migrations": [
-		{
-			"tag": "v1-contact-rate-limiter",
-			"new_sqlite_classes": [
-				"ContactRateLimiterDurableObject"
-			]
-		}
-	],
-	"observability": {
-		"enabled": true
-	},
-	"routes": [
-		{
-			"pattern": "https://dvieira.xyz/*",
-			"zone_name": "dvieira.xyz"
-		},
-		{
-			"pattern": "dvieira.xyz",
-			"zone_name": "dvieira.xyz",
-			"custom_domain": true,
-			"enabled": true,
-			"previews_enabled": false
-		}
-	]
+    "vars": {
+        "PUBLIC_HCAPTCHA_SITE_KEY": "93d0e2ea-248c-4f28-8514-cc664b50f052",
+    },
+    "durable_objects": {
+        "bindings": [
+            {
+                "name": "CONTACT_RATE_LIMITER",
+                "class_name": "ContactRateLimiterDurableObject",
+            },
+        ],
+    },
+    "migrations": [
+        {
+            "tag": "v1-contact-rate-limiter",
+            "new_sqlite_classes": ["ContactRateLimiterDurableObject"],
+        },
+    ],
+    "observability": {
+        "enabled": true,
+    },
+    "routes": [
+        {
+            "pattern": "https://dvieira.dev/*",
+            "zone_name": "dvieira.dev",
+        },
+        {
+            "pattern": "dvieira.dev",
+            "zone_name": "dvieira.dev",
+            "custom_domain": true,
+            "enabled": true,
+            "previews_enabled": false,
+        },
+    ],
 }
