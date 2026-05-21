@@ -54,6 +54,18 @@ Prettier config is in `package.json` and is the source of truth. Match it:
 - Single quotes, no semicolons, trailing commas everywhere
 - `arrowParens: 'avoid'` (e.g. `value => value.trim()`)
 - `prettier-plugin-astro` formats `.astro` files
+- For editor/tool compatibility, keep an explicit Prettier override for Astro files:
+
+```json
+"overrides": [
+    {
+        "files": "*.astro",
+        "options": {
+            "parser": "astro"
+        }
+    }
+]
+```
 
 TypeScript:
 
@@ -67,10 +79,20 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 
 - **Server output**: This site is `output: 'server'`. Pages are rendered on the Worker by default. Mark a page `export const prerender = true` only if it has zero per-request logic and no action results to read.
 - **Dynamic pages with actions** (e.g. `src/pages/contact/index.astro`) MUST set `export const prerender = false` so `Astro.getActionResult(...)` works.
-- **View transitions**: `Layout.astro` includes `<ClientRouter />`. Client scripts that must re-run on navigation should use `<script is:inline data-astro-rerun>` and listen to `astro:page-load`. See `src/pages/contact/index.astro` for the hCaptcha pattern (idempotent init, removes prior listeners).
+- **View transitions**: `Layout.astro` includes `<ClientRouter />`. Bundled module scripts run once across client-side navigations. Client scripts that must re-run on navigation should use `<script is:inline data-astro-rerun>` and listen to `astro:page-load`. Keep initialization idempotent because `window` state persists between navigations. See `src/pages/contact/index.astro` for the hCaptcha pattern (idempotent init, removes prior listeners).
 - **Styles**: prefer scoped `<style lang="scss">` per component. Global styles live in `Layout.astro` under `<style is:global lang="scss">`. Reuse existing CSS custom properties (`--color-*`, `--font-*`) instead of hardcoding values.
 - **Assets**: import images from `src/assets/` and use the resulting `.src`. Don't reference them by raw path.
 - **Public env**: only variables prefixed with `PUBLIC_` are exposed to client code via `import.meta.env`.
+
+## Animations / GSAP
+
+- Use GSAP only in client-side scripts; never import or execute GSAP in server/action code.
+- Register plugins explicitly, e.g. `gsap.registerPlugin(ScrollTrigger)`.
+- With `<ClientRouter />`, initialize page-specific animations from `astro:page-load`.
+- Use `gsap.context(...)` scoped to a root element and call `ctx.revert()` before re-initializing or tearing down page-specific animations.
+- For responsive animations, prefer `gsap.matchMedia()` and clean up custom event listeners in returned cleanup functions.
+- If DOM/layout changes affect ScrollTrigger measurements, call `ScrollTrigger.refresh(true)`.
+- Respect `prefers-reduced-motion`; skip or simplify non-essential motion for reduced-motion users.
 
 ## Astro Actions (Server-Side)
 
@@ -117,6 +139,9 @@ Rules of thumb:
 - **Bindings** declared in `wrangler.jsonc` must also appear on the `Env` interface in `src/worker.ts`. Update both together.
 - **Durable Objects**: each new DO class needs a binding in `wrangler.jsonc`, an entry in `migrations`, an export from `src/worker.ts`, and a typed field on `Env`.
 - **Compatibility**: `nodejs_compat` is enabled, but prefer Web/Workers APIs (`fetch`, `crypto.subtle`, `URLSearchParams`) over Node built-ins. Don't import `node:*` modules unless there's no Workers-native alternative.
+- **Astro 6 / adapter v13**: `astro dev` and `astro preview` run on Cloudflare `workerd`; treat dev/preview runtime issues as Workers compatibility issues, not Node issues.
+- **Local production checks**: use `pnpm build` followed by `pnpm preview` when checking production-like Workers behavior locally.
+- **Types**: if Cloudflare bindings change, regenerate/check Worker types with `pnpm wrangler types` and update the `Env` interface.
 - **Routes**: production traffic is bound to `https://dvieira.dev/*` via `wrangler.jsonc`.
 
 ## Secrets & Configuration
