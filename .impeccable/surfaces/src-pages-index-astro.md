@@ -74,3 +74,11 @@ The experience action now reads “View experience” and targets `/about#experi
 About replaces Biography and Experience in shared navigation. Its Read surface
 is recorded in `src-pages-about-index-astro.md`; preserve the homepage approach
 and motion when updating shared components.
+
+## Hero field motion refinement
+
+The role loom now moves continuously through larger traveling surface waves,
+rotating braids, moving mesh ripples, and an undulating reliability loop. A wider
+three-axis sway makes depth visible between mode changes. Preserve the existing
+ultramarine opacity, headline layering, geometry budget, and 1.2-second morph.
+Reduced motion freezes ambient motion; offscreen and hidden states pause drawing.

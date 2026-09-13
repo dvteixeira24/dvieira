@@ -1,0 +1,76 @@
+[
+  {
+    "width": 1440,
+    "mode": "frontend",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 615
+  },
+  {
+    "width": 1440,
+    "mode": "backend",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 1080
+  },
+  {
+    "width": 1440,
+    "mode": "qa",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 1565
+  },
+  {
+    "width": 1440,
+    "mode": "reliability",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 2035
+  },
+  {
+    "width": 1440,
+    "reducedMotionStatic": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "mode": "frontend",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 620
+  },
+  {
+    "width": 390,
+    "mode": "backend",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 1075
+  },
+  {
+    "width": 390,
+    "mode": "qa",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 1545
+  },
+  {
+    "width": 390,
+    "mode": "reliability",
+    "unavailable": false,
+    "glError": 0,
+    "overflow": false,
+    "writes": 2010
+  },
+  {
+    "width": 390,
+    "reducedMotionStatic": true,
+    "errors": []
+  }
+]
