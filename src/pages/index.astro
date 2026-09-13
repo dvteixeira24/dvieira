@@ -1,23 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import profileImage from '../assets/profiled.jpg'
+import RoleLoom from '../components/RoleLoom.astro'
 ---
 
 <Layout>
-    <main class="home" data-mode="qa">
+    <main class="home" data-mode="frontend">
         <section class="hero" aria-labelledby="hero-title">
+            <RoleLoom />
             <div
                 class="mode-sequencer"
                 role="group"
                 aria-label="Engineering modes"
             >
-                <button type="button" data-mode="frontend" aria-pressed="false"
+                <button type="button" data-mode="frontend" aria-pressed="true"
                     ><span>01</span> Frontend</button
                 >
                 <button type="button" data-mode="backend" aria-pressed="false"
                     ><span>02</span> Backend</button
                 >
-                <button type="button" data-mode="qa" aria-pressed="true"
+                <button type="button" data-mode="qa" aria-pressed="false"
                     ><span>03</span> QA</button
                 >
                 <button
@@ -252,21 +254,59 @@ import profileImage from '../assets/profiled.jpg'
                     output.value = values[axis]
             })
         }
-        controls.forEach(control => {
-            control.addEventListener('click', () => {
-                const mode = control.dataset.mode
-                if (!mode) return
-                root.dataset.mode = mode
-                showAxisValues(mode)
-                controls.forEach(button => {
-                    button.setAttribute(
-                        'aria-pressed',
-                        String(button === control),
-                    )
-                })
+        const selectMode = control => {
+            const mode = control.dataset.mode
+            if (!mode) return
+            root.dataset.mode = mode
+            showAxisValues(mode)
+            controls.forEach(button => {
+                button.setAttribute('aria-pressed', String(button === control))
             })
+        }
+        let timer
+        let heroVisible = true
+        const stopTimer = () => window.clearInterval(timer)
+        const restartTimer = () => {
+            stopTimer()
+            if (document.hidden || !heroVisible) return
+            timer = window.setInterval(() => {
+                const current = [...controls].findIndex(
+                    control => control.dataset.mode === root.dataset.mode,
+                )
+                selectMode(controls[(current + 1) % controls.length])
+            }, 5000)
+        }
+        const listeners = new AbortController()
+        controls.forEach(control => {
+            control.addEventListener(
+                'click',
+                () => {
+                    selectMode(control)
+                    restartTimer()
+                },
+                { signal: listeners.signal },
+            )
         })
+        const observer = new IntersectionObserver(entries => {
+            heroVisible = entries[0].isIntersecting
+            restartTimer()
+        })
+        observer.observe(root.querySelector('.hero'))
+        document.addEventListener('visibilitychange', restartTimer, {
+            signal: listeners.signal,
+        })
+        document.addEventListener(
+            'astro:before-swap',
+            () => {
+                stopTimer()
+                observer.disconnect()
+                listeners.abort()
+                delete root.dataset.modeReady
+            },
+            { once: true, signal: listeners.signal },
+        )
         showAxisValues(root.dataset.mode)
+        restartTimer()
     })()
 </script>
 
@@ -506,6 +546,9 @@ import profileImage from '../assets/profiled.jpg'
     }
 
     .hero {
+        position: relative;
+        isolation: isolate;
+        overflow: clip;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
@@ -514,6 +557,14 @@ import profileImage from '../assets/profiled.jpg'
 
     .hero > * {
         min-width: 0;
+    }
+
+    .mode-sequencer,
+    .statement,
+    .reasoning,
+    .hero-footer {
+        position: relative;
+        z-index: 1;
     }
 
     .mode-sequencer {

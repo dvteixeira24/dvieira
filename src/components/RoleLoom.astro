@@ -1,0 +1,277 @@
+<div class="role-loom" aria-hidden="true"><canvas></canvas></div>
+
+<script>
+    const ROLE_INDEX = {
+        frontend: 0,
+        backend: 1,
+        qa: 2,
+        reliability: 3,
+    } as const
+    type Role = keyof typeof ROLE_INDEX
+    let disposeRoleLoom: (() => void) | undefined
+
+    function initRoleLoom(): void {
+        disposeRoleLoom?.()
+        const home = document.querySelector<HTMLElement>('.home')
+        const loom = home?.querySelector<HTMLElement>('.role-loom')
+        const canvas = loom?.querySelector('canvas')
+        if (!home || !loom || !canvas) return
+        const gl = canvas.getContext('webgl', {
+            alpha: true,
+            antialias: true,
+            powerPreference: 'low-power',
+        })
+        if (!gl) {
+            loom.dataset.unavailable = 'true'
+            return
+        }
+
+        const vertexSource = `
+            precision highp float;
+            attribute vec2 point;
+            uniform float fromRole;
+            uniform float toRole;
+            uniform float blend;
+            uniform float time;
+            uniform float aspect;
+            varying float depth;
+            const float PI = 3.14159265;
+            vec3 shape(float role, vec2 p) {
+                float angle = p.x * 2.0 * PI;
+                float row = p.y * 2.0 - 1.0;
+                if (role < 0.5) {
+                    float x = (p.x * 2.0 - 1.0) * 1.48;
+                    return vec3(x, row * 0.88 + 0.08 * sin(x * 2.3 + time * 0.35), 0.22 * cos(x * 2.0 + row * 2.0 + time * 0.3));
+                }
+                if (role < 1.5) {
+                    float braid = angle * 3.0 + row * PI;
+                    float radius = 0.95 + 0.19 * cos(braid);
+                    return vec3(radius * cos(angle), radius * sin(angle) * 0.66, 0.32 * sin(braid) + row * 0.14);
+                }
+                if (role < 2.5) {
+                    float latitude = row * PI * 0.47;
+                    float stress = 0.09 * sin(angle * 6.0 + time * 0.6) * pow(max(0.0, cos(latitude)), 4.0);
+                    float radius = 1.04 + stress;
+                    return vec3(radius * cos(angle) * cos(latitude), radius * sin(latitude), radius * sin(angle) * cos(latitude));
+                }
+                float radius = 0.88 + 0.25 * cos(row * PI);
+                return vec3(radius * cos(angle), radius * sin(angle), 0.25 * sin(row * PI));
+            }
+            void main() {
+                vec3 position = mix(shape(fromRole, point), shape(toRole, point), blend);
+                float turn = 0.24 + sin(time * 0.12) * 0.07;
+                position.xz = mat2(cos(turn), -sin(turn), sin(turn), cos(turn)) * position.xz;
+                float tilt = 0.57;
+                position.yz = mat2(cos(tilt), -sin(tilt), sin(tilt), cos(tilt)) * position.yz;
+                float perspective = 3.7 / (3.7 - position.z);
+                float scale = min(1.05, aspect / 1.8);
+                gl_Position = vec4(position.x * perspective * scale / aspect, position.y * perspective * scale, 0.0, 1.0);
+                depth = 0.16 + 0.3 * (position.z + 1.2) / 2.4;
+            }
+        `
+        const fragmentSource = `
+            precision mediump float;
+            varying float depth;
+            void main() { gl_FragColor = vec4(0.141, 0.294, 0.847, depth); }
+        `
+        const compileShader = (type: number, source: string): WebGLShader => {
+            const shader = gl.createShader(type)
+            if (!shader) throw new Error('Unable to create loom shader')
+            gl.shaderSource(shader, source)
+            gl.compileShader(shader)
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                const message = gl.getShaderInfoLog(shader)
+                gl.deleteShader(shader)
+                throw new Error(message ?? 'Unable to compile loom shader')
+            }
+            return shader
+        }
+
+        let program: WebGLProgram
+        let vertexShader: WebGLShader
+        let fragmentShader: WebGLShader
+        try {
+            vertexShader = compileShader(gl.VERTEX_SHADER, vertexSource)
+            fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentSource)
+            const nextProgram = gl.createProgram()
+            if (!nextProgram) throw new Error('Unable to create loom program')
+            program = nextProgram
+            gl.attachShader(program, vertexShader)
+            gl.attachShader(program, fragmentShader)
+            gl.linkProgram(program)
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+                throw new Error(
+                    gl.getProgramInfoLog(program) ??
+                        'Unable to link loom program',
+                )
+        } catch {
+            loom.dataset.unavailable = 'true'
+            return
+        }
+
+        gl.useProgram(program)
+        const pointsPerLine = 161
+        const lineCount = 65
+        const points: number[] = []
+        for (let row = 0; row < lineCount; row += 1) {
+            for (let column = 0; column < pointsPerLine; column += 1)
+                points.push(column / (pointsPerLine - 1), row / (lineCount - 1))
+        }
+        const buffer = gl.createBuffer()
+        if (!buffer) return
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW)
+        const pointAttribute = gl.getAttribLocation(program, 'point')
+        gl.enableVertexAttribArray(pointAttribute)
+        gl.vertexAttribPointer(pointAttribute, 2, gl.FLOAT, false, 0, 0)
+        const uniform = (name: string): WebGLUniformLocation | null =>
+            gl.getUniformLocation(program, name)
+        const uniforms = {
+            fromRole: uniform('fromRole'),
+            toRole: uniform('toRole'),
+            blend: uniform('blend'),
+            time: uniform('time'),
+            aspect: uniform('aspect'),
+        }
+        const reducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+        )
+        let fromRole = ROLE_INDEX[home.dataset.mode as Role] ?? 0
+        let toRole = fromRole
+        let transitionStarted = performance.now() - 1200
+        let previousFrame = performance.now()
+        let motionTime = 0
+        let visible = true
+        let animationFrame = 0
+        let disposed = false
+
+        const resize = (): void => {
+            const bounds = canvas.getBoundingClientRect()
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5)
+            const width = Math.max(1, Math.round(bounds.width * pixelRatio))
+            const height = Math.max(1, Math.round(bounds.height * pixelRatio))
+            if (canvas.width === width && canvas.height === height) return
+            canvas.width = width
+            canvas.height = height
+            gl.viewport(0, 0, width, height)
+        }
+        const selectRole = (role: Role): void => {
+            const nextRole = ROLE_INDEX[role]
+            if (nextRole === toRole) return
+            fromRole = toRole
+            toRole = nextRole
+            transitionStarted = performance.now()
+        }
+        const modeObserver = new MutationObserver(() => {
+            const role = home.dataset.mode as Role
+            if (role in ROLE_INDEX) selectRole(role)
+        })
+        modeObserver.observe(home, {
+            attributes: true,
+            attributeFilter: ['data-mode'],
+        })
+        const resizeObserver = new ResizeObserver(resize)
+        resizeObserver.observe(loom)
+        const visibilityObserver = new IntersectionObserver(entries => {
+            visible = entries[0]?.isIntersecting ?? false
+        })
+        visibilityObserver.observe(loom)
+
+        const render = (now: number): void => {
+            if (disposed) return
+            const delta = Math.min(now - previousFrame, 80)
+            previousFrame = now
+            if (visible && !document.hidden) {
+                resize()
+                if (!reducedMotion.matches) motionTime += delta * 0.001
+                const progress = reducedMotion.matches
+                    ? 1
+                    : Math.min(1, (now - transitionStarted) / 1200)
+                const eased = progress * progress * (3 - 2 * progress)
+                gl.clearColor(0, 0, 0, 0)
+                gl.clear(gl.COLOR_BUFFER_BIT)
+                gl.uniform1f(uniforms.fromRole, fromRole)
+                gl.uniform1f(uniforms.toRole, toRole)
+                gl.uniform1f(uniforms.blend, eased)
+                gl.uniform1f(uniforms.time, motionTime)
+                gl.uniform1f(uniforms.aspect, canvas.width / canvas.height)
+                for (let row = 0; row < lineCount; row += 1)
+                    gl.drawArrays(
+                        gl.LINE_STRIP,
+                        row * pointsPerLine,
+                        pointsPerLine,
+                    )
+            }
+            animationFrame = window.requestAnimationFrame(render)
+        }
+
+        resize()
+        gl.enable(gl.BLEND)
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+        animationFrame = window.requestAnimationFrame(render)
+        disposeRoleLoom = () => {
+            disposed = true
+            window.cancelAnimationFrame(animationFrame)
+            modeObserver.disconnect()
+            resizeObserver.disconnect()
+            visibilityObserver.disconnect()
+            gl.deleteBuffer(buffer)
+            gl.deleteProgram(program)
+            gl.deleteShader(vertexShader)
+            gl.deleteShader(fragmentShader)
+            disposeRoleLoom = undefined
+        }
+    }
+
+    document.addEventListener('astro:page-load', initRoleLoom)
+    document.addEventListener('astro:before-swap', () => disposeRoleLoom?.())
+    if (import.meta.hot) {
+        import.meta.hot.dispose(() => {
+            disposeRoleLoom?.()
+            document.removeEventListener('astro:page-load', initRoleLoom)
+        })
+    }
+</script>
+
+<style lang="scss">
+    .role-loom {
+        position: absolute;
+        z-index: 0;
+        top: 4.8rem;
+        right: -12%;
+        width: min(72rem, 82%);
+        height: min(44rem, 72%);
+        overflow: hidden;
+        opacity: 0.78;
+        pointer-events: none;
+        mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 24%,
+            black 88%,
+            transparent 100%
+        );
+        &[data-unavailable='true'] {
+            display: none;
+        }
+    }
+    canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    @media (max-width: 760px) {
+        .role-loom {
+            top: 7.5rem;
+            right: -36%;
+            width: 118%;
+            height: 28rem;
+            opacity: 0.62;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .role-loom {
+            opacity: 0.52;
+        }
+    }
+</style>

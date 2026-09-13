@@ -53,6 +53,21 @@ readout offsets and section spacing, and support touch, keyboard, reduced motion
 no JavaScript, and Astro route cleanup.
 
 
+## Role loom extension
+
+A fine Signal Ultramarine WebGL thread field sits behind the readable hero
+statement and changes with the existing five-second engineering-mode selector.
+Frontend is a responsive surface, Backend forms braided channels, QA becomes a
+tension mesh, and Reliability closes into a loop. The field is supporting
+systems evidence: preserve the proof-sheet composition, headline contrast, mode
+controls, and reasoning copy above it.
+
+Cap device-pixel ratio and pause drawing while the hero is offscreen or the
+document is hidden. Reduced motion renders the selected role state immediately
+without ambient movement. If WebGL is unavailable, hide the field and retain the
+complete hero. Reinitialize and dispose observers, animation frames, shaders,
+buffers, and listeners across Astro client navigation.
+
 ## About consolidation
 
 The experience action now reads “View experience” and targets `/about#experience`.
