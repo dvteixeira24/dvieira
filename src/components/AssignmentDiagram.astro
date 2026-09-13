@@ -1,0 +1,165 @@
+---
+interface Props {
+    kind: 'integration' | 'matching'
+}
+
+const { kind } = Astro.props
+const integration = kind === 'integration'
+---
+
+<figure class="assignment-diagram" data-diagram={kind}>
+    <svg viewBox="0 0 480 100" fill="none" aria-hidden="true">
+        {
+            integration ? (
+                <>
+                    <path class="diagram-guide" d="M76 50H404" />
+                    <path
+                        class="diagram-signal"
+                        data-diagram-trace
+                        pathLength="1"
+                        d="M76 50H404"
+                    />
+                    <g class="diagram-node">
+                        <rect x="16" y="20" width="60" height="60" />
+                        <rect x="210" y="20" width="60" height="60" />
+                        <path d="M404 20h42l18 18v42h-60z" />
+                    </g>
+                    <g class="diagram-detail">
+                        <path d="M30 38h32M30 50h22M30 62h28" />
+                        <path d="M226 37h28v26h-28zM234 45h12v10h-12zM232 14v6m16-6v6m-16 60v6m16-6v6" />
+                        <path d="M446 20v18h18M418 50h32M418 62h22" />
+                    </g>
+                    <path
+                        class="diagram-signal"
+                        d="m147 45 5 5-5 5m178-10 5 5-5 5"
+                    />
+                </>
+            ) : (
+                <>
+                    <g class="diagram-guide">
+                        <path d="M16 10h164M16 90h164M300 10h164M300 90h164" />
+                        <path d="M180 32h120M180 68h120" />
+                    </g>
+                    <g class="matching-row" data-matching-row="left">
+                        <path class="diagram-node" d="M16 20h164v24H16z" />
+                        <path
+                            class="diagram-detail"
+                            d="M28 32h58m32 0h14m14 0h22"
+                        />
+                    </g>
+                    <g class="matching-row" data-matching-row="right">
+                        <path class="diagram-node" d="M300 20h164v24H300z" />
+                        <path
+                            class="diagram-detail"
+                            d="M312 32h58m32 0h14m14 0h22"
+                        />
+                    </g>
+                    <g class="diagram-detail">
+                        <path d="M16 56h164v24H16zM300 56h164v24H300z" />
+                        <path d="M28 68h42m48 0h14m14 0h22M312 68h42m48 0h14m14 0h22" />
+                    </g>
+                    <path
+                        class="diagram-signal"
+                        data-diagram-trace
+                        pathLength="1"
+                        d="M180 32h48l7 7 12-14 7 7h46"
+                    />
+                </>
+            )
+        }
+    </svg>
+    <div
+        class:list={['diagram-labels', { 'diagram-labels-pair': !integration }]}
+        aria-hidden="true"
+    >
+        {
+            integration ? (
+                <>
+                    <>
+                        <span>Intake</span>
+                        <span>Backend</span>
+                        <span>Document</span>
+                    </>
+                </>
+            ) : (
+                <>
+                    <>
+                        <span>Invoice rows</span>
+                        <span>Matched records</span>
+                    </>
+                </>
+            )
+        }
+    </div>
+    <figcaption>
+        {
+            integration
+                ? 'Intake, backend services, and document generation — workflow illustration.'
+                : 'Aligning invoice rows with matching records — workflow illustration.'
+        }
+    </figcaption>
+</figure>
+
+<style lang="scss">
+    .assignment-diagram {
+        width: 100%;
+        max-width: 32rem;
+        margin: 1.75rem 0 0;
+        padding: 1.25rem 0 0;
+        border-top: 1px solid var(--rule);
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+        overflow: visible;
+        stroke-width: 1.25;
+    }
+
+    .diagram-guide {
+        stroke: var(--rule);
+    }
+    .diagram-node {
+        fill: var(--paper);
+        stroke: var(--signal);
+    }
+    .diagram-detail {
+        stroke: var(--muted);
+    }
+    .diagram-signal {
+        stroke: var(--signal);
+    }
+    [data-diagram-trace] {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+    }
+
+    .diagram-labels {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+        color: var(--ink);
+        font-size: 0.8rem;
+        line-height: 1.4;
+        text-align: center;
+
+        span:first-child {
+            text-align: left;
+        }
+        span:last-child {
+            text-align: right;
+        }
+    }
+
+    .diagram-labels-pair {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    figcaption {
+        margin-top: 0.75rem;
+        color: var(--muted);
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+</style>
