@@ -881,6 +881,13 @@ import RoleLoom from '../components/RoleLoom.astro'
         overflow: visible;
     }
 
+    @media (min-width: 761px) {
+        .method-preview {
+            padding-right: 0.75%;
+            padding-left: 1.75%;
+        }
+    }
+
     .method-scroll {
         width: 100%;
         min-width: 0;
@@ -891,20 +898,25 @@ import RoleLoom from '../components/RoleLoom.astro'
 
     .method-track {
         --method-progress: 0;
+        --method-edge-start: clamp(0.75rem, 2.5vw, 3rem);
+        --method-edge-end: clamp(0.5rem, 1.25vw, 1.5rem);
         position: relative;
-        min-width: 33rem;
+        min-width: min(46rem, 100%);
         display: grid;
-        grid-template-columns: repeat(4, minmax(7.5rem, 1fr));
-        gap: 1rem;
-        padding: 2.9rem 0 0;
+        grid-template-columns: repeat(4, max-content);
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 2.9rem var(--method-edge-end) 0 var(--method-edge-start);
         list-style: none;
 
         &::before,
         &::after {
             position: absolute;
             top: 2.25rem;
-            left: 0.425rem;
-            width: calc(75% + 0.75rem);
+            left: calc(var(--method-edge-start) + 0.425rem);
+            width: calc(
+                100% - var(--method-edge-start) - var(--method-edge-end) - 0.85rem
+            );
             height: 1px;
             content: '';
             background: var(--rule);
@@ -972,8 +984,11 @@ import RoleLoom from '../components/RoleLoom.astro'
         }
 
         .method-track {
+            --method-edge-start: 0rem;
+            --method-edge-end: 0rem;
             min-width: 0;
             grid-template-columns: minmax(0, 1fr);
+            justify-content: stretch;
             grid-auto-rows: 1fr;
             gap: 1.5rem;
             padding: 0;
