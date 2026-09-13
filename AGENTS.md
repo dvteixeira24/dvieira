@@ -77,9 +77,11 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 
 ## Astro Conventions
 
+- **Content routes**: Home (`/`), About (`/about`), and Contact (`/contact`). Shared navigation contains only Home, About, and Contact; there is no monogram, rail identity content, or mobile top bar. About owns the biography description and Defijn experience timeline. All five assignments belong to Defijn. Keep `project-01` through `project-06` IDs stable; `/biography` and `/experience` are permanent redirects configured in `astro.config.mjs`.
+
 - **Server output**: This site is `output: 'server'`. Pages are rendered on the Worker by default. Mark a page `export const prerender = true` only if it has zero per-request logic and no action results to read.
 - **Dynamic pages with actions** (e.g. `src/pages/contact/index.astro`) MUST set `export const prerender = false` so `Astro.getActionResult(...)` works.
-- **View transitions**: `Layout.astro` includes `<ClientRouter />`. Bundled module scripts run once across client-side navigations. Client scripts that must re-run on navigation should use `<script is:inline data-astro-rerun>` and listen to `astro:page-load`. Keep initialization idempotent because `window` state persists between navigations. See `src/pages/contact/index.astro` for the hCaptcha pattern (idempotent init, removes prior listeners).
+- **View transitions**: `Layout.astro` includes `<ClientRouter />`. Bundled module scripts run once across client-side navigations. Client scripts with package imports must use a bundled `<script>` and initialize from `astro:page-load`; clean up page-specific effects on `astro:before-swap` (see the homepage GSAP script). Use `<script is:inline data-astro-rerun>` for plain inline scripts that must re-run on navigation. Keep initialization idempotent because `window` state persists between navigations. See `src/pages/contact/index.astro` for the hCaptcha pattern (idempotent init, removes prior listeners).
 - **Styles**: prefer scoped `<style lang="scss">` per component. Global styles live in `Layout.astro` under `<style is:global lang="scss">`. Reuse existing CSS custom properties (`--color-*`, `--font-*`) instead of hardcoding values.
 - **Assets**: import images from `src/assets/` and use the resulting `.src`. Don't reference them by raw path.
 - **Public env**: only variables prefixed with `PUBLIC_` are exposed to client code via `import.meta.env`.
@@ -140,7 +142,7 @@ Rules of thumb:
 - **Durable Objects**: each new DO class needs a binding in `wrangler.jsonc`, an entry in `migrations`, an export from `src/worker.ts`, and a typed field on `Env`.
 - **Compatibility**: `nodejs_compat` is enabled, but prefer Web/Workers APIs (`fetch`, `crypto.subtle`, `URLSearchParams`) over Node built-ins. Don't import `node:*` modules unless there's no Workers-native alternative.
 - **Astro 6 / adapter v13**: `astro dev` and `astro preview` run on Cloudflare `workerd`; treat dev/preview runtime issues as Workers compatibility issues, not Node issues.
-- **Local production checks**: use `pnpm build` followed by `pnpm preview` when checking production-like Workers behavior locally.
+- **Local production checks**: use `pnpm build` followed by `pnpm preview` when checking production-like Workers behavior locally. For redirect verification, stop the previous preview and clear generated `dist/` output before rebuilding; the current adapter can append duplicate `_redirects` rules to existing output.
 - **Types**: if Cloudflare bindings change, regenerate/check Worker types with `pnpm wrangler types` and update the `Env` interface.
 - **Routes**: production traffic is bound to `https://dvieira.dev/*` via `wrangler.jsonc`.
 

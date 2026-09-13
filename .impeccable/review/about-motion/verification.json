@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "progress": 0.4992,
+      "scrollReversal": true,
+      "keyboard": true,
+      "liveReducedMotion": true,
+      "repeatedClientNavigation": true,
+      "deepLink": true,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "progress": 0.5009,
+      "scrollReversal": true,
+      "keyboard": true,
+      "liveReducedMotion": true,
+      "repeatedClientNavigation": true,
+      "deepLink": true,
+      "overflow": false
+    },
+    {
+      "noJavaScript": true,
+      "width": 320,
+      "contentAndAnchors": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

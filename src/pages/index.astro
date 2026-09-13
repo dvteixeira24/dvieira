@@ -27,8 +27,6 @@ import profileImage from '../assets/profiled.jpg'
                 >
             </div>
 
-            <p class="systems-tagline">Systems for<br />a brighter tomorrow</p>
-
             <h1
                 id="hero-title"
                 class="statement"
@@ -144,18 +142,20 @@ import profileImage from '../assets/profiled.jpg'
             </div>
         </section>
 
-        <section class="method-preview" aria-labelledby="method-title">
-            <div class="preview-title">
-                <h2 id="method-title">
-                    A more reliable<br />future, in progress.
-                </h2>
+        <section class="method-preview" aria-label="Project method">
+            <div
+                class="method-scroll"
+                role="region"
+                aria-label="Project timeline"
+                tabindex="0"
+            >
+                <ol class="method-track">
+                    <li><b>Define</b><span>Clarify the problem.</span></li>
+                    <li><b>Explore</b><span>Test approaches.</span></li>
+                    <li><b>Build</b><span>Implement and iterate.</span></li>
+                    <li><b>Deploy</b><span>Stabilise and scale.</span></li>
+                </ol>
             </div>
-            <ol class="method-track">
-                <li><b>Define</b><span>Clarify the problem.</span></li>
-                <li><b>Explore</b><span>Test approaches.</span></li>
-                <li><b>Build</b><span>Implement and iterate.</span></li>
-                <li><b>Deploy</b><span>Stabilise and scale.</span></li>
-            </ol>
             <p class="timeline-label">Project timeline ↓</p>
         </section>
 
@@ -212,8 +212,8 @@ import profileImage from '../assets/profiled.jpg'
                 </li>
             </ol>
             <div class="thinking-actions">
-                <a class="thinking-link" href="/experience">
-                    <span>View selected experience</span>
+                <a class="thinking-link" href="/about#experience">
+                    <span>View experience</span>
                     <span aria-hidden="true">↗</span>
                 </a>
                 <a class="thinking-cta" href="/contact">
@@ -268,6 +268,195 @@ import profileImage from '../assets/profiled.jpg'
         })
         showAxisValues(root.dataset.mode)
     })()
+</script>
+
+<script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    let disposeMotion: (() => void) | undefined
+    let heroRevealed = false
+
+    function initHomepageMotion(): void {
+        disposeMotion?.()
+        const root = document.querySelector<HTMLElement>('.home')
+        if (!root) return
+
+        let active = true
+        const media = gsap.matchMedia()
+        const context = gsap.context(() => {
+            media.add(
+                '(prefers-reduced-motion: no-preference)',
+                () => {
+                    const statement =
+                        root.querySelector<HTMLElement>('.statement')
+                    // Returning visitors and restored scroll positions skip the entrance.
+                    if (!heroRevealed && statement) {
+                        heroRevealed = true
+                        const bounds = statement.getBoundingClientRect()
+                        if (
+                            bounds.top >= 0 &&
+                            bounds.top < window.innerHeight
+                        ) {
+                            gsap.fromTo(
+                                '.statement-word',
+                                { clipPath: 'inset(-80% 100% -80% -8%)' },
+                                {
+                                    clipPath: 'inset(-80% -8% -80% -8%)',
+                                    duration: 0.56,
+                                    stagger: 0.07,
+                                    ease: 'expo.out',
+                                    clearProps: 'clipPath',
+                                },
+                            )
+                        }
+                    }
+
+                    const track =
+                        root.querySelector<HTMLElement>('.method-track')
+                    if (!track) return
+                    const steps = [...track.querySelectorAll('li')]
+                    const timeline = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: '.method-preview',
+                            start: 'top 85%',
+                            end: 'bottom 55%',
+                            scrub: 0.25,
+                        },
+                    })
+                    timeline.to(track, {
+                        '--method-progress': 1,
+                        duration: 1,
+                        ease: 'none',
+                    })
+                    steps.slice(1).forEach((step, index) => {
+                        timeline.to(
+                            step,
+                            {
+                                '--step-progress': 1,
+                                duration: 0.06,
+                                ease: 'power2.out',
+                            },
+                            (index + 1) / (steps.length - 1) - 0.06,
+                        )
+                    })
+                },
+                root,
+            )
+
+            media.add(
+                '(prefers-reduced-motion: reduce)',
+                () => {
+                    heroRevealed = true
+                    gsap.set('.method-track', { '--method-progress': 1 })
+                    gsap.set('.method-track li', { '--step-progress': 1 })
+                },
+                root,
+            )
+
+            media.add(
+                '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
+                () => {
+                    const seal =
+                        root.querySelector<HTMLElement>('.portrait-seal')
+                    const portrait = seal?.querySelector('img')
+                    if (!seal || !portrait) return
+
+                    gsap.set(portrait, { transformPerspective: 600 })
+                    const options = { duration: 0.35, ease: 'power3.out' }
+                    const tiltX = gsap.quickTo(portrait, 'rotationX', options)
+                    const tiltY = gsap.quickTo(portrait, 'rotationY', options)
+                    const moveX = gsap.quickTo(portrait, 'x', options)
+                    const moveY = gsap.quickTo(portrait, 'y', options)
+                    const clamp = gsap.utils.clamp(-1, 1)
+                    let bounds: DOMRect | undefined
+
+                    const reset = (): void => {
+                        bounds = undefined
+                        tiltX(0)
+                        tiltY(0)
+                        moveX(0)
+                        moveY(0)
+                    }
+                    const enter = (): void => {
+                        bounds = seal.getBoundingClientRect()
+                    }
+                    const move = (event: PointerEvent): void => {
+                        if (event.pointerType !== 'mouse') return
+                        bounds ??= seal.getBoundingClientRect()
+                        const x = clamp(
+                            ((event.clientX - bounds.left) / bounds.width) * 2 -
+                                1,
+                        )
+                        const y = clamp(
+                            ((event.clientY - bounds.top) / bounds.height) * 2 -
+                                1,
+                        )
+                        tiltX(-y * 5)
+                        tiltY(x * 5)
+                        moveX(x * 2)
+                        moveY(y * 2)
+                    }
+                    const visibility = (): void => {
+                        if (document.hidden) reset()
+                    }
+
+                    seal.addEventListener('pointerenter', enter)
+                    seal.addEventListener('pointermove', move)
+                    seal.addEventListener('pointerleave', reset)
+                    seal.addEventListener('pointercancel', reset)
+                    window.addEventListener('scroll', reset, { passive: true })
+                    window.addEventListener('blur', reset)
+                    window.addEventListener('resize', reset)
+                    document.addEventListener('visibilitychange', visibility)
+                    return () => {
+                        seal.removeEventListener('pointerenter', enter)
+                        seal.removeEventListener('pointermove', move)
+                        seal.removeEventListener('pointerleave', reset)
+                        seal.removeEventListener('pointercancel', reset)
+                        window.removeEventListener('scroll', reset)
+                        window.removeEventListener('blur', reset)
+                        window.removeEventListener('resize', reset)
+                        document.removeEventListener(
+                            'visibilitychange',
+                            visibility,
+                        )
+                    }
+                },
+                root,
+            )
+        }, root)
+
+        void document.fonts.ready.then(() => {
+            if (active && root.isConnected) ScrollTrigger.refresh(true)
+        })
+        disposeMotion = () => {
+            active = false
+            media.revert()
+            context.revert()
+            disposeMotion = undefined
+        }
+    }
+
+    function cleanupHomepageMotion(): void {
+        disposeMotion?.()
+    }
+
+    document.addEventListener('astro:page-load', initHomepageMotion)
+    document.addEventListener('astro:before-swap', cleanupHomepageMotion)
+
+    if (import.meta.hot) {
+        import.meta.hot.dispose(() => {
+            cleanupHomepageMotion()
+            document.removeEventListener('astro:page-load', initHomepageMotion)
+            document.removeEventListener(
+                'astro:before-swap',
+                cleanupHomepageMotion,
+            )
+        })
+    }
 </script>
 
 <style lang="scss">
@@ -363,17 +552,6 @@ import profileImage from '../assets/profiled.jpg'
         }
     }
 
-    .systems-tagline {
-        display: none;
-        font-size: 0.7rem;
-        font-variation-settings:
-            'wdth' 78,
-            'wght' 580;
-        letter-spacing: 0.16em;
-        line-height: 1.4;
-        text-transform: uppercase;
-    }
-
     #hero-title {
         margin-top: 36px;
     }
@@ -397,6 +575,10 @@ import profileImage from '../assets/profiled.jpg'
         font-size: min(12cqw, 10rem);
         line-height: 0.68;
         transition: font-variation-settings 850ms var(--ease-out);
+    }
+
+    .statement-word {
+        display: inline-block;
     }
 
     .statement-different {
@@ -426,7 +608,8 @@ import profileImage from '../assets/profiled.jpg'
     .width-readout {
         max-width: 100%;
         position: absolute;
-        right: 0;
+        // Preserve the offset until the annotation reaches the specimen edge.
+        right: max(0px, calc(100% + 50px - 100cqw));
         bottom: 0;
         display: flex;
         align-items: center;
@@ -442,6 +625,17 @@ import profileImage from '../assets/profiled.jpg'
         text-transform: uppercase;
         pointer-events: none;
         transform: translateX(50px) translateY(-13px);
+    }
+
+    .statement-different > .width-readout {
+        transform: translateX(50px) translateY(-6px);
+    }
+
+    @media (max-width: 760px) {
+        .statement-line:not(.statement-different) > .width-readout {
+            // Use the reserved caption space when a wide mode reaches the edge.
+            transform: translateX(50px) translateY(-13px);
+        }
     }
 
     .readout-line {
@@ -595,10 +789,6 @@ import profileImage from '../assets/profiled.jpg'
             grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.34fr);
             column-gap: 3rem;
         }
-        .systems-tagline {
-            display: block;
-            align-self: center;
-        }
         .statement {
             grid-column: 1;
         }
@@ -632,66 +822,62 @@ import profileImage from '../assets/profiled.jpg'
         position: relative;
         min-height: max(20svh, 12.4rem);
         display: grid;
-        grid-template-columns: 38% 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 2rem;
+        align-items: center;
         padding: 1.55rem 2.8% 1.25rem;
         border-top: 1px solid var(--ink);
         overflow: visible;
     }
 
-    .preview-title {
-        position: relative;
-        z-index: 21;
-        margin-left: 2.5vw;
-    }
-
-    .preview-title > p {
-        margin-bottom: 0.7rem;
-        font-size: 0.75rem;
-        font-variation-settings:
-            'wdth' 76,
-            'wght' 620;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-    }
-
-    .preview-title h2 {
-        font-size: clamp(2rem, 3.8vw, 3.9rem);
-        font-variation-settings:
-            'wdth' 78,
-            'wght' 280;
-        letter-spacing: 0.02em;
-        line-height: 0.9;
+    .method-scroll {
+        width: 100%;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-color: var(--signal) var(--heritage-cream);
+        scrollbar-width: thin;
     }
 
     .method-track {
+        --method-progress: 0;
         position: relative;
+        min-width: 33rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(7.5rem, 1fr));
         gap: 1rem;
         padding: 2.9rem 0 0;
         list-style: none;
 
-        &::before {
+        &::before,
+        &::after {
             position: absolute;
             top: 2.25rem;
-            right: 0;
-            left: 0;
+            left: 0.425rem;
+            width: calc(75% + 0.75rem);
             height: 1px;
             content: '';
             background: var(--rule);
         }
+
+        &::after {
+            background: var(--signal);
+            transform: scaleX(var(--method-progress));
+            transform-origin: left center;
+        }
     }
 
     .method-track li {
+        --step-progress: 0;
         position: relative;
         display: grid;
         gap: 0.2rem;
         padding-top: 0.6rem;
 
-        &::before {
+        &::before,
+        &::after {
             position: absolute;
-            top: -1rem;
+            z-index: 1;
+            top: -1.075rem;
             left: 0;
             width: 0.85rem;
             aspect-ratio: 1;
@@ -701,9 +887,14 @@ import profileImage from '../assets/profiled.jpg'
             background: var(--paper);
         }
 
-        &:first-child::before {
+        &::after {
             border-color: var(--signal);
             background: var(--signal);
+            transform: scale(var(--step-progress));
+        }
+
+        &:first-child {
+            --step-progress: 1;
         }
     }
 
@@ -724,6 +915,42 @@ import profileImage from '../assets/profiled.jpg'
             'wght' 390;
     }
 
+    @media (max-width: 760px) {
+        .method-scroll {
+            overflow: visible;
+        }
+
+        .method-track {
+            min-width: 0;
+            grid-template-columns: minmax(0, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 1.5rem;
+            padding: 0;
+
+            &::before,
+            &::after {
+                top: 0.625rem;
+                width: 1px;
+                height: calc(75% + 1.125rem);
+            }
+
+            &::after {
+                transform: scaleY(var(--method-progress));
+                transform-origin: center top;
+            }
+        }
+
+        .method-track li {
+            align-content: start;
+            padding: 0 0 0 2rem;
+
+            &::before,
+            &::after {
+                top: 0.2rem;
+            }
+        }
+    }
+
     .timeline-label {
         align-self: center;
         font-size: 0.6rem;
@@ -735,7 +962,7 @@ import profileImage from '../assets/profiled.jpg'
     .thinking {
         display: grid;
         grid-template-columns: minmax(24rem, 0.88fr) 1fr;
-        gap: clamp(4rem, 9vw, 10rem);
+        gap: 0px clamp(4rem, 9vw, 10rem);
         padding: clamp(5rem, 10vw, 10rem) var(--page-gutter);
         color: var(--paper);
         border-top: 1px solid var(--ink);
@@ -887,7 +1114,7 @@ import profileImage from '../assets/profiled.jpg'
 
     @media (max-width: 640px) {
         .thinking {
-            gap: 4rem;
+            column-gap: 4rem;
             padding-block: 4.5rem;
         }
 
@@ -908,13 +1135,6 @@ import profileImage from '../assets/profiled.jpg'
     @media (max-width: 1100px) {
         .method-preview {
             grid-template-columns: minmax(0, 1fr);
-        }
-        .preview-title {
-            margin-left: 0;
-        }
-        .method-track {
-            min-width: 0;
-            overflow-x: auto;
         }
         .timeline-label {
             display: none;

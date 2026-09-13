@@ -5,8 +5,7 @@ const path = require('path')
 const root = 'C:/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/mobile-audit/landscape'
 const routes = [
     { name: 'home', url: '/', sections: ['.hero', '.method-preview', '.thinking'] },
-    { name: 'biography', url: '/biography', sections: ['.page-hero', '.story', '.modes', '.principles', '.page-cta'] },
-    { name: 'experience', url: '/experience', sections: ['.page-hero', '.project-index', '.page-cta'] },
+    { name: 'about', url: '/about', sections: ['.about-intro', '.employment', '.assignments', '.about-cta'] },
     { name: 'contact', url: '/contact', sections: ['.page-hero', '.contact-grid'] },
 ]
 const widths = [1024, 1070, 1099, 1100, 1101, 1180, 1181]

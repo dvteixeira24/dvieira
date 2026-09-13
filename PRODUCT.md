@@ -57,8 +57,8 @@ contact.
 ## Evidence on Hand
 
 - A portrait at `src/assets/profiled.jpg`.
-- Career summary and skill inventory in `src/pages/biography/index.astro`.
-- Six experience and project entries in `src/pages/experience/index.astro`.
+- Career summary, portrait, and professional experience in `src/pages/about/index.astro`.
+- One Defijn employment role with five client assignments, all delivered through Defijn.
 - GitHub and LinkedIn profile links in `src/pages/contact/index.astro`.
 - No client testimonials, named client logos, quantified outcomes, dedicated
   case-study imagery, or public project links are currently available. Future

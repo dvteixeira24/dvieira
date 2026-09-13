@@ -5,8 +5,7 @@ const path = require('path')
 const root = 'C:/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/mobile-audit'
 const routes = [
     { name: 'home', url: '/', sections: ['.hero', '.method-preview', '.thinking'] },
-    { name: 'biography', url: '/biography', sections: ['.page-hero', '.story', '.modes', '.principles', '.page-cta'] },
-    { name: 'experience', url: '/experience', sections: ['.page-hero', '.project-index', '.page-cta'] },
+    { name: 'about', url: '/about', sections: ['.about-intro', '.employment', '.assignments', '.about-cta'] },
     { name: 'contact', url: '/contact', sections: ['.page-hero', '.contact-grid'] },
 ]
 const widths = [320, 360, 390, 430, 479, 480, 481, 519, 520, 521, 639, 640, 641, 759, 760, 761, 799, 800, 801, 859, 860, 861, 899, 900, 901, 979, 980, 981]

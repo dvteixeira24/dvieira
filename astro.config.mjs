@@ -6,6 +6,10 @@ import cloudflare from '@astrojs/cloudflare'
 export default defineConfig({
     output: 'server',
     adapter: cloudflare(),
+    redirects: {
+        '/biography': { status: 301, destination: '/about' },
+        '/experience': { status: 301, destination: '/about' },
+    },
     security: {
         checkOrigin: true,
     },

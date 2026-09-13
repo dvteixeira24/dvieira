@@ -3,7 +3,13 @@ import { ClientRouter } from 'astro:transitions'
 import Navigation from '../components/Navigation.astro'
 import heritageTexture from '../assets/mike-hindle-Js5Qi_X1qzo-unsplash.jpg'
 
-const { title = 'Daniel Vieira Teixeira' } = Astro.props
+interface Props {
+    title?: string
+    description?: string
+    canonical?: string
+}
+
+const { title = 'Daniel Vieira Teixeira', description, canonical } = Astro.props
 ---
 
 <!doctype html>
@@ -19,6 +25,8 @@ const { title = 'Daniel Vieira Teixeira' } = Astro.props
             src="https://al.d99.xyz/script.js"
             data-website-id="d140b4d1-1247-49ba-b48e-f570b75d61b3"></script>
         <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+        {canonical && <link rel="canonical" href={canonical} />}
         <ClientRouter />
     </head>
     <body style={`--heritage-texture: url(${heritageTexture.src});`}>
@@ -30,18 +38,12 @@ const { title = 'Daniel Vieira Teixeira' } = Astro.props
                     '(prefers-reduced-motion: reduce)',
                 ).matches
                 const selectors = [
-                    '.method-preview > *',
                     '.section-intro > *',
                     '.intervention',
                     '.thinking-heading',
                     '.thinking li',
                     '.closing > *',
                     '.page-hero > *',
-                    '.story > *',
-                    '.modes > header > *',
-                    '.mode-grid article',
-                    '.principles > *',
-                    '.project-row',
                     '.contact-context > *',
                     '.contact-form-section',
                     '.page-cta > *',
@@ -222,7 +224,7 @@ const { title = 'Daniel Vieira Teixeira' } = Astro.props
         }
 
         body {
-            padding-top: 4.75rem;
+            padding-top: 0;
             padding-right: 0;
             padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
             padding-left: 0;

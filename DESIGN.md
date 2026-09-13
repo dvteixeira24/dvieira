@@ -159,9 +159,9 @@ The palette separates machine logic from human invitation.
 
 ## Layout
 
-Desktop pages reserve a fixed cream identity rail on the left. Content begins after that rail and uses a consistent fluid gutter. Large type occupies the dominant field while metadata, evidence, and actions sit in narrower aligned columns.
+Desktop pages reserve a fixed cream navigation rail on the left. Content begins after that rail and uses a consistent fluid gutter. Large type occupies the dominant field while metadata, evidence, and actions sit in narrower aligned columns.
 
-At 760px and below, the rail becomes a compact cream monogram bar and a fixed amber bottom dock. Route grids collapse into direct reading stacks, the body gains safe bottom padding, and nonessential measurement annotations may disappear. The Experience project grid stays compact through 1100px; desktop grids return only once their minimum tracks fit without overflow. On Home, selected project evidence is folded into the dark approach sequence instead of repeated in a separate index. Horizontal scrolling is allowed only for deliberately linear controls such as the engineering mode strip and method sequence. Primary controls and navigation links preserve a minimum 44 × 44px interaction area.
+At 760px and below, the rail becomes a fixed amber bottom dock, with no top bar. Route grids collapse into direct reading stacks, the body gains safe bottom padding, and nonessential measurement annotations may disappear. About uses a compact identity/description introduction followed by a Defijn employment summary and a vertical assignment timeline. Dates occupy a narrow column on desktop and move above assignment titles at 760px and below. On Home, selected project evidence is folded into the dark approach sequence instead of repeated in a separate index. Horizontal scrolling is allowed only for deliberately linear controls such as the engineering mode strip and method sequence. Primary controls and navigation links preserve a minimum 44 × 44px interaction area.
 
 **The Editorial Grid Rule.** Asymmetry must remain aligned to shared rules and columns; it should feel measured, never accidental.
 
@@ -202,8 +202,8 @@ Controls, fields, tags, rows, and inverse panels are square with zero radius. Bo
 
 ### Navigation
 
-- **Desktop:** Fixed Heritage Cream rail with monogram, Newsreader identity copy, vertical links, and a grayscale portrait anchor. Amber identifies hover and current route.
-- **Mobile:** Compact cream monogram bar plus a fixed four-link Heritage Amber bottom dock. The current route becomes a cream paper insert.
+- **Desktop:** Fixed Heritage Cream rail containing only Home, About, and Contact links. Amber identifies hover and current route.
+- **Mobile:** A fixed three-link Heritage Amber bottom dock (Home, About, Contact), with no top bar or reserved top space. The current route becomes a cream paper insert.
 
 ### Indexed narrative rows
 
@@ -243,3 +243,76 @@ Place the functional form on a square Heritage Cream insert over a textured char
 - Don't apply texture globally or offset shadows to ordinary content surfaces.
 - Don't swap the semantic jobs of blue and amber.
 - Don't hide essential content or contact actions behind animation or pointer-only interaction.
+
+
+## Homepage motion
+
+The homepage has three authored effects: a brief horizontal mask reveal across
+its four headline words on the first home visit in a client session; an
+ultramarine timeline rule and milestone fills driven by natural page scrolling;
+and a portrait tilt limited to five degrees and two pixels of travel on a fine
+mouse pointer. The portrait frame and caption remain stationary.
+
+The headline settles within 770ms. Returning to Home or changing motion
+preferences does not replay the entrance. Font-mode controls retain their
+existing width/weight transitions. Width readouts clamp to the specimen edge;
+mobile readouts use the reserved caption space to clear the widest words. The timeline keeps its four descriptions
+visible and uses a native, keyboard-focusable horizontal scroller when narrow.
+It is excluded from the shared fade-and-rise reveal observer.
+
+Reduced motion shows the headline and completed timeline immediately and removes
+portrait movement. Default HTML/CSS remains readable without JavaScript. GSAP
+lives in the homepage's bundled client script, initializes on `astro:page-load`,
+and reverts its contexts, ScrollTriggers, and pointer listeners on
+`astro:before-swap`. Media-query changes clean up and reconfigure effects.
+
+
+## About and experience
+
+About at `/about` combines the retained three-paragraph biography description
+with one Defijn employment summary and five assignments, newest start first.
+The cream introduction keeps a supporting grayscale portrait and an Experience
+jump link. The professional record uses visible dates, restrained timeline
+markers, serif assignment titles, and expanded contribution lists. There are no
+separate skills or principles panels. Essential About content uses no entrance
+reveal; it remains immediately readable on direct and anchor navigation.
+
+The desktop rail and mobile dock contain only Home, About, and Contact links.
+The monogram, name, location, portrait, and mobile top bar have been removed. Existing legacy project anchors
+remain stable, and `/biography` and `/experience` permanently redirect to About.
+
+
+### About reading scale
+
+The compact About surface uses a smaller reading scale than the homepage:
+
+| Element | Size |
+| --- | --- |
+| About title | `clamp(3.5rem, 6vw, 6rem)` |
+| Description heading | `clamp(2rem, 3.2vw, 3rem)` |
+| Description body | `clamp(1rem, 1.25vw, 1.2rem)` |
+| Experience heading | `clamp(2.75rem, 5vw, 5rem)` |
+| Employer title | `clamp(2.25rem, 3.5vw, 3.5rem)` |
+| Assignment group | `clamp(1.35rem, 2vw, 1.75rem)` |
+| Assignment title | `clamp(2rem, 3.1vw, 3rem)` |
+| Assignment premise | `clamp(1.15rem, 1.55vw, 1.5rem)` |
+| Role / contribution body | `1rem` |
+| Dates / actions | `0.9rem` / `0.95rem` |
+| Portrait name / details | `1.35rem` / `0.85rem` |
+| Assignment mode / tags | `0.8rem` / `0.75rem` |
+| Closing invitation | `clamp(1.5rem, 2.5vw, 2.5rem)` |
+
+These deliberate surface sizes keep the biography compact and the expanded
+experience easy to scan without inheriting oversized homepage display spacing.
+
+### About motion
+
+An amber underline signs Daniel's name once per client session in 700ms, only
+when the introduction is in view and no anchor is requested. An ultramarine
+hairline traces the assignment timeline with natural scroll, with square markers
+filling as each heading reaches the reading area. All text stays visible.
+Experience and contact arrows move 4px in their destination direction on keyboard
+focus or fine-pointer hover. Reduced motion uses static completed lines and
+markers with color-only link feedback. Without JavaScript the original timeline
+and all content remain readable. The About script uses the same scoped GSAP
+contexts, media queries, font refresh, and ClientRouter cleanup as Home.

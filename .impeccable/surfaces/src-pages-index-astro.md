@@ -2,14 +2,14 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/pages/biography/index.astro","src/pages/experience/index.astro","src/pages/contact/index.astro","src/layouts/Layout.astro","src/components/Navigation.astro"]
+related_targets: ["src/pages/about/index.astro","src/pages/contact/index.astro","src/layouts/Layout.astro","src/components/Navigation.astro"]
 ---
 
 # Homepage redesign
 
 ## Scope and mode
 
-Experience mode. Primary target is the homepage; biography, experience, contact, shared layout, and navigation inherit the same world.
+Experience mode. Primary target is the homepage; About, contact, shared layout, and navigation inherit the same world.
 
 ## Audience, job, and action
 
@@ -40,3 +40,22 @@ The 2026 proof-sheet structure remains primary. Restore the old site's personal 
 ## Responsive hero refinement
 
 The hero uses flow layout in three states: mobile through 760px with a two-by-two mode selector, tablet from 761–1200px with a full-width specimen and four reasoning columns below, and desktop from 1201px with a separate reasoning track. Each width readout is nested in its word's line and anchored at the bottom right, with reserved vertical space. Headline size follows its container, with room for the widest engineering mode. All four modes and their transitions must fit without clipping.
+
+
+## Homepage animation pass
+
+Three effects approved for implementation: a one-time hero line-mask reveal,
+scroll-driven progress through Define / Explore / Build / Deploy, and restrained
+portrait depth. The hero is the focal moment; timeline progress explains sequence;
+portrait movement adds a small tactile response. No added scroll pinning or
+continuous effects. Keep all four engineering modes functional, preserve user
+readout offsets and section spacing, and support touch, keyboard, reduced motion,
+no JavaScript, and Astro route cleanup.
+
+
+## About consolidation
+
+The experience action now reads “View experience” and targets `/about#experience`.
+About replaces Biography and Experience in shared navigation. Its Read surface
+is recorded in `src-pages-about-index-astro.md`; preserve the homepage approach
+and motion when updating shared components.

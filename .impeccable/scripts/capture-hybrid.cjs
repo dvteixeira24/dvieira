@@ -2,8 +2,7 @@ const { chromium } = require('playwright')
 const root = 'C:/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review'
 const routes = [
     ['home', '/'],
-    ['biography', '/biography'],
-    ['experience', '/experience'],
+    ['about', '/about'],
     ['contact', '/contact'],
 ]
 

@@ -1,0 +1,123 @@
+{
+  "redirects": [
+    {
+      "route": "/biography",
+      "status": 301,
+      "location": "/about"
+    },
+    {
+      "route": "/biography/",
+      "status": 301,
+      "location": "/about"
+    },
+    {
+      "route": "/experience",
+      "status": 301,
+      "location": "/about"
+    },
+    {
+      "route": "/experience/",
+      "status": 301,
+      "location": "/about"
+    }
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 5161
+    },
+    {
+      "width": 390,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 4708
+    },
+    {
+      "width": 760,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 4204
+    },
+    {
+      "width": 768,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 3846
+    },
+    {
+      "width": 1024,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 3670
+    },
+    {
+      "width": 1440,
+      "outliers": [],
+      "links": [
+        "Home",
+        "About",
+        "Contact"
+      ],
+      "smallTargets": [],
+      "pageHeight": 3980
+    }
+  ],
+  "anchors": [
+    {
+      "route": "/experience",
+      "hash": "project-03",
+      "y": 32.46875
+    },
+    {
+      "route": "/biography",
+      "hash": "story-title",
+      "y": 32.1875
+    },
+    {
+      "route": "/about",
+      "hash": "experience",
+      "y": 31.6875
+    },
+    {
+      "route": "/experience/",
+      "hash": "project-06",
+      "y": 31.796875
+    }
+  ],
+  "navigation": [
+    "Home → About#experience: client navigation, current state, anchor clearance",
+    "About → Contact → About: form present and metadata updated",
+    "Keyboard: first content action is focusable and activates Experience",
+    "Normal motion: content immediately visible and native anchor scroll settles",
+    "No JavaScript: description, all assignments, contact link, and Experience anchor present"
+  ],
+  "errors": [],
+  "passed": true
+}
