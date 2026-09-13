@@ -55,3 +55,19 @@ The name receives a single amber underline draw; a blue scroll-driven timeline
 tracks reading through assignments. Directional action arrows acknowledge hover
 and focus. Text never waits on motion. Static reduced-motion and no-JavaScript
 paths preserve the full reading experience and all legacy anchors.
+
+
+### About assignment illustrations and contact detail
+
+Assignment specialty captions sit with the date in the desktop margin and above
+assignment titles on mobile. The integration and invoice assignments include
+compact SVG workflow illustrations from `AssignmentDiagram.astro`; their captions
+explicitly identify them as illustrations. A blue connector traces once per page
+initialization on desktop; invoice rows align first. The sequence takes at most
+700ms. Mobile, reduced motion, and no JavaScript retain completed static diagrams.
+Motion uses the existing scoped About GSAP lifecycle and never hides text.
+
+The biography's foundation/range sentence receives static weight emphasis. The
+closing contact action is a cream stamp on the amber footer, with a four-pixel
+hard ink offset that compresses on activation. Reduced motion keeps color and
+keyboard focus feedback without physical displacement.

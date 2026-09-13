@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import AssignmentDiagram from '../../components/AssignmentDiagram.astro'
 import profileImage from '../../assets/profiled.jpg'
 
 const employment = {
@@ -136,11 +137,12 @@ const assignments = [
                         teams.
                     </p>
                     <p>
-                        My foundation is TypeScript. My value is range:
-                        responsive React interfaces, backend integrations,
-                        real-time features, automated testing, CI quality gates,
-                        observability, and the production work that keeps a
-                        useful product useful.
+                        <strong class="range-statement"
+                            >My foundation is TypeScript. My value is range:</strong
+                        >
+                        responsive React interfaces, backend integrations, real-time
+                        features, automated testing, CI quality gates, observability,
+                        and the production work that keeps a useful product useful.
                     </p>
                     <p>
                         I like assignments where the brief is still tangled. I
@@ -185,15 +187,21 @@ const assignments = [
                                 id={`project-${item.index}`}
                                 class="timeline-entry"
                             >
-                                <p class="period">{item.period}</p>
+                                <span class="timeline-track" aria-hidden="true">
+                                    <span class="timeline-trace" />
+                                </span>
+                                <span
+                                    class="timeline-marker"
+                                    aria-hidden="true"
+                                />
+                                <div class="assignment-meta">
+                                    <p class="period">{item.period}</p>
+                                    <p class="mode">{item.mode}</p>
+                                </div>
                                 <article
                                     class="assignment"
                                     aria-labelledby={`title-${item.index}`}
                                 >
-                                    <span
-                                        class="timeline-trace"
-                                        aria-hidden="true"
-                                    />
                                     <header>
                                         <h4 id={`title-${item.index}`}>
                                             {item.project}
@@ -201,12 +209,17 @@ const assignments = [
                                         <p class="role">{item.role}</p>
                                     </header>
                                     <p class="premise">{item.premise}</p>
+                                    {item.index === '06' && (
+                                        <AssignmentDiagram kind="integration" />
+                                    )}
+                                    {item.index === '05' && (
+                                        <AssignmentDiagram kind="matching" />
+                                    )}
                                     <ul class="contributions">
                                         {item.points.map(point => (
                                             <li>{point}</li>
                                         ))}
                                     </ul>
-                                    <p class="mode">{item.mode}</p>
                                     <ul class="tags" aria-label="Areas of work">
                                         {item.tags.map(tag => (
                                             <li>{tag}</li>
@@ -222,7 +235,7 @@ const assignments = [
 
         <footer class="about-cta">
             <p>Have a complicated product problem?</p>
-            <a class="text-action" href="/contact">
+            <a class="text-action contact-stamp" href="/contact">
                 Let's untangle it
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M3 12h18m-7-7 7 7-7 7"></path>
@@ -280,21 +293,24 @@ const assignments = [
                     ).forEach(entry => {
                         const trace =
                             entry.querySelector<HTMLElement>('.timeline-trace')
-                        if (!trace) return
-                        gsap.fromTo(
-                            trace,
-                            { scaleY: 0 },
-                            {
-                                scaleY: 1,
-                                ease: 'none',
-                                scrollTrigger: {
-                                    trigger: entry,
-                                    start: 'top 65%',
-                                    end: 'bottom 65%',
-                                    scrub: true,
+                        if (trace && entry.nextElementSibling)
+                            gsap.fromTo(
+                                trace,
+                                { scaleY: 0 },
+                                {
+                                    scaleY: 1,
+                                    ease: 'none',
+                                    scrollTrigger: {
+                                        trigger:
+                                            entry.querySelector(
+                                                '.timeline-track',
+                                            ),
+                                        start: 'top 65%',
+                                        end: 'bottom 65%',
+                                        scrub: true,
+                                    },
                                 },
-                            },
-                        )
+                            )
                         gsap.fromTo(
                             entry,
                             { '--marker-progress': 0 },
@@ -302,11 +318,49 @@ const assignments = [
                                 '--marker-progress': 1,
                                 ease: 'none',
                                 scrollTrigger: {
-                                    trigger: entry.querySelector('h4'),
+                                    trigger:
+                                        entry.querySelector('.timeline-marker'),
                                     start: 'top 70%',
                                     end: 'top 60%',
                                     scrub: true,
                                 },
+                            },
+                        )
+                    })
+                },
+                root,
+            )
+            media.add(
+                '(min-width: 761px) and (prefers-reduced-motion: no-preference)',
+                () => {
+                    root.querySelectorAll<HTMLElement>(
+                        '[data-diagram]',
+                    ).forEach(diagram => {
+                        const sequence = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: diagram,
+                                start: 'top 85%',
+                                once: true,
+                            },
+                        })
+                        const rows = diagram.querySelectorAll(
+                            '[data-matching-row]',
+                        )
+                        if (rows.length) {
+                            sequence.from(rows, {
+                                y: index => (index === 0 ? -6 : 6),
+                                duration: 0.3,
+                                ease: 'power2.out',
+                                clearProps: 'transform',
+                            })
+                        }
+                        sequence.fromTo(
+                            diagram.querySelectorAll('[data-diagram-trace]'),
+                            { strokeDashoffset: 1 },
+                            {
+                                strokeDashoffset: 0,
+                                duration: 0.4,
+                                ease: 'power2.out',
                             },
                         )
                     })
@@ -648,54 +702,108 @@ const assignments = [
     }
 
     .timeline-entry {
+        --timeline-x: 13rem;
+        --marker-y: 3.65rem;
+        --marker-progress: 1;
+        position: relative;
         display: grid;
         grid-template-columns: 11rem minmax(0, 1fr);
         gap: 2rem;
     }
 
-    .timeline-entry > .period {
+    .assignment-meta {
         padding-top: 3rem;
+    }
+
+    .assignment-meta .mode {
+        max-width: 18ch;
+        margin-top: 0.75rem;
+        color: var(--signal);
+        font-variation-settings:
+            'wdth' 85,
+            'wght' 560;
+    }
+
+    .range-statement {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-variation-settings:
+            'wdth' 88,
+            'wght' 580;
+    }
+
+    .contact-stamp {
+        padding: 1rem 1.25rem;
+        background: var(--heritage-cream);
+        border: 0;
+        box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .contact-stamp:active {
+        color: var(--heritage-amber-ink);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .contact-stamp {
+            transition:
+                color 120ms var(--ease-out),
+                transform 120ms var(--ease-out),
+                box-shadow 120ms var(--ease-out);
+        }
+
+        .contact-stamp:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0 var(--ink);
+        }
     }
 
     .assignment {
         position: relative;
         padding: 3rem 0 3rem 2rem;
-        border-left: 1px solid var(--rule);
+    }
+
+    .timeline-track {
+        position: absolute;
+        top: var(--marker-y);
+        bottom: calc(-1 * var(--marker-y));
+        left: var(--timeline-x);
+        width: 1px;
+        background: var(--rule);
+        pointer-events: none;
+    }
+
+    .timeline-entry:last-child .timeline-track {
+        display: none;
     }
 
     .timeline-trace {
         position: absolute;
         top: 0;
         bottom: 0;
-        left: -1px;
+        left: 0;
         width: 1px;
         background: var(--signal);
-        transform: scaleY(0);
+        transform: scaleY(1);
         transform-origin: top;
         pointer-events: none;
     }
 
-    .assignment::before,
-    .assignment::after {
+    .timeline-marker {
         position: absolute;
-        top: 3.4rem;
-        left: -0.28rem;
+        z-index: 1;
+        top: var(--marker-y);
+        left: calc(var(--timeline-x) + 0.5px);
         width: 0.5rem;
         height: 0.5rem;
-        content: '';
-        background: var(--heritage-amber-ink);
-    }
-
-    .assignment::after {
-        background: var(--signal);
-        transform: scale(var(--marker-progress, 0));
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .timeline-trace,
-        .assignment::after {
-            transform: none;
-        }
+        border-radius: calc(var(--marker-progress) * 50%);
+        background: color-mix(
+            in srgb,
+            var(--signal) calc(var(--marker-progress) * 100%),
+            var(--heritage-amber-ink)
+        );
+        transform: translate(-50%, -50%)
+            scale(calc(1 + var(--marker-progress) * 1.5));
+        pointer-events: none;
     }
 
     .timeline-entry + .timeline-entry .assignment {
@@ -758,30 +866,30 @@ const assignments = [
         }
 
         .timeline-entry {
-            position: relative;
+            --timeline-x: 0rem;
+            --marker-y: 2.65rem;
             grid-template-columns: minmax(0, 1fr);
             gap: 0.75rem;
             padding: 2rem 0 2rem 1.25rem;
-            border-left: 1px solid var(--rule);
         }
 
         .timeline-entry + .timeline-entry {
             border-top: 1px solid var(--rule);
         }
 
-        .timeline-entry > .period {
+        .assignment-meta {
             padding: 0;
+        }
+
+        .assignment-meta .mode {
+            max-width: none;
+            margin-top: 0.25rem;
         }
 
         .assignment {
             position: static;
             padding: 0;
             border: 0;
-        }
-
-        .assignment::before,
-        .assignment::after {
-            top: 2.4rem;
         }
 
         .timeline-entry + .timeline-entry .assignment {

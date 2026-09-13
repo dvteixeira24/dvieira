@@ -96,7 +96,7 @@
         const fragmentSource = `
             precision mediump float;
             varying float depth;
-            void main() { gl_FragColor = vec4(0.141, 0.294, 0.847, depth); }
+            void main() { gl_FragColor = vec4(0.132, 0.284, 0.84, depth); }
         `
         const compileShader = (type: number, source: string): WebGLShader => {
             const shader = gl.createShader(type)

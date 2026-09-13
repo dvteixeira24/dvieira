@@ -309,10 +309,35 @@ experience easy to scan without inheriting oversized homepage display spacing.
 
 An amber underline signs Daniel's name once per client session in 700ms, only
 when the introduction is in view and no anchor is requested. An ultramarine
-hairline traces the assignment timeline with natural scroll, with square markers
-filling as each heading reaches the reading area. All text stays visible.
+hairline connects the assignment markers from the first bullet to the last. Small
+amber squares expand into 20px ultramarine circles as they reach the reading area;
+the line traces between them with natural scroll. All text stays visible.
 Experience and contact arrows move 4px in their destination direction on keyboard
 focus or fine-pointer hover. Reduced motion uses static completed lines and
-markers with color-only link feedback. Without JavaScript the original timeline
+circular markers with color-only link feedback. Without JavaScript the original timeline
 and all content remain readable. The About script uses the same scoped GSAP
 contexts, media queries, font refresh, and ClientRouter cleanup as Home.
+
+
+### About assignment illustrations and contact detail
+
+Assignment specialty captions sit with the date in the desktop margin and above
+assignment titles on mobile. The integration and invoice assignments include
+compact SVG workflow illustrations from `AssignmentDiagram.astro`; their captions
+explicitly identify them as illustrations. A blue connector traces once per page
+initialization on desktop; invoice rows align first. The sequence takes at most
+700ms. Mobile, reduced motion, and no JavaScript retain completed static diagrams.
+Motion uses the existing scoped About GSAP lifecycle and never hides text.
+
+The biography's foundation/range sentence receives static weight emphasis. The
+closing contact action is a cream stamp on the amber footer, with a four-pixel
+hard ink offset that compresses on activation. Reduced motion keeps color and
+keyboard focus feedback without physical displacement.
+
+### Hero role loom motion
+
+The ultramarine WebGL field carries stronger continuous movement: traveling waves
+for Frontend, twisting braids for Backend, stress ripples for QA, and an undulating
+loop for Reliability. Bounded yaw, tilt, and roll reveal depth without moving the
+hero copy. Preserve its transparency and existing mesh density. Reduced motion
+holds a static shape, and offscreen or hidden states pause drawing.
