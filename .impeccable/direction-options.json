@@ -1,0 +1,151 @@
+{
+    "title": "Choose the visual world",
+    "question": "Which world best turns Daniel's problem-solving approach into an experience a prospective client will remember?",
+    "options": [
+        {
+            "id": "assigned",
+            "label": "Signal Path",
+            "kicker": "THE ROLL",
+            "lineage": "metropolitan control maps and live service diagrams",
+            "thesis": "Every engagement becomes a route from ambiguity to a dependable outcome.",
+            "palette": ["#101416", "#F2EFE8", "#65D6CE", "#FF6B4A", "#F3C54A"],
+            "materials": ["enamel wayfinding", "backlit route glass", "service notices"],
+            "viewport": "A full-screen route map crosses Daniel's oversized name, moving through Clarify, Model, Build, Stress, and Ship before terminating at Start a project.",
+            "risk": "The map must remain an explanation of real work, never decorative transit cosplay.",
+            "raised": [
+                {
+                    "from": "Night Shift Network",
+                    "raise": "The route field now owns the full viewport and uses depth to establish a memorable sense of scale."
+                },
+                {
+                    "from": "Proof Counter",
+                    "raise": "Every status, number, and active state must be tied to evidence already present in the portfolio."
+                },
+                {
+                    "from": "Variable Engineer",
+                    "raise": "Type responds to the route's current problem stage so the interaction changes hierarchy, not just decoration."
+                },
+                {
+                    "from": "Emergency Broadcast",
+                    "raise": "One decisive state system distinguishes live focus, completed work, and supporting detail."
+                }
+            ],
+            "comp": ".impeccable/mocks/decision/signal-path.png"
+        },
+        {
+            "id": "model-pick",
+            "label": "Incident Ledger",
+            "kicker": "IMPECCABLE’S PICK",
+            "lineage": "incident command boards, annotated runbooks, and shift logs",
+            "thesis": "The portfolio reads as a calm record of complex situations brought back under control.",
+            "palette": ["#EEE8DA", "#20211F", "#E84C2F", "#8DA29A"],
+            "materials": ["grease-pencil marks", "stamped timecodes", "folded operational paper"],
+            "viewport": "A large active incident sheet pairs Daniel's portrait with a precise problem, intervention, and stabilized-state sequence.",
+            "risk": "This is highly legible but closer to the familiar B2B operations aesthetic many technical portfolios already use.",
+            "comp": ".impeccable/mocks/decision/incident-ledger.png"
+        },
+        {
+            "id": "challenger-variable",
+            "label": "Variable Engineer",
+            "verdict": "competitive",
+            "lineage": "interactive variable-font specimens",
+            "thesis": "Daniel's engineering range is demonstrated by a typographic system that adapts as the problem changes.",
+            "palette": ["#F4F1EA", "#141414", "#315CFF"],
+            "materials": ["type proofs", "axis readouts", "registration marks"],
+            "viewport": "One enormous responsive phrase changes weight and width while the visitor moves between frontend, backend, QA, and reliability work.",
+            "case": "It identifies strongly with frontend craft and creates an excellent interaction, but explains systems problem-solving less directly than Signal Path.",
+            "risk": "The typographic idea could imply a design-specialist portfolio before the engineering breadth becomes clear.",
+            "comp": ".impeccable/mocks/decision/variable-engineer.png",
+            "hero": "https://impeccable.style/worlds/cards/variable-font-specimen-hero.webp",
+            "board": "https://impeccable.style/worlds/cards/variable-font-specimen.webp"
+        },
+        {
+            "id": "challenger-city",
+            "label": "Night Shift Network",
+            "verdict": "declined",
+            "lineage": "a rain-dark city moving from blue hour to dawn",
+            "thesis": "Projects become illuminated systems kept alive through the night.",
+            "palette": ["#10131C", "#285A8F", "#F0A340", "#BFCAD0"],
+            "materials": ["wet reflections", "window grids", "transit light"],
+            "viewport": "A nocturnal systems landscape reveals work as lights and routes across a city.",
+            "case": "The atmosphere is memorable, but the metaphor delays Daniel's offer and makes the work harder to scan.",
+            "kept": "Full-viewport environmental commitment.",
+            "risk": "A beautiful city can become the subject instead of Daniel's work.",
+            "hero": "https://impeccable.style/worlds/cards/light-shadow-caustics-rain-night-cityscape-hero.webp"
+        },
+        {
+            "id": "challenger-nixie",
+            "label": "Proof Counter",
+            "verdict": "declined",
+            "lineage": "nixie-tube laboratory counters",
+            "thesis": "Evidence arrives as physical counts inside a precise instrument panel.",
+            "palette": ["#161719", "#EF7A32", "#B7BCC0"],
+            "materials": ["glass envelopes", "blackened steel", "engraved labels"],
+            "viewport": "Six projects and five-plus years glow as layered numerical evidence beside a concise offer.",
+            "case": "The engineering association is immediate, but the portfolio does not yet contain enough quantified outcomes to sustain the system honestly.",
+            "kept": "Evidence-bound numbers and state changes.",
+            "risk": "Retro instrumentation would overpower the limited set of factual metrics.",
+            "hero": "https://impeccable.style/worlds/cards/signals-instruments-nixie-laboratory-counter-hero.webp"
+        },
+        {
+            "id": "challenger-raku",
+            "label": "Raku Process",
+            "verdict": "declined",
+            "lineage": "smoke-fired raku ceramics",
+            "thesis": "Each system is shaped through heat, uncertainty, and controlled intervention.",
+            "palette": ["#191715", "#D8D3C8", "#EE6A28"],
+            "materials": ["carbonized clay", "crackled glaze", "ember heat"],
+            "viewport": "A vessel-like project object moves through exposed process stages.",
+            "case": "The process metaphor is rich, but prospective software clients would need to decode too much before understanding the offer.",
+            "kept": "Visible transformation between problem states.",
+            "risk": "Material beauty would outrun product clarity.",
+            "hero": "https://impeccable.style/worlds/cards/clay-ceramics-fracture-raku-smoke-flash-hero.webp"
+        },
+        {
+            "id": "challenger-broadcast",
+            "label": "Emergency Broadcast",
+            "verdict": "declined",
+            "lineage": "civil-defense broadcast graphics",
+            "thesis": "Complex delivery becomes a sequence of calm, unmistakable instructions.",
+            "palette": ["#D9D9D5", "#181818", "#C82D25"],
+            "materials": ["newsreel grain", "alert stripes", "map arrows"],
+            "viewport": "A hard-cut briefing names the problem, maps the response, and points directly to the next action.",
+            "case": "The hierarchy is powerful, but emergency language misrepresents collaborative freelance work as perpetual crisis response.",
+            "kept": "Decisive hierarchy across active and supporting states.",
+            "risk": "The alarm grammar could feel aggressive and theatrical.",
+            "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-kaiju-broadcast-alert-hero.webp"
+        },
+        {
+            "id": "challenger-wpa",
+            "label": "Systems Expedition",
+            "verdict": "declined",
+            "lineage": "WPA national-park travel posters",
+            "thesis": "Every project is an expedition through layered technical terrain.",
+            "palette": ["#E7D8B1", "#207F84", "#314B36", "#C36B3B"],
+            "materials": ["flat silkscreen ink", "cream stock", "caption bars"],
+            "viewport": "Layered system planes rise above one direct invitation to explore Daniel's work.",
+            "case": "The composition is memorable, but the travel metaphor adds distance instead of clarifying Daniel's problem-solving process.",
+            "kept": "One dominant focal move with disciplined cropping.",
+            "risk": "The illustration style could read as a campaign poster rather than an engineering portfolio.",
+            "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-wpa-park-poster-hero.webp"
+        }
+    ],
+    "reroll": {
+        "registers": ["safer", "bolder"]
+    },
+    "buildPath": {
+        "value": "comp",
+        "toggle": true
+    },
+    "canon": true,
+    "canonCard": {
+        "label": "The category standard",
+        "thesis": "A polished developer portfolio with a concise hero, selected-work grid, skills, experience, and contact CTA.",
+        "palette": ["#F7F8FA", "#111827", "#2563EB"],
+        "materials": ["clean grid", "project cards", "soft UI chrome"],
+        "viewport": "Daniel's name, role, short introduction, portrait, and a clear View work button in a familiar split hero.",
+        "risk": "Clear and usable, but structurally indistinguishable from thousands of other software portfolios.",
+        "comp": ".impeccable/mocks/decision/category-standard.png"
+    },
+    "steer": true
+}

@@ -3,61 +3,990 @@ import Layout from '../layouts/Layout.astro'
 import profileImage from '../assets/profiled.jpg'
 ---
 
-<Layout title="Daniel Vieira Teixeira">
-    <main class="home-hero">
-        <img
-            class="profile-image"
-            src={profileImage.src}
-            alt="Portrait of Daniel Vieira Teixeira"
-            loading="eager"
-            decoding="async"
-        />
-        <h1>Daniel Vieira Teixeira</h1>
-        <hr class="hero-divider" />
-        <p>
-            Full Stack Software Engineer with strong TypeScript expertise and
-            5+ years of experience across frontend, backend, and QA.
-        </p>
+<Layout>
+    <main class="home" data-mode="qa">
+        <section class="hero" aria-labelledby="hero-title">
+            <div
+                class="mode-sequencer"
+                role="group"
+                aria-label="Engineering modes"
+            >
+                <button type="button" data-mode="frontend" aria-pressed="false"
+                    ><span>01</span> Frontend</button
+                >
+                <button type="button" data-mode="backend" aria-pressed="false"
+                    ><span>02</span> Backend</button
+                >
+                <button type="button" data-mode="qa" aria-pressed="true"
+                    ><span>03</span> QA</button
+                >
+                <button
+                    type="button"
+                    data-mode="reliability"
+                    aria-pressed="false"><span>04</span> Reliability</button
+                >
+            </div>
+
+            <p class="systems-tagline">Systems for<br />a brighter tomorrow</p>
+
+            <h1
+                id="hero-title"
+                class="statement"
+                aria-label="Different systems. Same approach."
+            >
+                <span
+                    class="statement-line statement-different"
+                    aria-hidden="true"
+                >
+                    <span class="statement-word">Different</span>
+                    <span class="width-readout">
+                        <span class="readout-line"></span>
+                        <b
+                            >Wdth <output data-axis-value="different"
+                                >102</output
+                            ></b
+                        >
+                    </span>
+                </span>
+                <span
+                    class="statement-line statement-systems"
+                    aria-hidden="true"
+                >
+                    <span class="statement-word">systems.</span>
+                    <span class="width-readout">
+                        <span class="readout-line"></span>
+                        <b
+                            >Wdth <output data-axis-value="systems">106</output
+                            ></b
+                        >
+                    </span>
+                </span>
+                <span class="statement-line statement-same" aria-hidden="true">
+                    <span class="statement-word">Same</span>
+                    <span class="width-readout">
+                        <span class="readout-line"></span>
+                        <b>Wdth <output data-axis-value="same">104</output></b>
+                    </span>
+                </span>
+                <span
+                    class="statement-line statement-approach"
+                    aria-hidden="true"
+                >
+                    <span class="statement-word">approach.</span>
+                    <span class="width-readout">
+                        <span class="readout-line"></span>
+                        <b
+                            >Wdth <output data-axis-value="approach">102</output
+                            ></b
+                        >
+                    </span>
+                </span>
+            </h1>
+
+            <aside class="reasoning" aria-label="Problem-solving approach">
+                <p class="reasoning-intro">
+                    Variable thinking.<br />Real-world outcomes.
+                </p>
+                <dl>
+                    <div>
+                        <dt>Problem</dt><dd>
+                            Understand what’s actually happening.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Constraint</dt><dd>Work within real limits.</dd>
+                    </div>
+                    <div>
+                        <dt>Intervention</dt><dd>
+                            Design and build the right solution.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Outcome</dt><dd>
+                            A more reliable, scalable system.
+                        </dd>
+                    </div>
+                </dl>
+            </aside>
+
+            <div class="hero-footer">
+                <figure class="portrait-seal">
+                    <img
+                        src={profileImage.src}
+                        alt="Portrait of Daniel Vieira Teixeira"
+                        loading="eager"
+                        decoding="async"
+                    />
+                    <figcaption>
+                        <strong>Daniel Vieira Teixeira</strong><span
+                            >Full Stack Software Engineer</span
+                        >
+                    </figcaption>
+                </figure>
+
+                <p class="coordinates" aria-label="Cape Town coordinates">
+                    33.9249° S<br />18.4241° E
+                </p>
+                <p class="process-mantra">
+                    Engineer<br />Build<br />Improve<br />Repeat
+                </p>
+                <p class="offer-copy">
+                    I solve across the stack<br />to find the right
+                    intervention.
+                </p>
+
+                <a class="start-project" href="/contact">
+                    <span>Start a project</span>
+                    <svg viewBox="0 0 32 16" aria-hidden="true"
+                        ><path d="M0 8h28M21 1l7 7-7 7"></path></svg
+                    >
+                </a>
+            </div>
+        </section>
+
+        <section class="method-preview" aria-labelledby="method-title">
+            <div class="preview-title">
+                <h2 id="method-title">
+                    A more reliable<br />future, in progress.
+                </h2>
+            </div>
+            <ol class="method-track">
+                <li><b>Define</b><span>Clarify the problem.</span></li>
+                <li><b>Explore</b><span>Test approaches.</span></li>
+                <li><b>Build</b><span>Implement and iterate.</span></li>
+                <li><b>Deploy</b><span>Stabilise and scale.</span></li>
+            </ol>
+            <p class="timeline-label">Project timeline ↓</p>
+        </section>
+
+        <section class="thinking" aria-labelledby="thinking-title">
+            <div class="thinking-heading">
+                <h2 id="thinking-title">
+                    One approach.<br /><span>Variable depth.</span>
+                </h2>
+            </div>
+            <ol>
+                <li>
+                    <span>01</span><div>
+                        <h3>Find the real problem</h3>
+                        <p>
+                            <strong
+                                >Investment research / Frontend + realtime</strong
+                            >
+                            Unified scattered financial data into one legible decision
+                            surface.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <span>02</span><div>
+                        <h3>Map the constraint</h3>
+                        <p>
+                            <strong
+                                >Release reliability / QA + observability</strong
+                            >
+                            Connected tests, CI, monitoring, and Sentry into one release
+                            loop.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <span>03</span><div>
+                        <h3>Choose the intervention</h3>
+                        <p>
+                            <strong>Invoice matching / Full stack</strong>
+                            Simplified a dense workflow across interface, data, and
+                            backend.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <span>04</span><div>
+                        <h3>Leave a stronger system</h3>
+                        <p>
+                            <strong>Property appraisal / Integration</strong>
+                            Stabilised the hand-offs behind a long-running client
+                            workflow.
+                        </p>
+                    </div>
+                </li>
+            </ol>
+            <div class="thinking-actions">
+                <a class="thinking-link" href="/experience">
+                    <span>View selected experience</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <a class="thinking-cta" href="/contact">
+                    <span>Start a conversation</span>
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </section>
     </main>
 </Layout>
 
+<script is:inline data-astro-rerun>
+    ;(() => {
+        const root = document.querySelector('[data-mode]')
+        if (!root || root.dataset.modeReady === 'true') return
+
+        root.dataset.modeReady = 'true'
+        const controls = root.querySelectorAll('.mode-sequencer button')
+        const axisValues = {
+            frontend: { different: 58, systems: 88, same: 112, approach: 132 },
+            backend: { different: 92, systems: 136, same: 72, approach: 102 },
+            qa: { different: 102, systems: 106, same: 104, approach: 102 },
+            reliability: {
+                different: 118,
+                systems: 105,
+                same: 62,
+                approach: 140,
+            },
+        }
+        const showAxisValues = mode => {
+            const values = axisValues[mode]
+            if (!values) return
+            root.querySelectorAll('[data-axis-value]').forEach(output => {
+                const axis = output.dataset.axisValue
+                if (axis && values[axis] !== undefined)
+                    output.value = values[axis]
+            })
+        }
+        controls.forEach(control => {
+            control.addEventListener('click', () => {
+                const mode = control.dataset.mode
+                if (!mode) return
+                root.dataset.mode = mode
+                showAxisValues(mode)
+                controls.forEach(button => {
+                    button.setAttribute(
+                        'aria-pressed',
+                        String(button === control),
+                    )
+                })
+            })
+        })
+        showAxisValues(root.dataset.mode)
+    })()
+</script>
+
 <style lang="scss">
-    .home-hero {
-        min-height: calc(100dvh - 8rem);
-        align-content: center;
-        justify-items: center;
-        text-align: center;
-        gap: 1rem;
-        padding-block: 4rem;
+    .home {
+        --different-wdth: 102;
+        --different-weight: 250;
+        --systems-wdth: 106;
+        --systems-weight: 850;
+        --same-wdth: 104;
+        --same-weight: 320;
+        --approach-wdth: 102;
+        --approach-weight: 820;
+        background: var(--paper);
     }
 
-    .home-hero h1 {
-        font-size: clamp(2rem, 2vw + 1.2rem, 3.2rem);
-        line-height: 1.2;
+    .home[data-mode='frontend'] {
+        --different-wdth: 58;
+        --different-weight: 220;
+        --systems-wdth: 88;
+        --systems-weight: 760;
+        --same-wdth: 112;
+        --same-weight: 360;
+        --approach-wdth: 132;
+        --approach-weight: 700;
     }
 
-    .profile-image {
-        width: clamp(160px, 22vw, 280px);
-        aspect-ratio: 1;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 3px solid rgb(255 255 255 / 75%);
-        box-shadow: 0 12px 30px rgb(0 0 0 / 35%);
+    .home[data-mode='backend'] {
+        --different-wdth: 92;
+        --different-weight: 360;
+        --systems-wdth: 136;
+        --systems-weight: 900;
+        --same-wdth: 72;
+        --same-weight: 260;
+        --approach-wdth: 102;
+        --approach-weight: 790;
     }
 
-    .hero-divider {
-        width: min(100%, 24rem);
+    .home[data-mode='reliability'] {
+        --different-wdth: 118;
+        --different-weight: 320;
+        --systems-wdth: 105;
+        --systems-weight: 730;
+        --same-wdth: 62;
+        --same-weight: 240;
+        --approach-wdth: 140;
+        --approach-weight: 900;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        padding: 1rem var(--page-gutter) 2rem;
+    }
+
+    .hero > * {
+        min-width: 0;
+    }
+
+    .mode-sequencer {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem 1rem;
+    }
+
+    .mode-sequencer button {
+        min-width: 0;
+        min-height: var(--touch-target);
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.5rem 0;
+        color: var(--ink);
+        background: transparent;
         border: 0;
-        border-top: 4px solid var(--color-gray-0);
-        opacity: 0.95;
-        margin-block: 0.25rem;
+        border-bottom: 1px solid var(--rule);
+        cursor: pointer;
+        font-size: 0.7rem;
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 520;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transition: color 240ms var(--ease-out);
+
+        &[aria-pressed='true'] {
+            color: var(--signal);
+            border-bottom-color: currentcolor;
+            font-variation-settings:
+                'wdth' 82,
+                'wght' 760;
+        }
     }
 
-    .home-hero p {
-        max-width: 46ch;
-        color: var(--color-gray-0);
-        font-size: clamp(1.05rem, 0.4vw + 1rem, 1.4rem);
+    .systems-tagline {
+        display: none;
+        font-size: 0.7rem;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 580;
+        letter-spacing: 0.16em;
+        line-height: 1.4;
+        text-transform: uppercase;
+    }
+
+    #hero-title {
+        margin-top: 36px;
+    }
+
+    .statement {
+        container-type: inline-size;
+        display: grid;
+        justify-items: start;
+        align-content: start;
+        gap: 0.5rem;
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: -0.035em;
+    }
+
+    .statement-line {
+        position: relative;
+        width: max-content;
+        padding-bottom: 1.25rem;
+        white-space: nowrap;
+        font-size: min(12cqw, 10rem);
+        line-height: 0.68;
+        transition: font-variation-settings 850ms var(--ease-out);
+    }
+
+    .statement-different {
+        line-height: 0.5;
+        font-variation-settings:
+            'wdth' var(--different-wdth),
+            'wght' var(--different-weight);
+    }
+    .statement-systems {
+        font-variation-settings:
+            'wdth' var(--systems-wdth),
+            'wght' var(--systems-weight);
+    }
+    .statement-same {
+        font-size: min(16cqw, 10rem);
+        font-style: italic;
+        font-variation-settings:
+            'wdth' var(--same-wdth),
+            'wght' var(--same-weight);
+    }
+    .statement-approach {
+        font-variation-settings:
+            'wdth' var(--approach-wdth),
+            'wght' var(--approach-weight);
+    }
+
+    .width-readout {
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--muted);
+        font-size: 0.625rem;
+        font-style: normal;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 550;
+        letter-spacing: 0.1em;
+        line-height: 1.3;
+        text-transform: uppercase;
+        pointer-events: none;
+        transform: translateX(50px) translateY(-13px);
+    }
+
+    .readout-line {
+        flex-shrink: 1;
+        min-width: 0;
+        width: 1.5rem;
+        border-top: 1px dashed var(--rule);
+    }
+
+    .width-readout output {
+        font: inherit;
+        font-variant-numeric: tabular-nums;
+    }
+    .width-readout b {
+        font-weight: inherit;
+    }
+
+    .reasoning {
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+    }
+    .reasoning-intro {
+        font-size: 0.75rem;
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 540;
+        letter-spacing: 0.16em;
+        line-height: 1.35;
+        text-transform: uppercase;
+    }
+    .reasoning dl {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    .reasoning dt {
+        margin-bottom: 0.6rem;
+        font-size: 0.7rem;
+        font-variation-settings:
+            'wdth' 72,
+            'wght' 690;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+    .reasoning dd {
+        color: var(--muted);
+        font-size: 1rem;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 350;
+        line-height: 1.4;
+    }
+
+    .hero-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem 2rem;
+    }
+    .coordinates,
+    .process-mantra {
+        display: none;
+        font-size: 0.65rem;
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 490;
+        letter-spacing: 0.14em;
         line-height: 1.45;
-        text-wrap: balance;
+        text-transform: uppercase;
+    }
+    .coordinates {
+        color: var(--muted);
+    }
+    .offer-copy {
+        font-size: 1.1rem;
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 390;
+        line-height: 1.35;
+    }
+    .start-project {
+        display: flex;
+        flex: 1 0 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: var(--touch-target);
+        padding-bottom: 0.55rem;
+        color: var(--signal);
+        border-bottom: 2px solid currentcolor;
+        font-size: 0.85rem;
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 650;
+        letter-spacing: 0.13em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 220ms var(--ease-out);
+
+        svg {
+            flex: 0 0 1.7rem;
+            width: 1.7rem;
+            fill: none;
+            stroke: currentcolor;
+            stroke-linecap: square;
+            stroke-width: 1.5;
+        }
+        &:hover {
+            color: var(--ink);
+        }
+    }
+
+    /* Tablet: give the specimen the full width, with four reasoning columns below. */
+    @media (min-width: 761px) {
+        .hero {
+            gap: 2.5rem;
+            padding-block: 1.5rem 2.5rem;
+        }
+        .mode-sequencer {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+        .statement {
+            gap: 0.75rem;
+        }
+        .statement-line {
+            padding-bottom: 1.5rem;
+        }
+        .width-readout {
+            max-width: 100%;
+            font-size: 0.7rem;
+        }
+        .readout-line {
+            flex-shrink: 1;
+            min-width: 0;
+            width: 3rem;
+        }
+        .reasoning dl {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        .start-project {
+            flex: 0 0 12rem;
+            margin-left: auto;
+        }
+    }
+
+    /* Desktop: independent tracks protect the specimen and the reasoning column. */
+    @media (min-width: 1201px) {
+        .hero {
+            grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.34fr);
+            column-gap: 3rem;
+        }
+        .systems-tagline {
+            display: block;
+            align-self: center;
+        }
+        .statement {
+            grid-column: 1;
+        }
+        .reasoning {
+            grid-column: 2;
+            padding: 1rem 0 0 1.5rem;
+            border-top: 0;
+            border-left: 1px solid var(--rule);
+        }
+        .reasoning dl {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .hero-footer {
+            grid-column: 1 / -1;
+        }
+        .coordinates,
+        .process-mantra {
+            display: block;
+        }
+        .offer-copy {
+            margin-left: auto;
+        }
+        .start-project {
+            margin-left: 0;
+        }
+    }
+
+    .method-preview {
+        position: relative;
+        min-height: max(20svh, 12.4rem);
+        display: grid;
+        grid-template-columns: 38% 1fr auto;
+        gap: 2rem;
+        padding: 1.55rem 2.8% 1.25rem;
+        border-top: 1px solid var(--ink);
+        overflow: visible;
+    }
+
+    .preview-title {
+        position: relative;
+        z-index: 21;
+        margin-left: 2.5vw;
+    }
+
+    .preview-title > p {
+        margin-bottom: 0.7rem;
+        font-size: 0.75rem;
+        font-variation-settings:
+            'wdth' 76,
+            'wght' 620;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    .preview-title h2 {
+        font-size: clamp(2rem, 3.8vw, 3.9rem);
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 280;
+        letter-spacing: 0.02em;
+        line-height: 0.9;
+    }
+
+    .method-track {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(7.5rem, 1fr));
+        gap: 1rem;
+        padding: 2.9rem 0 0;
+        list-style: none;
+
+        &::before {
+            position: absolute;
+            top: 2.25rem;
+            right: 0;
+            left: 0;
+            height: 1px;
+            content: '';
+            background: var(--rule);
+        }
+    }
+
+    .method-track li {
+        position: relative;
+        display: grid;
+        gap: 0.2rem;
+        padding-top: 0.6rem;
+
+        &::before {
+            position: absolute;
+            top: -1rem;
+            left: 0;
+            width: 0.85rem;
+            aspect-ratio: 1;
+            content: '';
+            border: 1px solid var(--ink);
+            border-radius: 50%;
+            background: var(--paper);
+        }
+
+        &:first-child::before {
+            border-color: var(--signal);
+            background: var(--signal);
+        }
+    }
+
+    .method-track b {
+        font-size: 0.97rem;
+        font-variation-settings:
+            'wdth' 72,
+            'wght' 680;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .method-track span {
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 390;
+    }
+
+    .timeline-label {
+        align-self: center;
+        font-size: 0.6rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+    }
+
+    .thinking {
+        display: grid;
+        grid-template-columns: minmax(24rem, 0.88fr) 1fr;
+        gap: clamp(4rem, 9vw, 10rem);
+        padding: clamp(5rem, 10vw, 10rem) var(--page-gutter);
+        color: var(--paper);
+        border-top: 1px solid var(--ink);
+        background: var(--ink);
+    }
+
+    .thinking-heading {
+        position: sticky;
+        top: 2rem;
+        align-self: start;
+    }
+
+    .thinking h2 {
+        font-size: clamp(3.8rem, 7.2vw, 8.4rem);
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 320;
+        letter-spacing: -0.04em;
+        line-height: 0.82;
+    }
+
+    .thinking h2 span {
+        color: var(--signal);
+        font-style: italic;
+        font-weight: 760;
+    }
+
+    .thinking ol {
+        list-style: none;
+    }
+
+    .thinking li {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: clamp(1.25rem, 3vw, 3rem);
+        padding: 2rem 0 4rem;
+        border-top: 1px solid #565655;
+    }
+
+    .thinking li > span {
+        color: var(--signal);
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+    }
+
+    .thinking li h3 {
+        margin-bottom: 1rem;
+        font-size: clamp(1.7rem, 2.7vw, 3rem);
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 560;
+        line-height: 1;
+    }
+
+    .thinking li p {
+        max-width: 42ch;
+        color: #d0cbc3;
+        font-size: clamp(1rem, 1.25vw, 1.25rem);
+        font-variation-settings:
+            'wdth' 84,
+            'wght' 350;
+        line-height: 1.5;
+    }
+
+    .thinking li strong {
+        display: block;
+        margin-bottom: 0.65rem;
+        color: var(--heritage-amber);
+        font-family: var(--font-body);
+        font-size: 0.68rem;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 650;
+        letter-spacing: 0.13em;
+        line-height: 1.35;
+        text-transform: uppercase;
+    }
+
+    .thinking-actions {
+        grid-column: 2;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .thinking-link,
+    .thinking-cta {
+        min-height: var(--touch-target);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(38rem, 100%);
+        margin-left: auto;
+        font-variation-settings:
+            'wdth' 80,
+            'wght' 680;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .thinking-link {
+        padding-bottom: 0.75rem;
+        color: var(--heritage-cream);
+        border-bottom: 1px solid currentcolor;
+        font-size: 0.76rem;
+        transition: color 220ms var(--ease-out);
+    }
+
+    .thinking-link:hover {
+        color: var(--heritage-amber);
+    }
+
+    .thinking-cta {
+        padding: 1rem 1.1rem 0.85rem;
+        color: var(--ink);
+        border: 0;
+        background: var(--heritage-amber);
+        box-shadow: 4px 4px 0 var(--heritage-cream);
+        font-size: clamp(0.85rem, 1.15vw, 1.15rem);
+        transition:
+            transform 220ms var(--ease-out),
+            box-shadow 220ms var(--ease-out);
+    }
+
+    .thinking-cta:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--heritage-cream);
+    }
+
+    .thinking-link:focus-visible,
+    .thinking-cta:focus-visible {
+        outline: 2px solid var(--heritage-amber);
+        outline-offset: 5px;
+    }
+
+    @media (max-width: 1100px) {
+        .thinking {
+            grid-template-columns: 1fr;
+        }
+
+        .thinking-heading {
+            position: static;
+        }
+
+        .thinking-actions {
+            grid-column: 1;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .thinking {
+            gap: 4rem;
+            padding-block: 4.5rem;
+        }
+
+        .thinking h2 {
+            font-size: clamp(3.35rem, 16vw, 5.25rem);
+        }
+
+        .thinking li {
+            grid-template-columns: 2rem 1fr;
+            padding-bottom: 3rem;
+        }
+
+        .thinking-actions {
+            gap: 1.25rem;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .method-preview {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .preview-title {
+            margin-left: 0;
+        }
+        .method-track {
+            min-width: 0;
+            overflow-x: auto;
+        }
+        .timeline-label {
+            display: none;
+        }
+    }
+
+    /* Heritage layer: personal warmth inside the technical proof sheet. */
+    .portrait-seal {
+        display: grid;
+        grid-template-columns: 4.75rem minmax(0, 1fr);
+        gap: 1.25rem;
+        align-items: center;
+        width: 100%;
+        padding: 0.85rem;
+        background: var(--heritage-cream);
+        box-shadow: 3px 3px 0 var(--heritage-amber);
+    }
+    .portrait-seal img {
+        width: 4.75rem;
+        aspect-ratio: 1;
+        border: 3px solid var(--heritage-cream);
+        border-radius: 50%;
+        outline: 1px solid var(--ink);
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.06);
+    }
+    .portrait-seal figcaption {
+        display: grid;
+        gap: 0.25rem;
+        font-family: var(--font-human);
+    }
+    .portrait-seal figcaption strong {
+        font-size: 1.15rem;
+        line-height: 1.1;
+    }
+    .portrait-seal figcaption span {
+        color: var(--muted);
+        font-family: var(--font-body);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    @media (min-width: 761px) {
+        .portrait-seal {
+            width: auto;
+            max-width: 22rem;
+        }
+    }
+    @media (min-width: 1201px) {
+        .portrait-seal {
+            display: block;
+            padding: 0;
+        }
+        .portrait-seal figcaption {
+            display: none;
+        }
+    }
+
+    .method-preview {
+        background: var(--heritage-cream);
+    }
+
+    .thinking {
+        background-color: var(--heritage-charcoal);
+        background-image: var(--heritage-texture);
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: soft-light;
+    }
+
+    .thinking li h3 {
+        font-family: var(--font-human);
+        font-weight: 650;
     }
 </style>

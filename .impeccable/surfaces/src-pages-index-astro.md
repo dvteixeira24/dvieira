@@ -1,0 +1,42 @@
+---
+version: 1
+slug: "src-pages-index-astro"
+primary_target: "src/pages/index.astro"
+related_targets: ["src/pages/biography/index.astro","src/pages/experience/index.astro","src/pages/contact/index.astro","src/layouts/Layout.astro","src/components/Navigation.astro"]
+---
+
+# Homepage redesign
+
+## Scope and mode
+
+Experience mode. Primary target is the homepage; biography, experience, contact, shared layout, and navigation inherit the same world.
+
+## Audience, job, and action
+
+Prospective freelance clients should understand Daniel’s problem-solving approach, see credible evidence across frontend, backend, QA, and reliability, then start a project conversation. Preserve all factual experience and the working contact pipeline.
+
+## Chosen concept
+
+Variable Engineer / Systems Sequence. Approved comp: `.impeccable/mocks/variable-engineer-03.png`. The memorable moment is a four-line statement that changes width, weight, and emphasis as the active engineering mode changes, while the reasoning coordinates remain fixed.
+
+## Direction contract
+
+THESIS: Different systems require different interventions, but Daniel’s reasoning remains consistent. Refuse the standard portrait hero followed by skill cards.
+
+OWN-WORLD: Near-white stock, dense black type, one electric ultramarine signal, registration marks, hairline rules, axis labels, and squared typographic controls.
+
+STORY: Meet Daniel, understand the four-mode approach, inspect selected interventions as problem-to-outcome narratives, then make contact.
+
+FIRST VIEWPORT: A slim identity rail frames “Different systems. Same approach.” across four variable-width lines. The mode sequencer runs above; problem, constraint, intervention, and outcome sit at right; Start a project anchors the lower-right.
+
+FORM: Interactive variable-font specimen, chosen challenger from position four of the grounded/candidate field; seed `a5bc24f5`.
+
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+## Approved heritage bridge
+
+The 2026 proof-sheet structure remains primary. Restore the old site's personal material layer through Newsreader as the human voice, warm amber and cream for identity and contact, the original grayscale portrait, selective use of the charcoal photographic texture, tactile navigation, and warm paper inserts. Blue remains the system/state signal; amber means person, invitation, and connection. Do not restore the old card-everything layout, global texture, or glass container. Desktop keeps the identity rail; mobile may reinterpret the original amber dock.
+
+## Responsive hero refinement
+
+The hero uses flow layout in three states: mobile through 760px with a two-by-two mode selector, tablet from 761–1200px with a full-width specimen and four reasoning columns below, and desktop from 1201px with a separate reasoning track. Each width readout is nested in its word's line and anchored at the bottom right, with reserved vertical space. Headline size follows its container, with room for the widest engineering mode. All four modes and their transitions must fit without clipping.

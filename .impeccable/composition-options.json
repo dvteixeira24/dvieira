@@ -1,0 +1,46 @@
+{
+    "title": "Choose the homepage composition",
+    "question": "The visual world is fixed. Which composition makes Daniel's problem-solving approach clearest and most memorable?",
+    "options": [
+        {
+            "id": "comp-01",
+            "label": "Mode Statement",
+            "kicker": "ORIGINAL",
+            "lineage": "variable-font specimen with a vertical engineering axis",
+            "thesis": "A single declarative phrase makes Daniel's range the first and largest idea.",
+            "palette": ["#F4F1EA", "#141414", "#315CFF"],
+            "materials": ["type proofs", "axis readouts", "registration marks"],
+            "viewport": "One problem. Many modes. dominates the frame while a vertical discipline selector makes the range interactive.",
+            "risk": "The offer depends on the supporting sentence being immediately visible and concise.",
+            "comp": ".impeccable/mocks/variable-engineer-01.png"
+        },
+        {
+            "id": "comp-02",
+            "label": "Problem Lens",
+            "kicker": "STRUCTURAL",
+            "lineage": "variable type test bench with aligned discipline tracks",
+            "thesis": "The visitor sees Daniel finding the right intervention across four technical modes.",
+            "palette": ["#F4F1EA", "#141414", "#315CFF"],
+            "materials": ["axis tracks", "type proofs", "coordinate labels"],
+            "viewport": "Find the right intervention fills the left half; four live discipline tracks explain the breadth on the right.",
+            "risk": "The denser right side needs disciplined responsive reduction on small screens.",
+            "comp": ".impeccable/mocks/variable-engineer-02.png"
+        },
+        {
+            "id": "comp-03",
+            "label": "Systems Sequence",
+            "kicker": "EDITORIAL",
+            "lineage": "typographic specimen wall with persistent reasoning coordinates",
+            "thesis": "Different systems share one problem-solving method, expressed as a changing typographic sequence.",
+            "palette": ["#F4F1EA", "#141414", "#315CFF"],
+            "materials": ["identity rail", "width readouts", "project timeline"],
+            "viewport": "Different systems. Same approach. fills the canvas while problem, constraint, intervention, and outcome remain fixed at right.",
+            "risk": "The vertical rail is distinctive but must collapse cleanly without stealing mobile width.",
+            "comp": ".impeccable/mocks/variable-engineer-03.png"
+        }
+    ],
+    "buildPath": {
+        "value": "comp",
+        "toggle": false
+    }
+}

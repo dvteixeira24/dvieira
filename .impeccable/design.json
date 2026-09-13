@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T12:32:03.854441+00:00",
+  "title": "Design System: Daniel Vieira Teixeira Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal-ultramarine": {
+        "role": "primary",
+        "displayName": "Signal Ultramarine",
+        "canonical": "#244bd8",
+        "tonalRamp": [
+          "oklch(15% 0.076 265)",
+          "oklch(27% 0.116 265)",
+          "oklch(39% 0.156 265)",
+          "oklch(51% 0.2 265)",
+          "oklch(63% 0.168 265)",
+          "oklch(75% 0.12 265)",
+          "oklch(87% 0.068 265)",
+          "oklch(95% 0.032 265)"
+        ]
+      },
+      "heritage-amber": {
+        "role": "secondary",
+        "displayName": "Heritage Amber",
+        "canonical": "#ffc078",
+        "tonalRamp": [
+          "oklch(15% 0.045 70)",
+          "oklch(27% 0.070 70)",
+          "oklch(39% 0.095 70)",
+          "oklch(51% 0.120 70)",
+          "oklch(63% 0.130 70)",
+          "oklch(75% 0.115 70)",
+          "oklch(87% 0.075 70)",
+          "oklch(95% 0.030 70)"
+        ]
+      },
+      "heritage-amber-ink": {
+        "role": "secondary",
+        "displayName": "Heritage Amber Ink",
+        "canonical": "#884000",
+        "tonalRamp": [
+          "oklch(15% 0.050 55)",
+          "oklch(27% 0.080 55)",
+          "oklch(39% 0.105 55)",
+          "oklch(51% 0.120 55)",
+          "oklch(63% 0.105 55)",
+          "oklch(75% 0.080 55)",
+          "oklch(87% 0.050 55)",
+          "oklch(95% 0.020 55)"
+        ]
+      },
+      "paper-blush": {
+        "role": "neutral",
+        "displayName": "Paper Blush",
+        "canonical": "#f7eae8",
+        "tonalRamp": [
+          "oklch(15% 0.01 25)",
+          "oklch(27% 0.015 25)",
+          "oklch(39% 0.02 25)",
+          "oklch(51% 0.026 25)",
+          "oklch(63% 0.022 25)",
+          "oklch(75% 0.016 25)",
+          "oklch(87% 0.009 25)",
+          "oklch(95% 0.004 25)"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Paper Deep",
+        "canonical": "#e8e5de",
+        "tonalRamp": [
+          "oklch(15% 0.006 85)",
+          "oklch(27% 0.009 85)",
+          "oklch(39% 0.012 85)",
+          "oklch(51% 0.015 85)",
+          "oklch(63% 0.013 85)",
+          "oklch(75% 0.009 85)",
+          "oklch(87% 0.005 85)",
+          "oklch(95% 0.002 85)"
+        ]
+      },
+      "heritage-cream": {
+        "role": "tertiary",
+        "displayName": "Heritage Cream",
+        "canonical": "#fff4e6",
+        "tonalRamp": [
+          "oklch(15% 0.012 75)",
+          "oklch(27% 0.016 75)",
+          "oklch(39% 0.020 75)",
+          "oklch(51% 0.024 75)",
+          "oklch(63% 0.028 75)",
+          "oklch(75% 0.032 75)",
+          "oklch(87% 0.034 75)",
+          "oklch(95% 0.030 75)"
+        ]
+      },
+      "registration-ink": {
+        "role": "neutral",
+        "displayName": "Registration Ink",
+        "canonical": "#0c0d0d",
+        "tonalRamp": [
+          "oklch(15% 0.001 200)",
+          "oklch(27% 0.001 200)",
+          "oklch(39% 0.002 200)",
+          "oklch(51% 0.002 200)",
+          "oklch(63% 0.002 200)",
+          "oklch(75% 0.001 200)",
+          "oklch(87% 0.001 200)",
+          "oklch(95% 0 200)"
+        ]
+      },
+      "heritage-charcoal": {
+        "role": "tertiary",
+        "displayName": "Heritage Charcoal",
+        "canonical": "#141414",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "working-gray": {
+        "role": "neutral",
+        "displayName": "Working Gray",
+        "canonical": "#5f5f5f",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "rule-gray": {
+        "role": "neutral",
+        "displayName": "Rule Gray",
+        "canonical": "#b0b0ad",
+        "tonalRamp": [
+          "oklch(15% 0.004 105)",
+          "oklch(27% 0.006 105)",
+          "oklch(39% 0.008 105)",
+          "oklch(51% 0.01 105)",
+          "oklch(63% 0.008 105)",
+          "oklch(75% 0.006 105)",
+          "oklch(87% 0.003 105)",
+          "oklch(95% 0.002 105)"
+        ]
+      },
+      "heritage-rule": {
+        "role": "tertiary",
+        "displayName": "Heritage Rule",
+        "canonical": "#5d554c",
+        "tonalRamp": [
+          "oklch(15% 0.012 70)",
+          "oklch(27% 0.014 70)",
+          "oklch(39% 0.016 70)",
+          "oklch(51% 0.018 70)",
+          "oklch(63% 0.020 70)",
+          "oklch(75% 0.018 70)",
+          "oklch(87% 0.012 70)",
+          "oklch(95% 0.006 70)"
+        ]
+      },
+      "signal-soft": {
+        "role": "primary",
+        "displayName": "Signal Soft",
+        "canonical": "#dce3ff",
+        "tonalRamp": [
+          "oklch(15% 0.028 265)",
+          "oklch(27% 0.043 265)",
+          "oklch(39% 0.058 265)",
+          "oklch(51% 0.075 265)",
+          "oklch(63% 0.063 265)",
+          "oklch(75% 0.045 265)",
+          "oklch(87% 0.026 265)",
+          "oklch(95% 0.012 265)"
+        ]
+      },
+      "error-red": {
+        "role": "semantic",
+        "displayName": "Error Red",
+        "canonical": "#bb271a",
+        "tonalRamp": [
+          "oklch(15% 0.072 30)",
+          "oklch(27% 0.11 30)",
+          "oklch(39% 0.148 30)",
+          "oklch(51% 0.19 30)",
+          "oklch(63% 0.16 30)",
+          "oklch(75% 0.114 30)",
+          "oklch(87% 0.065 30)",
+          "oklch(95% 0.03 30)"
+        ]
+      },
+      "success-green": {
+        "role": "semantic",
+        "displayName": "Success Green",
+        "canonical": "#175b3b",
+        "tonalRamp": [
+          "oklch(15% 0.042 155)",
+          "oklch(27% 0.064 155)",
+          "oklch(39% 0.086 155)",
+          "oklch(51% 0.11 155)",
+          "oklch(63% 0.092 155)",
+          "oklch(75% 0.066 155)",
+          "oklch(87% 0.037 155)",
+          "oklch(95% 0.018 155)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Route heroes and singular first-view systems statements in Anybody."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major system transitions and closing statements in Anybody."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Technical titles, modes, and structured evidence in Anybody."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Explanatory copy and narrative evidence in Anybody."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase metadata, indices, coordinates, and controls in Anybody."
+      },
+      "human-editorial": {
+        "displayName": "Human / Editorial",
+        "purpose": "Names, portraits, personal headings, selected project titles, and emphasized phrases in Newsreader."
+      },
+      "editorial-title": {
+        "displayName": "Human / Editorial",
+        "purpose": "Names, project titles, and brief personal emphasis only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "tactile-small",
+        "value": "3px 3px 0 var(--heritage-amber)",
+        "purpose": "Compact navigation and social stamps."
+      },
+      {
+        "name": "tactile-medium",
+        "value": "5px 5px 0 var(--heritage-amber)",
+        "purpose": "Portrait medallions and smaller tactile controls."
+      },
+      {
+        "name": "tactile-card",
+        "value": "8px 8px 0 var(--heritage-amber)",
+        "purpose": "The warm contact paper insert only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Standard easing for reveals, typography changes, and tactile states."
+      },
+      {
+        "name": "state-fast",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Color, transform, shadow, underline, and focus-adjacent state transitions."
+      },
+      {
+        "name": "reveal-opacity",
+        "value": "700ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Opacity phase for restrained in-view reveals."
+      },
+      {
+        "name": "reveal-transform",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Vertical translation phase for restrained in-view reveals."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-field",
+        "value": "480px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "520px"
+      },
+      {
+        "name": "mobile-content",
+        "value": "640px"
+      },
+      {
+        "name": "rail-to-dock",
+        "value": "760px"
+      },
+      {
+        "name": "contact-stack",
+        "value": "800px"
+      },
+      {
+        "name": "home-stack",
+        "value": "860px"
+      },
+      {
+        "name": "experience-stack",
+        "value": "1100px"
+      },
+      {
+        "name": "editorial-stack",
+        "value": "1100px"
+      }
+    ],
+    "accessibility": {
+      "minimumTouchTarget": "2.75rem",
+      "minimumTouchTargetPx": 44
+    }
+  },
+  "components": [
+    {
+      "name": "Tactile Invitation",
+      "kind": "button",
+      "refersTo": "button-invitation",
+      "description": "The warm personal call to action used for conversation and contact submission.",
+      "html": "<button class=\"ds-invitation\" type=\"button\"><span>Start a conversation</span><span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-invitation { display: flex; min-height: 2.75rem; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 1.1rem 0.85rem; color: var(--ink, #0c0d0d); border: 0; border-radius: 0; background: var(--heritage-amber, #ffc078); box-shadow: 4px 4px 0 var(--ink, #0c0d0d); cursor: pointer; font-family: var(--font-body, 'Anybody', system-ui, sans-serif); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; transition: transform 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-invitation:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink, #0c0d0d); } .ds-invitation:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 5px; } .ds-invitation:active { transform: translate(0); box-shadow: 2px 2px 0 var(--ink, #0c0d0d); }"
+    },
+    {
+      "name": "Editorial Text Field",
+      "kind": "input",
+      "refersTo": "field-editorial",
+      "description": "An oversized transparent contact field defined by one structural underline.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\"><b>01</b> Your email</span><input type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field { display: grid; gap: 1rem; color: var(--muted, #5f5f5f); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); } .ds-field-label { display: flex; gap: 2rem; font-size: 0.7rem; font-weight: 650; letter-spacing: 0.15em; text-transform: uppercase; } .ds-field-label b { color: var(--signal, #244bd8); font-weight: inherit; } .ds-field input { width: 100%; padding: 0.6rem 0 1.2rem; color: var(--ink, #0c0d0d); border: 0; border-bottom: 1px solid var(--ink, #0c0d0d); border-radius: 0; outline: 0; background: transparent; font: inherit; font-size: clamp(1.6rem, 3vw, 3.5rem); letter-spacing: -0.025em; line-height: 1.1; transition: border-color 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-field input::placeholder { color: #686260; opacity: 1; } .ds-field input:hover, .ds-field input:focus { border-color: var(--signal, #244bd8); } .ds-field input:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 4px; } .ds-field input[aria-invalid='true'] { border-color: var(--error, #bb271a); }"
+    },
+    {
+      "name": "Warm Metadata Tag",
+      "kind": "chip",
+      "refersTo": "tag-warm",
+      "description": "A square cream label for technologies and operating modes.",
+      "html": "<span class=\"ds-tag\">TypeScript</span>",
+      "css": ".ds-tag { display: inline-block; padding: 0.45rem 0.65rem 0.35rem; color: var(--ink, #0c0d0d); border: 1px solid var(--rule, #b0b0ad); border-radius: 0; background: var(--heritage-cream, #fff4e6); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; transition: color 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), border-color 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-tag:hover { color: var(--signal, #244bd8); border-color: var(--signal, #244bd8); } .ds-tag:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 4px; }"
+    },
+    {
+      "name": "Identity Rail and Mobile Dock",
+      "kind": "nav",
+      "refersTo": "identity-rail",
+      "description": "The cream desktop identity rail whose routes become a fixed amber bottom dock on mobile.",
+      "html": "<header class=\"ds-rail\"><a class=\"ds-monogram\" href=\"#\">DVT</a><p class=\"ds-name\">Daniel<br>Vieira<br>Teixeira</p><nav><a href=\"#\">Home</a><a class=\"ds-current\" href=\"#\">Biography</a><a href=\"#\">Experience</a><a href=\"#\">Contact</a></nav></header>",
+      "css": ".ds-rail { position: relative; width: 6.5rem; min-height: 32rem; padding: 1.25rem 1.1rem; color: var(--ink, #0c0d0d); border-right: 1px solid var(--ink, #0c0d0d); background: var(--heritage-cream, #fff4e6); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); } .ds-monogram { min-width: 2.75rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; color: inherit; font-size: 1.75rem; font-weight: 850; line-height: 0.9; letter-spacing: -0.04em; text-decoration: none; } .ds-name { margin-top: 1.5rem; font-family: var(--font-human, 'Newsreader', Georgia, serif); font-size: 0.8rem; font-weight: 590; line-height: 1.04; } .ds-rail nav { margin-top: 4rem; display: flex; flex-direction: column; gap: 1rem; } .ds-rail nav a { min-width: 2.75rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; padding: 0.4rem 0.28rem; color: inherit; background: transparent; font-family: var(--font-human, 'Newsreader', Georgia, serif); font-size: 0.9rem; font-weight: 610; text-decoration: none; transition: background 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-rail nav a:hover, .ds-rail nav .ds-current { background: var(--heritage-amber, #ffc078); box-shadow: 2px 2px 0 var(--ink, #0c0d0d); } .ds-rail a:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 5px; } @media (max-width: 760px) { .ds-rail { width: 100%; min-height: 4.75rem; display: flex; align-items: center; border-right: 0; border-bottom: 1px solid var(--ink, #0c0d0d); } .ds-name { display: none; } .ds-rail nav { position: fixed; right: 0.75rem; bottom: 0.8rem; left: 0.75rem; margin: 0; flex-direction: row; justify-content: center; gap: 0.15rem; padding: 0.48rem; background: var(--heritage-amber, #ffc078); box-shadow: 3px 3px 0 var(--ink, #0c0d0d); } .ds-rail nav a:hover, .ds-rail nav .ds-current { background: var(--heritage-cream, #fff4e6); box-shadow: none; } }"
+    },
+    {
+      "name": "Grayscale Portrait Seal",
+      "kind": "custom",
+      "refersTo": "portrait-seal",
+      "description": "A circular human identity marker with cream framing and a warm physical offset.",
+      "html": "<figure class=\"ds-portrait\"><div aria-hidden=\"true\">DVT</div><figcaption><strong>Daniel Vieira Teixeira</strong><span>Cape Town, South Africa</span></figcaption></figure>",
+      "css": ".ds-portrait { display: inline-grid; grid-template-columns: 4.75rem 1fr; gap: 1.25rem; align-items: center; padding: 0.85rem; color: var(--ink, #0c0d0d); background: var(--heritage-cream, #fff4e6); box-shadow: 3px 3px 0 var(--heritage-amber, #ffc078); font-family: var(--font-human, 'Newsreader', Georgia, serif); } .ds-portrait > div { width: 4.75rem; aspect-ratio: 1; display: grid; place-items: center; color: var(--heritage-cream, #fff4e6); border: 3px solid var(--heritage-cream, #fff4e6); border-radius: 50%; outline: 1px solid var(--ink, #0c0d0d); background: linear-gradient(145deg, #686868, #171717); box-shadow: 4px 4px 0 var(--heritage-amber, #ffc078); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); font-weight: 800; filter: grayscale(1) contrast(1.06); } .ds-portrait figcaption { display: grid; gap: 0.2rem; } .ds-portrait strong { font-size: 1.15rem; line-height: 1; } .ds-portrait span { color: var(--muted, #5f5f5f); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; } .ds-portrait:focus-within { outline: 2px solid var(--signal, #244bd8); outline-offset: 5px; }"
+    },
+    {
+      "name": "Contact Heritage Panel",
+      "kind": "card",
+      "refersTo": "contact-panel",
+      "description": "A square cream form insert placed on a selectively textured charcoal contact field.",
+      "html": "<section class=\"ds-contact\"><p class=\"ds-contact-kicker\">Direct channel</p><h3>Start a conversation.</h3><label><span>Email</span><input type=\"email\" placeholder=\"you@company.com\"></label><button type=\"button\">Send message <span aria-hidden=\"true\">→</span></button></section>",
+      "css": ".ds-contact { width: min(32rem, 100%); display: grid; gap: 2rem; padding: clamp(1.5rem, 3vw, 3.5rem); color: var(--ink, #0c0d0d); border-radius: 0; background: var(--heritage-cream, #fff4e6); box-shadow: 8px 8px 0 var(--heritage-amber, #ffc078); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); } .ds-contact-kicker, .ds-contact label span { color: var(--signal, #244bd8); font-size: 0.68rem; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; } .ds-contact h3 { margin: 0; font-family: var(--font-human, 'Newsreader', Georgia, serif); font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 660; letter-spacing: -0.02em; line-height: 0.92; } .ds-contact label { display: grid; gap: 0.7rem; } .ds-contact input { padding: 0.6rem 0 1.2rem; color: var(--ink, #0c0d0d); border: 0; border-bottom: 1px solid var(--ink, #0c0d0d); border-radius: 0; outline: 0; background: transparent; font: inherit; font-size: 1.55rem; } .ds-contact input:focus { border-color: var(--signal, #244bd8); } .ds-contact input:focus-visible, .ds-contact button:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 5px; } .ds-contact button { display: flex; justify-content: space-between; padding: 1rem 1.1rem 0.85rem; color: var(--ink, #0c0d0d); border: 0; border-radius: 0; background: var(--heritage-amber, #ffc078); box-shadow: 4px 4px 0 var(--ink, #0c0d0d); cursor: pointer; font: inherit; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; transition: transform 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-contact button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink, #0c0d0d); } .ds-contact button:active { transform: none; box-shadow: 2px 2px 0 var(--ink, #0c0d0d); }"
+    },
+    {
+      "name": "Editorial Evidence Row",
+      "kind": "card",
+      "description": "A cardless evidence structure that warms on hover without lifting from the proof sheet.",
+      "html": "<article class=\"ds-evidence\"><p>02 / Reliability</p><h3>Make failure visible before it becomes expensive.</h3><p>Operational feedback, observability, and deliberate recovery paths.</p></article>",
+      "css": ".ds-evidence { display: grid; grid-template-columns: minmax(8rem, 0.45fr) minmax(16rem, 1.2fr) minmax(14rem, 0.8fr); gap: 2rem; padding: 3rem 0; color: var(--ink, #0c0d0d); border-bottom: 1px solid var(--rule, #b0b0ad); border-radius: 0; background: transparent; font-family: var(--font-body, 'Anybody', system-ui, sans-serif); transition: background-color 320ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-evidence:hover { background: var(--heritage-cream, #fff4e6); } .ds-evidence > p:first-child { color: var(--signal, #244bd8); font-size: 0.68rem; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; } .ds-evidence h3 { max-width: 13ch; margin: 0; font-family: var(--font-human, 'Newsreader', Georgia, serif); font-size: clamp(2rem, 3.4vw, 4rem); font-weight: 670; letter-spacing: -0.025em; line-height: 0.98; } .ds-evidence > p:last-child { max-width: 36ch; line-height: 1.45; } .ds-evidence:focus-within { outline: 2px solid var(--signal, #244bd8); outline-offset: 4px; } @media (max-width: 760px) { .ds-evidence { grid-template-columns: 1fr; } }"
+    },
+    {
+      "name": "Selective Heritage Field",
+      "kind": "card",
+      "description": "A charcoal editorial field that hosts the original texture only in a deliberate memory-bearing region.",
+      "html": "<section class=\"ds-heritage-field\"><p>04 / Human context</p><h3>Technical proof, with memory intact.</h3></section>",
+      "css": ".ds-heritage-field { min-height: 20rem; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; color: var(--heritage-cream, #fff4e6); border: 1px solid var(--heritage-rule, #5d554c); border-radius: 0; background-color: var(--heritage-charcoal, #141414); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); } .ds-heritage-field > p { color: var(--heritage-amber, #ffc078); font-size: 0.68rem; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; } .ds-heritage-field h3 { max-width: 13ch; margin: 0; font-family: var(--font-human, 'Newsreader', Georgia, serif); font-size: clamp(2.2rem, 4vw, 4.5rem); font-weight: 670; letter-spacing: -0.02em; line-height: 0.96; } .ds-heritage-field:hover { border-color: var(--heritage-amber, #ffc078); } .ds-heritage-field:focus-within { outline: 2px solid var(--signal, #244bd8); outline-offset: 4px; }"
+    },
+    {
+      "name": "Tactile Amber Action",
+      "kind": "button",
+      "refersTo": "action-tactile",
+      "description": "The warm person-to-person call to action used for contact and invitation.",
+      "html": "<a class=\"ds-tactile-action\" href=\"#\">Start a project <span aria-hidden=\"true\">→</span></a>",
+      "css": ".ds-tactile-action { display: flex; min-height: 2.75rem; align-items: center; justify-content: space-between; padding: 1rem 1.1rem 0.85rem; color: var(--ink, #0c0d0d); border: 0; border-radius: 0; background: var(--heritage-amber, #ffc078); box-shadow: 4px 4px 0 var(--ink, #0c0d0d); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-decoration: none; text-transform: uppercase; transition: transform 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 220ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-tactile-action:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink, #0c0d0d); } .ds-tactile-action:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 5px; }"
+    },
+    {
+      "name": "Portrait Medallion",
+      "kind": "custom",
+      "description": "A grayscale circular identity anchor with cream rim and amber offset.",
+      "html": "<span class=\"ds-portrait\" role=\"img\" aria-label=\"Portrait of Daniel Vieira Teixeira\"></span>",
+      "css": ".ds-portrait { display: block; width: 8rem; aspect-ratio: 1; border: 4px solid var(--heritage-cream, #fff4e6); border-radius: 50%; outline: 1px solid var(--heritage-amber, #ffc078); background: #777; box-shadow: 7px 7px 0 var(--heritage-amber, #ffc078); filter: grayscale(1) contrast(1.06); }"
+    },
+    {
+      "name": "Warm Contact Card",
+      "kind": "card",
+      "description": "The square cream form insert over a selective textured charcoal field.",
+      "html": "<section class=\"ds-contact-card\"><label>Email<input type=\"email\" placeholder=\"you@company.com\"></label><button type=\"button\">Send message</button></section>",
+      "css": ".ds-contact-card { display: grid; gap: 1.5rem; padding: 2rem; color: var(--ink, #0c0d0d); border-radius: 0; background: var(--heritage-cream, #fff4e6); box-shadow: 8px 8px 0 var(--heritage-amber, #ffc078); font-family: var(--font-body, 'Anybody', system-ui, sans-serif); } .ds-contact-card input { width: 100%; padding: 0.75rem 0; border: 0; border-bottom: 1px solid var(--ink, #0c0d0d); border-radius: 0; background: transparent; font: inherit; } .ds-contact-card input:focus-visible, .ds-contact-card button:focus-visible { outline: 2px solid var(--signal, #244bd8); outline-offset: 4px; } .ds-contact-card button { padding: 1rem; color: var(--ink, #0c0d0d); border: 0; border-radius: 0; background: var(--heritage-amber, #ffc078); box-shadow: 4px 4px 0 var(--ink, #0c0d0d); font: inherit; font-weight: 700; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Human Systems Proof Sheet",
+    "overview": "The portfolio is a precise editorial artifact from an engineering studio: warm proofing stock, dense type, registration marks, axis labels, and hairline rules. Its systems layer makes Daniel's reasoning legible; its restored heritage layer makes the work feel personal and authored. Anybody is the engineering instrument; Newsreader is a limited human countervoice.",
+    "keyCharacteristics": [
+      "Paper Blush and Registration Ink form the persistent systems canvas.",
+      "Signal Ultramarine marks system state; Heritage Amber marks person, invitation, and connection.",
+      "Anybody carries engineering structure; Newsreader supplies human and editorial emphasis.",
+      "Portrait, texture, cream inserts, and tactile offsets are deliberate identity moments.",
+      "Small screens become direct reading stacks with an amber bottom dock."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Signal Rule",
+        "body": "Ultramarine encodes systems and state. Amber encodes person, invitation, and connection.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Anybody explains the system; Newsreader reveals the person.",
+        "section": "typography"
+      },
+      {
+        "name": "The Editorial Grid Rule",
+        "body": "Asymmetry must stay aligned to shared rules and columns.",
+        "section": "layout"
+      },
+      {
+        "name": "The Tactile Exception Rule",
+        "body": "Never apply offset shadows to ordinary content rows or ambient surfaces.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Ultramarine for system state and technical focus.",
+      "Do use Amber and Cream for person, invitation, connection, and tactile contact.",
+      "Do reserve Newsreader for the human and editorial countervoice.",
+      "Do keep texture selective and preserve accessible contrast."
+    ],
+    "donts": [
+      "Don't turn the portfolio back into a centered portrait hero or generic skill-card grid.",
+      "Don't add rounded containers, pills, gradients, glass effects, or ambient soft shadows.",
+      "Don't apply texture globally or offset shadows to ordinary content surfaces.",
+      "Don't swap the semantic jobs of blue and amber."
+    ]
+  }
+}

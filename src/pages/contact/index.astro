@@ -2,10 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import { actions, isInputError } from 'astro:actions'
 import { env } from 'cloudflare:workers'
-import githubIcon from '../../assets/icons/github.png'
-import linkedinIcon from '../../assets/icons/linkedin.png'
 import messageIcon from '../../assets/icons/message.svg'
-import pinIcon from '../../assets/icons/pin.png'
 import { shouldBypassDevContactGuards } from '../../lib/contact/dev-bypass'
 import type { Env } from '../../worker'
 
@@ -22,157 +19,186 @@ const allowDevContactBypass = shouldBypassDevContactGuards(
     import.meta.env.DEV,
 )
 const hCaptchaSiteKey =
-    runtimeEnv.PUBLIC_HCAPTCHA_SITE_KEY ?? import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
+    runtimeEnv.PUBLIC_HCAPTCHA_SITE_KEY ??
+    import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY
 const shouldRenderCaptcha = Boolean(hCaptchaSiteKey) && !allowDevContactBypass
 const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
 ---
 
 <Layout title="Contact | Daniel Vieira Teixeira">
-    <main>
-        <h1>Contact</h1>
-        <section class="contact-profile">
-            <div>
-                <p class="name">Daniel Vieira Teixeira</p>
-                <p class="location">
-                    <img src={pinIcon.src} alt="" aria-hidden="true" />
-                    Cape Town, South Africa
-                </p>
-            </div>
-            <div class="social-links">
-                <a
-                    href="https://github.com/dvteixeira24"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Visit Daniel's GitHub profile"
-                >
-                    <img src={githubIcon.src} alt="" aria-hidden="true" />
-                </a>
-                <a
-                    href="https://linkedin.com/in/daniel-vieira-teixeira"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Visit Daniel's LinkedIn profile"
-                >
-                    <img src={linkedinIcon.src} alt="" aria-hidden="true" />
-                </a>
-            </div>
-        </section>
+    <main class="contact">
+        <header class="page-hero">
+            <p class="page-meta">C / 01 · Cape Town + remote</p>
+            <h1>Bring the<br /><em>complicated part.</em></h1>
+            <p>
+                Tell me what feels stuck, fragile, unclear, or unnecessarily
+                difficult. We can start there.
+            </p>
+        </header>
 
-        <section class="contact-form-section">
-            {
-                isSuccess ? (
-                    <div class="success-message">
-                        <img
-                            class="success-icon"
-                            src={messageIcon.src}
-                            alt=""
-                            aria-hidden="true"
-                        />
-                        <p>
-                            Message sent successfully.
-                            <span class="success-subtitle">
-                                Thank you for reaching out.
-                            </span>
-                        </p>
-                    </div>
-                ) : (
-                    <>
-                        {hasGenericError && (
-                            <p class="feedback error">
-                                Unable to submit right now. Please try again.
-                            </p>
-                        )}
-
-                        <form
-                            method="POST"
-                            action={actions.contact.submit}
-                            novalidate
-                            data-contact-form
+        <section class="contact-grid" aria-labelledby="contact-title">
+            <aside class="contact-context">
+                <h2 id="contact-title">A useful first message includes:</h2>
+                <p class="section-code">Project note / Start a conversation</p>
+                <ol>
+                    <li><span>01</span> What you are building</li>
+                    <li><span>02</span> Where the friction is</li>
+                    <li><span>03</span> What a better outcome looks like</li>
+                    <li><span>04</span> Any timing or technical constraints</li>
+                </ol>
+                <div class="contact-details">
+                    <p>Daniel Vieira Teixeira<br />Cape Town, South Africa</p>
+                    <div>
+                        <a
+                            href="https://github.com/dvteixeira24"
+                            target="_blank"
+                            rel="noreferrer">GitHub ↗</a
+                        ><a
+                            href="https://linkedin.com/in/daniel-vieira-teixeira"
+                            target="_blank"
+                            rel="noreferrer">LinkedIn ↗</a
                         >
-                            <label for="email">Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                autocomplete="email"
-                                required
-                                maxlength="254"
-                                placeholder="you@example.com"
-                                transition:persist
-                                aria-invalid={Boolean(inputErrors.email)}
-                                aria-describedby={
-                                    inputErrors.email
-                                        ? 'email-error'
-                                        : undefined
-                                }
+                    </div>
+                </div>
+            </aside>
+
+            <div class="contact-form-section">
+                {
+                    isSuccess ? (
+                        <div class="success-message">
+                            <img
+                                class="success-icon"
+                                src={messageIcon.src}
+                                alt=""
+                                aria-hidden="true"
                             />
-                            {inputErrors.email && (
-                                <p id="email-error" class="field-error">
-                                    {inputErrors.email.join(' ')}
-                                </p>
-                            )}
-
-                            <label for="message">Your Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                required
-                                minlength="20"
-                                maxlength="2000"
-                                rows="8"
-                                placeholder="Tell me about your project, opportunity, or just say hi..."
-                                transition:persist
-                                aria-invalid={Boolean(inputErrors.message)}
-                                aria-describedby={
-                                    inputErrors.message
-                                        ? 'message-error'
-                                        : undefined
-                                }
-                            />
-                            {inputErrors.message && (
-                                <p id="message-error" class="field-error">
-                                    {inputErrors.message.join(' ')}
-                                </p>
-                            )}
-
-                            <div class="honeypot-wrapper" aria-hidden="true">
-                                <label for="website">
-                                    Leave this field empty
-                                </label>
-                                <input
-                                    id="website"
-                                    name="website"
-                                    type="text"
-                                    tabindex="-1"
-                                />
-                            </div>
-
-                            {shouldRenderCaptcha ? (
-                                <div class="captcha-wrapper">
-                                    <div
-                                        class="h-captcha"
-                                        data-sitekey={hCaptchaSiteKey}
-                                    />
-                                </div>
-                            ) : shouldShowCaptchaConfigError ? (
+                            <p>
+                                Message received.
+                                <span>Thank you. I'll be in touch.</span>
+                            </p>
+                            <a href="/">Return home →</a>
+                        </div>
+                    ) : (
+                        <>
+                            {hasGenericError && (
                                 <p class="feedback error">
-                                    Captcha is not configured. Please try again
-                                    later.
+                                    Unable to submit right now. Please try
+                                    again.
                                 </p>
-                            ) : null}
-                            <div class="submit-row">
-                                <button type="submit" data-contact-submit>
-                                    <span class="submit-label">submit</span>
-                                    <span
-                                        class="submit-spinner"
-                                        aria-hidden="true"
+                            )}
+                            <form
+                                method="POST"
+                                action={actions.contact.submit}
+                                novalidate
+                                data-contact-form
+                            >
+                                <div class="field">
+                                    <label for="email">
+                                        <span>01</span> Your email
+                                    </label>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        autocomplete="email"
+                                        required
+                                        maxlength="254"
+                                        placeholder="you@company.com"
+                                        transition:persist
+                                        aria-invalid={Boolean(
+                                            inputErrors.email,
+                                        )}
+                                        aria-describedby={
+                                            inputErrors.email
+                                                ? 'email-error'
+                                                : undefined
+                                        }
                                     />
-                                </button>
-                            </div>
-                        </form>
-                    </>
-                )
-            }
+                                    {inputErrors.email && (
+                                        <p id="email-error" class="field-error">
+                                            {inputErrors.email.join(' ')}
+                                        </p>
+                                    )}
+                                </div>
+                                <div class="field">
+                                    <label for="message">
+                                        <span>02</span> The problem
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        required
+                                        minlength="20"
+                                        maxlength="2000"
+                                        rows="8"
+                                        placeholder="What are you building, and what needs to work better?"
+                                        transition:persist
+                                        aria-invalid={Boolean(
+                                            inputErrors.message,
+                                        )}
+                                        aria-describedby={
+                                            inputErrors.message
+                                                ? 'message-error'
+                                                : undefined
+                                        }
+                                    />
+                                    {inputErrors.message && (
+                                        <p
+                                            id="message-error"
+                                            class="field-error"
+                                        >
+                                            {inputErrors.message.join(' ')}
+                                        </p>
+                                    )}
+                                </div>
+                                <div
+                                    class="honeypot-wrapper"
+                                    aria-hidden="true"
+                                >
+                                    <>
+                                        <label for="website">
+                                            Leave this field empty
+                                        </label>
+                                        <input
+                                            id="website"
+                                            name="website"
+                                            type="text"
+                                            tabindex="-1"
+                                        />
+                                    </>
+                                </div>
+                                {shouldRenderCaptcha ? (
+                                    <div class="captcha-wrapper">
+                                        <div
+                                            class="h-captcha"
+                                            data-sitekey={hCaptchaSiteKey}
+                                        />
+                                    </div>
+                                ) : shouldShowCaptchaConfigError ? (
+                                    <p class="feedback error">
+                                        Captcha is not configured. Please try
+                                        again later.
+                                    </p>
+                                ) : null}
+                                <div class="submit-row">
+                                    <button type="submit" data-contact-submit>
+                                        <>
+                                            <span class="submit-label">
+                                                Send the brief
+                                            </span>
+                                            <span
+                                                class="submit-spinner"
+                                                aria-hidden="true"
+                                            />
+                                            <span aria-hidden="true">→</span>
+                                        </>
+                                    </button>
+                                </div>
+                            </form>
+                        </>
+                    )
+                }
+            </div>
         </section>
     </main>
 </Layout>
@@ -298,250 +324,429 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
     })()
 </script>
 
-<style>
-    .contact-profile {
+<style lang="scss">
+    .contact {
+        min-height: 100svh;
+        background: var(--paper);
+    }
+    .page-meta,
+    .section-code {
+        font-size: 0.7rem;
+        font-variation-settings:
+            'wdth' 76,
+            'wght' 650;
+        letter-spacing: 0.16em;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+    .page-hero {
+        position: relative;
+        min-height: 70svh;
+        display: grid;
+        grid-template-columns: 1fr 0.42fr;
+        gap: 3rem;
+        align-content: space-between;
+        padding: var(--page-gutter);
+        border-bottom: 1px solid var(--ink);
+    }
+    .page-meta {
+        position: absolute;
+        top: var(--page-gutter);
+        left: var(--page-gutter);
+    }
+    .page-hero h1 {
+        grid-column: 1 / -1;
+        margin-top: clamp(5rem, 10vh, 8rem);
+        font-size: clamp(5rem, 10.4vw, 11.5rem);
+        font-variation-settings:
+            'wdth' 73,
+            'wght' 330;
+        letter-spacing: -0.06em;
+        line-height: 0.77;
+    }
+    .page-hero h1 em {
+        color: var(--signal);
+        font-weight: 790;
+    }
+    .page-hero > p:last-child {
+        grid-column: 2;
+        max-width: 30ch;
+        font-size: clamp(1.15rem, 1.65vw, 1.65rem);
+        font-variation-settings:
+            'wdth' 84,
+            'wght' 370;
+        line-height: 1.35;
+    }
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 0.72fr 1fr;
+        gap: clamp(3rem, 8vw, 9rem);
+        padding: clamp(5rem, 10vw, 10rem) var(--page-gutter);
+    }
+    .contact-context {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        min-height: 42rem;
+    }
+    .contact-context h2 {
+        max-width: 12ch;
+        margin: 0 0 1.5rem;
+        font-size: clamp(2.5rem, 4.5vw, 5rem);
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 500;
+        letter-spacing: -0.035em;
+        line-height: 0.94;
+    }
+    .contact-context > .section-code {
+        margin-bottom: 3rem;
+        color: var(--muted);
+    }
+    .contact-context ol {
+        padding: 0;
+        border-top: 1px solid var(--ink);
+        list-style: none;
+    }
+    .contact-context li {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: 1rem;
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.9rem;
+        font-variation-settings:
+            'wdth' 82,
+            'wght' 430;
+    }
+    .contact-context li span {
+        color: var(--signal);
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+    }
+    .contact-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: auto;
+        padding-top: 4rem;
+        font-size: 0.75rem;
+        font-variation-settings:
+            'wdth' 80,
+            'wght' 500;
+        letter-spacing: 0.08em;
+        line-height: 1.45;
+        text-transform: uppercase;
+    }
+    .contact-details div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    .contact-details a {
+        width: max-content;
+        color: var(--signal);
+    }
+    .contact-form-section {
+        padding-top: 1.8rem;
+    }
+    form {
+        display: grid;
+        gap: clamp(2.5rem, 5vw, 5rem);
+    }
+    .field {
+        display: grid;
         gap: 1rem;
     }
-
-    .name {
-        font-size: 1.3rem;
-        font-weight: 600;
-    }
-
-    .location {
-        margin-top: 0.5rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-    }
-
-    .location img {
-        width: 0.95rem;
-        height: 0.95rem;
-    }
-
-    .social-links {
+    label {
         display: flex;
-        gap: 0.5rem;
+        gap: 2rem;
+        color: var(--muted);
+        font-size: 0.7rem;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 650;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
     }
-
-    .social-links a {
-        width: 4rem;
-        height: 4rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.2rem;
-        background-color: var(--color-orange-3);
-        box-shadow: 0 0 0 0 var(--color-primary-9);
-        transform: translate(0, 0);
-        transition:
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
-        text-decoration: none;
+    label span {
+        color: var(--signal);
     }
-
-    .social-links a:hover,
-    .social-links a:focus-visible {
-        box-shadow: 2px 2px 0 0 var(--color-primary-9);
-    }
-
-    .social-links a:hover {
-        transform: translate(-2px, -2px);
-    }
-
-    .social-links a:focus-visible {
-        outline: none;
-    }
-
-    .social-links img {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .contact-form-section form {
-        display: grid;
-        gap: 0.5rem;
-    }
-
-    .contact-form-section label {
-        font-weight: 500;
-        margin-top: 0.35rem;
-    }
-
-    .contact-form-section input,
-    .contact-form-section textarea {
+    input,
+    textarea {
         width: 100%;
-        padding: 0.6rem;
-        border: 1px solid var(--color-primary-6);
-        background-color: var(--color-gray-0);
-        color: var(--color-primary-9);
-        font-family: var(--font-sans);
-        font-size: 1rem;
+        padding: 0.6rem 0 1.2rem;
+        border: 0;
+        border-bottom: 1px solid var(--ink);
+        outline: 0;
+        background: transparent;
+        font-size: clamp(1.6rem, 3vw, 3.5rem);
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 380;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        transition: border-color 220ms var(--ease-out);
     }
-
-    .contact-form-section form.is-submitting {
-        cursor: progress;
-    }
-
-    .contact-form-section textarea {
+    textarea {
+        min-height: 15rem;
         resize: vertical;
-        min-height: 10rem;
     }
-
+    input::placeholder,
+    textarea::placeholder {
+        color: #686260;
+        opacity: 1;
+    }
+    input:focus,
+    textarea:focus {
+        border-color: var(--signal);
+    }
+    input:focus-visible,
+    textarea:focus-visible {
+        border-color: var(--signal);
+        outline: 2px solid var(--signal);
+        outline-offset: 4px;
+    }
+    input[aria-invalid='true'],
+    textarea[aria-invalid='true'] {
+        border-color: var(--error);
+    }
+    .field-error,
+    .feedback.error {
+        color: var(--error);
+        font-size: 0.8rem;
+    }
     .captcha-wrapper {
-        margin-top: 0.9rem;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-    }
-
-    .submit-row {
-        margin-top: 0.5rem;
         display: flex;
         justify-content: flex-end;
     }
-
+    .submit-row {
+        display: flex;
+        justify-content: flex-end;
+    }
     .submit-row button {
-        border: none;
-        background-color: var(--color-orange-3);
-        color: var(--color-primary-9);
-        padding: 0.85rem 1.5rem;
-        font-family: var(--font-serif);
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: lowercase;
-        cursor: pointer;
-        box-shadow: 0 0 0 0 var(--color-primary-9);
-        transform: translate(0, 0);
-        transition:
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
-        display: inline-flex;
+        width: min(30rem, 100%);
+        display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
-        min-width: 9rem;
+        justify-content: space-between;
+        padding: 1rem 0 0.8rem;
+        color: var(--signal);
+        border: 0;
+        border-bottom: 3px solid currentcolor;
+        background: transparent;
+        cursor: pointer;
+        font-size: clamp(0.85rem, 1.2vw, 1.2rem);
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition: color 220ms var(--ease-out);
     }
-
-    .submit-row button:not(:disabled):hover,
-    .submit-row button:not(:disabled):focus-visible {
-        box-shadow: 2px 2px 0 0 var(--color-primary-9);
-    }
-
     .submit-row button:not(:disabled):hover {
-        transform: translate(-2px, -2px);
+        color: var(--ink);
     }
-
-    .submit-row button:focus-visible {
-        outline: none;
-    }
-
     .submit-row button:disabled {
-        cursor: not-allowed;
-        opacity: 0.7;
-        box-shadow: 0 0 0 0 var(--color-primary-9);
-        transform: none;
+        cursor: progress;
+        opacity: 0.6;
     }
-
     .submit-spinner {
         display: none;
         width: 1rem;
         height: 1rem;
-        border: 2px solid currentColor;
+        border: 2px solid currentcolor;
         border-right-color: transparent;
         border-radius: 50%;
         animation: contact-spin 0.8s linear infinite;
     }
-
     .is-submitting .submit-spinner {
         display: inline-block;
     }
-
     @keyframes contact-spin {
         to {
             transform: rotate(360deg);
         }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-        .submit-spinner {
-            animation: none;
-        }
-    }
-
-    .feedback {
-        margin-bottom: 0.6rem;
-        font-size: 0.95rem;
-    }
-
-    .feedback.error,
-    .field-error {
-        color: var(--color-red-8);
-    }
-
     .success-message {
-        color: var(--color-green-8);
-        font-family: var(--font-sans);
-        font-size: 2.25rem;
-        font-weight: 600;
-        line-height: 1.25;
-        text-align: center;
-        margin: 2.5rem 0;
+        min-height: 35rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        gap: 1rem;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: clamp(2rem, 5vw, 5rem);
+        color: var(--paper);
+        background: var(--ink);
     }
-
     .success-icon {
-        width: 144px;
-        height: auto;
+        width: 3rem;
+        filter: invert(1);
+    }
+    .success-message p {
+        font-size: clamp(2.5rem, 5vw, 5.5rem);
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 540;
+        line-height: 0.9;
+    }
+    .success-message p span {
         display: block;
+        margin-top: 1rem;
+        color: #aaa9a5;
+        font-size: 1rem;
+        line-height: 1.3;
     }
-
-    .success-subtitle {
-        display: block;
-        margin-top: 0.4rem;
-        font-size: 1.25rem;
-        font-weight: 500;
+    .success-message a {
+        color: var(--signal);
+        text-transform: uppercase;
     }
-
-    @media (max-width: 640px) {
-        .success-message {
-            font-size: 1.6rem;
-            margin: 1.5rem 0;
-        }
-
-        .success-icon {
-            width: 96px;
-        }
-
-        .success-subtitle {
-            font-size: 1rem;
-        }
-    }
-
-    .field-error {
-        font-size: 0.88rem;
-        margin-bottom: 0.2rem;
-    }
-
     .honeypot-wrapper {
         position: absolute;
         left: -10000px;
         opacity: 0;
         pointer-events: none;
     }
+    @media (max-width: 800px) {
+        .page-hero {
+            min-height: calc(100svh - 4.75rem);
+            grid-template-columns: 1fr;
+        }
+        .page-hero h1 {
+            grid-column: 1;
+            font-size: clamp(4.2rem, 18vw, 7.2rem);
+        }
+        .page-hero > p:last-child {
+            grid-column: 1;
+        }
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+        .contact-context {
+            min-height: 0;
+        }
+        .contact-details {
+            margin-top: 4rem;
+        }
+        .contact-form-section {
+            border-top: 1px solid var(--ink);
+            padding-top: 4rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .contact-details {
+            grid-template-columns: 1fr;
+        }
+        input,
+        textarea {
+            font-size: 1.55rem;
+        }
+    }
+    @media (max-width: 760px) {
+        .page-hero {
+            min-height: 58svh;
+        }
+        .page-hero h1 {
+            margin-top: 3rem;
+        }
+    }
 
-    @media (max-width: 640px) {
-        .contact-profile {
-            flex-direction: column;
-            align-items: flex-start;
+    /* Contact is the clearest tactile callback to the original warm card on charcoal. */
+    .page-hero h1 {
+        letter-spacing: -0.04em;
+    }
+
+    .page-hero h1 em {
+        color: var(--heritage-amber-ink);
+        font-family: var(--font-human);
+        font-weight: 680;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-grid {
+        color: var(--heritage-cream);
+        background-color: var(--heritage-charcoal);
+        background-image: var(--heritage-texture);
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: soft-light;
+    }
+
+    .contact-context h2 {
+        color: var(--heritage-cream);
+        font-family: var(--font-human);
+        font-weight: 660;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-context > .section-code {
+        color: var(--heritage-amber);
+    }
+    .contact-context ol {
+        border-color: rgb(255 244 230 / 45%);
+    }
+    .contact-context li {
+        border-color: rgb(255 244 230 / 28%);
+    }
+    .contact-context li span {
+        color: var(--heritage-amber);
+    }
+
+    .contact-details a {
+        min-height: var(--touch-target);
+        display: inline-flex;
+        align-items: center;
+        padding: 0.4rem 0.55rem;
+        color: var(--ink);
+        background: var(--heritage-cream);
+        box-shadow: 3px 3px 0 var(--heritage-amber);
+        text-decoration: none;
+        transition:
+            transform 220ms var(--ease-out),
+            box-shadow 220ms var(--ease-out);
+    }
+
+    .contact-details a:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 4px 4px 0 var(--heritage-amber);
+    }
+
+    .contact-form-section {
+        align-self: start;
+        padding: clamp(1.5rem, 3vw, 3.5rem);
+        color: var(--ink);
+        background: var(--heritage-cream);
+        box-shadow: 8px 8px 0 var(--heritage-amber);
+    }
+
+    .submit-row button {
+        padding: 1rem 1.1rem 0.85rem;
+        color: var(--ink);
+        border: 0;
+        background: var(--heritage-amber);
+        box-shadow: 4px 4px 0 var(--ink);
+        transition:
+            transform 220ms var(--ease-out),
+            box-shadow 220ms var(--ease-out);
+    }
+
+    .submit-row button:not(:disabled):hover {
+        color: var(--ink);
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    @media (max-width: 360px) {
+        .page-hero h1 {
+            font-size: clamp(4rem, 18vw, 4.1rem);
+        }
+    }
+
+    @media (max-width: 800px) {
+        .contact-grid {
+            padding-bottom: 7rem;
+        }
+        .contact-form-section {
+            padding: 1.35rem;
+            box-shadow: 5px 5px 0 var(--heritage-amber);
         }
     }
 </style>

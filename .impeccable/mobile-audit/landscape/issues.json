@@ -1,0 +1,184 @@
+[
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1024,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9468,
+        "right": -9188,
+        "width": 280,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9468,
+        "right": -9188,
+        "width": 280,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1070,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9447,
+        "right": -9162,
+        "width": 285,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9447,
+        "right": -9162,
+        "width": 285,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1099,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9433,
+        "right": -9132,
+        "width": 301,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9433,
+        "right": -9132,
+        "width": 301,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1100,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9433,
+        "right": -9132,
+        "width": 301,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9433,
+        "right": -9132,
+        "width": 301,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1101,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9432,
+        "right": -9131,
+        "width": 301,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9432,
+        "right": -9131,
+        "width": 301,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1180,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9395,
+        "right": -9072,
+        "width": 323,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9395,
+        "right": -9072,
+        "width": 323,
+        "scroller": false
+      }
+    ]
+  },
+  {
+    "type": "section-outliers",
+    "route": "contact",
+    "width": 1181,
+    "section": ".contact-grid",
+    "detail": [
+      {
+        "tag": "label",
+        "className": "",
+        "text": "Leave this field empty",
+        "left": -9395,
+        "right": -9072,
+        "width": 323,
+        "scroller": false
+      },
+      {
+        "tag": "input",
+        "className": "",
+        "text": "",
+        "left": -9395,
+        "right": -9072,
+        "width": 323,
+        "scroller": false
+      }
+    ]
+  }
+]

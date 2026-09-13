@@ -1,0 +1,4530 @@
+[
+  {
+    "route": "home",
+    "width": 1024,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 936,
+        "height": 808,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 610,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 936,
+        "height": 236,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 884,
+            "height": 70,
+            "lines": 2,
+            "fontSize": 38.9
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 936,
+        "height": 2615,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 885,
+            "height": 124,
+            "lines": 2,
+            "fontSize": 73.7
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 170,
+            "height": 171,
+            "lines": 5,
+            "fontSize": 34.8
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 170,
+            "height": 171,
+            "lines": 5,
+            "fontSize": 34.8
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 170,
+            "height": 171,
+            "lines": 5,
+            "fontSize": 34.8
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 170,
+            "height": 171,
+            "lines": 5,
+            "fontSize": 34.8
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 936,
+        "height": 1269,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 885,
+            "height": 121,
+            "lines": 2,
+            "fontSize": 73.7
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 766,
+            "height": 28,
+            "lines": 1,
+            "fontSize": 27.6
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 766,
+            "height": 28,
+            "lines": 1,
+            "fontSize": 27.6
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 766,
+            "height": 28,
+            "lines": 1,
+            "fontSize": 27.6
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 766,
+            "height": 28,
+            "lines": 1,
+            "fontSize": 27.6
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 936,
+        "height": 837,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 279,
+            "height": 251,
+            "lines": 4,
+            "fontSize": 73.7
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\home-1024.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 750,
+        "bottom": 797
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1024,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 936,
+        "height": 702,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 885,
+            "height": 239,
+            "lines": 3,
+            "fontSize": 96.3
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 936,
+        "height": 727,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 248,
+            "height": 482,
+            "lines": 11,
+            "fontSize": 46.1
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 936,
+        "height": 1288,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 549,
+            "height": 126,
+            "lines": 2,
+            "fontSize": 76.8
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 176,
+            "height": 106,
+            "lines": 3,
+            "fontSize": 36.9
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 176,
+            "height": 106,
+            "lines": 3,
+            "fontSize": 36.9
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 176,
+            "height": 106,
+            "lines": 3,
+            "fontSize": 36.9
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 176,
+            "height": 106,
+            "lines": 3,
+            "fontSize": 36.9
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 936,
+        "height": 1316,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 301,
+            "height": 324,
+            "lines": 5,
+            "fontSize": 76.8
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 936,
+        "height": 168,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\biography-1024.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 794,
+        "bottom": 838
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1024,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 936,
+        "height": 648,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 885,
+            "height": 161,
+            "lines": 2,
+            "fontSize": 99.3
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 936,
+        "height": 3786,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 403,
+            "height": 48,
+            "lines": 1,
+            "fontSize": 56.3
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 403,
+            "height": 145,
+            "lines": 3,
+            "fontSize": 56.3
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 403,
+            "height": 97,
+            "lines": 2,
+            "fontSize": 56.3
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 403,
+            "height": 97,
+            "lines": 2,
+            "fontSize": 56.3
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 403,
+            "height": 145,
+            "lines": 3,
+            "fontSize": 56.3
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 403,
+            "height": 145,
+            "lines": 3,
+            "fontSize": 56.3
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 936,
+        "height": 208,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\experience-1024.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 774,
+        "bottom": 818
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1024,
+    "viewport": {
+      "width": 1024,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 936,
+        "height": 630,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 885,
+            "height": 168,
+            "lines": 2,
+            "fontSize": 106.5
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 936,
+        "height": 877,
+        "left": 88,
+        "right": 1024,
+        "scrollWidth": 936,
+        "clientWidth": 936,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9468,
+            "right": -9188,
+            "width": 280,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9468,
+            "right": -9188,
+            "width": 280,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 330,
+            "height": 130,
+            "lines": 3,
+            "fontSize": 46.1
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\contact-1024.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 678,
+        "bottom": 726
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1070,
+    "viewport": {
+      "width": 1070,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1070,
+      "scrollWidth": 1070,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 982,
+        "height": 808,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 640,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 982,
+        "height": 239,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 927,
+            "height": 73,
+            "lines": 2,
+            "fontSize": 40.7
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 982,
+        "height": 2685,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 929,
+            "height": 129,
+            "lines": 2,
+            "fontSize": 77
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 178,
+            "height": 178,
+            "lines": 5,
+            "fontSize": 36.4
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 178,
+            "height": 178,
+            "lines": 5,
+            "fontSize": 36.4
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 178,
+            "height": 178,
+            "lines": 5,
+            "fontSize": 36.4
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 178,
+            "height": 178,
+            "lines": 5,
+            "fontSize": 36.4
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 982,
+        "height": 1293,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 929,
+            "height": 126,
+            "lines": 2,
+            "fontSize": 77
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 808,
+            "height": 29,
+            "lines": 1,
+            "fontSize": 28.9
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 808,
+            "height": 29,
+            "lines": 1,
+            "fontSize": 28.9
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 808,
+            "height": 29,
+            "lines": 1,
+            "fontSize": 28.9
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 808,
+            "height": 29,
+            "lines": 1,
+            "fontSize": 28.9
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 982,
+        "height": 857,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 291,
+            "height": 262,
+            "lines": 4,
+            "fontSize": 77
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 745,
+        "bottom": 793
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1070,
+    "viewport": {
+      "width": 1070,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1070,
+      "scrollWidth": 1070,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 982,
+        "height": 702,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 929,
+            "height": 251,
+            "lines": 3,
+            "fontSize": 100.6
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 982,
+        "height": 738,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 260,
+            "height": 482,
+            "lines": 11,
+            "fontSize": 48.2
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 982,
+        "height": 1307,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 576,
+            "height": 132,
+            "lines": 2,
+            "fontSize": 80.3
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 184,
+            "height": 111,
+            "lines": 3,
+            "fontSize": 38.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 184,
+            "height": 111,
+            "lines": 3,
+            "fontSize": 38.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 184,
+            "height": 111,
+            "lines": 3,
+            "fontSize": 38.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 184,
+            "height": 111,
+            "lines": 3,
+            "fontSize": 38.5
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 982,
+        "height": 1359,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 314,
+            "height": 341,
+            "lines": 5,
+            "fontSize": 80.3
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 982,
+        "height": 173,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 792,
+        "bottom": 836
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1070,
+    "viewport": {
+      "width": 1070,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1070,
+      "scrollWidth": 1070,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 982,
+        "height": 648,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 928,
+            "height": 169,
+            "lines": 2,
+            "fontSize": 103.8
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 982,
+        "height": 3845,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 421,
+            "height": 51,
+            "lines": 1,
+            "fontSize": 58.9
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 421,
+            "height": 152,
+            "lines": 3,
+            "fontSize": 58.9
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 421,
+            "height": 101,
+            "lines": 2,
+            "fontSize": 58.9
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 421,
+            "height": 101,
+            "lines": 2,
+            "fontSize": 58.9
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 421,
+            "height": 152,
+            "lines": 3,
+            "fontSize": 58.9
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 421,
+            "height": 152,
+            "lines": 3,
+            "fontSize": 58.9
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 982,
+        "height": 215,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 771,
+        "bottom": 815
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1070,
+    "viewport": {
+      "width": 1070,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1070,
+      "scrollWidth": 1070,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 982,
+        "height": 630,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 929,
+            "height": 175,
+            "lines": 2,
+            "fontSize": 111.3
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 982,
+        "height": 886,
+        "left": 88,
+        "right": 1070,
+        "scrollWidth": 982,
+        "clientWidth": 982,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9447,
+            "right": -9162,
+            "width": 285,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9447,
+            "right": -9162,
+            "width": 285,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 346,
+            "height": 136,
+            "lines": 3,
+            "fontSize": 48.2
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 693,
+        "bottom": 741
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1099,
+    "viewport": {
+      "width": 1099,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1099,
+      "scrollWidth": 1099,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 1011,
+        "height": 808,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 659,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 1011,
+        "height": 241,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 954,
+            "height": 75,
+            "lines": 2,
+            "fontSize": 41.8
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 1011,
+        "height": 2730,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 956,
+            "height": 134,
+            "lines": 2,
+            "fontSize": 79.1
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 1011,
+        "height": 1308,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 956,
+            "height": 130,
+            "lines": 2,
+            "fontSize": 79.1
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 835,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 835,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 835,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 835,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 1011,
+        "height": 874,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 299,
+            "height": 272,
+            "lines": 4,
+            "fontSize": 79.1
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 742,
+        "bottom": 790
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1099,
+    "viewport": {
+      "width": 1099,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1099,
+      "scrollWidth": 1099,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1011,
+        "height": 702,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 956,
+            "height": 256,
+            "lines": 3,
+            "fontSize": 103.3
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 1011,
+        "height": 746,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 268,
+            "height": 482,
+            "lines": 10,
+            "fontSize": 49.5
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 1011,
+        "height": 1319,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 593,
+            "height": 135,
+            "lines": 2,
+            "fontSize": 82.4
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 188,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 188,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 188,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 188,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 1011,
+        "height": 1382,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 323,
+            "height": 347,
+            "lines": 5,
+            "fontSize": 82.4
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1011,
+        "height": 177,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 790,
+        "bottom": 834
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1099,
+    "viewport": {
+      "width": 1099,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1099,
+      "scrollWidth": 1099,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1011,
+        "height": 648,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 956,
+            "height": 172,
+            "lines": 2,
+            "fontSize": 106.6
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 1011,
+        "height": 3887,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 432,
+            "height": 52,
+            "lines": 1,
+            "fontSize": 60.4
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 432,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.4
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 432,
+            "height": 104,
+            "lines": 2,
+            "fontSize": 60.4
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 432,
+            "height": 104,
+            "lines": 2,
+            "fontSize": 60.4
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 432,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.4
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 432,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.4
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1011,
+        "height": 220,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 768,
+        "bottom": 812
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1099,
+    "viewport": {
+      "width": 1099,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1099,
+      "scrollWidth": 1099,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1011,
+        "height": 630,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 956,
+            "height": 181,
+            "lines": 2,
+            "fontSize": 114.3
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 1011,
+        "height": 892,
+        "left": 88,
+        "right": 1099,
+        "scrollWidth": 1011,
+        "clientWidth": 1011,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9433,
+            "right": -9132,
+            "width": 301,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9433,
+            "right": -9132,
+            "width": 301,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 355,
+            "height": 139,
+            "lines": 3,
+            "fontSize": 49.5
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 703,
+        "bottom": 750
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1100,
+    "viewport": {
+      "width": 1100,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1100,
+      "scrollWidth": 1100,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 1012,
+        "height": 808,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 660,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 1012,
+        "height": 241,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 955,
+            "height": 75,
+            "lines": 2,
+            "fontSize": 41.8
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 1012,
+        "height": 2732,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 957,
+            "height": 134,
+            "lines": 2,
+            "fontSize": 79.2
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 183,
+            "height": 183,
+            "lines": 5,
+            "fontSize": 37.4
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 1012,
+        "height": 1309,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 957,
+            "height": 130,
+            "lines": 2,
+            "fontSize": 79.2
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 836,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 836,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 836,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 836,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 1012,
+        "height": 875,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 299,
+            "height": 272,
+            "lines": 4,
+            "fontSize": 79.2
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\home-1100.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 742,
+        "bottom": 790
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1100,
+    "viewport": {
+      "width": 1100,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1100,
+      "scrollWidth": 1100,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1012,
+        "height": 702,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 957,
+            "height": 256,
+            "lines": 3,
+            "fontSize": 103.4
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 1012,
+        "height": 747,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 268,
+            "height": 483,
+            "lines": 10,
+            "fontSize": 49.5
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 1012,
+        "height": 1319,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 593,
+            "height": 135,
+            "lines": 2,
+            "fontSize": 82.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 1012,
+        "height": 1383,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 323,
+            "height": 347,
+            "lines": 5,
+            "fontSize": 82.5
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1012,
+        "height": 177,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\biography-1100.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 790,
+        "bottom": 834
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1100,
+    "viewport": {
+      "width": 1100,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1100,
+      "scrollWidth": 1100,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1012,
+        "height": 648,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 957,
+            "height": 173,
+            "lines": 2,
+            "fontSize": 106.7
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 1012,
+        "height": 3888,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 433,
+            "height": 52,
+            "lines": 1,
+            "fontSize": 60.5
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 433,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.5
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 433,
+            "height": 104,
+            "lines": 2,
+            "fontSize": 60.5
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 433,
+            "height": 104,
+            "lines": 2,
+            "fontSize": 60.5
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 433,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.5
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 433,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.5
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1012,
+        "height": 220,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\experience-1100.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 768,
+        "bottom": 812
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1100,
+    "viewport": {
+      "width": 1100,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1100,
+      "scrollWidth": 1100,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1012,
+        "height": 630,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 957,
+            "height": 181,
+            "lines": 2,
+            "fontSize": 114.4
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 1012,
+        "height": 892,
+        "left": 88,
+        "right": 1100,
+        "scrollWidth": 1012,
+        "clientWidth": 1012,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9433,
+            "right": -9132,
+            "width": 301,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9433,
+            "right": -9132,
+            "width": 301,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 356,
+            "height": 140,
+            "lines": 3,
+            "fontSize": 49.5
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\contact-1100.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 703,
+        "bottom": 751
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1101,
+    "viewport": {
+      "width": 1101,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1101,
+      "scrollWidth": 1101,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 1013,
+        "height": 808,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 660,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 1013,
+        "height": 198,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 424,
+            "height": 75,
+            "lines": 2,
+            "fontSize": 41.8
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 1013,
+        "height": 1745,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 448,
+            "height": 133,
+            "lines": 2,
+            "fontSize": 79.3
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 183,
+            "height": 208,
+            "lines": 6,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 183,
+            "height": 208,
+            "lines": 6,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 183,
+            "height": 208,
+            "lines": 6,
+            "fontSize": 37.4
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 183,
+            "height": 208,
+            "lines": 6,
+            "fontSize": 37.4
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 1013,
+        "height": 1080,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 402,
+            "height": 130,
+            "lines": 2,
+            "fontSize": 79.3
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 336,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 336,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 336,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 336,
+            "height": 30,
+            "lines": 1,
+            "fontSize": 29.7
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 1013,
+        "height": 872,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 300,
+            "height": 269,
+            "lines": 4,
+            "fontSize": 79.3
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\home-1101.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 742,
+        "bottom": 790
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1101,
+    "viewport": {
+      "width": 1101,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1101,
+      "scrollWidth": 1101,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1013,
+        "height": 702,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 958,
+            "height": 256,
+            "lines": 3,
+            "fontSize": 103.5
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 1013,
+        "height": 747,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 268,
+            "height": 483,
+            "lines": 10,
+            "fontSize": 49.5
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 1013,
+        "height": 1320,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 594,
+            "height": 135,
+            "lines": 2,
+            "fontSize": 82.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 189,
+            "height": 114,
+            "lines": 3,
+            "fontSize": 39.6
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 1013,
+        "height": 1384,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 324,
+            "height": 348,
+            "lines": 5,
+            "fontSize": 82.6
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1013,
+        "height": 177,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\biography-1101.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 789,
+        "bottom": 833
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1101,
+    "viewport": {
+      "width": 1101,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1101,
+      "scrollWidth": 1101,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1013,
+        "height": 648,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 958,
+            "height": 173,
+            "lines": 2,
+            "fontSize": 106.8
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 1013,
+        "height": 3648,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 352,
+            "height": 52,
+            "lines": 1,
+            "fontSize": 60.6
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 352,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.6
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 352,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.6
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 352,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.6
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 352,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.6
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 352,
+            "height": 156,
+            "lines": 3,
+            "fontSize": 60.6
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1013,
+        "height": 220,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\experience-1101.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 768,
+        "bottom": 812
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1101,
+    "viewport": {
+      "width": 1101,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1101,
+      "scrollWidth": 1101,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1013,
+        "height": 630,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 958,
+            "height": 181,
+            "lines": 2,
+            "fontSize": 114.5
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 1013,
+        "height": 892,
+        "left": 88,
+        "right": 1101,
+        "scrollWidth": 1013,
+        "clientWidth": 1013,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9432,
+            "right": -9131,
+            "width": 301,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9432,
+            "right": -9131,
+            "width": 301,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 356,
+            "height": 140,
+            "lines": 3,
+            "fontSize": 49.5
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\contact-1101.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 704,
+        "bottom": 751
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1180,
+    "viewport": {
+      "width": 1180,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1180,
+      "scrollWidth": 1180,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 1092,
+        "height": 808,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 712,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 1092,
+        "height": 198,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 450,
+            "height": 81,
+            "lines": 2,
+            "fontSize": 44.8
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 1092,
+        "height": 1804,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 469,
+            "height": 143,
+            "lines": 2,
+            "fontSize": 85
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.1
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.1
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.1
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.1
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 1092,
+        "height": 1104,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 434,
+            "height": 139,
+            "lines": 2,
+            "fontSize": 85
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 1092,
+        "height": 915,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 321,
+            "height": 291,
+            "lines": 4,
+            "fontSize": 85
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\home-1180.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 735,
+        "bottom": 782
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1180,
+    "viewport": {
+      "width": 1180,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1180,
+      "scrollWidth": 1180,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1092,
+        "height": 702,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 1033,
+            "height": 274,
+            "lines": 3,
+            "fontSize": 110.9
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 1092,
+        "height": 796,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 290,
+            "height": 513,
+            "lines": 10,
+            "fontSize": 53.1
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 1092,
+        "height": 1352,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 640,
+            "height": 145,
+            "lines": 2,
+            "fontSize": 88.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 202,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 202,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 202,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 202,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 1092,
+        "height": 1453,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 347,
+            "height": 372,
+            "lines": 5,
+            "fontSize": 88.5
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1092,
+        "height": 187,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\biography-1180.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 786,
+        "bottom": 830
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1180,
+    "viewport": {
+      "width": 1180,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1180,
+      "scrollWidth": 1180,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1092,
+        "height": 648,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 1033,
+            "height": 186,
+            "lines": 2,
+            "fontSize": 114.5
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 1092,
+        "height": 3648,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 402,
+            "height": 56,
+            "lines": 1,
+            "fontSize": 64.9
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 402,
+            "height": 167,
+            "lines": 3,
+            "fontSize": 64.9
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 402,
+            "height": 167,
+            "lines": 3,
+            "fontSize": 64.9
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 402,
+            "height": 167,
+            "lines": 3,
+            "fontSize": 64.9
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 402,
+            "height": 167,
+            "lines": 3,
+            "fontSize": 64.9
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 402,
+            "height": 167,
+            "lines": 3,
+            "fontSize": 64.9
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1092,
+        "height": 233,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\experience-1180.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 761,
+        "bottom": 805
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1180,
+    "viewport": {
+      "width": 1180,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1180,
+      "scrollWidth": 1180,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1092,
+        "height": 630,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 1033,
+            "height": 195,
+            "lines": 2,
+            "fontSize": 122.7
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 1092,
+        "height": 939,
+        "left": 88,
+        "right": 1180,
+        "scrollWidth": 1092,
+        "clientWidth": 1092,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9395,
+            "right": -9072,
+            "width": 323,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9395,
+            "right": -9072,
+            "width": 323,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 384,
+            "height": 150,
+            "lines": 3,
+            "fontSize": 53.1
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\contact-1180.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 698,
+        "bottom": 747
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "home",
+    "width": 1181,
+    "viewport": {
+      "width": 1181,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1181,
+      "scrollWidth": 1181,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".hero",
+        "width": 1093,
+        "height": 808,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Different systems. Same approach.",
+            "width": 751,
+            "height": 566,
+            "lines": 23,
+            "fontSize": 32
+          }
+        ]
+      },
+      {
+        "selector": ".method-preview",
+        "width": 1093,
+        "height": 198,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A more reliablefuture, in progress.",
+            "width": 451,
+            "height": 81,
+            "lines": 2,
+            "fontSize": 44.9
+          }
+        ]
+      },
+      {
+        "selector": ".work-index",
+        "width": 1093,
+        "height": 1805,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The useful part iswhat changed.",
+            "width": 470,
+            "height": 143,
+            "lines": 2,
+            "fontSize": 85
+          },
+          {
+            "tag": "h3",
+            "text": "Turn many data sources into one legible decision surface.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.2
+          },
+          {
+            "tag": "h3",
+            "text": "Make quality visible before customers discover the problem.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.2
+          },
+          {
+            "tag": "h3",
+            "text": "Give dense financial operations room to breathe.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.2
+          },
+          {
+            "tag": "h3",
+            "text": "Stabilise the hand-offs behind a long-running client workflow.",
+            "width": 196,
+            "height": 208,
+            "lines": 5,
+            "fontSize": 40.2
+          }
+        ]
+      },
+      {
+        "selector": ".thinking",
+        "width": 1093,
+        "height": 1105,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "One approach.Variable depth.",
+            "width": 434,
+            "height": 139,
+            "lines": 2,
+            "fontSize": 85
+          },
+          {
+            "tag": "h3",
+            "text": "Find the real problem",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Map the constraint",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Choose the intervention",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          },
+          {
+            "tag": "h3",
+            "text": "Leave a stronger system",
+            "width": 370,
+            "height": 32,
+            "lines": 1,
+            "fontSize": 31.9
+          }
+        ]
+      },
+      {
+        "selector": ".closing",
+        "width": 1093,
+        "height": 916,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Bring the knot.I’ll find the thread.",
+            "width": 321,
+            "height": 291,
+            "lines": 4,
+            "fontSize": 85
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\home-1181.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Start a conversation →",
+        "top": 734,
+        "bottom": 782
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "biography",
+    "width": 1181,
+    "viewport": {
+      "width": 1181,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1181,
+      "scrollWidth": 1181,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1093,
+        "height": 702,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Engineer by trade.Problem solver by instinct.",
+            "width": 1034,
+            "height": 274,
+            "lines": 3,
+            "fontSize": 111
+          }
+        ]
+      },
+      {
+        "selector": ".story",
+        "width": 1093,
+        "height": 797,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A wider view of the system.",
+            "width": 290,
+            "height": 514,
+            "lines": 10,
+            "fontSize": 53.1
+          }
+        ]
+      },
+      {
+        "selector": ".modes",
+        "width": 1093,
+        "height": 1353,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Four modes.No silos.",
+            "width": 641,
+            "height": 145,
+            "lines": 2,
+            "fontSize": 88.6
+          },
+          {
+            "tag": "h3",
+            "text": "Make complexity legible.",
+            "width": 203,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make the hand-offs dependable.",
+            "width": 203,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make confidence repeatable.",
+            "width": 203,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          },
+          {
+            "tag": "h3",
+            "text": "Make production understandable.",
+            "width": 203,
+            "height": 122,
+            "lines": 3,
+            "fontSize": 42.5
+          }
+        ]
+      },
+      {
+        "selector": ".principles",
+        "width": 1093,
+        "height": 1454,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "The code matters.So does the context.",
+            "width": 347,
+            "height": 372,
+            "lines": 5,
+            "fontSize": 88.6
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1093,
+        "height": 187,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\biography-1181.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Let's untangle it →",
+        "top": 785,
+        "bottom": 829
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "experience",
+    "width": 1181,
+    "viewport": {
+      "width": 1181,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1181,
+      "scrollWidth": 1181,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1093,
+        "height": 648,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Problems solvedacross the stack.",
+            "width": 1034,
+            "height": 186,
+            "lines": 2,
+            "fontSize": 114.6
+          }
+        ]
+      },
+      {
+        "selector": ".project-index",
+        "width": 1093,
+        "height": 3648,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "Defijn",
+            "width": 402,
+            "height": 56,
+            "lines": 1,
+            "fontSize": 65
+          },
+          {
+            "tag": "h2",
+            "text": "Investment research platform",
+            "width": 402,
+            "height": 168,
+            "lines": 3,
+            "fontSize": 65
+          },
+          {
+            "tag": "h2",
+            "text": "Automation and reliability",
+            "width": 402,
+            "height": 168,
+            "lines": 3,
+            "fontSize": 65
+          },
+          {
+            "tag": "h2",
+            "text": "Carbon credit visualisation",
+            "width": 402,
+            "height": 168,
+            "lines": 3,
+            "fontSize": 65
+          },
+          {
+            "tag": "h2",
+            "text": "Invoice matching system",
+            "width": 402,
+            "height": 168,
+            "lines": 3,
+            "fontSize": 65
+          },
+          {
+            "tag": "h2",
+            "text": "Property appraisal platform",
+            "width": 402,
+            "height": 168,
+            "lines": 3,
+            "fontSize": 65
+          }
+        ]
+      },
+      {
+        "selector": ".page-cta",
+        "width": 1093,
+        "height": 233,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": []
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\experience-1181.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "a",
+        "text": "Bring me the problem →",
+        "top": 761,
+        "bottom": 805
+      },
+      "overlap": false
+    }
+  },
+  {
+    "route": "contact",
+    "width": 1181,
+    "viewport": {
+      "width": 1181,
+      "height": 900
+    },
+    "document": {
+      "clientWidth": 1181,
+      "scrollWidth": 1181,
+      "overflow": false
+    },
+    "bodyPaddingBottom": "0px",
+    "rail": {
+      "left": 0,
+      "right": 88,
+      "top": 0,
+      "bottom": 900,
+      "width": 88,
+      "height": 900
+    },
+    "nav": {
+      "left": 22,
+      "right": 66,
+      "top": 324,
+      "bottom": 722,
+      "width": 44,
+      "height": 398,
+      "writingMode": "vertical-rl"
+    },
+    "sections": [
+      {
+        "selector": ".page-hero",
+        "width": 1093,
+        "height": 630,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h1",
+            "text": "Bring thecomplicated part.",
+            "width": 1034,
+            "height": 195,
+            "lines": 2,
+            "fontSize": 122.8
+          }
+        ]
+      },
+      {
+        "selector": ".contact-grid",
+        "width": 1093,
+        "height": 940,
+        "left": 88,
+        "right": 1181,
+        "scrollWidth": 1093,
+        "clientWidth": 1093,
+        "outliers": [
+          {
+            "tag": "label",
+            "className": "",
+            "text": "Leave this field empty",
+            "left": -9395,
+            "right": -9072,
+            "width": 323,
+            "scroller": false
+          },
+          {
+            "tag": "input",
+            "className": "",
+            "text": "",
+            "left": -9395,
+            "right": -9072,
+            "width": 323,
+            "scroller": false
+          }
+        ],
+        "clippedText": [],
+        "headings": [
+          {
+            "tag": "h2",
+            "text": "A useful first message includes:",
+            "width": 384,
+            "height": 150,
+            "lines": 3,
+            "fontSize": 53.1
+          }
+        ]
+      }
+    ],
+    "targetsUnder24": [],
+    "targetsUnder44": [],
+    "screenshot": "C:\\Users\\daniel\\Code\\ResumeBuild\\dvieira\\.impeccable\\mobile-audit\\landscape\\contact-1181.png",
+    "bottom": {
+      "dock": {
+        "top": 324,
+        "bottom": 722
+      },
+      "lastTarget": {
+        "tag": "button",
+        "text": "submit →",
+        "top": 698,
+        "bottom": 746
+      },
+      "overlap": false
+    }
+  }
+]

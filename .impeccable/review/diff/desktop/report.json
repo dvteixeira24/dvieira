@@ -1,0 +1,1268 @@
+{
+  "tool": "comp-diff",
+  "version": 1,
+  "createdAt": "2026-09-13T09:32:33.845Z",
+  "label": "desktop",
+  "comp": ".impeccable/mocks/variable-engineer-03.png",
+  "build": ".impeccable/review/desktop.png",
+  "spec": ".impeccable/build/spec.json",
+  "compSize": "1586x992",
+  "buildSize": "1586x992",
+  "align": "top",
+  "overall": 0.7989,
+  "verdict": "drift",
+  "scores": {
+    "overall": 0.7989,
+    "structure": 0.6738,
+    "color": 0.8795,
+    "colorIntersection": 0.7847,
+    "paletteMatch": 0.9305,
+    "detail": 0.7985,
+    "detailRaw": 0.809,
+    "detailAdded": 0.0208,
+    "bands": 0.9571
+  },
+  "palette": {
+    "comp": [
+      {
+        "hex": "#f7eae8",
+        "coverage": 0.8821
+      },
+      {
+        "hex": "#0c0d0d",
+        "coverage": 0.09
+      },
+      {
+        "hex": "#b0b0ad",
+        "coverage": 0.017
+      },
+      {
+        "hex": "#717171",
+        "coverage": 0.0082
+      },
+      {
+        "hex": "#3f3f3f",
+        "coverage": 0.0028
+      }
+    ],
+    "build": [
+      {
+        "hex": "#f8e8e8",
+        "coverage": 0.8866
+      },
+      {
+        "hex": "#090909",
+        "coverage": 0.097
+      },
+      {
+        "hex": "#bfb6b2",
+        "coverage": 0.0075
+      },
+      {
+        "hex": "#5e5959",
+        "coverage": 0.0057
+      },
+      {
+        "hex": "#8f8888",
+        "coverage": 0.0025
+      },
+      {
+        "hex": "#383838",
+        "coverage": 0.0008
+      }
+    ]
+  },
+  "regions": [
+    {
+      "id": "identity-rule",
+      "x": 0.063,
+      "y": 0,
+      "w": 0.002,
+      "h": 0.81,
+      "kind": "chrome",
+      "score": {
+        "overall": 0.8399,
+        "structure": 0.9675,
+        "color": 0.8753,
+        "colorIntersection": 0.8321,
+        "paletteMatch": 0.8986,
+        "detail": 0.5297,
+        "detailRaw": 0.5297,
+        "detailAdded": 0,
+        "bands": 1
+      },
+      "verdict": "match",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 23,
+          "h": 804
+        },
+        "build": {
+          "x": 22,
+          "y": 0,
+          "w": 1,
+          "h": 804
+        }
+      }
+    },
+    {
+      "id": "dvt-mark",
+      "x": 0.014,
+      "y": 0.02,
+      "w": 0.045,
+      "h": 0.04,
+      "kind": "text",
+      "score": {
+        "overall": 0.5887,
+        "structure": 0.586,
+        "color": 0.7345,
+        "colorIntersection": 0.5694,
+        "paletteMatch": 0.8234,
+        "detail": 0.4539,
+        "detailRaw": 0.4696,
+        "detailAdded": 0.0313,
+        "bands": 0.44
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 1,
+          "y": 9,
+          "w": 58,
+          "h": 26
+        },
+        "build": {
+          "x": 0,
+          "y": 7,
+          "w": 51,
+          "h": 19
+        }
+      }
+    },
+    {
+      "id": "identity-name",
+      "x": 0.014,
+      "y": 0.08,
+      "w": 0.045,
+      "h": 0.08,
+      "kind": "text",
+      "score": {
+        "overall": 0.6134,
+        "structure": 0.6837,
+        "color": 0.7593,
+        "colorIntersection": 0.6299,
+        "paletteMatch": 0.829,
+        "detail": 0.2404,
+        "detailRaw": 0.282,
+        "detailAdded": 0.0833,
+        "bands": 0.4571
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 1,
+          "y": 4,
+          "w": 48,
+          "h": 71
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 34,
+          "h": 38
+        }
+      }
+    },
+    {
+      "id": "identity-location",
+      "x": 0.014,
+      "y": 0.18,
+      "w": 0.05,
+      "h": 0.06,
+      "kind": "text",
+      "score": {
+        "overall": 0.7117,
+        "structure": 0.7345,
+        "color": 0.7588,
+        "colorIntersection": 0.6358,
+        "paletteMatch": 0.825,
+        "detail": 0.5117,
+        "detailRaw": 0.6055,
+        "detailAdded": 0.1875,
+        "bands": 0.78
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 1,
+          "y": 0,
+          "w": 78,
+          "h": 59
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 79,
+          "h": 59
+        }
+      }
+    },
+    {
+      "id": "rail-navigation",
+      "x": 0.02,
+      "y": 0.34,
+      "w": 0.035,
+      "h": 0.35,
+      "kind": "control",
+      "score": {
+        "overall": 0.73,
+        "structure": 0.8247,
+        "color": 0.8358,
+        "colorIntersection": 0.7299,
+        "paletteMatch": 0.8929,
+        "detail": 0.3319,
+        "detailRaw": 0.3683,
+        "detailAdded": 0.0729,
+        "bands": 0.5556
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 10,
+          "y": 30,
+          "w": 18,
+          "h": 316
+        },
+        "build": {
+          "x": 11,
+          "y": 20,
+          "w": 14,
+          "h": 249
+        }
+      }
+    },
+    {
+      "id": "mode-sequencer",
+      "x": 0.27,
+      "y": 0.03,
+      "w": 0.44,
+      "h": 0.045,
+      "kind": "control",
+      "score": {
+        "overall": 0.7081,
+        "structure": 0.8564,
+        "color": 0.8741,
+        "colorIntersection": 0.7884,
+        "paletteMatch": 0.9202,
+        "detail": 0.084,
+        "detailRaw": 0.1882,
+        "detailAdded": 0.2083,
+        "bands": 0
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 6,
+          "y": 11,
+          "w": 692,
+          "h": 36
+        },
+        "build": {
+          "x": 22,
+          "y": 7,
+          "w": 601,
+          "h": 27
+        }
+      }
+    },
+    {
+      "id": "systems-tagline",
+      "x": 0.88,
+      "y": 0.025,
+      "w": 0.1,
+      "h": 0.045,
+      "kind": "text",
+      "score": {
+        "overall": 0.5817,
+        "structure": 0.6334,
+        "color": 0.7046,
+        "colorIntersection": 0.5612,
+        "paletteMatch": 0.7818,
+        "detail": 0.3209,
+        "detailRaw": 0.4303,
+        "detailAdded": 0.2188,
+        "bands": 0.4071
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 8,
+          "w": 158,
+          "h": 40
+        },
+        "build": {
+          "x": 16,
+          "y": 5,
+          "w": 130,
+          "h": 23
+        }
+      }
+    },
+    {
+      "id": "headline-different",
+      "x": 0.09,
+      "y": 0.14,
+      "w": 0.47,
+      "h": 0.13,
+      "kind": "text",
+      "score": {
+        "overall": 0.4794,
+        "structure": 0.3692,
+        "color": 0.8185,
+        "colorIntersection": 0.669,
+        "paletteMatch": 0.8991,
+        "detail": 0.4319,
+        "detailRaw": 0.5309,
+        "detailAdded": 0.1979,
+        "bands": 0.2533
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 1,
+          "y": 2,
+          "w": 699,
+          "h": 118
+        },
+        "build": {
+          "x": 6,
+          "y": 0,
+          "w": 736,
+          "h": 113
+        }
+      }
+    },
+    {
+      "id": "headline-systems",
+      "x": 0.09,
+      "y": 0.29,
+      "w": 0.58,
+      "h": 0.12,
+      "kind": "text",
+      "score": {
+        "overall": 0.615,
+        "structure": 0.4692,
+        "color": 0.8535,
+        "colorIntersection": 0.7209,
+        "paletteMatch": 0.9249,
+        "detail": 0.6284,
+        "detailRaw": 0.7326,
+        "detailAdded": 0.2083,
+        "bands": 0.7273
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 920,
+          "h": 119
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 920,
+          "h": 119
+        }
+      }
+    },
+    {
+      "id": "headline-same",
+      "x": 0.09,
+      "y": 0.42,
+      "w": 0.35,
+      "h": 0.12,
+      "kind": "text",
+      "score": {
+        "overall": 0.5831,
+        "structure": 0.4503,
+        "color": 0.8301,
+        "colorIntersection": 0.6907,
+        "paletteMatch": 0.9051,
+        "detail": 0.5359,
+        "detailRaw": 0.6297,
+        "detailAdded": 0.1875,
+        "bands": 0.7
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 430,
+          "h": 107
+        },
+        "build": {
+          "x": 2,
+          "y": 0,
+          "w": 552,
+          "h": 114
+        }
+      }
+    },
+    {
+      "id": "headline-approach",
+      "x": 0.09,
+      "y": 0.55,
+      "w": 0.59,
+      "h": 0.12,
+      "kind": "text",
+      "score": {
+        "overall": 0.5794,
+        "structure": 0.4142,
+        "color": 0.8569,
+        "colorIntersection": 0.7229,
+        "paletteMatch": 0.9291,
+        "detail": 0.6094,
+        "detailRaw": 0.6719,
+        "detailAdded": 0.125,
+        "bands": 0.6667
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 935,
+          "h": 119
+        },
+        "build": {
+          "x": 0,
+          "y": 0,
+          "w": 935,
+          "h": 119
+        }
+      }
+    },
+    {
+      "id": "width-readout-25",
+      "x": 0.54,
+      "y": 0.22,
+      "w": 0.16,
+      "h": 0.035,
+      "kind": "text",
+      "score": {
+        "overall": 0.7549,
+        "structure": 0.8867,
+        "color": 0.8917,
+        "colorIntersection": 0.8212,
+        "paletteMatch": 0.9296,
+        "detail": 0.1909,
+        "detailRaw": 0.269,
+        "detailAdded": 0.1563,
+        "bands": 0.6
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 40,
+          "y": 9,
+          "w": 206,
+          "h": 17
+        },
+        "build": {
+          "x": 2,
+          "y": 11,
+          "w": 220,
+          "h": 8
+        }
+      }
+    },
+    {
+      "id": "width-readout-100",
+      "x": 0.67,
+      "y": 0.35,
+      "w": 0.075,
+      "h": 0.035,
+      "kind": "text",
+      "score": {
+        "overall": 0.6238,
+        "structure": 0.7055,
+        "color": 0.8494,
+        "colorIntersection": 0.7493,
+        "paletteMatch": 0.9033,
+        "detail": 0.1025,
+        "detailRaw": 0.1702,
+        "detailAdded": 0.1354,
+        "bands": 0.4333
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 13,
+          "w": 99,
+          "h": 25
+        },
+        "build": {
+          "x": 0,
+          "y": 14,
+          "w": 44,
+          "h": 34
+        }
+      }
+    },
+    {
+      "id": "width-readout-60",
+      "x": 0.38,
+      "y": 0.49,
+      "w": 0.28,
+      "h": 0.035,
+      "kind": "text",
+      "score": {
+        "overall": 0.8476,
+        "structure": 0.9619,
+        "color": 0.8804,
+        "colorIntersection": 0.8108,
+        "paletteMatch": 0.9179,
+        "detail": 0.3101,
+        "detailRaw": 0.3413,
+        "detailAdded": 0.0625,
+        "bands": 1
+      },
+      "verdict": "match",
+      "inkBox": {
+        "comp": null,
+        "build": {
+          "x": 62,
+          "y": 17,
+          "w": 235,
+          "h": 8
+        }
+      }
+    },
+    {
+      "id": "width-readout-125",
+      "x": 0.69,
+      "y": 0.62,
+      "w": 0.075,
+      "h": 0.035,
+      "kind": "text",
+      "score": {
+        "overall": 0.7481,
+        "structure": 0.8076,
+        "color": 0.8818,
+        "colorIntersection": 0.7875,
+        "paletteMatch": 0.9325,
+        "detail": 0.2922,
+        "detailRaw": 0.3703,
+        "detailAdded": 0.1563,
+        "bands": 0.8
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 12,
+          "y": 21,
+          "w": 101,
+          "h": 15
+        },
+        "build": {
+          "x": 2,
+          "y": 0,
+          "w": 100,
+          "h": 48
+        }
+      }
+    },
+    {
+      "id": "reasoning-kicker",
+      "x": 0.79,
+      "y": 0.13,
+      "w": 0.17,
+      "h": 0.05,
+      "kind": "text",
+      "score": {
+        "overall": 0.6262,
+        "structure": 0.7525,
+        "color": 0.8078,
+        "colorIntersection": 0.6593,
+        "paletteMatch": 0.8878,
+        "detail": 0.3198,
+        "detailRaw": 0.4084,
+        "detailAdded": 0.1771,
+        "bands": 0
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 1,
+          "y": 5,
+          "w": 172,
+          "h": 28
+        },
+        "build": {
+          "x": 0,
+          "y": 11,
+          "w": 142,
+          "h": 27
+        }
+      }
+    },
+    {
+      "id": "reasoning-problem",
+      "x": 0.78,
+      "y": 0.22,
+      "w": 0.2,
+      "h": 0.065,
+      "kind": "text",
+      "score": {
+        "overall": 0.7486,
+        "structure": 0.7503,
+        "color": 0.8301,
+        "colorIntersection": 0.6962,
+        "paletteMatch": 0.9022,
+        "detail": 0.4777,
+        "detailRaw": 0.5611,
+        "detailAdded": 0.1667,
+        "bands": 0.9429
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 8,
+          "y": 11,
+          "w": 307,
+          "h": 39
+        },
+        "build": {
+          "x": 2,
+          "y": 12,
+          "w": 295,
+          "h": 42
+        }
+      }
+    },
+    {
+      "id": "reasoning-constraint",
+      "x": 0.78,
+      "y": 0.32,
+      "w": 0.2,
+      "h": 0.065,
+      "kind": "text",
+      "score": {
+        "overall": 0.8111,
+        "structure": 0.8278,
+        "color": 0.8637,
+        "colorIntersection": 0.7652,
+        "paletteMatch": 0.9168,
+        "detail": 0.6085,
+        "detailRaw": 0.6137,
+        "detailAdded": 0.0104,
+        "bands": 0.9
+      },
+      "verdict": "match",
+      "inkBox": {
+        "comp": {
+          "x": 8,
+          "y": 10,
+          "w": 289,
+          "h": 35
+        },
+        "build": {
+          "x": 2,
+          "y": 9,
+          "w": 281,
+          "h": 38
+        }
+      }
+    },
+    {
+      "id": "reasoning-intervention",
+      "x": 0.78,
+      "y": 0.42,
+      "w": 0.2,
+      "h": 0.065,
+      "kind": "text",
+      "score": {
+        "overall": 0.6954,
+        "structure": 0.6934,
+        "color": 0.818,
+        "colorIntersection": 0.7009,
+        "paletteMatch": 0.881,
+        "detail": 0.4839,
+        "detailRaw": 0.5255,
+        "detailAdded": 0.0833,
+        "bands": 0.7167
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 9,
+          "y": 5,
+          "w": 295,
+          "h": 39
+        },
+        "build": {
+          "x": 0,
+          "y": 5,
+          "w": 302,
+          "h": 43
+        }
+      }
+    },
+    {
+      "id": "reasoning-outcome",
+      "x": 0.78,
+      "y": 0.52,
+      "w": 0.2,
+      "h": 0.065,
+      "kind": "text",
+      "score": {
+        "overall": 0.7554,
+        "structure": 0.7869,
+        "color": 0.8691,
+        "colorIntersection": 0.7612,
+        "paletteMatch": 0.9271,
+        "detail": 0.5513,
+        "detailRaw": 0.5981,
+        "detailAdded": 0.0938,
+        "bands": 0.62
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 8,
+          "y": 4,
+          "w": 288,
+          "h": 39
+        },
+        "build": {
+          "x": 2,
+          "y": 3,
+          "w": 282,
+          "h": 43
+        }
+      }
+    },
+    {
+      "id": "coordinate-readout",
+      "x": 0.09,
+      "y": 0.72,
+      "w": 0.08,
+      "h": 0.055,
+      "kind": "text",
+      "score": {
+        "overall": 0.607,
+        "structure": 0.7286,
+        "color": 0.8288,
+        "colorIntersection": 0.7121,
+        "paletteMatch": 0.8917,
+        "detail": 0.0898,
+        "detailRaw": 0.1732,
+        "detailAdded": 0.1667,
+        "bands": 0.22
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 7,
+          "w": 127,
+          "h": 26
+        },
+        "build": {
+          "x": 0,
+          "y": 30,
+          "w": 46,
+          "h": 23
+        }
+      }
+    },
+    {
+      "id": "process-mantra",
+      "x": 0.2,
+      "y": 0.7,
+      "w": 0.07,
+      "h": 0.08,
+      "kind": "text",
+      "score": {
+        "overall": 0.6415,
+        "structure": 0.71,
+        "color": 0.7348,
+        "colorIntersection": 0.6067,
+        "paletteMatch": 0.8038,
+        "detail": 0.2854,
+        "detailRaw": 0.3688,
+        "detailAdded": 0.1667,
+        "bands": 0.6
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 6,
+          "y": 11,
+          "w": 61,
+          "h": 58
+        },
+        "build": {
+          "x": 24,
+          "y": 19,
+          "w": 43,
+          "h": 54
+        }
+      }
+    },
+    {
+      "id": "offer-copy",
+      "x": 0.65,
+      "y": 0.72,
+      "w": 0.18,
+      "h": 0.065,
+      "kind": "text",
+      "score": {
+        "overall": 0.6232,
+        "structure": 0.5732,
+        "color": 0.6727,
+        "colorIntersection": 0.5012,
+        "paletteMatch": 0.7651,
+        "detail": 0.4941,
+        "detailRaw": 0.5982,
+        "detailAdded": 0.2083,
+        "bands": 0.9429
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 3,
+          "y": 5,
+          "w": 240,
+          "h": 47
+        },
+        "build": {
+          "x": 20,
+          "y": 5,
+          "w": 223,
+          "h": 53
+        }
+      }
+    },
+    {
+      "id": "start-project",
+      "x": 0.85,
+      "y": 0.72,
+      "w": 0.13,
+      "h": 0.055,
+      "kind": "control",
+      "score": {
+        "overall": 0.6654,
+        "structure": 0.7322,
+        "color": 0.7118,
+        "colorIntersection": 0.4945,
+        "paletteMatch": 0.8288,
+        "detail": 0.4341,
+        "detailRaw": 0.4758,
+        "detailAdded": 0.0833,
+        "bands": 0.7
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 2,
+          "y": 13,
+          "w": 204,
+          "h": 29
+        },
+        "build": {
+          "x": 3,
+          "y": 12,
+          "w": 193,
+          "h": 26
+        }
+      }
+    },
+    {
+      "id": "fold-rule",
+      "x": 0,
+      "y": 0.81,
+      "w": 1,
+      "h": 0.006,
+      "kind": "chrome",
+      "score": {
+        "overall": 0.7003,
+        "structure": 0.9997,
+        "color": 0.8626,
+        "colorIntersection": 0.7567,
+        "paletteMatch": 0.9196,
+        "detail": 0.2392,
+        "detailRaw": 0.3017,
+        "detailAdded": 0.125,
+        "bands": 0.5
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 1586,
+          "h": 30
+        },
+        "build": {
+          "x": 100,
+          "y": 0,
+          "w": 1486,
+          "h": 48
+        }
+      }
+    },
+    {
+      "id": "selected-work-kicker",
+      "x": 0.025,
+      "y": 0.84,
+      "w": 0.1,
+      "h": 0.035,
+      "kind": "text",
+      "score": {
+        "overall": 0.5925,
+        "structure": 0.677,
+        "color": 0.901,
+        "colorIntersection": 0.8302,
+        "paletteMatch": 0.9391,
+        "detail": 0.0206,
+        "detailRaw": 0.1873,
+        "detailAdded": 0.3333,
+        "bands": 0.2571
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 12,
+          "w": 94,
+          "h": 36
+        },
+        "build": {
+          "x": 41,
+          "y": 0,
+          "w": 115,
+          "h": 48
+        }
+      }
+    },
+    {
+      "id": "selected-work-title",
+      "x": 0.025,
+      "y": 0.82,
+      "w": 0.37,
+      "h": 0.18,
+      "kind": "text",
+      "score": {
+        "overall": 0.6101,
+        "structure": 0.5608,
+        "color": 0.8155,
+        "colorIntersection": 0.6714,
+        "paletteMatch": 0.8931,
+        "detail": 0.5057,
+        "detailRaw": 0.5734,
+        "detailAdded": 0.1354,
+        "bands": 0.5
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 26,
+          "w": 521,
+          "h": 137
+        },
+        "build": {
+          "x": 41,
+          "y": 0,
+          "w": 392,
+          "h": 179
+        }
+      }
+    },
+    {
+      "id": "timeline-rule",
+      "x": 0.41,
+      "y": 0.87,
+      "w": 0.53,
+      "h": 0.025,
+      "kind": "chrome",
+      "score": {
+        "overall": 0.6702,
+        "structure": 0.9798,
+        "color": 0.8696,
+        "colorIntersection": 0.7491,
+        "paletteMatch": 0.9345,
+        "detail": 0.2396,
+        "detailRaw": 0.3541,
+        "detailAdded": 0.2292,
+        "bands": 0.3333
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 2,
+          "y": 15,
+          "w": 824,
+          "h": 18
+        },
+        "build": {
+          "x": 57,
+          "y": 13,
+          "w": 784,
+          "h": 35
+        }
+      }
+    },
+    {
+      "id": "timeline-define",
+      "x": 0.41,
+      "y": 0.9,
+      "w": 0.12,
+      "h": 0.085,
+      "kind": "text",
+      "score": {
+        "overall": 0.6773,
+        "structure": 0.7876,
+        "color": 0.8797,
+        "colorIntersection": 0.7969,
+        "paletteMatch": 0.9243,
+        "detail": 0.0905,
+        "detailRaw": 0.179,
+        "detailAdded": 0.1771,
+        "bands": 0.5
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 3,
+          "y": 9,
+          "w": 127,
+          "h": 55
+        },
+        "build": {
+          "x": 57,
+          "y": 0,
+          "w": 134,
+          "h": 84
+        }
+      }
+    },
+    {
+      "id": "timeline-explore",
+      "x": 0.565,
+      "y": 0.88,
+      "w": 0.125,
+      "h": 0.11,
+      "kind": "text",
+      "score": {
+        "overall": 0.7036,
+        "structure": 0.8377,
+        "color": 0.893,
+        "colorIntersection": 0.8105,
+        "paletteMatch": 0.9374,
+        "detail": 0.1433,
+        "detailRaw": 0.1902,
+        "detailAdded": 0.0938,
+        "bands": 0.4
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 0,
+          "w": 198,
+          "h": 84
+        },
+        "build": {
+          "x": 13,
+          "y": 0,
+          "w": 78,
+          "h": 81
+        }
+      }
+    },
+    {
+      "id": "timeline-build",
+      "x": 0.67,
+      "y": 0.9,
+      "w": 0.12,
+      "h": 0.085,
+      "kind": "text",
+      "score": {
+        "overall": 0.7172,
+        "structure": 0.819,
+        "color": 0.885,
+        "colorIntersection": 0.799,
+        "paletteMatch": 0.9312,
+        "detail": 0.199,
+        "detailRaw": 0.2355,
+        "detailAdded": 0.0729,
+        "bands": 0.5667
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 11,
+          "y": 9,
+          "w": 146,
+          "h": 55
+        },
+        "build": {
+          "x": 49,
+          "y": 0,
+          "w": 101,
+          "h": 60
+        }
+      }
+    },
+    {
+      "id": "timeline-deploy",
+      "x": 0.8,
+      "y": 0.9,
+      "w": 0.12,
+      "h": 0.085,
+      "kind": "text",
+      "score": {
+        "overall": 0.7045,
+        "structure": 0.7966,
+        "color": 0.8962,
+        "colorIntersection": 0.8088,
+        "paletteMatch": 0.9433,
+        "detail": 0.1698,
+        "detailRaw": 0.2115,
+        "detailAdded": 0.0833,
+        "bands": 0.5667
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 17,
+          "y": 9,
+          "w": 133,
+          "h": 53
+        },
+        "build": {
+          "x": 45,
+          "y": 0,
+          "w": 85,
+          "h": 58
+        }
+      }
+    },
+    {
+      "id": "timeline-label",
+      "x": 0.96,
+      "y": 0.85,
+      "w": 0.03,
+      "h": 0.11,
+      "kind": "text",
+      "score": {
+        "overall": 0.5963,
+        "structure": 0.7414,
+        "color": 0.8221,
+        "colorIntersection": 0.6811,
+        "paletteMatch": 0.898,
+        "detail": 0.134,
+        "detailRaw": 0.1913,
+        "detailAdded": 0.1146,
+        "bands": 0
+      },
+      "verdict": "drift",
+      "inkBox": {
+        "comp": {
+          "x": 0,
+          "y": 4,
+          "w": 26,
+          "h": 105
+        },
+        "build": {
+          "x": 13,
+          "y": 9,
+          "w": 7,
+          "h": 98
+        }
+      }
+    },
+    {
+      "id": "rail-registration",
+      "x": 0.03,
+      "y": 0.265,
+      "w": 0.003,
+      "h": 0.055,
+      "kind": "chrome",
+      "score": {
+        "overall": 0.8749,
+        "structure": 0.9862,
+        "color": 0.9279,
+        "colorIntersection": 0.8657,
+        "paletteMatch": 0.9614,
+        "detail": 0.5909,
+        "detailRaw": 0.6013,
+        "detailAdded": 0.0208,
+        "bands": 1
+      },
+      "verdict": "match",
+      "inkBox": {
+        "comp": {
+          "x": 22,
+          "y": 2,
+          "w": 2,
+          "h": 51
+        },
+        "build": {
+          "x": 23,
+          "y": 0,
+          "w": 2,
+          "h": 54
+        }
+      }
+    }
+  ],
+  "files": {
+    "sideBySide": "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/side-by-side.png",
+    "heatmap": "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/heatmap.png",
+    "regionFiles": [
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/identity-rule.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/dvt-mark.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/identity-name.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/identity-location.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/rail-navigation.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/mode-sequencer.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/systems-tagline.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/headline-different.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/headline-systems.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/headline-same.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/headline-approach.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/width-readout-25.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/width-readout-100.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/width-readout-60.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/width-readout-125.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/reasoning-kicker.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/reasoning-problem.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/reasoning-constraint.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/reasoning-intervention.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/reasoning-outcome.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/coordinate-readout.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/process-mantra.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/offer-copy.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/start-project.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/fold-rule.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/selected-work-kicker.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/selected-work-title.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-rule.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-define.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-explore.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-build.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-deploy.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/timeline-label.png",
+      "/mnt/c/Users/daniel/Code/ResumeBuild/dvieira/.impeccable/review/diff/desktop/regions/rail-registration.png"
+    ]
+  }
+}

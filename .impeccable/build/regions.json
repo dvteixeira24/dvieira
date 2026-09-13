@@ -1,0 +1,446 @@
+{
+  "regions": [
+    {
+      "id": "identity-rule",
+      "kind": "chrome",
+      "grid": "A0:A7",
+      "note": "thin vertical identity-rail separator",
+      "box": {
+        "x": 0.063,
+        "y": 0,
+        "w": 0.002,
+        "h": 0.81
+      },
+      "snap": false
+    },
+    {
+      "id": "dvt-mark",
+      "kind": "text",
+      "grid": "A0:A0",
+      "note": "bold DVT monogram",
+      "box": {
+        "x": 0.014,
+        "y": 0.02,
+        "w": 0.045,
+        "h": 0.04
+      },
+      "snap": false
+    },
+    {
+      "id": "identity-name",
+      "kind": "text",
+      "grid": "A0:A1",
+      "note": "stacked Daniel Vieira Teixeira name",
+      "box": {
+        "x": 0.014,
+        "y": 0.08,
+        "w": 0.045,
+        "h": 0.08
+      },
+      "snap": false
+    },
+    {
+      "id": "identity-location",
+      "kind": "text",
+      "grid": "A1:A2",
+      "note": "Cape Town South Africa location",
+      "box": {
+        "x": 0.014,
+        "y": 0.18,
+        "w": 0.05,
+        "h": 0.06
+      },
+      "snap": false
+    },
+    {
+      "id": "rail-navigation",
+      "kind": "control",
+      "grid": "A3:A6",
+      "note": "vertical Biography Experience Contact links",
+      "box": {
+        "x": 0.02,
+        "y": 0.34,
+        "w": 0.035,
+        "h": 0.35
+      },
+      "snap": false
+    },
+    {
+      "id": "mode-sequencer",
+      "kind": "control",
+      "grid": "C0:H0",
+      "note": "four numbered engineering mode controls with QA active in blue",
+      "box": {
+        "x": 0.27,
+        "y": 0.03,
+        "w": 0.44,
+        "h": 0.045
+      },
+      "snap": false
+    },
+    {
+      "id": "systems-tagline",
+      "kind": "text",
+      "grid": "I0:J0",
+      "note": "small systems for a brighter tomorrow tagline",
+      "box": {
+        "x": 0.88,
+        "y": 0.025,
+        "w": 0.1,
+        "h": 0.045
+      },
+      "snap": false
+    },
+    {
+      "id": "headline-different",
+      "kind": "text",
+      "grid": "B1:F2",
+      "note": "large narrow word Different",
+      "box": {
+        "x": 0.09,
+        "y": 0.14,
+        "w": 0.47,
+        "h": 0.13
+      },
+      "snap": false
+    },
+    {
+      "id": "headline-systems",
+      "kind": "text",
+      "grid": "B2:G3",
+      "note": "large heavy word systems",
+      "box": {
+        "x": 0.09,
+        "y": 0.29,
+        "w": 0.58,
+        "h": 0.12
+      },
+      "snap": false
+    },
+    {
+      "id": "headline-same",
+      "kind": "text",
+      "grid": "B4:E5",
+      "note": "large italic word Same",
+      "box": {
+        "x": 0.09,
+        "y": 0.42,
+        "w": 0.35,
+        "h": 0.12
+      },
+      "snap": false
+    },
+    {
+      "id": "headline-approach",
+      "kind": "text",
+      "grid": "B5:G6",
+      "note": "large bold word approach",
+      "box": {
+        "x": 0.09,
+        "y": 0.55,
+        "w": 0.59,
+        "h": 0.12
+      },
+      "snap": false
+    },
+    {
+      "id": "width-readout-25",
+      "kind": "text",
+      "grid": "F2:G2",
+      "note": "dotted width line and WIDTH 25 readout",
+      "box": {
+        "x": 0.54,
+        "y": 0.22,
+        "w": 0.16,
+        "h": 0.035
+      },
+      "snap": false
+    },
+    {
+      "id": "width-readout-100",
+      "kind": "text",
+      "grid": "G3:G3",
+      "note": "WIDTH 100 readout",
+      "box": {
+        "x": 0.67,
+        "y": 0.35,
+        "w": 0.075,
+        "h": 0.035
+      },
+      "snap": false
+    },
+    {
+      "id": "width-readout-60",
+      "kind": "text",
+      "grid": "E4:G5",
+      "note": "dotted width line and WIDTH 60 readout",
+      "box": {
+        "x": 0.38,
+        "y": 0.49,
+        "w": 0.28,
+        "h": 0.035
+      },
+      "snap": false
+    },
+    {
+      "id": "width-readout-125",
+      "kind": "text",
+      "grid": "G6:G6",
+      "note": "WIDTH 125 readout",
+      "box": {
+        "x": 0.69,
+        "y": 0.62,
+        "w": 0.075,
+        "h": 0.035
+      },
+      "snap": false
+    },
+    {
+      "id": "reasoning-kicker",
+      "kind": "text",
+      "grid": "H1:J1",
+      "note": "variable thinking real-world outcomes kicker",
+      "box": {
+        "x": 0.79,
+        "y": 0.13,
+        "w": 0.17,
+        "h": 0.05
+      },
+      "snap": false
+    },
+    {
+      "id": "reasoning-problem",
+      "kind": "text",
+      "grid": "H2:J2",
+      "note": "PROBLEM label and understand what is actually happening description",
+      "box": {
+        "x": 0.78,
+        "y": 0.22,
+        "w": 0.2,
+        "h": 0.065
+      },
+      "snap": false
+    },
+    {
+      "id": "reasoning-constraint",
+      "kind": "text",
+      "grid": "H3:J3",
+      "note": "CONSTRAINT label and work within real limits description",
+      "box": {
+        "x": 0.78,
+        "y": 0.32,
+        "w": 0.2,
+        "h": 0.065
+      },
+      "snap": false
+    },
+    {
+      "id": "reasoning-intervention",
+      "kind": "text",
+      "grid": "H4:J4",
+      "note": "INTERVENTION label and design the right solution description",
+      "box": {
+        "x": 0.78,
+        "y": 0.42,
+        "w": 0.2,
+        "h": 0.065
+      },
+      "snap": false
+    },
+    {
+      "id": "reasoning-outcome",
+      "kind": "text",
+      "grid": "H5:J6",
+      "note": "OUTCOME label and reliable scalable system description",
+      "box": {
+        "x": 0.78,
+        "y": 0.52,
+        "w": 0.2,
+        "h": 0.065
+      },
+      "snap": false
+    },
+    {
+      "id": "coordinate-readout",
+      "kind": "text",
+      "grid": "B7:B7",
+      "note": "Cape Town latitude and longitude readout",
+      "box": {
+        "x": 0.09,
+        "y": 0.72,
+        "w": 0.08,
+        "h": 0.055
+      },
+      "snap": false
+    },
+    {
+      "id": "process-mantra",
+      "kind": "text",
+      "grid": "C7:D7",
+      "note": "engineer build improve repeat stacked mantra",
+      "box": {
+        "x": 0.2,
+        "y": 0.7,
+        "w": 0.07,
+        "h": 0.08
+      },
+      "snap": false
+    },
+    {
+      "id": "offer-copy",
+      "kind": "text",
+      "grid": "G7:H7",
+      "note": "problem-solving offer sentence",
+      "box": {
+        "x": 0.65,
+        "y": 0.72,
+        "w": 0.18,
+        "h": 0.065
+      },
+      "snap": false
+    },
+    {
+      "id": "start-project",
+      "kind": "control",
+      "grid": "I7:J7",
+      "note": "blue underlined Start a project link with arrow",
+      "box": {
+        "x": 0.85,
+        "y": 0.72,
+        "w": 0.13,
+        "h": 0.055
+      },
+      "snap": false
+    },
+    {
+      "id": "fold-rule",
+      "kind": "chrome",
+      "grid": "A8:J8",
+      "note": "hairline rule separating the first viewport from selected work",
+      "box": {
+        "x": 0,
+        "y": 0.81,
+        "w": 1,
+        "h": 0.006
+      },
+      "snap": false
+    },
+    {
+      "id": "selected-work-kicker",
+      "kind": "text",
+      "grid": "A8:B8",
+      "note": "small Selected work label",
+      "box": {
+        "x": 0.025,
+        "y": 0.84,
+        "w": 0.1,
+        "h": 0.035
+      },
+      "snap": false
+    },
+    {
+      "id": "selected-work-title",
+      "kind": "text",
+      "grid": "A8:D9",
+      "note": "large A more reliable future in progress heading",
+      "box": {
+        "x": 0.025,
+        "y": 0.82,
+        "w": 0.37,
+        "h": 0.18
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-rule",
+      "kind": "chrome",
+      "grid": "E8:J8",
+      "note": "thin project timeline rule with four circular nodes",
+      "box": {
+        "x": 0.41,
+        "y": 0.87,
+        "w": 0.53,
+        "h": 0.025
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-define",
+      "kind": "text",
+      "grid": "E8:F9",
+      "note": "01 DEFINE label and clarify the problem description",
+      "box": {
+        "x": 0.41,
+        "y": 0.9,
+        "w": 0.12,
+        "h": 0.085
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-explore",
+      "kind": "text",
+      "grid": "F8:G9",
+      "note": "02 EXPLORE label and test approaches description",
+      "box": {
+        "x": 0.565,
+        "y": 0.88,
+        "w": 0.125,
+        "h": 0.11
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-build",
+      "kind": "text",
+      "grid": "G8:H9",
+      "note": "03 BUILD label and implement and iterate description",
+      "box": {
+        "x": 0.67,
+        "y": 0.9,
+        "w": 0.12,
+        "h": 0.085
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-deploy",
+      "kind": "text",
+      "grid": "H8:I9",
+      "note": "04 DEPLOY label and stabilise and scale description",
+      "box": {
+        "x": 0.8,
+        "y": 0.9,
+        "w": 0.12,
+        "h": 0.085
+      },
+      "snap": false
+    },
+    {
+      "id": "timeline-label",
+      "kind": "text",
+      "grid": "J8:J9",
+      "note": "rotated PROJECT TIMELINE label and down arrow",
+      "box": {
+        "x": 0.96,
+        "y": 0.85,
+        "w": 0.03,
+        "h": 0.11
+      },
+      "snap": false
+    },
+    {
+      "id": "rail-registration",
+      "kind": "chrome",
+      "grid": "A2:A2",
+      "box": {
+        "x": 0.03,
+        "y": 0.265,
+        "w": 0.003,
+        "h": 0.055
+      },
+      "snap": false,
+      "note": "small registration tick and vertical rule in the identity rail"
+    }
+  ]
+}
