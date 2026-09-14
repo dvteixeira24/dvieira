@@ -2,7 +2,7 @@
 version: 1
 slug: "src-pages-index-astro"
 primary_target: "src/pages/index.astro"
-related_targets: ["src/pages/about/index.astro","src/pages/contact/index.astro","src/layouts/Layout.astro","src/components/Navigation.astro"]
+related_targets: ["src/pages/about/index.astro","src/pages/contact/index.astro","src/layouts/Layout.astro","src/components/Navigation.astro","src/components/HeroModes.astro","src/lib/hero-modes.ts"]
 ---
 
 # Homepage redesign
@@ -17,7 +17,7 @@ Prospective freelance clients should understand Daniel’s problem-solving appro
 
 ## Chosen concept
 
-Variable Engineer / Systems Sequence. Approved comp: `.impeccable/mocks/variable-engineer-03.png`. The memorable moment is a four-line statement that changes width, weight, and emphasis as the active engineering mode changes, while the reasoning coordinates remain fixed.
+Variable Engineer / Systems Sequence. Approved comp: `.impeccable/mocks/variable-engineer-03.png`. The memorable moment is a four-line statement whose discipline noun, font treatment, process cues, and evidence change together as the active engineering mode changes. “Same approach.” and the row geometry remain stable.
 
 ## Direction contract
 
@@ -27,7 +27,7 @@ OWN-WORLD: Near-white stock, dense black type, one electric ultramarine signal, 
 
 STORY: Meet Daniel, understand the four-mode approach, inspect selected interventions as problem-to-outcome narratives, then make contact.
 
-FIRST VIEWPORT: A slim identity rail frames “Different systems. Same approach.” across four variable-width lines. The mode sequencer runs above; problem, constraint, intervention, and outcome sit at right; Start a project anchors the lower-right.
+FIRST VIEWPORT: The shared navigation frames “Different interfaces. Same approach.” across four lines in the initial Frontend state. The four-role selector and Pause cycle control run above; the active role’s explanation, capabilities, and linked assignment sit at right on desktop. Start a project anchors the lower-right.
 
 FORM: Interactive variable-font specimen, chosen challenger from position four of the grounded/candidate field; seed `a5bc24f5`.
 
@@ -39,7 +39,7 @@ The 2026 proof-sheet structure remains primary. Restore the old site's personal 
 
 ## Responsive hero refinement
 
-The hero uses flow layout in three states: mobile through 760px with a two-by-two mode selector, tablet from 761–1200px with a full-width specimen and four reasoning columns below, and desktop from 1201px with a separate reasoning track. Each width readout is nested in its word's line and anchored at the bottom right, with reserved vertical space. Headline size follows its container, with room for the widest engineering mode. All four modes and their transitions must fit without clipping.
+The hero uses flow layout in three states: mobile through 760px with a two-by-two mode selector and stacked explanation, tablet from 761–1200px with a full-width specimen and two-column explanation below, and desktop from 1201px with a separate explanation track. Semantic process cues replace the Wdth readouts in reserved caption space beneath each word: left-aligned from 761px, including Backend’s word inset, to clear the role loom; mobile keeps its bottom-right placement. Headline size follows its container. All roles share four stable line heights, and overlapping panels reserve the tallest explanation’s space, so mode changes do not move the footer. All four modes and their transitions must fit without clipping.
 
 
 ## Homepage animation pass
@@ -93,3 +93,38 @@ A low-contrast, deterministically generated marbled fiber canvas sits underneath
 its 48-second drift is desktop-only. Static reduced-motion states and offscreen
 pausing apply to both layers. Display and navigation text are non-selectable;
 biography, contact information, and editable fields retain selection.
+
+
+## Four discipline states
+
+This homepage extension stays within the blush drafting paper, blue system signal,
+and Anybody / Newsreader world. Backend deliberately adds self-hosted Fragment
+Mono only for its headline and process annotations; it does not change global
+body, navigation, or editorial typography. `src/lib/hero-modes.ts` is the content
+source and `HeroModes.astro` owns the state controller.
+
+| Mode | Discipline noun | Type and visual treatment | Process cues | Explanation and evidence |
+| --- | --- | --- | --- | --- |
+| Frontend | interfaces. | Expressive Anybody widths and weights, italic “Same,” fine layout rules | Layout / Hierarchy / Interaction / Feedback | Make complexity clear: readable data interfaces and realtime updates; investment research platform at `/about#project-02`. |
+| Backend | services. | Lowercase Fragment Mono, numbered rows, dashed routing rules, alternating blue lines | Request / Validate / Transform / Deliver | Connect the moving parts: services, integrations, and document workflows; property appraisal platform at `/about#project-06`. |
+| QA | scenarios. | Uniform upright Anybody, inspection rules, open squares, corner marks | Inputs / Boundaries / Journeys / Regression | Question every assumption: manual regression and automated journeys before release; automation and reliability at `/about#project-03`. |
+| Reliability | conditions. | Heavy Anybody, blue “Same approach.”, continuous rules, quiet signal dots | Observe / Diagnose / Recover / Improve | Keep the whole system in view: Sentry, uptime and delivery monitoring, and production feedback; automation and reliability at `/about#project-03`. |
+
+Open QA squares and Reliability dots are illustrative marks, not test results or
+live status. Preserve the existing RoleLoom geometry and renderer; the shared
+`.home[data-mode]` coordinates it with the headline and explanation.
+
+Rotate every five seconds only while the hero is visible and idle. Pause cycle /
+Resume cycle explicitly controls playback. Role selection and keyboard focus hold
+the current state until resumed; mouse hover temporarily suspends the cycle.
+Offscreen and hidden-document states suspend it. Reduced motion starts on a static
+Frontend state and removes typography transitions while retaining manual mode
+selection and explicit resume. Without JavaScript, the full Frontend explanation
+and evidence remain available and mode buttons stay disabled.
+
+Pressed buttons identify the selected role and control its explanation panel.
+Only that panel is visible and accessible; automatic changes use no live region.
+Keep fixed headline row heights and reserve the tallest panel at each breakpoint.
+Initialize through `astro:page-load`; dispose the interval, intersection observer,
+and event listeners before an Astro page swap or reinitialization. Research and
+implementation rationale remain in `docs/hero-modes.md`.

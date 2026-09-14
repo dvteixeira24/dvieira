@@ -24,6 +24,12 @@ typography:
     lineHeight: 0.79
     letterSpacing: "-0.04em"
     fontVariation: "'wdth' 74, 'wght' 330"
+  home-backend-display:
+    fontFamily: "Fragment Mono, monospace"
+    fontSize: "min(11.5cqw, 8rem)"
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: "-0.04em"
   headline:
     fontFamily: "Anybody, Arial Narrow, sans-serif"
     fontSize: "clamp(3.8rem, 7.2vw, 8.4rem)"
@@ -143,6 +149,8 @@ The palette separates machine logic from human invitation.
 **Human / Editorial Font:** Newsreader with Georgia and serif fallbacks  
 **Label Font:** Anybody
 
+**Homepage Backend Exception:** Self-hosted Fragment Mono with monospace fallback, confined to the Backend headline and process annotations.
+
 **Character:** Anybody feels engineered through variable width and weight. Newsreader introduces warmth and biography without softening the surrounding technical precision.
 
 ### Hierarchy
@@ -156,6 +164,8 @@ The palette separates machine logic from human invitation.
 ### Named Rules
 
 **The Two-Voice Rule.** Anybody explains the system; Newsreader reveals the person. Keep Newsreader sparse enough that the distinction remains meaningful.
+
+**The Backend Face Exception Rule.** Fragment Mono is confined to the homepage Backend headline and process annotations. Frontend, QA, and Reliability retain Anybody with distinct role-specific treatments; Newsreader keeps its established editorial role.
 
 ## Layout
 
@@ -215,7 +225,9 @@ Use Heritage Charcoal with the original texture, cream copy, and visible grid bo
 
 ### Variable-type specimen
 
-The stable phrase changes Anybody width and weight in response to an explicit engineering mode. Preserve readable semantics and reduced-motion behavior.
+The homepage keeps “Different … Same approach.” across four stable rows while the discipline noun, typography, process cues, and evidence panel change together. Frontend uses expressive Anybody contrast; Backend uses lowercase Fragment Mono, numbered rows, and dashed routing rules; QA uses uniform upright Anybody and inspection marks; Reliability uses heavier Anybody, continuous rules, and decorative signal dots. The process cues describe the work instead of exposing font-width values.
+
+`HeroModes.astro` controls these states from the authoritative content in `src/lib/hero-modes.ts`. Its shared home `data-mode` also drives the existing role loom. Reserve the tallest explanation panel and fixed row heights so rotation does not move surrounding content. The five-second cycle runs only while visible and idle: mouse hover temporarily suspends it; role selection or keyboard focus holds the current mode until Resume cycle. Reduced motion starts paused and removes type transitions; the complete Frontend state remains readable without JavaScript. Initialize on `astro:page-load` and dispose timers, observers, and listeners on `astro:before-swap`.
 
 ### Portrait medallion
 

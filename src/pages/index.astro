@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import profileImage from '../assets/profiled.jpg'
 import RoleLoom from '../components/RoleLoom.astro'
 import HeroPaper from '../components/HeroPaper.astro'
+import HeroModes from '../components/HeroModes.astro'
 ---
 
 <Layout
@@ -13,80 +14,7 @@ import HeroPaper from '../components/HeroPaper.astro'
         <section class="hero" aria-labelledby="hero-title">
             <HeroPaper />
             <RoleLoom />
-            <div
-                class="mode-sequencer"
-                role="group"
-                aria-label="Engineering modes"
-            >
-                <button type="button" data-mode="frontend" aria-pressed="true"
-                    ><span>01</span> Frontend</button
-                >
-                <button type="button" data-mode="backend" aria-pressed="false"
-                    ><span>02</span> Backend</button
-                >
-                <button type="button" data-mode="qa" aria-pressed="false"
-                    ><span>03</span> QA</button
-                >
-                <button
-                    type="button"
-                    data-mode="reliability"
-                    aria-pressed="false"><span>04</span> Reliability</button
-                >
-            </div>
-
-            <h1
-                id="hero-title"
-                class="statement"
-                aria-label="Different systems. Same approach."
-            >
-                <span
-                    class="statement-line statement-different"
-                    aria-hidden="true"
-                >
-                    <span class="statement-word">Different</span>
-                    <span class="width-readout">
-                        <span class="readout-line"></span>
-                        <b
-                            >Wdth <output data-axis-value="different"
-                                >102</output
-                            ></b
-                        >
-                    </span>
-                </span>
-                <span
-                    class="statement-line statement-systems"
-                    aria-hidden="true"
-                >
-                    <span class="statement-word">systems.</span>
-                    <span class="width-readout">
-                        <span class="readout-line"></span>
-                        <b
-                            >Wdth <output data-axis-value="systems">106</output
-                            ></b
-                        >
-                    </span>
-                </span>
-                <span class="statement-line statement-same" aria-hidden="true">
-                    <span class="statement-word">Same</span>
-                    <span class="width-readout">
-                        <span class="readout-line"></span>
-                        <b>Wdth <output data-axis-value="same">104</output></b>
-                    </span>
-                </span>
-                <span
-                    class="statement-line statement-approach"
-                    aria-hidden="true"
-                >
-                    <span class="statement-word">approach.</span>
-                    <span class="width-readout">
-                        <span class="readout-line"></span>
-                        <b
-                            >Wdth <output data-axis-value="approach">102</output
-                            ></b
-                        >
-                    </span>
-                </span>
-            </h1>
+            <HeroModes />
 
             <div class="hero-footer">
                 <figure class="portrait-seal">
@@ -188,89 +116,6 @@ import HeroPaper from '../components/HeroPaper.astro'
         </section>
     </main>
 </Layout>
-
-<script is:inline data-astro-rerun>
-    ;(() => {
-        const root = document.querySelector('[data-mode]')
-        if (!root || root.dataset.modeReady === 'true') return
-
-        root.dataset.modeReady = 'true'
-        const controls = root.querySelectorAll('.mode-sequencer button')
-        const axisValues = {
-            frontend: { different: 58, systems: 88, same: 112, approach: 132 },
-            backend: { different: 92, systems: 136, same: 72, approach: 102 },
-            qa: { different: 102, systems: 106, same: 104, approach: 102 },
-            reliability: {
-                different: 118,
-                systems: 105,
-                same: 62,
-                approach: 140,
-            },
-        }
-        const showAxisValues = mode => {
-            const values = axisValues[mode]
-            if (!values) return
-            root.querySelectorAll('[data-axis-value]').forEach(output => {
-                const axis = output.dataset.axisValue
-                if (axis && values[axis] !== undefined)
-                    output.value = values[axis]
-            })
-        }
-        const selectMode = control => {
-            const mode = control.dataset.mode
-            if (!mode) return
-            root.dataset.mode = mode
-            showAxisValues(mode)
-            controls.forEach(button => {
-                button.setAttribute('aria-pressed', String(button === control))
-            })
-        }
-        let timer
-        let heroVisible = true
-        const stopTimer = () => window.clearInterval(timer)
-        const restartTimer = () => {
-            stopTimer()
-            if (document.hidden || !heroVisible) return
-            timer = window.setInterval(() => {
-                const current = [...controls].findIndex(
-                    control => control.dataset.mode === root.dataset.mode,
-                )
-                selectMode(controls[(current + 1) % controls.length])
-            }, 5000)
-        }
-        const listeners = new AbortController()
-        controls.forEach(control => {
-            control.addEventListener(
-                'click',
-                () => {
-                    selectMode(control)
-                    restartTimer()
-                },
-                { signal: listeners.signal },
-            )
-        })
-        const observer = new IntersectionObserver(entries => {
-            heroVisible = entries[0].isIntersecting
-            restartTimer()
-        })
-        observer.observe(root.querySelector('.hero'))
-        document.addEventListener('visibilitychange', restartTimer, {
-            signal: listeners.signal,
-        })
-        document.addEventListener(
-            'astro:before-swap',
-            () => {
-                stopTimer()
-                observer.disconnect()
-                listeners.abort()
-                delete root.dataset.modeReady
-            },
-            { once: true, signal: listeners.signal },
-        )
-        showAxisValues(root.dataset.mode)
-        restartTimer()
-    })()
-</script>
 
 <script>
     import { gsap } from 'gsap'
@@ -423,48 +268,7 @@ import HeroPaper from '../components/HeroPaper.astro'
 
 <style lang="scss">
     .home {
-        --different-wdth: 102;
-        --different-weight: 250;
-        --systems-wdth: 106;
-        --systems-weight: 850;
-        --same-wdth: 104;
-        --same-weight: 320;
-        --approach-wdth: 102;
-        --approach-weight: 820;
         background: var(--paper);
-    }
-
-    .home[data-mode='frontend'] {
-        --different-wdth: 58;
-        --different-weight: 220;
-        --systems-wdth: 88;
-        --systems-weight: 760;
-        --same-wdth: 112;
-        --same-weight: 360;
-        --approach-wdth: 132;
-        --approach-weight: 700;
-    }
-
-    .home[data-mode='backend'] {
-        --different-wdth: 92;
-        --different-weight: 360;
-        --systems-wdth: 136;
-        --systems-weight: 900;
-        --same-wdth: 72;
-        --same-weight: 260;
-        --approach-wdth: 102;
-        --approach-weight: 790;
-    }
-
-    .home[data-mode='reliability'] {
-        --different-wdth: 118;
-        --different-weight: 320;
-        --systems-wdth: 105;
-        --systems-weight: 730;
-        --same-wdth: 62;
-        --same-weight: 240;
-        --approach-wdth: 140;
-        --approach-weight: 900;
     }
 
     .hero {
@@ -485,153 +289,9 @@ import HeroPaper from '../components/HeroPaper.astro'
         min-width: 0;
     }
 
-    .mode-sequencer,
-    .statement,
     .hero-footer {
         position: relative;
-        z-index: 1;
-    }
-
-    .mode-sequencer,
-    .hero-footer {
         z-index: 3;
-    }
-
-    .mode-sequencer {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.5rem 1rem;
-    }
-
-    .mode-sequencer button {
-        min-width: 0;
-        min-height: var(--touch-target);
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.5rem 0;
-        color: var(--ink);
-        background: transparent;
-        border: 0;
-        border-bottom: 1px solid var(--rule);
-        cursor: pointer;
-        font-size: 0.7rem;
-        font-variation-settings:
-            'wdth' 82,
-            'wght' 520;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        white-space: nowrap;
-        transition: color 240ms var(--ease-out);
-
-        &[aria-pressed='true'] {
-            color: var(--signal);
-            border-bottom-color: currentcolor;
-            font-variation-settings:
-                'wdth' 82,
-                'wght' 760;
-        }
-    }
-
-    #hero-title {
-        margin-top: 36px;
-    }
-
-    .statement {
-        container-type: inline-size;
-        display: grid;
-        justify-items: start;
-        align-content: start;
-        gap: 0.5rem;
-        font-family: var(--font-display);
-        font-weight: 400;
-        letter-spacing: -0.035em;
-    }
-
-    .statement-line {
-        position: relative;
-        width: max-content;
-        padding-bottom: 1.25rem;
-        white-space: nowrap;
-        font-size: min(12cqw, 10rem);
-        line-height: 0.68;
-        transition: font-variation-settings 850ms var(--ease-out);
-    }
-
-    .statement-word {
-        display: inline-block;
-    }
-
-    .statement-different {
-        line-height: 0.5;
-        font-variation-settings:
-            'wdth' var(--different-wdth),
-            'wght' var(--different-weight);
-    }
-    .statement-systems {
-        font-variation-settings:
-            'wdth' var(--systems-wdth),
-            'wght' var(--systems-weight);
-    }
-    .statement-same {
-        font-size: min(16cqw, 10rem);
-        font-style: italic;
-        font-variation-settings:
-            'wdth' var(--same-wdth),
-            'wght' var(--same-weight);
-    }
-    .statement-approach {
-        font-variation-settings:
-            'wdth' var(--approach-wdth),
-            'wght' var(--approach-weight);
-    }
-
-    .width-readout {
-        max-width: 100%;
-        position: absolute;
-        // Preserve the offset until the annotation reaches the specimen edge.
-        right: max(0px, calc(100% + 50px - 100cqw));
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--muted);
-        font-size: 0.625rem;
-        font-style: normal;
-        font-variation-settings:
-            'wdth' 78,
-            'wght' 550;
-        letter-spacing: 0.1em;
-        line-height: 1.3;
-        text-transform: uppercase;
-        pointer-events: none;
-        transform: translateX(50px) translateY(-13px);
-    }
-
-    .statement-different > .width-readout {
-        transform: translateX(50px) translateY(-6px);
-    }
-
-    @media (max-width: 760px) {
-        .statement-line:not(.statement-different) > .width-readout {
-            // Use the reserved caption space when a wide mode reaches the edge.
-            transform: translateX(50px) translateY(-13px);
-        }
-    }
-
-    .readout-line {
-        flex-shrink: 1;
-        min-width: 0;
-        width: 1.5rem;
-        border-top: 1px dashed var(--rule);
-    }
-
-    .width-readout output {
-        font: inherit;
-        font-variant-numeric: tabular-nums;
-    }
-    .width-readout b {
-        font-weight: inherit;
     }
 
     .hero-footer {
@@ -699,25 +359,6 @@ import HeroPaper from '../components/HeroPaper.astro'
             gap: 2.5rem;
             padding-block: 1.5rem 2.5rem;
         }
-        .mode-sequencer {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.5rem;
-        }
-        .statement {
-            gap: 0.75rem;
-        }
-        .statement-line {
-            padding-bottom: 1.5rem;
-        }
-        .width-readout {
-            max-width: 100%;
-            font-size: 0.7rem;
-        }
-        .readout-line {
-            flex-shrink: 1;
-            min-width: 0;
-            width: 3rem;
-        }
         .start-project {
             flex: 0 0 12rem;
             margin-left: auto;
@@ -726,16 +367,6 @@ import HeroPaper from '../components/HeroPaper.astro'
 
     /* Desktop: preserve the specimen width alongside the open graphic area. */
     @media (min-width: 1201px) {
-        .hero {
-            grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.34fr);
-            column-gap: 3rem;
-        }
-        .statement {
-            grid-column: 1;
-        }
-        .hero-footer {
-            grid-column: 1 / -1;
-        }
         .coordinates,
         .process-mantra {
             display: block;

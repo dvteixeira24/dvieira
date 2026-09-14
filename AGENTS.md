@@ -99,6 +99,7 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 - Respect `prefers-reduced-motion`; skip or simplify non-essential motion for reduced-motion users.
 
 - **Hero materials**: `RoleLoom.astro` draws triangle ribbons with screen-space thickness and difference blending above the display headline. Keep controls and supporting copy above the graphic. `HeroPaper.astro` renders a static CSS drafting-paper dot grid with faint edge registration marks and masks behind the headline and loom; it has no canvas or client script. The role loom stops drawing offscreen/hidden and renders reduced-motion role changes on demand.
+- **Hero modes**: `HeroModes.astro` owns the homepage state controller; `src/lib/hero-modes.ts` is authoritative for role content and evidence. Shared home `data-mode` drives the existing loom. Preserve separate Frontend, Backend, QA, and Reliability typography, including the homepage-only Fragment Mono Backend face. The five-second cycle has explicit pause/resume, pauses on interaction, and starts static for reduced motion; clean up timers, observers, and listeners across navigation.
 - **Text selection**: Display specimen text, navigation, mode controls, and decorative readouts are non-selectable. Keep biography, contact details, and editable fields selectable.
 
 ## Astro Actions (Server-Side)

@@ -216,6 +216,10 @@
       }
     },
     "typographyMeta": {
+      "home-backend-display": {
+        "displayName": "Homepage Backend Display",
+        "purpose": "Self-hosted Fragment Mono for the homepage Backend headline and process annotations only; Frontend, QA, and Reliability keep distinct Anybody treatments."
+      },
       "display": {
         "displayName": "Display",
         "purpose": "Route heroes and singular first-view systems statements in Anybody."
@@ -263,6 +267,11 @@
       }
     ],
     "motion": [
+      {
+        "name": "home-role-cycle",
+        "value": "5000ms",
+        "purpose": "HeroModes.astro changes the discipline noun, semantic process cues, typography, evidence panel, and shared home data-mode together. Fixed rows and reserved panel space prevent shifts. Hover, offscreen, and hidden-document states suspend rotation; role selection or keyboard focus holds until Resume cycle. Reduced motion starts paused and removes type transitions. Astro navigation disposes timers, observers, and listeners."
+      },
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -420,6 +429,11 @@
       "Small screens become direct reading stacks with an amber bottom dock."
     ],
     "rules": [
+      {
+        "name": "The Backend Face Exception Rule",
+        "body": "Fragment Mono is confined to the homepage Backend headline and process annotations. Frontend, QA, and Reliability retain Anybody with distinct role-specific treatments; Newsreader keeps its established editorial role.",
+        "section": "typography"
+      },
       {
         "name": "The Two-Signal Rule",
         "body": "Ultramarine encodes systems and state. Amber encodes person, invitation, and connection.",
