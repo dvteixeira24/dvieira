@@ -184,3 +184,8 @@ Before declaring a change complete:
 2. `pnpm build` succeeds (catches Workers-incompatible imports).
 3. If you touched the contact action, manually exercise `/contact` against `pnpm dev` with `CONTACT_ALLOW_DEV_CAPTCHA_BYPASS=true` in `.dev.vars`.
 4. Update this file if you've changed a convention, added a binding, or introduced a new top-level pattern.
+
+## Brand Icons
+
+- The canonical DV-cut geometry and export pipeline live in `scripts/generate-icons.mjs`; run `pnpm exec node scripts/generate-icons.mjs` after editing it. Editable SVG/PDF masters and the exploration sheet live in `brand/`.
+- Favicon and app icon files live in `public/` and are linked from `Layout.astro` and `site.webmanifest`. Keep the adaptive SVG, opaque PNG/ICO fallbacks, Apple icon, and separate maskable export in sync. See `brand/README.md` for clear space and palette.
