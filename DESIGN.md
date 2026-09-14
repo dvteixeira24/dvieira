@@ -339,12 +339,15 @@ for Backend, stress ripples for QA, and an undulating Reliability loop retain th
 blending: warm source ink reads as electric blue over blush and amber over black.
 Controls, reasoning copy, and the hero footer sit above the field.
 
-`HeroPaper.astro` bakes a deterministic, domain-warped marbled fiber texture once
-per browser session. It sits beneath the hero at low contrast and drifts over
-48 seconds on desktop. Phones and reduced-motion users see static paper. The
-ribbon renderer stops scheduling frames offscreen or while hidden; reduced motion
-redraws only for a role, size, or visibility change. Both components respect Astro
-client navigation. No WebGL leaves the full hero and static paper available.
+`HeroPaper.astro` provides static drafting paper on the existing Paper Blush base.
+One-pixel-radius Registration Ink dots sit on a 32px grid at 12% opacity (28px
+on phones). Elliptical masks clear the pattern behind the headline and role loom;
+phones use one broad central clearing. Four 9px registration crosses sit at the
+outer edges at 10% opacity, reduced to two on phones. The background has no canvas,
+client script, or animation and remains visible without JavaScript.
+The unchanged ribbon renderer stops scheduling frames offscreen or while hidden;
+reduced motion redraws only for a role, size, or visibility change. No WebGL leaves
+the full hero and drafting paper available.
 
 Display specimen text, navigation, mode controls, and decorative width readouts
 are non-selectable. Biography, contact details, and form editing retain selection.

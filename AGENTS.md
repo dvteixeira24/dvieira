@@ -98,7 +98,7 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 - If DOM/layout changes affect ScrollTrigger measurements, call `ScrollTrigger.refresh(true)`.
 - Respect `prefers-reduced-motion`; skip or simplify non-essential motion for reduced-motion users.
 
-- **Hero materials**: `RoleLoom.astro` draws triangle ribbons with screen-space thickness and difference blending above the display headline. Keep controls and supporting copy above the graphic. `HeroPaper.astro` generates and caches a procedural texture with slow desktop-only movement. Stop drawing offscreen/hidden and render reduced-motion role changes on demand.
+- **Hero materials**: `RoleLoom.astro` draws triangle ribbons with screen-space thickness and difference blending above the display headline. Keep controls and supporting copy above the graphic. `HeroPaper.astro` renders a static CSS drafting-paper dot grid with faint edge registration marks and masks behind the headline and loom; it has no canvas or client script. The role loom stops drawing offscreen/hidden and renders reduced-motion role changes on demand.
 - **Text selection**: Display specimen text, navigation, mode controls, and decorative readouts are non-selectable. Keep biography, contact details, and editable fields selectable.
 
 ## Astro Actions (Server-Side)
