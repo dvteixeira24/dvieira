@@ -85,29 +85,6 @@ import HeroPaper from '../components/HeroPaper.astro'
                 </span>
             </h1>
 
-            <aside class="reasoning" aria-label="Problem-solving approach">
-                <dl>
-                    <div>
-                        <dt>Problem</dt><dd>
-                            Understand what’s actually happening.
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>Constraint</dt><dd>Work within real limits.</dd>
-                    </div>
-                    <div>
-                        <dt>Intervention</dt><dd>
-                            Design and build the right solution.
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>Outcome</dt><dd>
-                            A more reliable, scalable system.
-                        </dd>
-                    </div>
-                </dl>
-            </aside>
-
             <div class="hero-footer">
                 <figure class="portrait-seal">
                     <img
@@ -508,14 +485,12 @@ import HeroPaper from '../components/HeroPaper.astro'
 
     .mode-sequencer,
     .statement,
-    .reasoning,
     .hero-footer {
         position: relative;
         z-index: 1;
     }
 
     .mode-sequencer,
-    .reasoning,
     .hero-footer {
         z-index: 3;
     }
@@ -657,34 +632,6 @@ import HeroPaper from '../components/HeroPaper.astro'
         font-weight: inherit;
     }
 
-    .reasoning {
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--rule);
-    }
-    .reasoning dl {
-        display: grid;
-        margin: 0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
-    .reasoning dt {
-        margin-bottom: 0.6rem;
-        font-size: 0.7rem;
-        font-variation-settings:
-            'wdth' 72,
-            'wght' 690;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-    }
-    .reasoning dd {
-        color: var(--muted);
-        font-size: 1rem;
-        font-variation-settings:
-            'wdth' 78,
-            'wght' 350;
-        line-height: 1.4;
-    }
-
     .hero-footer {
         display: flex;
         flex-wrap: wrap;
@@ -744,7 +691,7 @@ import HeroPaper from '../components/HeroPaper.astro'
         }
     }
 
-    /* Tablet: give the specimen the full width, with four reasoning columns below. */
+    /* Tablet: give the specimen the full width. */
     @media (min-width: 761px) {
         .hero {
             gap: 2.5rem;
@@ -769,16 +716,13 @@ import HeroPaper from '../components/HeroPaper.astro'
             min-width: 0;
             width: 3rem;
         }
-        .reasoning dl {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
         .start-project {
             flex: 0 0 12rem;
             margin-left: auto;
         }
     }
 
-    /* Desktop: independent tracks protect the specimen and the reasoning column. */
+    /* Desktop: preserve the specimen width alongside the open graphic area. */
     @media (min-width: 1201px) {
         .hero {
             grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.34fr);
@@ -786,63 +730,6 @@ import HeroPaper from '../components/HeroPaper.astro'
         }
         .statement {
             grid-column: 1;
-        }
-        .reasoning {
-            grid-column: 2;
-            align-self: center;
-            padding: 1rem 0 0 1.5rem;
-            border-top: 0;
-            border-left: 1px solid transparent;
-
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                pointer-events: none;
-            }
-
-            &::before {
-                z-index: -1;
-                inset: -1.5rem calc(-1 * var(--page-gutter)) -1.5rem -2rem;
-                background: var(--paper);
-                mask-image:
-                    linear-gradient(
-                        90deg,
-                        transparent 0,
-                        black 2rem,
-                        black 100%
-                    ),
-                    linear-gradient(
-                        180deg,
-                        transparent 0,
-                        black 1.5rem,
-                        black calc(100% - 1.5rem),
-                        transparent 100%
-                    );
-                mask-composite: intersect;
-            }
-
-            &::after {
-                z-index: 0;
-                top: 0;
-                bottom: 0;
-                left: -1px;
-                border-left: 1px solid var(--rule);
-            }
-        }
-        .reasoning dl {
-            position: relative;
-            z-index: 1;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 0;
-        }
-        .reasoning dd {
-            color: var(--ink);
-            font-variation-settings:
-                'wdth' 85,
-                'wght' 420;
-            line-height: 1.5;
         }
         .hero-footer {
             grid-column: 1 / -1;
