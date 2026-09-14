@@ -144,23 +144,6 @@ import RoleLoom from '../components/RoleLoom.astro'
             </div>
         </section>
 
-        <section class="method-preview" aria-label="Project method">
-            <div
-                class="method-scroll"
-                role="region"
-                aria-label="Project timeline"
-                tabindex="0"
-            >
-                <ol class="method-track">
-                    <li><b>Define</b><span>Clarify the problem.</span></li>
-                    <li><b>Explore</b><span>Test approaches.</span></li>
-                    <li><b>Build</b><span>Implement and iterate.</span></li>
-                    <li><b>Deploy</b><span>Stabilise and scale.</span></li>
-                </ol>
-            </div>
-            <p class="timeline-label">Project timeline ↓</p>
-        </section>
-
         <section class="thinking" aria-labelledby="thinking-title">
             <div class="thinking-heading">
                 <h2 id="thinking-title">
@@ -312,9 +295,6 @@ import RoleLoom from '../components/RoleLoom.astro'
 
 <script>
     import { gsap } from 'gsap'
-    import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-    gsap.registerPlugin(ScrollTrigger)
 
     let disposeMotion: (() => void) | undefined
     let heroRevealed = false
@@ -324,7 +304,6 @@ import RoleLoom from '../components/RoleLoom.astro'
         const root = document.querySelector<HTMLElement>('.home')
         if (!root) return
 
-        let active = true
         const media = gsap.matchMedia()
         const context = gsap.context(() => {
             media.add(
@@ -353,35 +332,6 @@ import RoleLoom from '../components/RoleLoom.astro'
                             )
                         }
                     }
-
-                    const track =
-                        root.querySelector<HTMLElement>('.method-track')
-                    if (!track) return
-                    const steps = [...track.querySelectorAll('li')]
-                    const timeline = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: '.method-preview',
-                            start: 'top 85%',
-                            end: 'bottom 55%',
-                            scrub: 0.25,
-                        },
-                    })
-                    timeline.to(track, {
-                        '--method-progress': 1,
-                        duration: 1,
-                        ease: 'none',
-                    })
-                    steps.slice(1).forEach((step, index) => {
-                        timeline.to(
-                            step,
-                            {
-                                '--step-progress': 1,
-                                duration: 0.06,
-                                ease: 'power2.out',
-                            },
-                            (index + 1) / (steps.length - 1) - 0.06,
-                        )
-                    })
                 },
                 root,
             )
@@ -390,8 +340,6 @@ import RoleLoom from '../components/RoleLoom.astro'
                 '(prefers-reduced-motion: reduce)',
                 () => {
                     heroRevealed = true
-                    gsap.set('.method-track', { '--method-progress': 1 })
-                    gsap.set('.method-track li', { '--step-progress': 1 })
                 },
                 root,
             )
@@ -468,12 +416,7 @@ import RoleLoom from '../components/RoleLoom.astro'
                 root,
             )
         }, root)
-
-        void document.fonts.ready.then(() => {
-            if (active && root.isConnected) ScrollTrigger.refresh(true)
-        })
         disposeMotion = () => {
-            active = false
             media.revert()
             context.revert()
             disposeMotion = undefined
@@ -549,8 +492,12 @@ import RoleLoom from '../components/RoleLoom.astro'
         position: relative;
         isolation: isolate;
         overflow: clip;
+        box-sizing: border-box;
+        min-height: 100svh;
+        min-height: 100dvh;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
+        align-content: space-between;
         gap: 2rem;
         padding: 1rem var(--page-gutter) 2rem;
     }
@@ -869,162 +816,6 @@ import RoleLoom from '../components/RoleLoom.astro'
         }
     }
 
-    .method-preview {
-        position: relative;
-        min-height: max(20svh, 12.4rem);
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 2rem;
-        align-items: center;
-        padding: 1.55rem 2.8% 1.25rem;
-        border-top: 1px solid var(--ink);
-        overflow: visible;
-    }
-
-    @media (min-width: 761px) {
-        .method-preview {
-            padding-right: 0.75%;
-            padding-left: 1.75%;
-        }
-    }
-
-    .method-scroll {
-        width: 100%;
-        min-width: 0;
-        overflow-x: auto;
-        scrollbar-color: var(--signal) var(--heritage-cream);
-        scrollbar-width: thin;
-    }
-
-    .method-track {
-        --method-progress: 0;
-        --method-edge-start: clamp(0.75rem, 2.5vw, 3rem);
-        --method-edge-end: clamp(0.5rem, 1.25vw, 1.5rem);
-        position: relative;
-        min-width: min(46rem, 100%);
-        display: grid;
-        grid-template-columns: repeat(4, max-content);
-        justify-content: space-between;
-        gap: 2rem;
-        padding: 2.9rem var(--method-edge-end) 0 var(--method-edge-start);
-        list-style: none;
-
-        &::before,
-        &::after {
-            position: absolute;
-            top: 2.25rem;
-            left: calc(var(--method-edge-start) + 0.425rem);
-            width: calc(
-                100% - var(--method-edge-start) - var(--method-edge-end) - 0.85rem
-            );
-            height: 1px;
-            content: '';
-            background: var(--rule);
-        }
-
-        &::after {
-            background: var(--signal);
-            transform: scaleX(var(--method-progress));
-            transform-origin: left center;
-        }
-    }
-
-    .method-track li {
-        --step-progress: 0;
-        position: relative;
-        display: grid;
-        gap: 0.2rem;
-        padding-top: 0.6rem;
-
-        &::before,
-        &::after {
-            position: absolute;
-            z-index: 1;
-            top: -1.075rem;
-            left: 0;
-            width: 0.85rem;
-            aspect-ratio: 1;
-            content: '';
-            border: 1px solid var(--ink);
-            border-radius: 50%;
-            background: var(--paper);
-        }
-
-        &::after {
-            border-color: var(--signal);
-            background: var(--signal);
-            transform: scale(var(--step-progress));
-        }
-
-        &:first-child {
-            --step-progress: 1;
-        }
-    }
-
-    .method-track b {
-        font-size: 0.97rem;
-        font-variation-settings:
-            'wdth' 72,
-            'wght' 680;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-
-    .method-track span {
-        color: var(--muted);
-        font-size: 0.75rem;
-        font-variation-settings:
-            'wdth' 82,
-            'wght' 390;
-    }
-
-    @media (max-width: 760px) {
-        .method-scroll {
-            overflow: visible;
-        }
-
-        .method-track {
-            --method-edge-start: 0rem;
-            --method-edge-end: 0rem;
-            min-width: 0;
-            grid-template-columns: minmax(0, 1fr);
-            justify-content: stretch;
-            grid-auto-rows: 1fr;
-            gap: 1.5rem;
-            padding: 0;
-
-            &::before,
-            &::after {
-                top: 0.625rem;
-                width: 1px;
-                height: calc(75% + 1.125rem);
-            }
-
-            &::after {
-                transform: scaleY(var(--method-progress));
-                transform-origin: center top;
-            }
-        }
-
-        .method-track li {
-            align-content: start;
-            padding: 0 0 0 2rem;
-
-            &::before,
-            &::after {
-                top: 0.2rem;
-            }
-        }
-    }
-
-    .timeline-label {
-        align-self: center;
-        font-size: 0.6rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        writing-mode: vertical-rl;
-    }
-
     .thinking {
         display: grid;
         grid-template-columns: minmax(24rem, 0.88fr) 1fr;
@@ -1198,15 +989,6 @@ import RoleLoom from '../components/RoleLoom.astro'
         }
     }
 
-    @media (max-width: 1100px) {
-        .method-preview {
-            grid-template-columns: minmax(0, 1fr);
-        }
-        .timeline-label {
-            display: none;
-        }
-    }
-
     /* Heritage layer: personal warmth inside the technical proof sheet. */
     .portrait-seal {
         display: grid;
@@ -1257,10 +1039,6 @@ import RoleLoom from '../components/RoleLoom.astro'
         .portrait-seal figcaption {
             display: none;
         }
-    }
-
-    .method-preview {
-        background: var(--heritage-cream);
     }
 
     .thinking {
