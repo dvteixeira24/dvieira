@@ -82,3 +82,14 @@ rotating braids, moving mesh ripples, and an undulating reliability loop. A wide
 three-axis sway makes depth visible between mode changes. Preserve the existing
 ultramarine opacity, headline layering, geometry budget, and 1.2-second morph.
 Reduced motion freezes ambient motion; offscreen and hidden states pause drawing.
+
+## Bold ink and moving paper refinement
+
+The fine background thread field is superseded by 33 depth-weighted triangle
+ribbons, reduced to 17 on phones. Difference blending crosses the display headline
+in blue-on-blush and amber-on-ink, with controls and supporting copy above it.
+The existing role shapes, responsive composition, and 1.2-second morph remain.
+A low-contrast, deterministically generated marbled fiber canvas sits underneath;
+its 48-second drift is desktop-only. Static reduced-motion states and offscreen
+pausing apply to both layers. Display and navigation text are non-selectable;
+biography, contact information, and editable fields retain selection.

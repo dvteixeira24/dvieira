@@ -332,8 +332,19 @@ four-pixel hard ink offset and color-only hover, focus, and active feedback.
 
 ### Hero role loom motion
 
-The ultramarine WebGL field carries stronger continuous movement: traveling waves
-for Frontend, twisting braids for Backend, stress ripples for QA, and an undulating
-loop for Reliability. Bounded yaw, tilt, and roll reveal depth without moving the
-hero copy. Preserve its transparency and existing mesh density. Reduced motion
-holds a static shape, and offscreen or hidden states pause drawing.
+The WebGL field uses 33 triangle ribbons (17 on phones), with screen-space widths
+of 1.6–3.2 pixels according to depth. Traveling waves for Frontend, twisting braids
+for Backend, stress ripples for QA, and an undulating Reliability loop retain the
+1.2-second role morph. The field crosses the display headline with difference
+blending: warm source ink reads as electric blue over blush and amber over black.
+Controls, reasoning copy, and the hero footer sit above the field.
+
+`HeroPaper.astro` bakes a deterministic, domain-warped marbled fiber texture once
+per browser session. It sits beneath the hero at low contrast and drifts over
+48 seconds on desktop. Phones and reduced-motion users see static paper. The
+ribbon renderer stops scheduling frames offscreen or while hidden; reduced motion
+redraws only for a role, size, or visibility change. Both components respect Astro
+client navigation. No WebGL leaves the full hero and static paper available.
+
+Display specimen text, navigation, mode controls, and decorative width readouts
+are non-selectable. Biography, contact details, and form editing retain selection.

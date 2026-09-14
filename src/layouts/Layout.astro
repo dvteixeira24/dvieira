@@ -175,6 +175,22 @@ const { title = 'Daniel Vieira Teixeira', description, canonical } = Astro.props
         background: var(--paper);
     }
 
+    .statement,
+    .site-rail,
+    .mode-sequencer,
+    .width-readout,
+    button {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    input,
+    textarea,
+    [contenteditable='true'] {
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
     ::selection {
         color: var(--paper);
         background: var(--signal);

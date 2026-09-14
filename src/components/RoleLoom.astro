@@ -29,6 +29,10 @@
         const vertexSource = `
             precision highp float;
             attribute vec2 point;
+            attribute float side;
+            uniform vec2 viewport;
+            uniform float pixelRatio;
+            varying float edge;
             uniform float fromRole;
             uniform float toRole;
             uniform float blend;
@@ -79,8 +83,8 @@
                     0.3 * sin(tube) + 0.13 * cos(angle * 2.0 + time * 0.85)
                 );
             }
-            void main() {
-                vec3 position = mix(shape(fromRole, point), shape(toRole, point), blend);
+            vec3 project(vec2 p) {
+                vec3 position = mix(shape(fromRole, p), shape(toRole, p), blend);
                 float turn = 0.24 + sin(time * 0.42) * 0.48;
                 position.xz = mat2(cos(turn), -sin(turn), sin(turn), cos(turn)) * position.xz;
                 float tilt = 0.57 + sin(time * 0.34) * 0.24;
@@ -89,14 +93,26 @@
                 position.xy = mat2(cos(roll), -sin(roll), sin(roll), cos(roll)) * position.xy;
                 float perspective = 3.7 / (3.7 - position.z);
                 float scale = min(1.05, aspect / 1.8);
-                gl_Position = vec4(position.x * perspective * scale / aspect, position.y * perspective * scale, 0.0, 1.0);
-                depth = 0.16 + 0.3 * (position.z + 1.2) / 2.4;
+                return vec3(position.x * perspective * scale / aspect, position.y * perspective * scale, position.z);
+            }
+            void main() {
+                vec3 position = project(point);
+                vec2 tangent = (project(point + vec2(0.001, 0.0)).xy - project(point - vec2(0.001, 0.0)).xy) * viewport;
+                vec2 normal = vec2(-tangent.y, tangent.x) / max(length(tangent), 0.0001);
+                depth = clamp((position.z + 1.2) / 2.4, 0.0, 1.0);
+                float width = mix(0.75, 1.65, depth) * pixelRatio;
+                gl_Position = vec4(position.xy + normal * side * width / viewport, 0.0, 1.0);
+                edge = side;
             }
         `
         const fragmentSource = `
             precision mediump float;
             varying float depth;
-            void main() { gl_FragColor = vec4(0.132, 0.284, 0.84, depth); }
+            varying float edge;
+            void main() {
+                float coverage = 1.0 - smoothstep(0.65, 1.0, abs(edge));
+                gl_FragColor = vec4(0.58, 0.63, 0.72, coverage * mix(0.28, 0.46, depth));
+            }
         `
         const compileShader = (type: number, source: string): WebGLShader => {
             const shader = gl.createShader(type)
@@ -134,12 +150,19 @@
         }
 
         gl.useProgram(program)
-        const pointsPerLine = 161
-        const lineCount = 65
+        const smallScreen = window.matchMedia('(max-width: 760px)')
+        const pointsPerLine = 129
+        const lineCount = 33
         const points: number[] = []
+        // Triangle ribbons avoid the one-pixel line-width limit on many WebGL drivers.
         for (let row = 0; row < lineCount; row += 1) {
-            for (let column = 0; column < pointsPerLine; column += 1)
-                points.push(column / (pointsPerLine - 1), row / (lineCount - 1))
+            for (let column = 0; column < pointsPerLine - 1; column += 1) {
+                const x = column / (pointsPerLine - 1)
+                const next = (column + 1) / (pointsPerLine - 1)
+                const y = row / (lineCount - 1)
+                points.push(x, y, -1, next, y, -1, x, y, 1)
+                points.push(x, y, 1, next, y, -1, next, y, 1)
+            }
         }
         const buffer = gl.createBuffer()
         if (!buffer) return
@@ -147,7 +170,10 @@
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW)
         const pointAttribute = gl.getAttribLocation(program, 'point')
         gl.enableVertexAttribArray(pointAttribute)
-        gl.vertexAttribPointer(pointAttribute, 2, gl.FLOAT, false, 0, 0)
+        gl.vertexAttribPointer(pointAttribute, 2, gl.FLOAT, false, 12, 0)
+        const sideAttribute = gl.getAttribLocation(program, 'side')
+        gl.enableVertexAttribArray(sideAttribute)
+        gl.vertexAttribPointer(sideAttribute, 1, gl.FLOAT, false, 12, 8)
         const uniform = (name: string): WebGLUniformLocation | null =>
             gl.getUniformLocation(program, name)
         const uniforms = {
@@ -156,6 +182,8 @@
             blend: uniform('blend'),
             time: uniform('time'),
             aspect: uniform('aspect'),
+            viewport: uniform('viewport'),
+            pixelRatio: uniform('pixelRatio'),
         }
         const reducedMotion = window.matchMedia(
             '(prefers-reduced-motion: reduce)',
@@ -168,10 +196,11 @@
         let visible = true
         let animationFrame = 0
         let disposed = false
+        let pixelRatio = 1
 
         const resize = (): void => {
             const bounds = canvas.getBoundingClientRect()
-            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5)
+            pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5)
             const width = Math.max(1, Math.round(bounds.width * pixelRatio))
             const height = Math.max(1, Math.round(bounds.height * pixelRatio))
             if (canvas.width === width && canvas.height === height) return
@@ -185,6 +214,7 @@
             fromRole = toRole
             toRole = nextRole
             transitionStarted = performance.now()
+            wake()
         }
         const modeObserver = new MutationObserver(() => {
             const role = home.dataset.mode as Role
@@ -194,15 +224,20 @@
             attributes: true,
             attributeFilter: ['data-mode'],
         })
-        const resizeObserver = new ResizeObserver(resize)
+        const resizeObserver = new ResizeObserver(() => {
+            resize()
+            wake()
+        })
         resizeObserver.observe(loom)
         const visibilityObserver = new IntersectionObserver(entries => {
             visible = entries[0]?.isIntersecting ?? false
+            wake()
         })
         visibilityObserver.observe(loom)
 
         const render = (now: number): void => {
-            if (disposed) return
+            animationFrame = 0
+            if (disposed || !visible || document.hidden) return
             const delta = Math.min(now - previousFrame, 80)
             previousFrame = now
             if (visible && !document.hidden) {
@@ -219,23 +254,76 @@
                 gl.uniform1f(uniforms.blend, eased)
                 gl.uniform1f(uniforms.time, motionTime)
                 gl.uniform1f(uniforms.aspect, canvas.width / canvas.height)
-                for (let row = 0; row < lineCount; row += 1)
-                    gl.drawArrays(
-                        gl.LINE_STRIP,
-                        row * pointsPerLine,
-                        pointsPerLine,
-                    )
+                gl.uniform2f(uniforms.viewport, canvas.width, canvas.height)
+                gl.uniform1f(uniforms.pixelRatio, pixelRatio)
+                const verticesPerLine = (pointsPerLine - 1) * 6
+                if (smallScreen.matches) {
+                    for (let row = 0; row < lineCount; row += 2)
+                        gl.drawArrays(
+                            gl.TRIANGLES,
+                            row * verticesPerLine,
+                            verticesPerLine,
+                        )
+                } else {
+                    gl.drawArrays(gl.TRIANGLES, 0, points.length / 3)
+                }
+                if (!reducedMotion.matches)
+                    animationFrame = window.requestAnimationFrame(render)
             }
-            animationFrame = window.requestAnimationFrame(render)
         }
+        function wake(): void {
+            if (disposed) return
+            const active = visible && !document.hidden
+            home!.dataset.heroAmbient = active ? 'running' : 'paused'
+            if (!active) {
+                window.cancelAnimationFrame(animationFrame)
+                animationFrame = 0
+            } else if (!animationFrame) {
+                previousFrame = performance.now()
+                animationFrame = window.requestAnimationFrame(render)
+            }
+        }
+        const loseContext = (event: Event): void => {
+            event.preventDefault()
+            disposeRoleLoom?.()
+            loom.dataset.unavailable = 'true'
+        }
+        const restoreContext = (): void => {
+            if (!canvas.isConnected) return
+            delete loom.dataset.unavailable
+            initRoleLoom()
+        }
+        document.addEventListener('visibilitychange', wake)
+        reducedMotion.addEventListener('change', wake)
+        smallScreen.addEventListener('change', wake)
+        canvas.addEventListener('webglcontextlost', loseContext)
+        canvas.addEventListener('webglcontextrestored', restoreContext, {
+            once: true,
+        })
 
         resize()
         gl.enable(gl.BLEND)
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-        animationFrame = window.requestAnimationFrame(render)
+        gl.blendFuncSeparate(
+            gl.SRC_ALPHA,
+            gl.ONE_MINUS_SRC_ALPHA,
+            gl.ONE,
+            gl.ONE_MINUS_SRC_ALPHA,
+        )
+        wake()
         disposeRoleLoom = () => {
             disposed = true
+            home.dataset.heroAmbient = 'paused'
             window.cancelAnimationFrame(animationFrame)
+            document.removeEventListener('visibilitychange', wake)
+            reducedMotion.removeEventListener('change', wake)
+            smallScreen.removeEventListener('change', wake)
+            canvas.removeEventListener('webglcontextlost', loseContext)
+            // Keep the one-shot restoration listener only while this canvas is connected.
+            if (!gl.isContextLost())
+                canvas.removeEventListener(
+                    'webglcontextrestored',
+                    restoreContext,
+                )
             modeObserver.disconnect()
             resizeObserver.disconnect()
             visibilityObserver.disconnect()
@@ -248,11 +336,13 @@
     }
 
     document.addEventListener('astro:page-load', initRoleLoom)
-    document.addEventListener('astro:before-swap', () => disposeRoleLoom?.())
+    const cleanupRoleLoom = (): void => disposeRoleLoom?.()
+    document.addEventListener('astro:before-swap', cleanupRoleLoom)
     if (import.meta.hot) {
         import.meta.hot.dispose(() => {
             disposeRoleLoom?.()
             document.removeEventListener('astro:page-load', initRoleLoom)
+            document.removeEventListener('astro:before-swap', cleanupRoleLoom)
         })
     }
 </script>
@@ -260,13 +350,14 @@
 <style lang="scss">
     .role-loom {
         position: absolute;
-        z-index: 0;
+        z-index: 2;
         top: 4.8rem;
         right: -12%;
         width: min(72rem, 82%);
         height: min(44rem, 72%);
         overflow: hidden;
-        opacity: 0.78;
+        opacity: 0.72;
+        mix-blend-mode: normal;
         pointer-events: none;
         mask-image: linear-gradient(
             90deg,
@@ -290,12 +381,7 @@
             right: -36%;
             width: 118%;
             height: 28rem;
-            opacity: 0.62;
-        }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .role-loom {
-            opacity: 0.52;
+            opacity: 0.58;
         }
     }
 </style>

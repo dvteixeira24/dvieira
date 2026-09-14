@@ -2,11 +2,13 @@
 import Layout from '../layouts/Layout.astro'
 import profileImage from '../assets/profiled.jpg'
 import RoleLoom from '../components/RoleLoom.astro'
+import HeroPaper from '../components/HeroPaper.astro'
 ---
 
 <Layout>
     <main class="home" data-mode="frontend">
         <section class="hero" aria-labelledby="hero-title">
+            <HeroPaper />
             <RoleLoom />
             <div
                 class="mode-sequencer"
@@ -84,9 +86,6 @@ import RoleLoom from '../components/RoleLoom.astro'
             </h1>
 
             <aside class="reasoning" aria-label="Problem-solving approach">
-                <p class="reasoning-intro">
-                    Variable thinking.<br />Real-world outcomes.
-                </p>
                 <dl>
                     <div>
                         <dt>Problem</dt><dd>
@@ -491,6 +490,7 @@ import RoleLoom from '../components/RoleLoom.astro'
     .hero {
         position: relative;
         isolation: isolate;
+        background: var(--paper);
         overflow: clip;
         box-sizing: border-box;
         min-height: 100svh;
@@ -512,6 +512,12 @@ import RoleLoom from '../components/RoleLoom.astro'
     .hero-footer {
         position: relative;
         z-index: 1;
+    }
+
+    .mode-sequencer,
+    .reasoning,
+    .hero-footer {
+        z-index: 3;
     }
 
     .mode-sequencer {
@@ -655,20 +661,11 @@ import RoleLoom from '../components/RoleLoom.astro'
         padding-top: 1.5rem;
         border-top: 1px solid var(--rule);
     }
-    .reasoning-intro {
-        font-size: 0.75rem;
-        font-variation-settings:
-            'wdth' 82,
-            'wght' 540;
-        letter-spacing: 0.16em;
-        line-height: 1.35;
-        text-transform: uppercase;
-    }
     .reasoning dl {
         display: grid;
+        margin: 0;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.5rem;
-        margin-top: 1.5rem;
     }
     .reasoning dt {
         margin-bottom: 0.6rem;
@@ -792,6 +789,7 @@ import RoleLoom from '../components/RoleLoom.astro'
         }
         .reasoning {
             grid-column: 2;
+            align-self: center;
             padding: 1rem 0 0 1.5rem;
             border-top: 0;
             border-left: 1px solid var(--rule);
@@ -799,7 +797,7 @@ import RoleLoom from '../components/RoleLoom.astro'
         .reasoning dl {
             grid-template-columns: 1fr;
             gap: 2rem;
-            margin-top: 2.5rem;
+            margin-top: 0;
         }
         .hero-footer {
             grid-column: 1 / -1;
