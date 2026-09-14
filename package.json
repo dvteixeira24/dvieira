@@ -5,6 +5,7 @@
     "packageManager": "pnpm@11.2.2",
     "scripts": {
         "dev": "astro dev",
+        "prebuild": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro"
