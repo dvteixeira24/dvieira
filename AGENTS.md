@@ -86,7 +86,7 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 - **Assets**: import images from `src/assets/` and use the resulting `.src`. Don't reference them by raw path.
 - **Public env**: only variables prefixed with `PUBLIC_` are exposed to client code via `import.meta.env`.
 
-- **About illustrations**: `AssignmentDiagram.astro` supplies two labeled SVG workflow illustrations. Assignment specialty captions sit beside dates on desktop and above titles on mobile. Diagram motion belongs to the About page GSAP lifecycle; mobile and reduced-motion variants are static.
+- **About illustrations**: `AssignmentDiagram.astro` supplies two labeled SVG workflow illustrations. Assignment specialty captions sit beside dates on desktop and above titles on mobile. Diagrams have no internal motion. Assignment dates and content reveal together once per visit through the About page GSAP lifecycle; reduced-motion and no-JavaScript paths stay visible, and already-visible rows skip the entrance.
 
 ## Animations / GSAP
 

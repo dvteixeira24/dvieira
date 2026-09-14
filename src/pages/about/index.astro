@@ -264,6 +264,40 @@ const assignments = [
             media.add(
                 '(prefers-reduced-motion: no-preference)',
                 () => {
+                    const linkedElement = document.getElementById(
+                        window.location.hash.slice(1),
+                    )
+                    root.querySelectorAll<HTMLElement>(
+                        '.timeline-entry',
+                    ).forEach(entry => {
+                        // Keep restored scroll positions and deep links immediately readable.
+                        if (
+                            entry.contains(linkedElement) ||
+                            entry.getBoundingClientRect().top <
+                                window.innerHeight * 0.85
+                        )
+                            return
+
+                        gsap.fromTo(
+                            entry.querySelectorAll(
+                                '.assignment-meta, .assignment',
+                            ),
+                            { opacity: 0, y: 16 },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.6,
+                                ease: 'expo.out',
+                                clearProps: 'opacity,transform',
+                                scrollTrigger: {
+                                    trigger: entry,
+                                    start: 'top 85%',
+                                    once: true,
+                                },
+                            },
+                        )
+                    })
+
                     if (rangeUnderlined) return
                     const statement =
                         root.querySelector<HTMLElement>('.range-statement')

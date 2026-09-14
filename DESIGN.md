@@ -307,12 +307,15 @@ experience easy to scan without inheriting oversized homepage display spacing.
 
 ### About motion
 
-The foundation/range statement receives the About page's only authored animation:
+The foundation/range statement receives an authored animation:
 an amber underline draws once per client session when the statement reaches the
 reading area. The sequence lasts 600ms and all text remains visible. The portrait,
-name, Experience heading, timeline, markers, assignment diagrams, action arrows,
-and contact stamp remain static. Reduced motion and no-JavaScript paths show the
-completed underline. The About script uses scoped GSAP contexts, media queries,
+name, Experience heading, timeline tracks, markers, action arrows, and contact
+stamp remain static. Each selected assignment fades in and settles upward by
+16px over 600ms with expo-out easing when its row reaches 85% of the viewport,
+once per page visit. Dates and content arrive together. Already-visible rows and
+restored deep links stay readable immediately; reduced motion and no JavaScript
+show all assignment content without an entrance and the completed underline. The About script uses scoped GSAP contexts, media queries,
 ScrollTrigger, and ClientRouter cleanup.
 
 
@@ -321,8 +324,8 @@ ScrollTrigger, and ClientRouter cleanup.
 Assignment specialty captions sit with the date in the desktop margin and above
 assignment titles on mobile. The integration and invoice assignments include
 compact SVG workflow illustrations from `AssignmentDiagram.astro`; their captions
-explicitly identify them as illustrations. The diagrams remain static at every
-viewport and motion preference.
+explicitly identify them as illustrations. The diagrams have no internal motion;
+they enter with their assignment content.
 
 The closing contact action is a static cream stamp on the amber footer, with a
 four-pixel hard ink offset and color-only hover, focus, and active feedback.

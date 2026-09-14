@@ -27,7 +27,7 @@ and legacy project IDs. Close with one contact invitation.
 Desktop uses separate identity and description columns, then a vertical timeline
 with dates beside expanded assignment content. Mobile uses a direct stack, dates
 above titles, modest timeline markers, and modest anchor spacing above headings.
-No tabs, filters, accordions, or content entrance animation. Keep native list semantics,
+No tabs, filters, or accordions. Keep native list semantics,
 visible keyboard focus, reduced-motion support, and reading without JavaScript.
 
 ## Visual authority
@@ -51,11 +51,15 @@ The portrait, name, and location in the About page content remain intact.
 
 ## Motion refinement
 
-The foundation/range statement receives the page's only authored animation: an
-amber underline draws once per client session when it reaches the reading area.
-The portrait, name, Experience heading, timeline, markers, diagrams, action
-arrows, and contact stamp remain static. Reduced-motion and no-JavaScript paths
-show the completed underline and preserve all content and legacy anchors.
+The foundation/range statement receives an amber underline that draws once per
+client session when it reaches the reading area.
+Each selected assignment reveals once per page visit at 85% of the viewport:
+a 600ms expo-out fade with a 16px upward settle, dates and content together.
+Already-visible rows and restored deep links remain immediately readable.
+The portrait, name, Experience heading, timeline tracks, markers, action arrows,
+and contact stamp remain static. Reduced-motion and no-JavaScript paths
+show the completed underline and all assignments without entrances, preserving
+all content and legacy anchors.
 
 
 ### About assignment illustrations and contact detail
@@ -63,8 +67,8 @@ show the completed underline and preserve all content and legacy anchors.
 Assignment specialty captions sit with the date in the desktop margin and above
 assignment titles on mobile. The integration and invoice assignments include
 compact SVG workflow illustrations from `AssignmentDiagram.astro`; their captions
-explicitly identify them as illustrations. The diagrams remain static at every
-viewport and motion preference.
+explicitly identify them as illustrations. The diagrams have no internal motion;
+they enter with their assignment content.
 
 The closing contact action is a static cream stamp on the amber footer, with a
 four-pixel hard ink offset and color-only hover, focus, and active feedback.
