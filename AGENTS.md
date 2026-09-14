@@ -189,3 +189,9 @@ Before declaring a change complete:
 
 - The canonical DV-cut geometry and export pipeline live in `scripts/generate-icons.mjs`; run `pnpm exec node scripts/generate-icons.mjs` after editing it. Editable SVG/PDF masters and the exploration sheet live in `brand/`.
 - Favicon and app icon files live in `public/` and are linked from `Layout.astro` and `site.webmanifest`. Keep the adaptive SVG, opaque PNG/ICO fallbacks, Apple icon, and separate maskable export in sync. See `brand/README.md` for clear space and palette.
+
+## SEO
+
+- `src/components/SEO.astro` wraps `astro-seo` through `Layout.astro`. Supply a unique title and description per page; canonical and social URLs resolve against `site` in `astro.config.mjs`, without query strings or trailing slashes (except `/`).
+- `@astrojs/sitemap` uses the explicit `indexablePaths` list in `astro.config.mjs` for server-rendered pages. Add new public content routes there; keep redirects, endpoints, and noindex pages out.
+- `src/pages/robots.txt.ts` is prerendered and points to `/sitemap-index.xml`. The shared SEO component emits Person, WebSite, and page JSON-LD, and reuses the existing portrait for social previews. Keep schema claims aligned with visible page content.

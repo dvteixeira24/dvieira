@@ -1,0 +1,105 @@
+---
+import { SEO } from 'astro-seo'
+import profileImage from '../assets/profiled.jpg'
+
+interface Props {
+    title?: string
+    description?: string
+    canonical?: string
+    noindex?: boolean
+}
+
+const {
+    title = 'Daniel Vieira Teixeira | Full-Stack Software Engineer',
+    description = 'Daniel Vieira Teixeira is a full-stack software engineer in Cape Town, working across frontend, backend, quality, and reliability.',
+    canonical,
+    noindex = false,
+} = Astro.props
+
+const site = Astro.site!
+// Keep tracking and action query strings out of canonical and social URLs.
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, site)
+canonicalURL.search = ''
+canonicalURL.hash = ''
+canonicalURL.pathname = canonicalURL.pathname.replace(/\/+$/, '') || '/'
+const url = canonicalURL.href
+const image = new URL(profileImage.src, site).href
+const imageAlt = 'Daniel Vieira Teixeira'
+const personId = new URL('/#person', site).href
+const websiteId = new URL('/#website', site).href
+const pageType =
+    canonicalURL.pathname === '/about'
+        ? 'AboutPage'
+        : canonicalURL.pathname === '/contact'
+          ? 'ContactPage'
+          : 'WebPage'
+const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Person',
+            '@id': personId,
+            name: 'Daniel Vieira Teixeira',
+            url: site.href,
+            image,
+            jobTitle: 'Full-Stack Software Engineer',
+            sameAs: [
+                'https://github.com/dvteixeira24',
+                'https://linkedin.com/in/daniel-vieira-teixeira',
+            ],
+        },
+        {
+            '@type': 'WebSite',
+            '@id': websiteId,
+            url: site.href,
+            name: 'Daniel Vieira Teixeira',
+            publisher: { '@id': personId },
+            inLanguage: 'en',
+        },
+        {
+            '@type': pageType,
+            '@id': `${url}#webpage`,
+            url,
+            name: title,
+            description,
+            isPartOf: { '@id': websiteId },
+            about: { '@id': personId },
+            inLanguage: 'en',
+        },
+    ],
+}
+---
+
+<SEO
+    {title}
+    {description}
+    canonical={url}
+    {noindex}
+    openGraph={{
+        basic: { title, type: 'website', image, url },
+        optional: {
+            description,
+            siteName: 'Daniel Vieira Teixeira',
+            locale: 'en_ZA',
+        },
+        image: {
+            alt: imageAlt,
+            width: profileImage.width,
+            height: profileImage.height,
+            type: 'image/jpeg',
+        },
+    }}
+    twitter={{
+        card: 'summary_large_image',
+        title,
+        description,
+        image,
+        imageAlt,
+    }}
+/>
+<link rel="sitemap" href="/sitemap-index.xml" />
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+/>
