@@ -252,135 +252,53 @@ const assignments = [
     gsap.registerPlugin(ScrollTrigger)
 
     let disposeMotion: (() => void) | undefined
-    let nameSigned = false
+    let rangeUnderlined = false
 
     function initAboutMotion(): void {
         disposeMotion?.()
         const root = document.querySelector<HTMLElement>('.about')
         if (!root) return
 
-        let active = true
         const media = gsap.matchMedia()
         const context = gsap.context(() => {
             media.add(
                 '(prefers-reduced-motion: no-preference)',
                 () => {
-                    const name = root.querySelector<HTMLElement>('h1 em')
-                    if (!nameSigned && name) {
-                        nameSigned = true
-                        const bounds = name.getBoundingClientRect()
-                        // Deep links and restored scroll positions skip the signature.
-                        if (
-                            !location.hash &&
-                            bounds.top >= 0 &&
-                            bounds.bottom <= innerHeight
-                        ) {
-                            gsap.fromTo(
-                                '.name-rule',
-                                { scaleX: 0 },
-                                {
-                                    scaleX: 1,
-                                    duration: 0.7,
-                                    ease: 'expo.out',
-                                    clearProps: 'transform',
-                                },
-                            )
-                        }
-                    }
+                    if (rangeUnderlined) return
+                    const statement =
+                        root.querySelector<HTMLElement>('.range-statement')
+                    if (!statement) return
 
-                    root.querySelectorAll<HTMLElement>(
-                        '.timeline-entry',
-                    ).forEach(entry => {
-                        const trace =
-                            entry.querySelector<HTMLElement>('.timeline-trace')
-                        if (trace && entry.nextElementSibling)
-                            gsap.fromTo(
-                                trace,
-                                { scaleY: 0 },
-                                {
-                                    scaleY: 1,
-                                    ease: 'none',
-                                    scrollTrigger: {
-                                        trigger:
-                                            entry.querySelector(
-                                                '.timeline-track',
-                                            ),
-                                        start: 'top 65%',
-                                        end: 'bottom 65%',
-                                        scrub: true,
-                                    },
-                                },
-                            )
-                        gsap.fromTo(
-                            entry,
-                            { '--marker-progress': 0 },
-                            {
-                                '--marker-progress': 1,
-                                ease: 'none',
-                                scrollTrigger: {
-                                    trigger:
-                                        entry.querySelector('.timeline-marker'),
-                                    start: 'top 70%',
-                                    end: 'top 60%',
-                                    scrub: true,
-                                },
-                            },
-                        )
-                    })
-                },
-                root,
-            )
-            media.add(
-                '(min-width: 761px) and (prefers-reduced-motion: no-preference)',
-                () => {
-                    root.querySelectorAll<HTMLElement>(
-                        '[data-diagram]',
-                    ).forEach(diagram => {
-                        const sequence = gsap.timeline({
+                    gsap.fromTo(
+                        statement,
+                        { '--range-sweep': 0 },
+                        {
+                            '--range-sweep': 1,
+                            duration: 0.6,
+                            ease: 'expo.out',
                             scrollTrigger: {
-                                trigger: diagram,
+                                trigger: statement,
                                 start: 'top 85%',
                                 once: true,
+                                onEnter: () => {
+                                    rangeUnderlined = true
+                                },
                             },
-                        })
-                        const rows = diagram.querySelectorAll(
-                            '[data-matching-row]',
-                        )
-                        if (rows.length) {
-                            sequence.from(rows, {
-                                y: index => (index === 0 ? -6 : 6),
-                                duration: 0.3,
-                                ease: 'power2.out',
-                                clearProps: 'transform',
-                            })
-                        }
-                        sequence.fromTo(
-                            diagram.querySelectorAll('[data-diagram-trace]'),
-                            { strokeDashoffset: 1 },
-                            {
-                                strokeDashoffset: 0,
-                                duration: 0.4,
-                                ease: 'power2.out',
-                            },
-                        )
-                    })
+                        },
+                    )
                 },
                 root,
             )
             media.add(
                 '(prefers-reduced-motion: reduce)',
                 () => {
-                    nameSigned = true
+                    rangeUnderlined = true
                 },
                 root,
             )
         }, root)
 
-        void document.fonts.ready.then(() => {
-            if (active && root.isConnected) ScrollTrigger.refresh(true)
-        })
         disposeMotion = () => {
-            active = false
             media.revert()
             context.revert()
             disposeMotion = undefined
@@ -529,7 +447,6 @@ const assignments = [
             'wdth' 85,
             'wght' 600;
         text-decoration: none;
-        transition: color 220ms var(--ease-out);
     }
 
     .text-action:hover,
@@ -544,30 +461,6 @@ const assignments = [
         fill: none;
         stroke: currentColor;
         stroke-width: 1.5;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .text-action svg {
-            transition: transform 220ms var(--ease-out);
-        }
-
-        .text-action:focus-visible svg {
-            transform: translateX(4px);
-        }
-
-        .experience-link:focus-visible svg {
-            transform: translateY(4px);
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-            .text-action:hover svg {
-                transform: translateX(4px);
-            }
-
-            .experience-link:hover svg {
-                transform: translateY(4px);
-            }
-        }
     }
 
     .experience-link {
@@ -725,11 +618,27 @@ const assignments = [
     }
 
     .range-statement {
+        --range-sweep: 1;
+        position: relative;
+        isolation: isolate;
         display: block;
         margin-bottom: 0.4rem;
         font-variation-settings:
             'wdth' 88,
             'wght' 580;
+    }
+
+    .range-statement::after {
+        position: absolute;
+        z-index: -1;
+        right: -0.15em;
+        bottom: 0.05em;
+        left: -0.15em;
+        height: 0.42em;
+        background: color-mix(in srgb, var(--heritage-amber) 48%, transparent);
+        content: '';
+        transform: scaleX(var(--range-sweep));
+        transform-origin: left;
     }
 
     .contact-stamp {
@@ -741,20 +650,6 @@ const assignments = [
 
     .contact-stamp:active {
         color: var(--heritage-amber-ink);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .contact-stamp {
-            transition:
-                color 120ms var(--ease-out),
-                transform 120ms var(--ease-out),
-                box-shadow 120ms var(--ease-out);
-        }
-
-        .contact-stamp:active {
-            transform: translate(3px, 3px);
-            box-shadow: 1px 1px 0 var(--ink);
-        }
     }
 
     .assignment {

@@ -51,10 +51,11 @@ The portrait, name, and location in the About page content remain intact.
 
 ## Motion refinement
 
-The name receives a single amber underline draw; a blue scroll-driven timeline
-tracks reading through assignments. Directional action arrows acknowledge hover
-and focus. Text never waits on motion. Static reduced-motion and no-JavaScript
-paths preserve the full reading experience and all legacy anchors.
+The foundation/range statement receives the page's only authored animation: an
+amber underline draws once per client session when it reaches the reading area.
+The portrait, name, Experience heading, timeline, markers, diagrams, action
+arrows, and contact stamp remain static. Reduced-motion and no-JavaScript paths
+show the completed underline and preserve all content and legacy anchors.
 
 
 ### About assignment illustrations and contact detail
@@ -62,12 +63,8 @@ paths preserve the full reading experience and all legacy anchors.
 Assignment specialty captions sit with the date in the desktop margin and above
 assignment titles on mobile. The integration and invoice assignments include
 compact SVG workflow illustrations from `AssignmentDiagram.astro`; their captions
-explicitly identify them as illustrations. A blue connector traces once per page
-initialization on desktop; invoice rows align first. The sequence takes at most
-700ms. Mobile, reduced motion, and no JavaScript retain completed static diagrams.
-Motion uses the existing scoped About GSAP lifecycle and never hides text.
+explicitly identify them as illustrations. The diagrams remain static at every
+viewport and motion preference.
 
-The biography's foundation/range sentence receives static weight emphasis. The
-closing contact action is a cream stamp on the amber footer, with a four-pixel
-hard ink offset that compresses on activation. Reduced motion keeps color and
-keyboard focus feedback without physical displacement.
+The closing contact action is a static cream stamp on the amber footer, with a
+four-pixel hard ink offset and color-only hover, focus, and active feedback.
