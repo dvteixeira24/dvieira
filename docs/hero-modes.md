@@ -34,3 +34,32 @@ QA concerns confidence before a release; Reliability concerns understanding and 
 Fragment Mono is self-hosted with its [SIL Open Font License](../public/font/FragmentMono-OFL.txt), sourced from the [Google Fonts repository](https://github.com/google/fonts/tree/main/ofl/fragmentmono). It is a homepage Backend exception to the established Anybody / Newsreader typography system, explicitly answering the request for a technical-looking face.
 
 Implementation: `src/components/HeroModes.astro`; role content: `src/lib/hero-modes.ts`. The existing `RoleLoom.astro` continues to observe the shared `.home[data-mode]` state.
+
+
+## Hero caption spacing and type transitions
+
+Process captions follow each word in normal flow with a 1rem desktop gap and
+0.5rem mobile gap. Trim the word's cap-to-baseline text box, with a 0.2em allowance
+for the descenders in “approach.”; mobile captions remain right-aligned. Desktop
+QA dividers follow the readouts with the same 1rem gap above and below each caption,
+rather than attaching to the reserved row bottom. All modes
+reserve the same row height so switching cannot move the explanation or footer.
+
+Mode changes use a 620ms GSAP transition with a restrained 35ms offset per row.
+Matching faces interpolate their variable width and weight; changing words,
+italics, and Fragment Mono use registered, scaled impressions with a short
+crossfade. Temporary copies are hidden from accessibility and removed on completion.
+Repeated selections settle the previous transition before starting the next;
+resize, reduced motion, and Astro navigation clean up the motion context. No
+additional animation dependency or permanent duplicate headline is introduced.
+
+
+## Desktop hero height budget
+
+Above 1200px, the full-width hero reserves vertical space for the mode controls,
+caption bands, and profile/contact footer. Headline size is bounded by both its
+container width and the viewport height, keeping the footer in the first screen
+at standard desktop sizes. Compact outer gaps and padding support shorter laptop
+windows; all four modes use identical row heights. The 3rem type-size floor lets
+very short or enlarged-text windows scroll naturally rather than hiding content.
+Tablet and mobile retain their existing stacked composition.

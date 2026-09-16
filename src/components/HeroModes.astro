@@ -78,6 +78,7 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
 </div>
 
 <script>
+    import { gsap } from 'gsap'
     import { heroModes } from '../lib/hero-modes'
 
     let disposeModes: (() => void) | undefined
@@ -98,6 +99,40 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         const listeners = new AbortController()
         const options = { signal: listeners.signal }
         const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
+        const words = Array.from(
+            heading.querySelectorAll<HTMLElement>('.statement-word'),
+        )
+        const captions = Array.from(
+            heading.querySelectorAll<HTMLElement>('.role-annotation'),
+        )
+        let transition: gsap.core.Timeline | undefined
+        let motion = gsap.context(() => {}, heading)
+        const ghosts: HTMLElement[] = []
+
+        function settleTransition(): void {
+            transition?.progress(1).kill()
+            transition = undefined
+            motion.revert()
+            motion = gsap.context(() => {}, heading!)
+            ghosts.splice(0).forEach(ghost => ghost.remove())
+        }
+
+        function captureWord(word: HTMLElement) {
+            const style = getComputedStyle(word)
+            return {
+                bounds: word.getBoundingClientRect(),
+                text: word.textContent,
+                fontFamily: style.fontFamily,
+                fontStyle: style.fontStyle,
+                fontWeight: style.fontWeight,
+                fontSize: style.fontSize,
+                fontVariationSettings: style.fontVariationSettings,
+                letterSpacing: style.letterSpacing,
+                textTransform: style.textTransform,
+                color: style.color,
+            }
+        }
+
         let current = 0
         let paused = reducedMotion.matches
         let visible = false
@@ -122,7 +157,13 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
             )
         }
 
-        function selectMode(index: number): void {
+        function selectMode(index: number, animate = true): void {
+            if (animate && index === current) return
+            settleTransition()
+            const before = words.map(captureWord)
+            const captionBounds = captions.map(caption =>
+                caption.getBoundingClientRect(),
+            )
             current = index
             const mode = heroModes[index]
             home!.dataset.mode = mode.id
@@ -144,6 +185,146 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
                 .forEach((panel, i) => {
                     panel.hidden = i !== index
                 })
+
+            if (!animate || reducedMotion.matches) return
+            const after = words.map(captureWord)
+            motion.add(() => {
+                transition = gsap.timeline({
+                    defaults: { duration: 0.62, ease: 'power3.inOut' },
+                    onComplete: () => {
+                        ghosts.splice(0).forEach(ghost => ghost.remove())
+                    },
+                })
+                words.forEach((word, i) => {
+                    const from = before[i]
+                    const to = after[i]
+                    const at = i * 0.035
+                    const sameFace =
+                        from.fontFamily === to.fontFamily &&
+                        from.fontStyle === to.fontStyle &&
+                        from.text === to.text
+
+                    if (sameFace) {
+                        // Interpolate the actual variable axes when the glyphs share a face.
+                        transition!.fromTo(
+                            word,
+                            {
+                                fontVariationSettings:
+                                    from.fontVariationSettings,
+                                fontSize: from.fontSize,
+                                color: from.color,
+                                x: from.bounds.left - to.bounds.left,
+                                y: from.bounds.top - to.bounds.top,
+                            },
+                            {
+                                fontVariationSettings: to.fontVariationSettings,
+                                fontSize: to.fontSize,
+                                color: to.color,
+                                x: 0,
+                                y: 0,
+                                clearProps:
+                                    'fontVariationSettings,fontSize,color,transform',
+                            },
+                            at,
+                        )
+                    } else {
+                        // Different font outlines cannot interpolate. Register both impressions
+                        // to the same moving box, then dissolve between them.
+                        const ghost = word.cloneNode(true) as HTMLElement
+                        ghost.removeAttribute('data-word')
+                        ghost.classList.add('statement-ghost')
+                        ghost.setAttribute('aria-hidden', 'true')
+                        ghost.textContent = from.text
+                        const row = word.parentElement!
+                        const rowBounds = row.getBoundingClientRect()
+                        Object.assign(ghost.style, {
+                            position: 'absolute',
+                            left: `${from.bounds.left - rowBounds.left}px`,
+                            top: `${from.bounds.top - rowBounds.top}px`,
+                            fontFamily: from.fontFamily,
+                            fontStyle: from.fontStyle,
+                            fontWeight: from.fontWeight,
+                            fontSize: from.fontSize,
+                            fontVariationSettings: from.fontVariationSettings,
+                            letterSpacing: from.letterSpacing,
+                            textTransform: from.textTransform,
+                            color: from.color,
+                            margin: '0',
+                            clipPath: 'none',
+                            pointerEvents: 'none',
+                            transformOrigin: '0 0',
+                        })
+                        row.append(ghost)
+                        ghosts.push(ghost)
+                        transition!.fromTo(
+                            word,
+                            {
+                                x: from.bounds.left - to.bounds.left,
+                                y: from.bounds.top - to.bounds.top,
+                                scaleX: from.bounds.width / to.bounds.width,
+                                scaleY: from.bounds.height / to.bounds.height,
+                                opacity: 0,
+                                transformOrigin: '0 0',
+                            },
+                            {
+                                x: 0,
+                                y: 0,
+                                scaleX: 1,
+                                scaleY: 1,
+                                clearProps: 'transform,transformOrigin',
+                            },
+                            at,
+                        )
+                        transition!.to(
+                            ghost,
+                            {
+                                x: to.bounds.left - from.bounds.left,
+                                y: to.bounds.top - from.bounds.top,
+                                scaleX: to.bounds.width / from.bounds.width,
+                                scaleY: to.bounds.height / from.bounds.height,
+                            },
+                            at,
+                        )
+                        transition!.to(
+                            ghost,
+                            {
+                                opacity: 0,
+                                duration: 0.24,
+                                ease: 'power1.in',
+                            },
+                            at + 0.04,
+                        )
+                        transition!.to(
+                            word,
+                            {
+                                opacity: 1,
+                                duration: 0.3,
+                                ease: 'power1.out',
+                                clearProps: 'opacity',
+                            },
+                            at + 0.14,
+                        )
+                    }
+                })
+                captions.forEach((caption, i) => {
+                    const bounds = caption.getBoundingClientRect()
+                    transition!.fromTo(
+                        caption,
+                        {
+                            x: captionBounds[i].left - bounds.left,
+                            y: captionBounds[i].top - bounds.top,
+                            opacity: 0.35,
+                        },
+                        {
+                            x: 0,
+                            y: 0,
+                            opacity: 1,
+                            clearProps: 'transform,opacity',
+                        },
+                        i * 0.035,
+                    )
+                })
+            })
         }
 
         controls.forEach((control, index) => {
@@ -203,7 +384,10 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         reducedMotion.addEventListener(
             'change',
             () => {
-                if (reducedMotion.matches) paused = true
+                if (reducedMotion.matches) {
+                    paused = true
+                    settleTransition()
+                }
                 updatePlayback()
             },
             options,
@@ -213,10 +397,13 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
             updatePlayback()
         })
         observer.observe(hero)
-        selectMode(0)
+        window.addEventListener('resize', settleTransition, options)
+        selectMode(0, false)
         updatePlayback()
         disposeModes = () => {
             stopTimer()
+            settleTransition()
+            motion.revert()
             observer.disconnect()
             listeners.abort()
         }
@@ -322,6 +509,7 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         z-index: 1;
     }
     .statement {
+        --readout-gap: 1rem;
         min-width: 0;
         container-type: inline-size;
         display: grid;
@@ -334,18 +522,25 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
     .statement-line {
         position: relative;
         display: flex;
-        align-items: center;
-        height: min(16cqw, 9.5rem);
-        padding-bottom: 1.1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--readout-gap);
+        height: max(min(16cqw, 9.5rem), calc(min(12.8cqw, 9rem) + 1.75rem));
         font-size: min(12.8cqw, 9rem);
         line-height: 1;
         white-space: nowrap;
     }
     .statement-word {
-        display: inline-block;
-        transition:
-            font-variation-settings 650ms var(--ease-out),
-            color 300ms ease;
+        display: block;
+        flex-shrink: 0;
+        text-box: trim-both cap alphabetic;
+    }
+    // The final word's descenders extend beneath the trimmed alphabetic baseline.
+    .statement-word[data-word='3'] {
+        margin-bottom: 0.2em;
+    }
+    .statement-ghost {
+        user-select: none;
     }
     .statement-line:nth-child(1) .statement-word {
         font-variation-settings:
@@ -369,10 +564,8 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
             'wght' 700;
     }
     .role-annotation {
-        position: absolute;
-        bottom: 0;
-        right: 0;
         display: flex;
+        flex-shrink: 0;
         align-items: center;
         gap: 0.6rem;
         color: var(--muted);
@@ -515,7 +708,6 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         .role-annotation {
             background: var(--paper);
             padding-left: 0.65rem;
-            bottom: -0.35rem;
         }
         .annotation-rule {
             width: 0.55rem;
@@ -562,17 +754,49 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         }
     }
     @media (min-width: 761px) {
-        // Read as captions for the type, outside the moving graphic's field.
-        .role-annotation {
-            left: 0;
-            right: auto;
+        :global(.home[data-mode='qa']) {
+            .statement-line {
+                border-bottom: 0;
+            }
+            .role-annotation {
+                position: relative;
+                padding-left: 0;
+                padding-right: 0.65rem;
+                // Keep equal space around the readout, including the final word's descenders.
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    width: 100cqw;
+                    top: calc(100% + var(--readout-gap));
+                    border-top: 1px solid var(--rule);
+                }
+            }
         }
-        :global(.home[data-mode='backend']) .role-annotation {
-            left: 5cqw;
+    }
+    @media (min-width: 1201px) {
+        .mode-stage {
+            padding-block: 0;
         }
-        :global(.home[data-mode='qa']) .role-annotation {
-            padding-left: 0;
-            padding-right: 0.65rem;
+        .statement {
+            // Reserve controls, footer, outer spacing, and four caption bands.
+            // The lower bound keeps short windows readable and naturally scrollable.
+            --hero-type-ceiling: clamp(3rem, calc((100svh - 29rem) / 4), 9rem);
+            --hero-type-size: min(12.8cqw, var(--hero-type-ceiling));
+        }
+        .statement-line {
+            height: calc(var(--hero-type-size) + 3rem);
+            font-size: var(--hero-type-size);
+        }
+        :global(.home[data-mode='backend']) .statement-line {
+            font-size: min(11.5cqw, 8rem, calc(var(--hero-type-ceiling) * 0.9));
+        }
+        :global(.home[data-mode='reliability']) .statement-line {
+            font-size: min(
+                11.8cqw,
+                8.5rem,
+                calc(var(--hero-type-ceiling) * 0.922)
+            );
         }
     }
     @media (max-width: 1200px) {
@@ -625,13 +849,15 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
             gap: 1.75rem;
         }
         .statement {
+            --readout-gap: 0.5rem;
             gap: 0.85rem;
         }
         .statement-line {
-            height: 17cqw;
+            height: max(17cqw, calc(12.8cqw + 1.25rem));
             font-size: 12.8cqw;
         }
         .role-annotation {
+            align-self: flex-end;
             font-size: 0.55rem;
         }
         .annotation-rule {

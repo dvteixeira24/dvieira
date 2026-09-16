@@ -367,6 +367,11 @@ import HeroModes from '../components/HeroModes.astro'
 
     /* Desktop: preserve the specimen width alongside the open graphic area. */
     @media (min-width: 1201px) {
+        .hero {
+            min-height: 100svh;
+            gap: clamp(1rem, 2.5svh, 2rem);
+            padding-block: 1.25rem 1.5rem;
+        }
         .coordinates,
         .process-mantra {
             display: block;
