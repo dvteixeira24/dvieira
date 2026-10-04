@@ -7,6 +7,10 @@ interface Props {
     description?: string
     canonical?: string
     noindex?: boolean
+    article?: {
+        publishedTime: Date
+        modifiedTime?: Date
+    }
 }
 
 const {
@@ -14,6 +18,7 @@ const {
     description = 'Daniel Vieira Teixeira is a full-stack software engineer in Cape Town, working across frontend, backend, quality, and reliability.',
     canonical,
     noindex = false,
+    article,
 } = Astro.props
 
 const site = Astro.site!
@@ -27,12 +32,13 @@ const image = new URL(profileImage.src, site).href
 const imageAlt = 'Daniel Vieira Teixeira'
 const personId = new URL('/#person', site).href
 const websiteId = new URL('/#website', site).href
-const pageType =
-    canonicalURL.pathname === '/about'
-        ? 'AboutPage'
-        : canonicalURL.pathname === '/contact'
-          ? 'ContactPage'
-          : 'WebPage'
+const pageType = article
+    ? 'BlogPosting'
+    : canonicalURL.pathname === '/about'
+      ? 'AboutPage'
+      : canonicalURL.pathname === '/contact'
+        ? 'ContactPage'
+        : 'WebPage'
 const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -65,6 +71,16 @@ const schema = {
             isPartOf: { '@id': websiteId },
             about: { '@id': personId },
             inLanguage: 'en',
+            ...(article
+                ? {
+                      headline: title,
+                      datePublished: article.publishedTime.toISOString(),
+                      ...(article.modifiedTime
+                          ? { dateModified: article.modifiedTime.toISOString() }
+                          : {}),
+                      author: { '@id': personId },
+                  }
+                : {}),
         },
     ],
 }

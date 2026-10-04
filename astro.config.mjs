@@ -10,11 +10,24 @@ const indexablePaths = ['/', '/about', '/contact']
 export default defineConfig({
     site,
     output: 'server',
+    trailingSlash: 'never',
+    build: {
+        format: 'file',
+    },
     integrations: [
         sitemap({
-            // Explicit entries keep server-rendered pages discoverable.
+            // Explicit entries keep server-rendered pages discoverable. The
+            // prerendered /blog routes are auto-discovered and admitted by the
+            // filter's /blog rules below.
             customPages: indexablePaths.map(path => new URL(path, site).href),
-            filter: page => indexablePaths.includes(new URL(page).pathname),
+            filter: page => {
+                const pathname = new URL(page).pathname
+                return (
+                    indexablePaths.includes(pathname) ||
+                    pathname === '/blog' ||
+                    pathname.startsWith('/blog/')
+                )
+            },
         }),
     ],
     adapter: cloudflare(),

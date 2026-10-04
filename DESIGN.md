@@ -212,8 +212,8 @@ Controls, fields, tags, rows, and inverse panels are square with zero radius. Bo
 
 ### Navigation
 
-- **Desktop:** Fixed Heritage Cream rail containing only Home, About, and Contact links. Amber identifies hover and current route.
-- **Mobile:** A fixed three-link Heritage Amber bottom dock (Home, About, Contact), with no top bar or reserved top space. The current route becomes a cream paper insert.
+- **Desktop:** Fixed Heritage Cream rail containing Home, About, Blog, and Contact links. Amber identifies hover and current route.
+- **Mobile:** A fixed four-link Heritage Amber bottom dock (Home, About, Blog, Contact), with no top bar or reserved top space. The current route becomes a cream paper insert.
 
 ### Indexed narrative rows
 
@@ -289,7 +289,7 @@ markers, serif assignment titles, and expanded contribution lists. There are no
 separate skills or principles panels. Essential About content uses no entrance
 reveal; it remains immediately readable on direct and anchor navigation.
 
-The desktop rail and mobile dock contain only Home, About, and Contact links.
+The desktop rail and mobile dock contain Home, About, Blog, and Contact links.
 The monogram, name, location, portrait, and mobile top bar have been removed. Existing legacy project anchors
 remain stable, and `/biography` and `/experience` permanently redirect to About.
 

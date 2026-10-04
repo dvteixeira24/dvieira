@@ -1,0 +1,40 @@
+backend:
+    name: github
+    repo: dvteixeira24/dvieira
+    branch: master
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+    - name: blog
+      label: Blog Posts
+      folder: src/content/blog
+      create: true
+      slug: '{{slug}}'
+      fields:
+          - { name: title, label: Title, widget: string }
+          - { name: description, label: Description, widget: text }
+          - {
+                name: pubDate,
+                label: Publish Date,
+                widget: datetime,
+                date_format: YYYY-MM-DD,
+            }
+          - {
+                name: updated,
+                label: Last Updated,
+                widget: datetime,
+                date_format: YYYY-MM-DD,
+                required: false,
+            }
+          - { name: tags, label: Tags, widget: list, required: false }
+          - { name: cover, label: Cover Image, widget: image, required: false }
+          - {
+                name: draft,
+                label: Draft,
+                widget: boolean,
+                default: false,
+                required: false,
+            }
+          - { name: body, label: Body, widget: markdown }
