@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BlogPostRow from '../../components/BlogPostRow.astro'
+import { getCollection } from 'astro:content'
+import { postHref, publishedPosts } from '../../lib/blog'
+
+export const prerender = true
+
+const posts = publishedPosts(await getCollection('blog'), {
+    includeDrafts: import.meta.env.DEV,
+})
+---
+
+<Layout
+    title="Writing | Daniel Vieira Teixeira"
+    description="Notes and essays on software engineering from Daniel Vieira Teixeira — full-stack delivery, quality, and reliability."
+    canonical="https://dvieira.dev/blog"
+>
+    <main class="blog">
+        <header class="page-hero blog-hero">
+            <h1>Writing</h1>
+            <p class="blog-intro">
+                Notes on building software — what I've learned, how I think
+                about the work, and the systems around it.
+            </p>
+        </header>
+
+        {
+            posts.length === 0 ? (
+                <p class="blog-empty">No posts yet — check back soon.</p>
+            ) : (
+                <ol class="blog-list">
+                    {posts.map(post => (
+                        <BlogPostRow
+                            href={postHref(post.id)}
+                            title={post.data.title}
+                            description={post.data.description}
+                            pubDate={post.data.pubDate}
+                            tags={post.data.tags}
+                        />
+                    ))}
+                </ol>
+            )
+        }
+    </main>
+</Layout>
+
+<style lang="scss">
+    .blog {
+        background: var(--paper);
+    }
+
+    .blog-hero {
+        padding: clamp(2.5rem, 5vw, 5rem) var(--page-gutter);
+        border-bottom: 1px solid var(--ink);
+    }
+
+    .blog-hero h1 {
+        font-size: clamp(3.5rem, 6vw, 6rem);
+        font-variation-settings:
+            'wdth' 74,
+            'wght' 330;
+        letter-spacing: -0.04em;
+        line-height: 0.95;
+    }
+
+    .blog-intro {
+        max-width: 44ch;
+        margin-top: 1.75rem;
+        font-family: var(--font-human);
+        font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+        font-weight: 620;
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+        text-wrap: balance;
+    }
+
+    .blog-list {
+        margin: 0;
+        padding: 0 var(--page-gutter);
+        list-style: none;
+    }
+
+    .blog-empty {
+        padding: clamp(2rem, 4vw, 4rem) var(--page-gutter);
+        color: var(--muted);
+        font-family: var(--font-human);
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+</style>
