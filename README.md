@@ -86,7 +86,7 @@ The site includes a blog at `/blog`, authored as Markdown files in `src/content/
 ### Authoring
 
 - Posts are Astro Content Collection entries validated by the schema in `src/content.config.ts`.
-- Edit posts in the browser at `/admin` ([Sveltia CMS](https://sveltiacms.app)). It commits Markdown back to this repo on the `master` branch via GitHub OAuth.
+- Edit posts in the browser at `/admin` ([Sveltia CMS](https://sveltiacms.app)). It commits Markdown back to this repo on the `master` branch. Sign in with a GitHub personal access token (quick start) or an OAuth client (multi-user).
 - Frontmatter fields: `title`, `description`, `pubDate`, and optional `updated`, `tags`, `cover`, `draft`. Posts with `draft: true` are hidden from production builds.
 - Cover images are uploaded to `public/images/` and referenced by URL path (e.g. `/images/cover.jpg`), not through the `src/assets` image pipeline.
 

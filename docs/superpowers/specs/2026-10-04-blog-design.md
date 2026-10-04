@@ -24,8 +24,9 @@ who works directly in this repo on the `master` branch.
 
 1. **Editor — Sveltia CMS** (actively-maintained, drop-in successor to Decap CMS).
    Markdown stays in the repo; the `/admin` page edits those same files and
-   commits back to GitHub. Auth via GitHub OAuth (PKCE) — no Netlify Identity,
-   no self-hosted git gateway.
+   commits back to GitHub. Auth via a GitHub personal access token (quick start)
+   or an OAuth client (multi-user) — no Netlify Identity, no self-hosted git
+   gateway.
 2. **Comments — Giscus.** GitHub Discussions-backed, zero infrastructure, no
    moderation/spam burden. Readers sign in with GitHub.
 3. **Rendering — prerendered blog routes.** Blog pages are static (`prerender =
@@ -104,9 +105,10 @@ Modified files:
 - `config.yml` sets `backend: { name: github, repo: dvteixeira24/dvieira, branch:
   master }`, `media_folder: public/images`, `public_folder: /images`, and a
   single `blog` collection with `folder: src/content/blog`.
-- GitHub OAuth (PKCE) authenticates edits without a stored token. Requires a
-  GitHub OAuth app (or Sveltia's hosted auth origin) with callback to the
-  `/admin` origin — created once by the user.
+- Authentication: a solo author signs in with a GitHub personal access token
+  ("Sign in with Token" — token stays in the browser); a multi-user setup uses an
+  OAuth app + a deployed OAuth client (Sveltia CMS Authenticator). PKCE auth is
+  not yet supported by GitHub/Sveltia.
 - The admin page is not linked from public navigation; it is reached directly at
   `/admin`.
 
@@ -181,5 +183,6 @@ There is no test suite in this repo. For this change:
 ## Follow-ups (user actions, not code)
 
 1. Enable Discussions + install the giscus App; capture the four IDs.
-2. Create the GitHub OAuth app for Sveltia (or opt into its hosted auth).
+2. Generate a GitHub personal access token for the Sveltia CMS sign-in (Contents
+   read/write), or deploy the Sveltia CMS Authenticator + OAuth app for multi-user.
 3. Deploy and submit `/rss.xml` + `/sitemap-index.xml` to search consoles.

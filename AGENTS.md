@@ -212,5 +212,5 @@ The `/blog` section renders Markdown posts from a content collection.
 - `src/lib/blog.ts` holds pure helpers (`postHref`, `publishedPosts`, `sortPostsByDate`, `formatDate`) with no `astro:content` import so they run under `node --test src/lib/blog.test.mjs`.
 - Giscus comment config (public, non-secret values) lives in `src/lib/giscus.ts`; the widget degrades to a muted note until populated.
 - Cover images are `/images/...` path strings uploaded to `public/images/` by the CMS, not `src/assets` imports.
-- The CMS is [Sveltia CMS](https://sveltiacms.app) at `/admin` (static `public/admin/`), editing `src/content/blog` and committing via GitHub OAuth.
+- The CMS is [Sveltia CMS](https://sveltiacms.app) at `/admin` (static `public/admin/`), editing `src/content/blog` and committing via a GitHub personal access token (quick start) or an OAuth client (multi-user). PKCE auth is not yet supported by GitHub/Sveltia.
 - Post pages pass `article` through `Layout` so `SEO.astro` emits `BlogPosting` (headline, datePublished, author). When adding blog routes, update the sitemap filter and keep the SEO JSON-LD consistent.
