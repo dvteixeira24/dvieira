@@ -1,10 +1,8 @@
 // Giscus comment configuration (public, non-secret values).
-// Populate these after enabling GitHub Discussions and installing the
-// giscus App on dvteixeira24/dvieira — see docs/superpowers/specs/2026-10-04-blog-design.md.
-const repo = ''
-const repoId = ''
-const category = ''
-const categoryId = ''
+const repo = 'dvteixeira24/dvieira'
+const repoId = 'R_kgDOSTELtg'
+const category = 'General'
+const categoryId = 'DIC_kwDOSTELts4DHCcc'
 
 export const giscus = { repo, repoId, category, categoryId }
 
