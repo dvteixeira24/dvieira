@@ -53,6 +53,12 @@ const { title, description, canonical, noindex, article } = Astro.props
             src="https://al.d99.xyz/script.js"
             data-website-id="d140b4d1-1247-49ba-b48e-f570b75d61b3"></script>
         <SEO {title} {description} {canonical} {noindex} {article} />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Writing — RSS"
+            href="/rss.xml"
+        />
         <ClientRouter />
     </head>
     <body style={`--heritage-texture: url(${heritageTexture.src});`}>

@@ -23,6 +23,13 @@ const posts = publishedPosts(await getCollection('blog'), {
                 Notes on building software — what I've learned, how I think
                 about the work, and the systems around it.
             </p>
+            <a class="rss-link" href="/rss.xml">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1.6"></circle>
+                </svg>
+                RSS feed
+            </a>
         </header>
 
         {
@@ -73,6 +80,36 @@ const posts = publishedPosts(await getCollection('blog'), {
         letter-spacing: -0.015em;
         line-height: 1.25;
         text-wrap: balance;
+    }
+
+    .rss-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: var(--touch-target);
+        margin-top: 1.5rem;
+        color: var(--ink);
+        font-size: 0.85rem;
+        font-variation-settings:
+            'wdth' 85,
+            'wght' 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 220ms var(--ease-out);
+    }
+
+    .rss-link:hover,
+    .rss-link:focus-visible {
+        color: var(--signal);
+    }
+
+    .rss-link svg {
+        width: 1rem;
+        height: 1rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.75;
     }
 
     .blog-list {
