@@ -78,3 +78,26 @@ pnpm wrangler secret put TELEGRAM_CHAT_ID
 The official `@astrojs/sitemap` integration generates `/sitemap-index.xml` and `/sitemap-0.xml` on build. Because the site uses server rendering, maintain the public route list in `astro.config.mjs` (`/`, `/about`, `/contact`). Redirects and utility endpoints are excluded. `robots.txt` allows crawling and advertises the sitemap. When adding a `noindex` page, exclude it from the sitemap as well.
 
 After deployment, verify site ownership in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters/) and submit `https://dvieira.dev/sitemap-index.xml`. Ownership verification needs access to your account and domain. Check the rendered markup with [Google's Rich Results Test](https://search.google.com/test/rich-results) and the [Schema.org validator](https://validator.schema.org/); basic Person and WebSite markup need not qualify for a Google rich result. These tools help discovery and interpretation; indexing, rankings, and sitelinks remain search-engine decisions.
+
+## Blog
+
+The site includes a blog at `/blog`, authored as Markdown files in `src/content/blog/` and edited through a git-based CMS at `/admin`.
+
+### Authoring
+
+- Posts are Astro Content Collection entries validated by the schema in `src/content.config.ts`.
+- Edit posts in the browser at `/admin` ([Sveltia CMS](https://sveltiacms.app)). It commits Markdown back to this repo on the `master` branch via GitHub OAuth.
+- Frontmatter fields: `title`, `description`, `pubDate`, and optional `updated`, `tags`, `cover`, `draft`. Posts with `draft: true` are hidden from production builds.
+- Cover images are uploaded to `public/images/` and referenced by URL path (e.g. `/images/cover.jpg`), not through the `src/assets` image pipeline.
+
+### Comments
+
+Reader comments use [Giscus](https://giscus.app) backed by GitHub Discussions. Populate the four public values in `src/lib/giscus.ts` (`repo`, `repoId`, `category`, `categoryId`) after enabling Discussions and installing the giscus App. Until then the widget degrades to a muted "Comments are unavailable." note.
+
+### RSS
+
+An RSS feed is published at `/rss.xml`.
+
+### Testing
+
+`pnpm astro check` type-checks the project. Pure post helpers in `src/lib/blog.ts` are unit-tested with `node --test src/lib/blog.test.mjs`.

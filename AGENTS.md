@@ -25,7 +25,7 @@ Run from the project root.
 | `pnpm astro -- --help`        | Astro CLI help                                   |
 | `pnpm wrangler ...`           | Cloudflare CLI (e.g. `secret put`, `tail`)       |
 
-Always run `pnpm astro check` after making changes to `.astro` or `.ts` files. There is no test suite, no ESLint, and no Vitest yet.
+Always run `pnpm astro check` after making changes to `.astro` or `.ts` files. There is no ESLint or Vitest setup; the only automated tests are the pure blog helpers (`node --test src/lib/blog.test.mjs`).
 
 ## Project Structure
 
@@ -77,7 +77,7 @@ Comments: only explain non-obvious intent or constraints. Don't narrate what the
 
 ## Astro Conventions
 
-- **Content routes**: Home (`/`), About (`/about`), and Contact (`/contact`). Shared navigation contains only Home, About, and Contact; there is no monogram, rail identity content, or mobile top bar. About owns the biography description and Defijn experience timeline. All five assignments belong to Defijn. Keep `project-01` through `project-06` IDs stable; `/biography` and `/experience` are permanent redirects configured in `astro.config.mjs`.
+- **Content routes**: Home (`/`), About (`/about`), Blog (`/blog`), and Contact (`/contact`). Shared navigation contains Home, About, Blog, and Contact (Blog between About and Contact); there is no monogram, rail identity content, or mobile top bar. About owns the biography description and Defijn experience timeline. All five assignments belong to Defijn. Keep `project-01` through `project-06` IDs stable; `/biography` and `/experience` are permanent redirects configured in `astro.config.mjs`.
 
 - **Server output**: This site is `output: 'server'`. Pages are rendered on the Worker by default. Mark a page `export const prerender = true` only if it has zero per-request logic and no action results to read.
 - **Dynamic pages with actions** (e.g. `src/pages/contact/index.astro`) MUST set `export const prerender = false` so `Astro.getActionResult(...)` works.
@@ -202,3 +202,15 @@ Before declaring a change complete:
 - The existing portrait is the default Open Graph and X/Twitter image. If it changes, confirm the imported asset, MIME type, dimensions, and alt text remain accurate. If page-specific social images are introduced, expose an image prop through `Layout.astro` and provide an absolute production URL plus meaningful alt text.
 - When the production hostname changes, update `site` in `astro.config.mjs`, Cloudflare routes in `wrangler.jsonc`, canonical/schema URLs, `robots.txt`, README submission URLs, and the verified properties in Google Search Console and Bing Webmaster Tools.
 - After any SEO-related change, run `pnpm astro check` and `pnpm build`. Inspect the built sitemap for the intended canonical URLs and verify rendered pages contain one title, one description, one canonical link, Open Graph/X metadata, and valid JSON-LD. After deployment, confirm `/robots.txt` and `/sitemap-index.xml` return `200`.
+
+## Blog
+
+The `/blog` section renders Markdown posts from a content collection.
+
+- The collection schema lives in `src/content.config.ts` (glob loader + `z` from `astro/zod`); posts live in `src/content/blog/`.
+- Blog routes (`/blog`, `/blog/[slug]`, `/rss.xml`) are prerendered (`export const prerender = true` + `getStaticPaths`), unlike the rest of the server-rendered site. The sitemap admits them via the `/blog/` prefix rule in `astro.config.mjs`; prerendered routes are auto-discovered, so do NOT add `/blog` to `indexablePaths` (that produced a duplicate `/blog` + `/blog/`).
+- `src/lib/blog.ts` holds pure helpers (`postHref`, `publishedPosts`, `sortPostsByDate`, `formatDate`) with no `astro:content` import so they run under `node --test src/lib/blog.test.mjs`.
+- Giscus comment config (public, non-secret values) lives in `src/lib/giscus.ts`; the widget degrades to a muted note until populated.
+- Cover images are `/images/...` path strings uploaded to `public/images/` by the CMS, not `src/assets` imports.
+- The CMS is [Sveltia CMS](https://sveltiacms.app) at `/admin` (static `public/admin/`), editing `src/content/blog` and committing via GitHub OAuth.
+- Post pages pass `article` through `Layout` so `SEO.astro` emits `BlogPosting` (headline, datePublished, author). When adding blog routes, update the sitemap filter and keep the SEO JSON-LD consistent.
