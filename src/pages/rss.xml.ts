@@ -12,6 +12,7 @@ export async function GET(context: APIContext) {
         description:
             'Notes on building software, from Daniel Vieira Teixeira.',
         site: context.site!,
+        trailingSlash: false,
         items: posts.map(post => ({
             title: post.data.title,
             description: post.data.description,

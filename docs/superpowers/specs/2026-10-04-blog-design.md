@@ -39,7 +39,7 @@ who works directly in this repo on the `master` branch.
 Markdown files (src/content/blog/*.md)  <-- Sveltia CMS writes these via GitHub
         |
         v
-Astro Content Collections (src/content/config.ts)
+Astro Content Collections (src/content.config.ts)
         |
         +-- /blog           (index: list posts, newest first)
         +-- /blog/[slug]    (post: rendered markdown + Giscus widget)
@@ -76,7 +76,7 @@ CMS uploads are dynamic).
 
 New files:
 
-- `src/content/config.ts` — `blog` collection definition.
+- `src/content.config.ts` — `blog` collection definition (glob loader + zod schema).
 - `src/content/blog/.gitkeep` (and later, real posts).
 - `src/pages/blog/index.astro` — post list (`prerender = true`).
 - `src/pages/blog/[slug].astro` — post page (`prerender = true`,

@@ -11,6 +11,9 @@ export default defineConfig({
     site,
     output: 'server',
     trailingSlash: 'never',
+    build: {
+        format: 'file',
+    },
     integrations: [
         sitemap({
             // Explicit entries keep server-rendered pages discoverable. The
