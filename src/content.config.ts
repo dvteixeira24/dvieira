@@ -8,7 +8,13 @@ const blog = defineCollection({
         title: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
-        updated: z.coerce.date().optional(),
+        // The CMS writes `updated: ''` (and `cover: ''`) when the optional
+        // fields are left blank; normalise empty strings to `undefined` so
+        // the optional date coercion doesn't reject them.
+        updated: z.preprocess(
+            value => (value === '' ? undefined : value),
+            z.coerce.date().optional(),
+        ),
         tags: z.array(z.string()).optional(),
         cover: z.string().optional(),
         draft: z.boolean().optional(),
