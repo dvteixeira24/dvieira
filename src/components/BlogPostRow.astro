@@ -18,7 +18,14 @@ const { href, title, description, pubDate, tags } = Astro.props
     </time>
     <article class="blog-row-body">
         <h2 class="blog-row-title">
-            <a href={href}>{title}</a>
+            <a href={href}>
+                {title}
+                <span class="blog-row-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 12h18m-7-7 7 7-7 7"></path>
+                    </svg>
+                </span>
+            </a>
         </h2>
         <p class="blog-row-desc">{description}</p>
         {tags && tags.length > 0 && (
@@ -31,6 +38,7 @@ const { href, title, description, pubDate, tags } = Astro.props
 
 <style lang="scss">
     .blog-row {
+        position: relative;
         display: grid;
         grid-template-columns: clamp(8rem, 14vw, 12rem) minmax(0, 1fr);
         gap: clamp(1.5rem, 4vw, 3.5rem);
@@ -39,8 +47,22 @@ const { href, title, description, pubDate, tags } = Astro.props
         transition: background-color 220ms var(--ease-out);
     }
 
-    .blog-row:first-child {
-        border-top: 1px solid var(--ink);
+    .blog-row::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 2px;
+        background: var(--signal);
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 360ms var(--ease-out);
+    }
+
+    .blog-row:hover::after,
+    .blog-row:focus-within::after {
+        transform: scaleX(1);
     }
 
     .blog-row:last-child {
@@ -83,11 +105,43 @@ const { href, title, description, pubDate, tags } = Astro.props
         transition: color 220ms var(--ease-out);
     }
 
-    .blog-row-title a:hover,
-    .blog-row-title a:focus-visible {
+    // Stretch the title link across the whole card so the entire row is one
+    // clickable anchor, while the title stays the concise link text.
+    .blog-row-title a::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+    }
+
+    .blog-row:hover .blog-row-title a,
+    .blog-row:focus-within .blog-row-title a {
         color: var(--signal);
-        text-decoration: underline;
-        text-underline-offset: 0.22em;
+    }
+
+    .blog-row-arrow {
+        display: inline-block;
+        margin-left: 0.5rem;
+        vertical-align: -0.04em;
+        opacity: 0;
+        transform: translateX(-0.5rem);
+        transition:
+            opacity 220ms var(--ease-out),
+            transform 320ms var(--ease-out);
+    }
+
+    .blog-row-arrow svg {
+        width: 0.85em;
+        height: 0.85em;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.75;
+    }
+
+    .blog-row:hover .blog-row-arrow,
+    .blog-row:focus-within .blog-row-arrow {
+        opacity: 1;
+        transform: translateX(0);
     }
 
     .blog-row-desc {

@@ -75,10 +75,11 @@ const { title, description, canonical, noindex, article } = Astro.props
                     '.thinking-heading',
                     '.thinking li',
                     '.closing > *',
-                    '.page-hero > *',
+                    '.page-hero > *:not(.blog-paper)',
                     '.contact-context > *',
                     '.contact-form-section',
                     '.page-cta > *',
+                    '.blog-row',
                 ]
                 const units = [
                     ...document.querySelectorAll(selectors.join(',')),

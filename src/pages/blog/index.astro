@@ -18,6 +18,12 @@ const posts = publishedPosts(await getCollection('blog'), {
 >
     <main class="blog">
         <header class="page-hero blog-hero">
+            <div class="blog-paper" aria-hidden="true">
+                <span class="blog-registration blog-registration-top-left"></span>
+                <span class="blog-registration blog-registration-top-right"></span>
+                <span class="blog-registration blog-registration-bottom-left"></span>
+                <span class="blog-registration blog-registration-bottom-right"></span>
+            </div>
             <h1>Writing</h1>
             <p class="blog-intro">
                 Notes on building software — what I've learned, how I think
@@ -58,11 +64,88 @@ const posts = publishedPosts(await getCollection('blog'), {
     }
 
     .blog-hero {
-        padding: clamp(2.5rem, 5vw, 5rem) var(--page-gutter);
+        position: relative;
+        padding: clamp(2rem, 4vw, 3.25rem) var(--page-gutter);
         border-bottom: 1px solid var(--ink);
     }
 
+    .blog-paper {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        color: var(--ink);
+    }
+
+    .blog-paper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.12;
+        background-image: radial-gradient(
+            circle,
+            currentcolor 0.9px,
+            transparent 1px
+        );
+        background-size: 32px 32px;
+        // Clear the dot field behind the headline so the display type stays crisp.
+        mask-image: radial-gradient(
+            ellipse 62% 52% at 20% 30%,
+            transparent 32%,
+            black 100%
+        );
+    }
+
+    .blog-registration {
+        position: absolute;
+        width: 9px;
+        height: 9px;
+        opacity: 0.1;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            background: currentcolor;
+        }
+
+        &::before {
+            top: 4px;
+            width: 9px;
+            height: 1px;
+        }
+
+        &::after {
+            left: 4px;
+            width: 1px;
+            height: 9px;
+        }
+    }
+
+    .blog-registration-top-left,
+    .blog-registration-top-right {
+        top: 16%;
+    }
+
+    .blog-registration-bottom-left,
+    .blog-registration-bottom-right {
+        bottom: 18%;
+    }
+
+    .blog-registration-top-left,
+    .blog-registration-bottom-left {
+        left: 12px;
+    }
+
+    .blog-registration-top-right,
+    .blog-registration-bottom-right {
+        right: 12px;
+    }
+
     .blog-hero h1 {
+        position: relative;
+        z-index: 1;
         font-size: clamp(3.5rem, 6vw, 6rem);
         font-variation-settings:
             'wdth' 74,
@@ -72,8 +155,10 @@ const posts = publishedPosts(await getCollection('blog'), {
     }
 
     .blog-intro {
+        position: relative;
+        z-index: 1;
         max-width: 44ch;
-        margin-top: 1.75rem;
+        margin-top: 1.25rem;
         font-family: var(--font-human);
         font-size: clamp(1.35rem, 2.2vw, 1.9rem);
         font-weight: 620;
@@ -83,11 +168,13 @@ const posts = publishedPosts(await getCollection('blog'), {
     }
 
     .rss-link {
+        position: relative;
+        z-index: 1;
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
         min-height: var(--touch-target);
-        margin-top: 1.5rem;
+        margin-top: 1.25rem;
         color: var(--ink);
         font-size: 0.85rem;
         font-variation-settings:
@@ -124,5 +211,21 @@ const posts = publishedPosts(await getCollection('blog'), {
         font-family: var(--font-human);
         font-size: 1.25rem;
         line-height: 1.5;
+    }
+
+    @media (max-width: 760px) {
+        .blog-paper::before {
+            background-size: 28px 28px;
+            mask-image: radial-gradient(
+                ellipse 80% 45% at 50% 28%,
+                transparent 38%,
+                black 100%
+            );
+        }
+
+        .blog-registration-top-right,
+        .blog-registration-bottom-left {
+            display: none;
+        }
     }
 </style>
