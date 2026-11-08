@@ -211,6 +211,7 @@ Before declaring a change complete:
 The `/blog` section renders Markdown posts from a content collection.
 
 - The collection schema lives in `src/content.config.ts` (glob loader + `z` from `astro/zod`); posts live in `src/content/blog/`.
+- Match Daniel's voice when writing or editing posts: see `docs/writing-style.md`.
 - Blog routes (`/blog`, `/blog/[slug]`, `/rss.xml`) are prerendered (`export const prerender = true` + `getStaticPaths`), unlike the rest of the server-rendered site. The sitemap admits them via the `/blog/` prefix rule in `astro.config.mjs`; prerendered routes are auto-discovered, so do NOT add `/blog` to `indexablePaths` (that produced a duplicate `/blog` + `/blog/`).
 - `src/lib/blog.ts` holds pure helpers (`postHref`, `publishedPosts`, `sortPostsByDate`, `formatDate`) with no `astro:content` import so they run under `node --test src/lib/blog.test.mjs`.
 - Giscus comment config (public, non-secret values) lives in `src/lib/giscus.ts`; the widget degrades to a muted note until populated.
