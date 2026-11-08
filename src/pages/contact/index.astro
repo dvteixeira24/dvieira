@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import { actions, isInputError } from 'astro:actions'
 import { env } from 'cloudflare:workers'
 import messageIcon from '../../assets/icons/message.svg'
+
 import { shouldBypassDevContactGuards } from '../../lib/contact/dev-bypass'
 import type { Env } from '../../worker'
 
@@ -29,7 +30,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
     title="Contact | Daniel Vieira Teixeira"
     description="Get in touch with Daniel Vieira Teixeira, a full-stack software engineer in Cape Town, to discuss software projects, collaboration, and opportunities."
 >
-    <main class="contact">
+    <main class="contact" style={`--ink-pull: url(/images/ink-pull.jpg)`}>
         <section class="contact-grid" aria-labelledby="contact-title">
             <aside class="contact-context">
                 <h1 id="contact-title">A useful first message includes:</h1>
@@ -321,7 +322,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
 <style lang="scss">
     .contact {
         min-height: 100svh;
-        background: var(--paper);
+        background: transparent;
     }
     .section-code {
         font-size: 0.7rem;
@@ -382,8 +383,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-        margin-top: auto;
-        padding-top: 4rem;
+        padding-top: 3rem;
         font-size: 0.75rem;
         font-variation-settings:
             'wdth' 80,
@@ -392,6 +392,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         line-height: 1.45;
         text-transform: uppercase;
     }
+
     .contact-details div {
         display: flex;
         flex-direction: column;
@@ -429,17 +430,17 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
     input,
     textarea {
         width: 100%;
-        padding: 0.6rem 0 1.2rem;
+        padding: 0.55rem 0 0.9rem;
         border: 0;
         border-bottom: 1px solid var(--ink);
         outline: 0;
         background: transparent;
-        font-size: clamp(1.6rem, 3vw, 3.5rem);
+        font-size: clamp(1.4rem, 2.2vw, 2.4rem);
         font-variation-settings:
             'wdth' 78,
             'wght' 380;
         letter-spacing: -0.025em;
-        line-height: 1.1;
+        line-height: 1.2;
         transition: border-color 220ms var(--ease-out);
     }
     textarea {
@@ -488,7 +489,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         border: 0;
         border-bottom: 3px solid currentcolor;
         background: transparent;
-        cursor: pointer;
+        cursor: var(--cursor-pointer);
         font-size: clamp(0.85rem, 1.2vw, 1.2rem);
         font-variation-settings:
             'wdth' 78,
@@ -501,7 +502,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         color: var(--ink);
     }
     .submit-row button:disabled {
-        cursor: progress;
+        cursor: var(--cursor-wait);
         opacity: 0.6;
     }
     .submit-spinner {
@@ -529,8 +530,11 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         align-items: flex-start;
         gap: 2rem;
         padding: clamp(2rem, 5vw, 5rem);
-        color: var(--paper);
-        background: var(--ink);
+        color: var(--paper-soft);
+        background-color: var(--charcoal);
+        background-image: var(--ink-grain);
+        background-position: center;
+        background-size: 256px;
     }
     .success-icon {
         width: 3rem;
@@ -551,7 +555,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         line-height: 1.3;
     }
     .success-message a {
-        color: var(--signal);
+        color: var(--signal-dark);
         text-transform: uppercase;
     }
     .honeypot-wrapper {
@@ -585,34 +589,53 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         }
     }
 
-    /* Contact is the clearest tactile callback to the original warm card on charcoal. */
+    /* Contact is the section printed on the dark stock. */
     .contact-grid {
-        color: var(--heritage-cream);
-        background-color: var(--heritage-charcoal);
-        background-image: var(--heritage-texture);
+        position: relative;
+        isolation: isolate;
+        color: var(--paper-soft);
+        background-color: var(--charcoal);
+        background-image: var(--ink-grain);
         background-position: center;
-        background-size: cover;
-        background-blend-mode: soft-light;
+        background-size: 256px;
+    }
+
+    .contact-grid::before {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        content: '';
+        background: var(--ink-pull) no-repeat right -6% top 8% / 46% auto;
+        filter: invert(1);
+        mix-blend-mode: screen;
+        opacity: 0.12;
+        pointer-events: none;
+    }
+
+    .contact-context,
+    .contact-form-section {
+        position: relative;
+        z-index: 1;
     }
 
     .contact-context h1 {
-        color: var(--heritage-cream);
+        color: var(--paper-soft);
         font-family: var(--font-human);
         font-weight: 660;
         letter-spacing: -0.02em;
     }
 
     .contact-context > .section-code {
-        color: var(--heritage-amber);
+        color: var(--signal-dark);
     }
     .contact-context ol {
-        border-color: rgb(255 244 230 / 45%);
+        border-color: rgb(248 244 233 / 45%);
     }
     .contact-context li {
-        border-color: rgb(255 244 230 / 28%);
+        border-color: rgb(248 244 233 / 28%);
     }
     .contact-context li span {
-        color: var(--heritage-amber);
+        color: var(--signal-dark);
     }
 
     .contact-details a {
@@ -621,8 +644,8 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         align-items: center;
         padding: 0.4rem 0.55rem;
         color: var(--ink);
-        background: var(--heritage-cream);
-        box-shadow: 3px 3px 0 var(--heritage-amber);
+        background: var(--paper-soft);
+        box-shadow: 3px 3px 0 var(--signal);
         text-decoration: none;
         transition:
             transform 220ms var(--ease-out),
@@ -631,22 +654,24 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
 
     .contact-details a:hover {
         transform: translate(-1px, -1px);
-        box-shadow: 4px 4px 0 var(--heritage-amber);
+        box-shadow: 4px 4px 0 var(--signal);
     }
 
     .contact-form-section {
         align-self: start;
         padding: clamp(1.5rem, 3vw, 3.5rem);
         color: var(--ink);
-        background: var(--heritage-cream);
-        box-shadow: 8px 8px 0 var(--heritage-amber);
+        background-color: var(--paper-soft);
+        background-image: var(--paper-tooth);
+        background-size: 256px;
+        box-shadow: 8px 8px 0 var(--signal);
     }
 
     .submit-row button {
         padding: 1rem 1.1rem 0.85rem;
-        color: var(--ink);
+        color: var(--paper-soft);
         border: 0;
-        background: var(--heritage-amber);
+        background: var(--signal);
         box-shadow: 4px 4px 0 var(--ink);
         transition:
             transform 220ms var(--ease-out),
@@ -654,9 +679,26 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
     }
 
     .submit-row button:not(:disabled):hover {
-        color: var(--ink);
+        color: var(--paper-soft);
         transform: translate(-2px, -2px);
         box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .captcha-wrapper {
+        width: fit-content;
+        padding: 0.4rem;
+        border: 1px solid var(--rule);
+        background: var(--paper);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        font-size: 0.95rem;
+        font-variation-settings:
+            'wdth' 85,
+            'wght' 420;
+        letter-spacing: 0.01em;
+        line-height: 1.4;
     }
 
     @media (max-width: 800px) {
@@ -665,7 +707,7 @@ const shouldShowCaptchaConfigError = !hCaptchaSiteKey && !allowDevContactBypass
         }
         .contact-form-section {
             padding: 1.35rem;
-            box-shadow: 5px 5px 0 var(--heritage-amber);
+            box-shadow: 5px 5px 0 var(--signal);
         }
     }
 </style>

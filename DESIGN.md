@@ -1,21 +1,22 @@
 ---
 name: Daniel Vieira Teixeira Portfolio
-description: An editorial systems portfolio where engineering precision meets a warm, personal material signature.
+description: A printed proof sheet where engineering precision is set in ink on textured newsprint.
 colors:
-  signal-ultramarine: "#244bd8"
-  signal-soft: "#dce3ff"
-  paper-blush: "#f7eae8"
-  paper-deep: "#e8e5de"
-  registration-ink: "#0c0d0d"
-  working-gray: "#5f5f5f"
-  rule-gray: "#b0b0ad"
-  heritage-amber: "#ffc078"
-  heritage-amber-ink: "#884000"
-  heritage-cream: "#fff4e6"
-  heritage-charcoal: "#141414"
-  heritage-rule: "#5d554c"
-  error-red: "#bb271a"
-  success-green: "#175b3b"
+  newsprint: "#f6f1e5"
+  newsprint-deep: "#e9e2d3"
+  stock: "#fbf7ec"
+  ink: "#0a0a09"
+  working-gray: "#55524a"
+  rule-gray: "#b6b0a1"
+  rule-ink: "#6e6a5e"
+  spot-ultramarine: "#1f3ccc"
+  spot-soft: "#dbe1ff"
+  spot-on-dark: "#93a7ff"
+  press-black: "#121211"
+  rule-on-dark: "#565655"
+  copy-on-dark: "#d0cbc3"
+  error-red: "#b02418"
+  success-green: "#16583a"
 typography:
   display:
     fontFamily: "Anybody, Arial Narrow, sans-serif"
@@ -43,6 +44,11 @@ typography:
     fontWeight: 670
     lineHeight: 0.96
     letterSpacing: "-0.025em"
+  reading:
+    fontFamily: "Newsreader, Georgia, serif"
+    fontSize: "clamp(1.12rem, 1.3vw, 1.28rem)"
+    fontWeight: 420
+    lineHeight: 1.7
   body:
     fontFamily: "Anybody, system-ui, sans-serif"
     fontSize: "clamp(1rem, 1.35vw, 1.35rem)"
@@ -68,160 +74,180 @@ spacing:
 components:
   action-system:
     backgroundColor: "transparent"
-    textColor: "{colors.signal-ultramarine}"
+    textColor: "{colors.spot-ultramarine}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "1rem 0 0.8rem"
-  action-tactile:
-    backgroundColor: "{colors.heritage-amber}"
-    textColor: "{colors.registration-ink}"
+  action-printed:
+    backgroundColor: "{colors.spot-ultramarine}"
+    textColor: "{colors.stock}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "1rem 1.1rem 0.85rem"
-  field-editorial:
-    backgroundColor: "{colors.heritage-cream}"
-    textColor: "{colors.registration-ink}"
+  field-printed:
+    backgroundColor: "{colors.stock}"
+    textColor: "{colors.ink}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
-    padding: "0.6rem 0 1.2rem"
+    padding: "0.55rem 0 0.9rem"
   tag-paper:
-    backgroundColor: "{colors.heritage-cream}"
-    textColor: "{colors.registration-ink}"
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "0.45rem 0.65rem 0.35rem"
+  portrait-plate:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    typography: "{typography.editorial-title}"
+    rounded: "{rounded.none}"
+    padding: "0"
 ---
 
 # Design System: Daniel Vieira Teixeira Portfolio
 
 ## Overview
 
-**Creative North Star: "The Human Systems Proof Sheet"**
+**Creative North Star: "The Printed Proof Sheet"**
 
-The portfolio is a precise editorial artifact from an engineering studio: warm proofing stock, dense type, registration marks, axis labels, and hairline rules. Its systems layer makes Daniel's reasoning legible; its restored heritage layer makes the work feel personal and authored.
+The portfolio is a press proof from an engineering studio: newsprint stock, halftone ink, hairline rules, registration marks, and dense type. Its systems layer makes Daniel's reasoning legible; its printed layer makes the work feel authored rather than templated.
 
-Anybody is the engineering instrument. Newsreader is a limited human countervoice. The original grayscale portrait, warm cream paper, amber invitations, and charcoal photographic texture appear selectively at identity and contact moments rather than becoming a global theme.
+Anybody is the engineering instrument. Newsreader is the reading voice. The halftone portrait is the only photograph on the site and the only place where ink is anything but solid: it is a plate, not a medallion. Ultramarine is a single spot colour, used for system state and the second impression of the plate.
 
 **Key Characteristics:**
 
-- Paper Blush and Registration Ink form the persistent systems canvas.
-- Signal Ultramarine marks system state; Heritage Amber marks person, invitation, and connection.
-- Anybody carries engineering structure; Newsreader supplies human and editorial emphasis.
-- Portrait, texture, cream inserts, and tactile offsets are deliberate identity moments.
-- Wide layouts are asymmetric and measured; small screens become direct stacks with an amber bottom dock.
+- Newsprint stock and press black form the persistent canvas; the paper carries a fine grain at a fixed scale.
+- Spot ultramarine marks system state; it is the only accent colour in the interface.
+- Anybody carries engineering structure; Newsreader carries reading copy and the person.
+- The halftone portrait appears as a square plate on Home, About, and Contact, with a misregistered second impression.
+- Wide layouts are asymmetric and measured; small screens become direct stacks with an ink bottom dock and a printed masthead.
 
 ## Colors
 
-The palette separates machine logic from human invitation.
+The palette is a press run: one paper, one ink, one spot colour.
 
 ### Primary
 
-- **Signal Ultramarine:** Active engineering modes, focus, state, technical emphasis, and structural progress.
-- **Signal Soft:** Pale companion for quiet system feedback.
+- **Spot Ultramarine:** Active modes, focus, links, system state, and the plate's misregistration.
+- **Spot Soft:** Pale companion for quiet feedback on stock.
+- **Spot On Dark:** The ultramarine adjusted for ink surfaces; use it for small text and rules on press black.
 
 ### Secondary
 
-- **Heritage Amber:** Tactile fills, portrait offsets, navigation state, and accents on dark surfaces.
-- **Heritage Amber Ink:** Accessible amber-colored text on Paper Blush and Heritage Cream.
-
-### Tertiary
-
-- **Heritage Cream:** Warm navigation, biography, contact, and paper-insert surfaces.
-- **Heritage Charcoal:** Base for selective textured identity and contact fields.
-- **Heritage Rule:** Warm divider where gray would feel too technical.
+- **Stock:** Raised paper inserts — navigation rail, the contact card, the About introduction.
+- **Press Black:** Inverse bands, the contact field, code blocks, and the closing invitation.
 
 ### Neutral
 
-- **Paper Blush:** Default page and control canvas.
-- **Paper Deep:** Secondary paper tone.
-- **Registration Ink:** Primary text, strongest rules, and inverse systems fields.
+- **Newsprint:** Default page canvas, carrying the fine paper grain.
+- **Newsprint Deep:** Secondary paper tone.
+- **Ink:** Primary text, strongest rules, and inverse systems fields.
 - **Working Gray:** Supporting copy and axis notation.
-- **Rule Gray:** Hairline borders and measurement guides.
+- **Rule Gray / Rule Ink:** Hairline borders and measurement guides; Rule Ink for tags and diagram detail.
+- **Rule On Dark / Copy On Dark:** Divider and supporting-copy tones for Press Black surfaces.
 
 ### Named Rules
 
-**The Two-Signal Rule.** Ultramarine encodes systems and state. Amber encodes person, invitation, and connection. Do not swap their jobs.
+**The Single Spot Rule.** Ultramarine is the only accent in the interface. It encodes state, focus, and the plate's second impression. Nothing else is allowed to become a second accent.
+
+**The No Sepia Rule.** Warmth comes from the paper and the halftone; never tint the interface brown, kraft, or sepia, and never apply a global texture that reads as grime.
 
 ## Typography
 
 **Display Font:** Anybody with Arial Narrow and sans-serif fallbacks  
-**Body Font:** Anybody with system-ui and sans-serif fallbacks  
-**Human / Editorial Font:** Newsreader with Georgia and serif fallbacks  
+**Reading Font:** Newsreader with Georgia and serif fallbacks  
+**UI / Body Font:** Anybody with system-ui and sans-serif fallbacks  
+**Editorial Font:** Newsreader  
 **Label Font:** Anybody
 
 **Homepage Backend Exception:** Self-hosted Fragment Mono with monospace fallback, confined to the Backend headline and process annotations.
 
-**Character:** Anybody feels engineered through variable width and weight. Newsreader introduces warmth and biography without softening the surrounding technical precision.
+**Character:** Anybody feels engineered through variable width and weight. Newsreader is where the site is read: biography, post bodies, premises, and plate captions.
 
 ### Hierarchy
 
 - **Display:** Large variable Anybody for route heroes and the systems specimen.
 - **Headline:** Condensed Anybody for major section transitions.
-- **Editorial title:** Newsreader for project names, personal emphasis, and biography or contact moments.
-- **Body:** Readable Anybody for narrative evidence and explanation.
+- **Editorial title:** Newsreader for project names, assignment titles, and plate captions.
+- **Reading:** Newsreader for continuous prose — About biography, blog bodies, and introductions.
+- **Body:** Anybody for short evidence lines, interface copy, and lists.
 - **Label:** Compact uppercase Anybody for indices, coordinates, and controls.
 
 ### Named Rules
 
-**The Two-Voice Rule.** Anybody explains the system; Newsreader reveals the person. Keep Newsreader sparse enough that the distinction remains meaningful.
+**The Reading Rule.** Anything the visitor reads continuously is set in Newsreader. Anything they scan, operate, or measure stays in Anybody.
+
+**The Two-Voice Rule.** Anybody explains the system; Newsreader reveals the person. Keep the distinction visible — an inline Anybody run inside a serif paragraph is a deliberate signal, not a slip.
 
 **The Backend Face Exception Rule.** Fragment Mono is confined to the homepage Backend headline and process annotations. Frontend, QA, and Reliability retain Anybody with distinct role-specific treatments; Newsreader keeps its established editorial role.
 
 ## Layout
 
-Desktop pages reserve a fixed cream navigation rail on the left. Content begins after that rail and uses a consistent fluid gutter. Large type occupies the dominant field while metadata, evidence, and actions sit in narrower aligned columns.
+Desktop pages reserve a fixed stock navigation rail on the left. Content begins after that rail and uses a consistent fluid gutter. Large type occupies the dominant field while metadata, evidence, and actions sit in narrower aligned columns.
 
-At 760px and below, the rail becomes a fixed amber bottom dock, with no top bar. Route grids collapse into direct reading stacks, the body gains safe bottom padding, and nonessential measurement annotations may disappear. About uses a compact identity/description introduction followed by a Defijn employment summary and a vertical assignment timeline. Dates occupy a narrow column on desktop and move above assignment titles at 760px and below. On Home, selected project evidence is folded into the dark approach sequence instead of repeated in a separate index. Horizontal scrolling is allowed only for deliberately linear controls such as the engineering mode strip and method sequence. Primary controls and navigation links preserve a minimum 44 × 44px interaction area.
+At 760px and below, the rail becomes a fixed ink bottom dock, and Home opens with a printed masthead instead of a footer plate. Route grids collapse into direct reading stacks, the body gains safe bottom padding, and nonessential measurement annotations may disappear. About uses a compact identity/description introduction followed by a Defijn employment summary and a vertical assignment timeline. Dates occupy a narrow column on desktop and move above assignment titles at 760px and below. On Home, selected project evidence is folded into the dark approach sequence instead of repeated in a separate index. Horizontal scrolling is allowed only for deliberately linear controls such as the engineering mode strip and method sequence. Primary controls and navigation links preserve a minimum 44 × 44px interaction area.
 
 **The Editorial Grid Rule.** Asymmetry must remain aligned to shared rules and columns; it should feel measured, never accidental.
 
+**The Dock Clearance Rule.** Fixed bottom navigation must never end a page over content: the document keeps bottom padding for the dock, and a full-height hero moves its identity block above it.
+
 ## Elevation & Depth
 
-The system is flat by default. Depth comes from paper-versus-ink inversion, one-pixel rules, fixed navigation, and selective charcoal texture. Hard offset shadows are a narrow heritage exception for controls and identity objects that should feel physically handled.
+The system is flat by default. Depth comes from paper-versus-ink inversion, one-pixel rules, fixed navigation, and the paper grain. Hard offset shadows are a printed register: a second impression of one object, not ambient depth.
 
 ### Shadow Vocabulary
 
-- **Tactile small:** Three- to four-pixel hard offsets on compact navigation and social stamps.
-- **Tactile medium:** Five- to eight-pixel hard offsets on portrait medallions, warm contact cards, and primary amber actions.
+- **Register small:** Three- to four-pixel hard offsets on compact navigation and social stamps.
+- **Register medium:** Five- to eight-pixel hard offsets on the portrait plate, the contact card, and primary actions.
 
 ### Named Rules
 
-**The Tactile Exception Rule.** Never apply offset shadows to ordinary content rows or ambient surfaces.
+**The Register Rule.** An offset exists to suggest a second pass through the press: it is either ink under stock or spot under ink. Never blur it, never apply it to ordinary content rows.
 
 ## Shapes
 
-Controls, fields, tags, rows, and inverse panels are square with zero radius. Borders are normally one-pixel hairlines. Circles are reserved for system-state dots, timeline nodes, registration marks, and the grayscale portrait medallion.
+Controls, fields, tags, rows, and inverse panels are square with zero radius. Borders are normally one-pixel hairlines. Circles are reserved for system-state dots, timeline nodes, and registration marks. The portrait is a square plate.
+
+## Texture
+
+Two generated grains carry the material layer, both at a fixed physical scale so they never stretch with the viewport:
+
+- **Paper grain:** black at 3.5% alpha, tiled at 256px over the newsprint canvas and stock inserts.
+- **Ink grain:** white at 5% alpha, tiled at 256px over press-black surfaces, giving the dark bands a printed tooth without a photographic pattern.
+
+A single scan, the ink pull, sits once on Contact at 12% behind the form. Use a scan only where it cannot tile and never behind body copy.
 
 ## Components
 
 ### Buttons and action links
 
-- **System action:** Transparent, blue, square, and underlined; use for technical or structural navigation.
-- **Tactile action:** Amber fill, ink text, square corners, and a hard ink offset; use for contact and invitation.
-- **Hover / Focus:** Use short positional or color feedback and retain the global visible blue focus outline.
+- **System action:** Transparent, ultramarine, square, and underlined; use for technical or structural navigation.
+- **Printed action:** Ultramarine fill, stock text, square corners, and an ink register offset; use for the single next step on a surface.
+- **Hover / Focus:** Short positional or color feedback; retain the global visible ultramarine focus outline.
 
 ### Inputs and fields
 
-- **Style:** Oversized square fields on a Heritage Cream paper insert with strong ink underlines.
-- **Focus:** Shift the underline to Signal Ultramarine and retain a visible outline.
+- **Style:** Square fields on a stock insert with strong ink underlines. The typed value is set large; the placeholder is a small working note above the rule, never a display line.
+- **Focus:** Shift the underline to ultramarine and retain a visible outline.
 - **Error:** Use Error Red plus explicit field text; never rely on color alone.
+- **Captcha:** Set the widget in its own paper well so its white frame does not flash against the ink field.
 
 ### Tags
 
-- **Style:** Compact square paper labels with tracked uppercase Anybody.
+- **Style:** Compact square labels with tracked uppercase Anybody, hairline Rule Ink border, and no fill.
 
 ### Navigation
 
-- **Desktop:** Fixed Heritage Cream rail containing Home, About, Blog, and Contact links. Amber identifies hover and current route.
-- **Mobile:** A fixed four-link Heritage Amber bottom dock (Home, About, Blog, Contact), with no top bar or reserved top space. The current route becomes a cream paper insert.
+- **Desktop:** Fixed Stock rail containing Home, About, Blog, and Contact links. The current route is an ink block with stock text and an ultramarine dot.
+- **Mobile:** A fixed ink dock (Home, About, Blog, Contact) with stock text. The current route becomes a stock insert with ink text.
 
 ### Indexed narrative rows
 
-Use metadata, a large premise, and problem-to-intervention evidence separated by space and hairlines, not generic filled cards. Warm cream may appear on hover.
+Use metadata, a large premise, and problem-to-intervention evidence separated by space and hairlines, not generic filled cards. Stock may appear on hover.
 
 ### Inverse mode panels
 
-Use Heritage Charcoal with the original texture, cream copy, and visible grid borders. Blue remains the system-state response.
+Use Press Black with the white ink grain, stock copy, and visible grid borders. Ultramarine remains the system-state response; use Spot On Dark for small text and rules.
 
 ### Variable-type specimen
 
@@ -229,41 +255,49 @@ The homepage keeps “Different … Same approach.” across four stable rows wh
 
 `HeroModes.astro` controls these states from the authoritative content in `src/lib/hero-modes.ts`. Its shared home `data-mode` also drives the existing role loom. Reserve the tallest explanation panel and fixed row heights so rotation does not move surrounding content. The five-second cycle runs only while visible and idle: mouse hover temporarily suspends it; role selection or keyboard focus holds the current mode until Resume cycle. Reduced motion starts paused and removes type transitions; the complete Frontend state remains readable without JavaScript. Initialize on `astro:page-load` and dispose timers, observers, and listeners on `astro:before-swap`.
 
-### Portrait medallion
+### Portrait plate
 
-Use the original portrait in grayscale, circularly cropped with a cream rim and amber hard offset. It anchors identity; it does not replace the reasoning-led hero.
+The halftone portrait is the only photograph on the site. It is a square plate — never a circle, never filtered, never on a stock chip — with a misregistered ultramarine impression offset horizontally behind it. The source is cut out with alpha, so the ink sits directly on the paper.
 
-### Warm contact card
+- **Home:** 56px masthead plate on phones, where the fixed dock would otherwise cover the hero footer. Desktop and tablet carry no portrait in the hero.
+- **About:** 320–420px plate leading the introduction column, with the name, role, and location set under a hairline.
+- **Blog post:** 48px byline plate beside the author line.
 
-Place the functional form on a square Heritage Cream insert over a textured charcoal field. Preserve the existing contact pipeline and visible validation states.
+### Contact card
+
+Place the functional form on a square Stock insert over the ink field. Preserve the existing contact pipeline and visible validation states. The contact surface is the one place a scanned ink pull appears, and it stays behind the form.
+
+### Reading matter
+
+Blog index rows, post bodies, and the About biography are reading surfaces: Newsreader, 62–66ch measure, 1.6–1.7 line height. A post opens with a Newsreader drop cap and a byline plate.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- Do use Ultramarine for system state and technical focus.
-- Do use Amber and Cream for person, invitation, connection, and tactile contact.
-- Do build engineering hierarchy with Anybody and reserve Newsreader for the human countervoice.
-- Do keep texture selective and preserve accessible contrast.
+- Do use ultramarine for system state, focus, links, and the plate's second impression.
+- Do use Newsreader for anything read continuously and Anybody for anything scanned or operated.
+- Do keep the paper grain at its fixed 256px scale and the dark grain at low alpha.
+- Do keep the portrait a square plate with a horizontal misregistration.
 - Do maintain visible keyboard focus, reduced motion, and direct mobile reading order.
 - Do keep primary interactive targets at least 44px in both dimensions.
 
 ### Don't:
 
+- Don't introduce a second accent colour; warmth comes from the stock, not from amber.
 - Don't turn the portfolio back into a centered portrait hero or generic skill-card grid.
-- Don't add rounded containers, pills, gradients, glass effects, or ambient soft shadows.
-- Don't apply texture globally or offset shadows to ordinary content surfaces.
-- Don't swap the semantic jobs of blue and amber.
+- Don't add rounded containers, pills, gradients, glass effects, or soft ambient shadows.
+- Don't stretch or tile photographic textures at viewport scale, and don't tint the site kraft or sepia.
+- Don't apply texture behind body copy or put an offset shadow on ordinary content rows.
 - Don't hide essential content or contact actions behind animation or pointer-only interaction.
 
 
 ## Homepage motion
 
-The homepage has three authored effects: a brief horizontal mask reveal across
-its four headline words on the first home visit in a client session; an
-ultramarine timeline rule and milestone fills driven by natural page scrolling;
-and a portrait tilt limited to five degrees and two pixels of travel on a fine
-mouse pointer. The portrait frame and caption remain stationary.
+The homepage has two authored effects: a brief horizontal mask reveal across
+its four headline words on the first home visit in a client session, and an
+ultramarine timeline rule with milestone fills driven by natural page scrolling.
+The hero footer itself does not move.
 
 The headline settles within 770ms. Returning to Home or changing motion
 preferences does not replay the entrance. Font-mode controls retain their
@@ -272,8 +306,8 @@ mobile readouts use the reserved caption space to clear the widest words. The ti
 visible and uses a native, keyboard-focusable horizontal scroller when narrow.
 It is excluded from the shared fade-and-rise reveal observer.
 
-Reduced motion shows the headline and completed timeline immediately and removes
-portrait movement. Default HTML/CSS remains readable without JavaScript. GSAP
+Reduced motion shows the headline and completed timeline immediately. Default
+HTML/CSS remains readable without JavaScript. GSAP
 lives in the homepage's bundled client script, initializes on `astro:page-load`,
 and reverts its contexts, ScrollTriggers, and pointer listeners on
 `astro:before-swap`. Media-query changes clean up and reconfigure effects.
@@ -283,14 +317,16 @@ and reverts its contexts, ScrollTriggers, and pointer listeners on
 
 About at `/about` combines the retained three-paragraph biography description
 with one Defijn employment summary and five assignments, newest start first.
-The cream introduction keeps a supporting grayscale portrait and an Experience
-jump link. The professional record uses visible dates, restrained timeline
-markers, serif assignment titles, and expanded contribution lists. There are no
+The stock introduction keeps a large halftone portrait plate and an Experience
+jump link. The biography is set in Newsreader; the professional record uses
+visible dates, restrained timeline markers, serif assignment titles, and
+expanded contribution lists. There are no
 separate skills or principles panels. Essential About content uses no entrance
 reveal; it remains immediately readable on direct and anchor navigation.
 
 The desktop rail and mobile dock contain Home, About, Blog, and Contact links.
-The monogram, name, location, portrait, and mobile top bar have been removed. Existing legacy project anchors
+There is no site-wide top bar; the mobile hero opens with a printed masthead
+holding the portrait, name, and role. Existing legacy project anchors
 remain stable, and `/biography` and `/experience` permanently redirect to About.
 
 
@@ -302,7 +338,7 @@ The compact About surface uses a smaller reading scale than the homepage:
 | --- | --- |
 | About title | `clamp(3.5rem, 6vw, 6rem)` |
 | Description heading | `clamp(2rem, 3.2vw, 3rem)` |
-| Description body | `clamp(1rem, 1.25vw, 1.2rem)` |
+| Description body | `clamp(1.12rem, 1.25vw, 1.3rem)` Newsreader |
 | Experience heading | `clamp(2.75rem, 5vw, 5rem)` |
 | Employer title | `clamp(2.25rem, 3.5vw, 3.5rem)` |
 | Assignment group | `clamp(1.35rem, 2vw, 1.75rem)` |
@@ -320,7 +356,7 @@ experience easy to scan without inheriting oversized homepage display spacing.
 ### About motion
 
 The foundation/range statement receives an authored animation:
-an amber underline draws once per client session when the statement reaches the
+an ultramarine underline draws once per client session when the statement reaches the
 reading area. The sequence lasts 600ms and all text remains visible. The portrait,
 name, Experience heading, timeline tracks, markers, action arrows, and contact
 stamp remain static. Each selected assignment fades in and settles upward by
@@ -339,8 +375,8 @@ compact SVG workflow illustrations from `AssignmentDiagram.astro`; their caption
 explicitly identify them as illustrations. The diagrams have no internal motion;
 they enter with their assignment content.
 
-The closing contact action is a static cream stamp on the amber footer, with a
-four-pixel hard ink offset and color-only hover, focus, and active feedback.
+The closing contact action is a static stock stamp on the ink footer, with a
+four-pixel ultramarine register offset and color-only hover, focus, and active feedback.
 
 ### Hero role loom motion
 
@@ -348,11 +384,11 @@ The WebGL field uses 33 triangle ribbons (17 on phones), with screen-space width
 of 1.6–3.2 pixels according to depth. Traveling waves for Frontend, twisting braids
 for Backend, stress ripples for QA, and an undulating Reliability loop retain the
 1.2-second role morph. The field crosses the display headline with difference
-blending: warm source ink reads as electric blue over blush and amber over black.
+blending: warm source ink reads as electric blue over newsprint and ultramarine over black.
 Controls, reasoning copy, and the hero footer sit above the field.
 
-`HeroPaper.astro` provides static drafting paper on the existing Paper Blush base.
-One-pixel-radius Registration Ink dots sit on a 32px grid at 12% opacity (28px
+`HeroPaper.astro` provides static drafting paper on the newsprint base.
+One-pixel-radius ink dots sit on a 32px grid at 12% opacity (28px
 on phones). Elliptical masks clear the pattern behind the headline and role loom;
 phones use one broad central clearing. Four 9px registration crosses sit at the
 outer edges at 10% opacity, reduced to two on phones. The background has no canvas,

@@ -36,7 +36,7 @@ const isActive = (href: string) =>
         width: var(--rail-width);
         padding: clamp(1rem, 2vw, 1.45rem) 1.1rem;
         border-right: 1px solid var(--ink);
-        background: var(--heritage-cream);
+        background: var(--paper-soft);
     }
 
     nav {
@@ -84,18 +84,19 @@ const isActive = (href: string) =>
                 transform 220ms var(--ease-out);
         }
 
-        &:hover,
+        &:hover {
+            background: var(--paper-deep);
+        }
+
         &[aria-current='page'] {
-            color: var(--ink);
-            background: var(--heritage-amber);
-            box-shadow: 2px 2px 0 var(--ink);
-            transform: translate(-1px, -1px);
+            color: var(--paper-soft);
+            background: var(--ink);
         }
 
         &[aria-current='page']::after {
             opacity: 1;
             transform: scale(2);
-            outline: 1px white solid;
+            outline: 1px var(--paper-soft) solid;
         }
     }
 
@@ -118,8 +119,9 @@ const isActive = (href: string) =>
             justify-content: center;
             gap: 0.15rem;
             padding: 0.48rem;
-            background: var(--heritage-amber);
-            box-shadow: 3px 3px 0 var(--ink);
+            background: var(--paper-soft);
+            border: 1px solid var(--ink);
+            box-shadow: 4px 4px 0 var(--ink);
             transform: translateX(-50%);
             writing-mode: horizontal-tb;
         }
@@ -130,9 +132,13 @@ const isActive = (href: string) =>
             white-space: nowrap;
         }
 
-        nav a:hover,
+        nav a:hover {
+            background: var(--paper-deep);
+        }
+
         nav a[aria-current='page'] {
-            background: var(--heritage-cream);
+            color: var(--paper-soft);
+            background: var(--ink);
             box-shadow: none;
             transform: none;
         }

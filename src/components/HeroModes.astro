@@ -446,7 +446,7 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
         color: var(--ink);
         border: 0;
         background: transparent;
-        cursor: pointer;
+        cursor: var(--cursor-pointer);
         font-size: 0.7rem;
         font-variation-settings:
             'wdth' 82,
@@ -468,7 +468,7 @@ const words = ['Different', initial.noun, 'Same', 'approach.']
             color: var(--signal);
         }
         &:disabled {
-            cursor: default;
+            cursor: var(--cursor-arrow);
         }
     }
     .rotation-control {

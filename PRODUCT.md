@@ -56,7 +56,9 @@ contact.
 
 ## Evidence on Hand
 
-- A portrait at `src/assets/profiled.jpg`.
+- A cut-out halftone portrait at `public/images/portrait-head.webp` and
+  `public/images/portrait-plate.webp`, used as a printed plate on Home (phones),
+  About, and article bylines.
 - Career summary, portrait, and professional experience in `src/pages/about/index.astro`.
 - One Defijn employment role with five client assignments, all delivered through Defijn.
 - GitHub and LinkedIn profile links in `src/pages/contact/index.astro`.

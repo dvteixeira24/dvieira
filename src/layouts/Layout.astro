@@ -2,7 +2,6 @@
 import { ClientRouter } from 'astro:transitions'
 import Navigation from '../components/Navigation.astro'
 import SEO from '../components/SEO.astro'
-import heritageTexture from '../assets/mike-hindle-Js5Qi_X1qzo-unsplash.jpg'
 
 interface Props {
     title?: string
@@ -46,7 +45,7 @@ const { title, description, canonical, noindex, article } = Astro.props
             href="/apple-touch-icon.png?v=dv-cut-1"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#f7eae8" />
+        <meta name="theme-color" content="#f6f1e5" />
         <meta name="generator" content={Astro.generator} />
         <script
             defer
@@ -61,7 +60,9 @@ const { title, description, canonical, noindex, article } = Astro.props
         />
         <ClientRouter />
     </head>
-    <body style={`--heritage-texture: url(${heritageTexture.src});`}>
+    <body
+        style={`--paper-tooth: url(/images/paper-grain.png); --ink-grain: url(/images/ink-grain.png);`}
+    >
         <slot />
         <Navigation />
         <script is:inline data-astro-rerun>
@@ -161,24 +162,30 @@ const { title, description, canonical, noindex, article } = Astro.props
         --font-display: 'Anybody', 'Arial Narrow', sans-serif;
         --font-body: 'Anybody', system-ui, sans-serif;
         --font-human: 'Newsreader', Georgia, serif;
-        --paper: #f7eae8;
-        --paper-deep: #e8e5de;
-        --ink: #080909;
-        --muted: #5f5f5f;
-        --rule: #b0b0ad;
-        --signal: #244bd8;
-        --signal-soft: #dce3ff;
-        --error: #bb271a;
-        --success: #175b3b;
-        --heritage-amber: #ffc078;
-        --heritage-amber-ink: #884000;
-        --heritage-cream: #fff4e6;
-        --heritage-charcoal: #141414;
-        --heritage-rule: #5d554c;
+        --paper: #f6f1e5;
+        --paper-deep: #e9e2d3;
+        --paper-soft: #fbf7ec;
+        --ink: #0a0a09;
+        --muted: #55524a;
+        --rule: #b6b0a1;
+        --rule-ink: #6e6a5e;
+        --signal: #1f3ccc;
+        --signal-soft: #dbe1ff;
+        --signal-dark: #93a7ff;
+        --charcoal: #121211;
+        --rule-on-dark: #565655;
+        --copy-on-dark: #d0cbc3;
+        --error: #b02418;
+        --success: #16583a;
         --rail-width: clamp(5.5rem, 6.35vw, 6.5rem);
         --page-gutter: clamp(1.25rem, 2.5vw, 2.75rem);
         --touch-target: 2.75rem;
         --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --cursor-arrow: url('/cursors/arrow.png') 4 3, default;
+        --cursor-pointer: url('/cursors/pointer.png') 9 3, pointer;
+        --cursor-text: url('/cursors/text.png') 16 16, text;
+        --cursor-wait: url('/cursors/wait.png') 16 16, wait;
+        --cursor-measure: url('/cursors/crosshair.png') 16 16, crosshair;
     }
 
     *,
@@ -192,6 +199,7 @@ const { title, description, canonical, noindex, article } = Astro.props
         min-width: 20rem;
         background: var(--paper);
         color: var(--ink);
+        cursor: var(--cursor-arrow);
         font-family: var(--font-body);
         font-synthesis: none;
         -webkit-font-smoothing: antialiased;
@@ -205,7 +213,9 @@ const { title, description, canonical, noindex, article } = Astro.props
         min-height: 100svh;
         padding-left: var(--rail-width);
         overflow-x: clip;
-        background: var(--paper);
+        background-color: var(--paper);
+        background-image: var(--paper-tooth);
+        background-size: 256px;
     }
 
     .statement,
@@ -238,6 +248,44 @@ const { title, description, canonical, noindex, article } = Astro.props
         color: inherit;
         text-decoration-thickness: 1px;
         text-underline-offset: 0.24em;
+    }
+
+    a[href],
+    button:not(:disabled),
+    [role='button'],
+    summary,
+    select,
+    label[for],
+    input:is(
+            [type='submit'],
+            [type='button'],
+            [type='reset'],
+            [type='checkbox'],
+            [type='radio'],
+            [type='file'],
+            [type='range'],
+            [type='color']
+        ) {
+        cursor: var(--cursor-pointer);
+    }
+
+    input:not(
+            [type='submit'],
+            [type='button'],
+            [type='reset'],
+            [type='checkbox'],
+            [type='radio'],
+            [type='file'],
+            [type='range'],
+            [type='color']
+        ),
+    textarea,
+    [contenteditable='true'] {
+        cursor: var(--cursor-text);
+    }
+
+    [aria-busy='true'] {
+        cursor: var(--cursor-wait);
     }
 
     button,

@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import profileImage from '../assets/profiled.jpg'
+
 import RoleLoom from '../components/RoleLoom.astro'
 import HeroPaper from '../components/HeroPaper.astro'
 import HeroModes from '../components/HeroModes.astro'
@@ -14,29 +14,30 @@ import HeroModes from '../components/HeroModes.astro'
         <section class="hero" aria-labelledby="hero-title">
             <HeroPaper />
             <RoleLoom />
-            <HeroModes />
 
-            <div class="hero-footer">
-                <figure class="portrait-seal">
+            <div class="hero-masthead">
+                <span
+                    class="masthead-frame"
+                    style={`--plate: url(/images/portrait-head.webp)`}
+                >
                     <img
-                        src={profileImage.src}
+                        src="/images/portrait-head.webp"
                         alt="Portrait of Daniel Vieira Teixeira"
+                        width="160"
+                        height="160"
                         loading="eager"
                         decoding="async"
                     />
-                    <figcaption>
-                        <strong>Daniel Vieira Teixeira</strong><span
-                            >Full Stack Software Engineer</span
-                        >
-                    </figcaption>
-                </figure>
+                </span>
+                <p>
+                    <strong>Daniel Vieira Teixeira</strong>
+                    <span>Full Stack Software Engineer</span>
+                </p>
+            </div>
 
-                <p class="coordinates" aria-label="Cape Town coordinates">
-                    33.9249° S<br />18.4241° E
-                </p>
-                <p class="process-mantra">
-                    Engineer<br />Build<br />Improve<br />Repeat
-                </p>
+            <HeroModes />
+
+            <div class="hero-footer">
                 <p class="offer-copy">
                     I solve across the stack<br />to find the right
                     intervention.
@@ -167,78 +168,6 @@ import HeroModes from '../components/HeroModes.astro'
                 },
                 root,
             )
-
-            media.add(
-                '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
-                () => {
-                    const seal =
-                        root.querySelector<HTMLElement>('.portrait-seal')
-                    const portrait = seal?.querySelector('img')
-                    if (!seal || !portrait) return
-
-                    gsap.set(portrait, { transformPerspective: 600 })
-                    const options = { duration: 0.35, ease: 'power3.out' }
-                    const tiltX = gsap.quickTo(portrait, 'rotationX', options)
-                    const tiltY = gsap.quickTo(portrait, 'rotationY', options)
-                    const moveX = gsap.quickTo(portrait, 'x', options)
-                    const moveY = gsap.quickTo(portrait, 'y', options)
-                    const clamp = gsap.utils.clamp(-1, 1)
-                    let bounds: DOMRect | undefined
-
-                    const reset = (): void => {
-                        bounds = undefined
-                        tiltX(0)
-                        tiltY(0)
-                        moveX(0)
-                        moveY(0)
-                    }
-                    const enter = (): void => {
-                        bounds = seal.getBoundingClientRect()
-                    }
-                    const move = (event: PointerEvent): void => {
-                        if (event.pointerType !== 'mouse') return
-                        bounds ??= seal.getBoundingClientRect()
-                        const x = clamp(
-                            ((event.clientX - bounds.left) / bounds.width) * 2 -
-                                1,
-                        )
-                        const y = clamp(
-                            ((event.clientY - bounds.top) / bounds.height) * 2 -
-                                1,
-                        )
-                        tiltX(-y * 5)
-                        tiltY(x * 5)
-                        moveX(x * 2)
-                        moveY(y * 2)
-                    }
-                    const visibility = (): void => {
-                        if (document.hidden) reset()
-                    }
-
-                    seal.addEventListener('pointerenter', enter)
-                    seal.addEventListener('pointermove', move)
-                    seal.addEventListener('pointerleave', reset)
-                    seal.addEventListener('pointercancel', reset)
-                    window.addEventListener('scroll', reset, { passive: true })
-                    window.addEventListener('blur', reset)
-                    window.addEventListener('resize', reset)
-                    document.addEventListener('visibilitychange', visibility)
-                    return () => {
-                        seal.removeEventListener('pointerenter', enter)
-                        seal.removeEventListener('pointermove', move)
-                        seal.removeEventListener('pointerleave', reset)
-                        seal.removeEventListener('pointercancel', reset)
-                        window.removeEventListener('scroll', reset)
-                        window.removeEventListener('blur', reset)
-                        window.removeEventListener('resize', reset)
-                        document.removeEventListener(
-                            'visibilitychange',
-                            visibility,
-                        )
-                    }
-                },
-                root,
-            )
         }, root)
         disposeMotion = () => {
             media.revert()
@@ -268,13 +197,13 @@ import HeroModes from '../components/HeroModes.astro'
 
 <style lang="scss">
     .home {
-        background: var(--paper);
+        background: transparent;
     }
 
     .hero {
         position: relative;
         isolation: isolate;
-        background: var(--paper);
+        background: transparent;
         overflow: clip;
         box-sizing: border-box;
         min-height: 100vh;
@@ -299,20 +228,6 @@ import HeroModes from '../components/HeroModes.astro'
         flex-wrap: wrap;
         align-items: center;
         gap: 1.5rem 2rem;
-    }
-    .coordinates,
-    .process-mantra {
-        display: none;
-        font-size: 0.65rem;
-        font-variation-settings:
-            'wdth' 74,
-            'wght' 490;
-        letter-spacing: 0.14em;
-        line-height: 1.45;
-        text-transform: uppercase;
-    }
-    .coordinates {
-        color: var(--muted);
     }
     .offer-copy {
         font-size: 1.1rem;
@@ -369,12 +284,8 @@ import HeroModes from '../components/HeroModes.astro'
     @media (min-width: 1201px) {
         .hero {
             min-height: 100svh;
-            gap: clamp(1rem, 2.5svh, 2rem);
-            padding-block: 1.25rem 1.5rem;
-        }
-        .coordinates,
-        .process-mantra {
-            display: block;
+            gap: clamp(0.75rem, 2svh, 1.5rem);
+            padding-block: 1rem;
         }
         .offer-copy {
             margin-left: auto;
@@ -410,7 +321,7 @@ import HeroModes from '../components/HeroModes.astro'
     }
 
     .thinking h2 span {
-        color: var(--signal);
+        color: var(--signal-dark);
         font-style: italic;
         font-weight: 760;
     }
@@ -424,11 +335,11 @@ import HeroModes from '../components/HeroModes.astro'
         grid-template-columns: 3rem 1fr;
         gap: clamp(1.25rem, 3vw, 3rem);
         padding: 2rem 0 4rem;
-        border-top: 1px solid #565655;
+        border-top: 1px solid var(--rule-on-dark);
     }
 
     .thinking li > span {
-        color: var(--signal);
+        color: var(--signal-dark);
         font-size: 0.7rem;
         letter-spacing: 0.15em;
     }
@@ -444,7 +355,7 @@ import HeroModes from '../components/HeroModes.astro'
 
     .thinking li p {
         max-width: 42ch;
-        color: #d0cbc3;
+        color: var(--copy-on-dark);
         font-size: clamp(1rem, 1.25vw, 1.25rem);
         font-variation-settings:
             'wdth' 84,
@@ -455,7 +366,7 @@ import HeroModes from '../components/HeroModes.astro'
     .thinking li strong {
         display: block;
         margin-bottom: 0.65rem;
-        color: var(--heritage-amber);
+        color: var(--signal-dark);
         font-family: var(--font-body);
         font-size: 0.68rem;
         font-variation-settings:
@@ -490,22 +401,22 @@ import HeroModes from '../components/HeroModes.astro'
 
     .thinking-link {
         padding-bottom: 0.75rem;
-        color: var(--heritage-cream);
+        color: var(--paper-soft);
         border-bottom: 1px solid currentcolor;
         font-size: 0.76rem;
         transition: color 220ms var(--ease-out);
     }
 
     .thinking-link:hover {
-        color: var(--heritage-amber);
+        color: var(--signal-dark);
     }
 
     .thinking-cta {
         padding: 1rem 1.1rem 0.85rem;
-        color: var(--ink);
+        color: var(--paper-soft);
         border: 0;
-        background: var(--heritage-amber);
-        box-shadow: 4px 4px 0 var(--heritage-cream);
+        background: var(--signal);
+        box-shadow: 4px 4px 0 var(--paper-soft);
         font-size: clamp(0.85rem, 1.15vw, 1.15rem);
         transition:
             transform 220ms var(--ease-out),
@@ -514,12 +425,12 @@ import HeroModes from '../components/HeroModes.astro'
 
     .thinking-cta:hover {
         transform: translate(-2px, -2px);
-        box-shadow: 6px 6px 0 var(--heritage-cream);
+        box-shadow: 6px 6px 0 var(--paper-soft);
     }
 
     .thinking-link:focus-visible,
     .thinking-cta:focus-visible {
-        outline: 2px solid var(--heritage-amber);
+        outline: 2px solid var(--signal-dark);
         outline-offset: 5px;
     }
 
@@ -557,68 +468,86 @@ import HeroModes from '../components/HeroModes.astro'
         }
     }
 
-    /* Heritage layer: personal warmth inside the technical proof sheet. */
-    .portrait-seal {
-        display: grid;
-        grid-template-columns: 4.75rem minmax(0, 1fr);
-        gap: 1.25rem;
-        align-items: center;
-        width: 100%;
-        padding: 0.85rem;
-        background: var(--heritage-cream);
-        box-shadow: 3px 3px 0 var(--heritage-amber);
-    }
-    .portrait-seal img {
-        width: 4.75rem;
-        aspect-ratio: 1;
-        border: 3px solid var(--heritage-cream);
-        border-radius: 50%;
-        outline: 1px solid var(--ink);
-        object-fit: cover;
-        filter: grayscale(1) contrast(1.06);
-    }
-    .portrait-seal figcaption {
-        display: grid;
-        gap: 0.25rem;
-        font-family: var(--font-human);
-    }
-    .portrait-seal figcaption strong {
-        font-size: 1.15rem;
-        line-height: 1.1;
-    }
-    .portrait-seal figcaption span {
-        color: var(--muted);
-        font-family: var(--font-body);
-        font-size: 0.68rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
-    @media (min-width: 761px) {
-        .portrait-seal {
-            width: auto;
-            max-width: 22rem;
-        }
-    }
-    @media (min-width: 1201px) {
-        .portrait-seal {
-            display: block;
-            padding: 0;
-        }
-        .portrait-seal figcaption {
-            display: none;
-        }
-    }
-
     .thinking {
-        background-color: var(--heritage-charcoal);
-        background-image: var(--heritage-texture);
+        background-color: var(--charcoal);
+        background-image: var(--ink-grain);
         background-position: center;
-        background-size: cover;
-        background-blend-mode: soft-light;
+        background-size: 256px;
     }
 
     .thinking li h3 {
         font-family: var(--font-human);
         font-weight: 650;
+    }
+
+    .hero-masthead {
+        display: none;
+    }
+
+    .masthead-frame {
+        position: relative;
+        display: block;
+        flex: none;
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .masthead-frame::before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: var(--signal);
+        -webkit-mask-image: var(--plate);
+        mask-image: var(--plate);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        transform: translate(4px, 0);
+    }
+
+    .masthead-frame img {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Phones get a printed masthead instead of a footer plate under the dock. */
+    @media (max-width: 760px) {
+        .hero {
+            padding-bottom: 2rem;
+        }
+
+        .hero-masthead {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .hero-masthead p {
+            display: grid;
+            gap: 0.2rem;
+        }
+
+        .hero-masthead strong {
+            font-family: var(--font-human);
+            font-size: 1rem;
+            font-weight: 650;
+            line-height: 1.1;
+        }
+
+        .hero-masthead p span {
+            color: var(--muted);
+            font-size: 0.62rem;
+            font-variation-settings:
+                'wdth' 80,
+                'wght' 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
     }
 </style>

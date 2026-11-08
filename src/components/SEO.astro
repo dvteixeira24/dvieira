@@ -1,6 +1,11 @@
 ---
 import { SEO } from 'astro-seo'
-import profileImage from '../assets/profiled.jpg'
+
+const socialImage = {
+    url: '/images/og-portrait.jpg',
+    width: 1200,
+    height: 630,
+}
 
 interface Props {
     title?: string
@@ -28,8 +33,9 @@ canonicalURL.search = ''
 canonicalURL.hash = ''
 canonicalURL.pathname = canonicalURL.pathname.replace(/\/+$/, '') || '/'
 const url = canonicalURL.href
-const image = new URL(profileImage.src, site).href
-const imageAlt = 'Daniel Vieira Teixeira'
+const image = new URL(socialImage.url, site).href
+const imageAlt =
+    'Daniel Vieira Teixeira, halftone portrait printed on newsprint'
 const personId = new URL('/#person', site).href
 const websiteId = new URL('/#website', site).href
 const pageType = article
@@ -100,8 +106,8 @@ const schema = {
         },
         image: {
             alt: imageAlt,
-            width: profileImage.width,
-            height: profileImage.height,
+            width: socialImage.width,
+            height: socialImage.height,
             type: 'image/jpeg',
         },
     }}

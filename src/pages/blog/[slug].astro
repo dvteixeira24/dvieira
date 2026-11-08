@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import Giscus from '../../components/Giscus.astro'
+
 import { getCollection, render } from 'astro:content'
 import { formatDate, publishedPosts } from '../../lib/blog'
 
@@ -31,10 +32,28 @@ const tags = post.data.tags ?? []
     <main class="post">
         <article class="post-article">
             <header class="page-hero post-hero">
-                <time class="post-date" datetime={post.data.pubDate.toISOString()}>
-                    {formatDate(post.data.pubDate)}
-                </time>
                 <h1>{post.data.title}</h1>
+                <div class="post-byline">
+                    <span
+                        class="post-byline-plate"
+                        style={`--plate: url(/images/portrait-head.webp)`}
+                    >
+                        <img
+                            src="/images/portrait-head.webp"
+                            alt=""
+                            width="320"
+                            height="320"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </span>
+                    <p>
+                        <strong>Daniel Vieira Teixeira</strong>
+                        <time datetime={post.data.pubDate.toISOString()}>
+                            {formatDate(post.data.pubDate)}
+                        </time>
+                    </p>
+                </div>
                 {
                     import.meta.env.DEV && post.data.draft && (
                         <p class="post-draft">Draft</p>
@@ -88,7 +107,7 @@ const tags = post.data.tags ?? []
 
 <style lang="scss">
     .post {
-        background: var(--paper);
+        background: transparent;
     }
 
     .post-article {
@@ -102,18 +121,64 @@ const tags = post.data.tags ?? []
         padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
     }
 
-    .post-date {
+    .post-byline {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.75rem;
+    }
+
+    .post-byline-plate {
+        position: relative;
+        flex: none;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .post-byline-plate::before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: var(--signal);
+        -webkit-mask-image: var(--plate);
+        mask-image: var(--plate);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        transform: translate(4px, 0);
+    }
+
+    .post-byline-plate :global(img) {
+        position: relative;
         display: block;
-        margin-bottom: 1.5rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .post-byline p {
+        display: grid;
+        gap: 0.2rem;
+    }
+
+    .post-byline strong {
+        font-family: var(--font-human);
+        font-size: 1.02rem;
+        font-weight: 650;
+        line-height: 1.1;
+    }
+
+    .post-byline time {
         color: var(--muted);
-        font-size: 0.8rem;
+        font-size: 0.72rem;
         font-variation-settings:
             'wdth' 85,
             'wght' 560;
         font-variant-numeric: tabular-nums;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        letter-spacing: 0.1em;
         line-height: 1.5;
+        text-transform: uppercase;
     }
 
     .post-hero h1 {
@@ -130,9 +195,8 @@ const tags = post.data.tags ?? []
         width: fit-content;
         margin-top: 1rem;
         padding: 0.35rem 0.6rem;
-        border: 1px solid var(--heritage-amber-ink);
-        background: var(--heritage-amber);
-        color: var(--heritage-amber-ink);
+        border: 1px solid var(--signal);
+        color: var(--signal);
         font-size: 0.75rem;
         font-variation-settings:
             'wdth' 85,
@@ -163,8 +227,7 @@ const tags = post.data.tags ?? []
 
     .post-tags li {
         padding: 0.4rem 0.6rem;
-        border: 1px solid var(--rule);
-        background: var(--heritage-cream);
+        border: 1px solid var(--rule-ink);
         font-size: 0.75rem;
         font-variation-settings:
             'wdth' 85,
@@ -183,12 +246,20 @@ const tags = post.data.tags ?? []
 
     .post-body {
         margin-top: clamp(2rem, 4vw, 3rem);
-        font-size: clamp(1.05rem, 1.35vw, 1.2rem);
-        font-variation-settings:
-            'wdth' 88,
-            'wght' 380;
+        max-width: 66ch;
+        font-family: var(--font-human);
+        font-size: clamp(1.12rem, 1.3vw, 1.28rem);
+        font-weight: 420;
         line-height: 1.7;
         color: var(--ink);
+    }
+
+    .post-body :global(p:first-of-type::first-letter) {
+        float: left;
+        margin: 0.06em 0.09em 0 0;
+        font-size: 3.9em;
+        font-weight: 600;
+        line-height: 0.78;
     }
 
     .post-body :global(p) {
@@ -230,7 +301,7 @@ const tags = post.data.tags ?? []
     }
 
     .post-body :global(li::marker) {
-        color: var(--heritage-amber-ink);
+        color: var(--signal);
     }
 
     .post-body :global(blockquote) {
@@ -245,7 +316,7 @@ const tags = post.data.tags ?? []
 
     .post-body :global(code) {
         padding: 0.1em 0.35em;
-        background: var(--heritage-cream);
+        background: var(--paper-soft);
         border: 1px solid var(--rule);
         font-family: 'Fragment Mono', monospace;
         font-size: 0.85em;
@@ -255,9 +326,10 @@ const tags = post.data.tags ?? []
         margin: 1.6em 0;
         padding: 1.25rem;
         overflow-x: auto;
-        background: var(--heritage-charcoal);
-        color: var(--heritage-cream);
+        background: var(--charcoal);
+        color: var(--paper-soft);
         border: 1px solid var(--ink);
+        border-left: 3px solid var(--signal);
     }
 
     .post-body :global(pre code) {

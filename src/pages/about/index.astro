@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import AssignmentDiagram from '../../components/AssignmentDiagram.astro'
-import profileImage from '../../assets/profiled.jpg'
+
 
 const employment = {
     index: '01',
@@ -107,13 +107,19 @@ const assignments = [
                     >
                 </h1>
                 <figure class="portrait">
-                    <img
-                        src={profileImage.src}
-                        width="144"
-                        height="144"
-                        alt="Portrait of Daniel Vieira Teixeira"
-                        decoding="async"
-                    />
+                    <div
+                        class="portrait-frame"
+                        style={`--plate: url(/images/portrait-plate.webp)`}
+                    >
+                        <img
+                            src="/images/portrait-plate.webp"
+                            alt="Portrait of Daniel Vieira Teixeira"
+                            width="900"
+                            height="900"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </div>
                     <figcaption>
                         <strong>Daniel Vieira Teixeira</strong>
                         <span>Full Stack Software Engineer</span>
@@ -360,7 +366,7 @@ const assignments = [
 
 <style lang="scss">
     .about {
-        background: var(--paper);
+        background: transparent;
     }
 
     .about [id] {
@@ -373,7 +379,9 @@ const assignments = [
         gap: clamp(2.5rem, 5vw, 5rem);
         padding: clamp(2.5rem, 5vw, 5rem) var(--page-gutter);
         border-bottom: 1px solid var(--ink);
-        background: var(--heritage-cream);
+        background-color: var(--paper-soft);
+        background-image: var(--paper-tooth);
+        background-size: 256px;
     }
 
     h1 {
@@ -389,7 +397,7 @@ const assignments = [
         position: relative;
         display: block;
         width: fit-content;
-        color: var(--heritage-amber-ink);
+        color: var(--signal);
         font-family: var(--font-human);
         font-weight: 670;
     }
@@ -400,35 +408,52 @@ const assignments = [
         bottom: -0.06em;
         left: 0;
         height: 2px;
-        background: var(--heritage-amber-ink);
+        background: var(--signal);
         transform-origin: left;
         pointer-events: none;
     }
 
     .portrait {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1.25rem;
-        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+        margin-top: clamp(1.75rem, 3vw, 2.75rem);
     }
 
-    .portrait img {
-        width: clamp(5rem, 8vw, 7rem);
-        height: auto;
+    .portrait-frame {
+        position: relative;
+        width: 100%;
+        max-width: 26rem;
         aspect-ratio: 1;
-        border: 3px solid var(--heritage-cream);
-        border-radius: 50%;
-        outline: 1px solid var(--heritage-amber-ink);
+    }
+
+    .portrait-frame::before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        background: var(--signal);
+        -webkit-mask-image: var(--plate);
+        mask-image: var(--plate);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        transform: translate(10px, 0);
+    }
+
+    .portrait-frame :global(img) {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        filter: grayscale(1) contrast(1.06);
-        box-shadow: 5px 5px 0 var(--heritage-amber);
     }
 
     figcaption {
         display: grid;
-        gap: 0.4rem;
+        gap: 0.35rem;
         max-width: 25ch;
+        padding-top: 0.85rem;
+        border-top: 1px solid var(--ink);
     }
 
     figcaption strong {
@@ -460,12 +485,19 @@ const assignments = [
     .story-copy {
         display: grid;
         gap: 1.25rem;
-        max-width: 65ch;
-        font-size: clamp(1rem, 1.25vw, 1.2rem);
+        max-width: 62ch;
+        font-family: var(--font-human);
+        font-size: clamp(1.12rem, 1.25vw, 1.3rem);
+        font-weight: 420;
+        line-height: 1.62;
+    }
+
+    .story-copy strong.range-statement {
+        font-family: var(--font-body);
+        font-size: 0.98em;
         font-variation-settings:
             'wdth' 88,
-            'wght' 380;
-        line-height: 1.6;
+            'wght' 580;
     }
 
     .text-action {
@@ -591,7 +623,7 @@ const assignments = [
     }
 
     .contributions li::marker {
-        color: var(--heritage-amber-ink);
+        color: var(--signal);
     }
 
     .tags {
@@ -605,8 +637,7 @@ const assignments = [
 
     .tags li {
         padding: 0.4rem 0.6rem;
-        border: 1px solid var(--rule);
-        background: var(--heritage-cream);
+        border: 1px solid var(--rule-ink);
         font-size: 0.75rem;
         font-variation-settings:
             'wdth' 85,
@@ -669,7 +700,7 @@ const assignments = [
         bottom: 0.05em;
         left: -0.15em;
         height: 0.42em;
-        background: color-mix(in srgb, var(--heritage-amber) 48%, transparent);
+        background: color-mix(in srgb, var(--signal) 22%, transparent);
         content: '';
         transform: scaleX(var(--range-sweep));
         transform-origin: left;
@@ -677,13 +708,14 @@ const assignments = [
 
     .contact-stamp {
         padding: 1rem 1.25rem;
-        background: var(--heritage-cream);
+        color: var(--ink);
+        background: var(--paper-soft);
         border: 0;
-        box-shadow: 4px 4px 0 var(--ink);
+        box-shadow: 4px 4px 0 var(--signal);
     }
 
     .contact-stamp:active {
-        color: var(--heritage-amber-ink);
+        color: var(--signal);
     }
 
     .assignment {
@@ -728,7 +760,7 @@ const assignments = [
         background: color-mix(
             in srgb,
             var(--signal) calc(var(--marker-progress) * 100%),
-            var(--heritage-amber-ink)
+            var(--rule-ink)
         );
         transform: translate(-50%, -50%)
             scale(calc(1 + var(--marker-progress) * 1.5));
@@ -765,7 +797,11 @@ const assignments = [
         gap: 1rem 3rem;
         padding: clamp(2rem, 4vw, 4rem) var(--page-gutter);
         border-top: 1px solid var(--ink);
-        background: var(--heritage-amber);
+        color: var(--paper-soft);
+        background-color: var(--charcoal);
+        background-image: var(--ink-grain);
+        background-position: center;
+        background-size: 256px;
     }
 
     .about-cta > p {

@@ -38,6 +38,14 @@ const posts = publishedPosts(await getCollection('blog'), {
             </a>
         </header>
 
+        <p class="blog-index">
+            <span>Index</span>
+            <span
+                >{String(posts.length).padStart(2, '0')}
+                {posts.length === 1 ? 'note' : 'notes'}</span
+            >
+        </p>
+
         {
             posts.length === 0 ? (
                 <p class="blog-empty">No posts yet — check back soon.</p>
@@ -60,12 +68,12 @@ const posts = publishedPosts(await getCollection('blog'), {
 
 <style lang="scss">
     .blog {
-        background: var(--paper);
+        background: transparent;
     }
 
     .blog-hero {
         position: relative;
-        padding: clamp(2rem, 4vw, 3.25rem) var(--page-gutter);
+        padding: clamp(1.75rem, 3vw, 2.5rem) var(--page-gutter);
         border-bottom: 1px solid var(--ink);
     }
 
@@ -174,9 +182,8 @@ const posts = publishedPosts(await getCollection('blog'), {
         align-items: center;
         gap: 0.5rem;
         min-height: var(--touch-target);
-        margin-top: 1.25rem;
         color: var(--ink);
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-variation-settings:
             'wdth' 85,
             'wght' 600;
@@ -203,6 +210,25 @@ const posts = publishedPosts(await getCollection('blog'), {
         margin: 0;
         padding: 0;
         list-style: none;
+    }
+
+    .blog-index {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 2rem;
+        padding: 0.85rem var(--page-gutter);
+        border-bottom: 1px solid var(--rule);
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-variation-settings:
+            'wdth' 78,
+            'wght' 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .blog-index span:last-child {
+        margin-left: auto;
     }
 
     .blog-empty {

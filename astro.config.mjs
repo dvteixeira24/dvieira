@@ -11,6 +11,8 @@ export default defineConfig({
     site,
     output: 'server',
     trailingSlash: 'never',
+    // Keep device-local paths out of the dev HTML.
+    devToolbar: { enabled: false },
     build: {
         format: 'file',
     },

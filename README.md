@@ -73,7 +73,7 @@ pnpm wrangler secret put TELEGRAM_CHAT_ID
 
 ## Search and social metadata
 
-`astro-seo` supplies titles, descriptions, canonical URLs, Open Graph, and X/Twitter cards through `src/components/SEO.astro`. Each page passes its title and description to `Layout.astro`; the shared component derives URLs from the production `site` setting and uses the existing portrait as the preview image. It also emits Person, WebSite, and WebPage/AboutPage/ContactPage JSON-LD. Favicons continue to use the existing brand export pipeline.
+`astro-seo` supplies titles, descriptions, canonical URLs, Open Graph, and X/Twitter cards through `src/components/SEO.astro`. Each page passes its title and description to `Layout.astro`; the shared component derives URLs from the production `site` setting and uses the composed halftone card as the preview image. It also emits Person, WebSite, and WebPage/AboutPage/ContactPage JSON-LD. Favicons continue to use the existing brand export pipeline.
 
 The official `@astrojs/sitemap` integration generates `/sitemap-index.xml` and `/sitemap-0.xml` on build. Because the site uses server rendering, maintain the public route list in `astro.config.mjs` (`/`, `/about`, `/contact`). Redirects and utility endpoints are excluded. `robots.txt` allows crawling and advertises the sitemap. When adding a `noindex` page, exclude it from the sitemap as well.
 
