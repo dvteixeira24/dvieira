@@ -1,0 +1,494 @@
+<div class="thinking-field" aria-hidden="true">
+    <canvas></canvas>
+</div>
+
+<script>
+    const MASK_SRC = '/images/thinking-mask.png'
+    const MASK_W = 707
+    const MASK_H = 708
+
+    // Screen-space halftone grid, in CSS pixels, and the dot's share of a cell.
+    const PITCH = 2.8
+    const DOT_RATIO = 0.62
+    const INK = 'rgba(246, 241, 229, 0.34)'
+
+    // Pointer well: reach and push acceleration, both in CSS pixels.
+    const REACH = 170
+    const PUSH = 1500
+    const SPRING = 30
+    const DRAG = 4.2
+
+    let maskPixels: Uint8Array | null = null
+    let disposeField: (() => void) | undefined
+    let fieldSection: HTMLElement | undefined
+
+    async function loadMask(): Promise<Uint8Array | null> {
+        if (maskPixels) return maskPixels
+        try {
+            const image = new Image()
+            await new Promise<void>((resolve, reject) => {
+                image.onload = () => resolve()
+                image.onerror = () => reject(new Error('mask'))
+                image.src = MASK_SRC
+            })
+            const scratch = document.createElement('canvas')
+            scratch.width = MASK_W
+            scratch.height = MASK_H
+            const scratchCtx = scratch.getContext('2d', {
+                willReadFrequently: true,
+            })
+            if (!scratchCtx) return null
+            scratchCtx.drawImage(image, 0, 0)
+            const data = scratchCtx.getImageData(0, 0, MASK_W, MASK_H).data
+            const ink = new Uint8Array(MASK_W * MASK_H)
+            for (let i = 0, p = 0; i < ink.length; i++, p += 4) {
+                ink[i] = data[p] < 128 ? 1 : 0
+            }
+            maskPixels = ink
+            return ink
+        } catch {
+            return null
+        }
+    }
+
+    function initThinkingField(): void {
+        const section = document.querySelector<HTMLElement>('.thinking')
+        if (!section || section === fieldSection) return
+        disposeField?.()
+        fieldSection = section
+        const holder = section.querySelector<HTMLElement>('.thinking-field')
+        const canvas = holder?.querySelector('canvas')
+        const ctx = canvas?.getContext('2d')
+        if (!holder || !canvas || !ctx) {
+            fieldSection = undefined
+            return
+        }
+
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+        const hoverQuery = window.matchMedia(
+            '(hover: hover) and (pointer: fine)',
+        )
+
+        let dpr = 1
+        let width = 0
+        let height = 0
+        let dot = 1
+        let plate: HTMLCanvasElement | null = null
+
+        let count = 0
+        let homeX = new Float32Array(0)
+        let homeY = new Float32Array(0)
+        let offsetX = new Float32Array(0)
+        let offsetY = new Float32Array(0)
+        let velocityX = new Float32Array(0)
+        let velocityY = new Float32Array(0)
+        let activeFlags = new Uint8Array(0)
+        let active = new Uint32Array(0)
+        let activeCount = 0
+
+        let mask: Uint8Array | null = null
+        let painted = false
+        let loading = false
+        let visible = false
+        let disposed = false
+        let frame = 0
+        let lastTime = 0
+        let pointerInside = false
+        let pointerX = 0
+        let pointerY = 0
+
+        const interactive = (): boolean =>
+            hoverQuery.matches && !motionQuery.matches
+
+        function paint(source: Uint8Array): void {
+            mask = source
+            const rect = canvas!.getBoundingClientRect()
+            if (rect.width < 1 || rect.height < 1) return
+            dpr = Math.min(window.devicePixelRatio || 1, 2)
+            width = Math.round(rect.width * dpr)
+            height = Math.round(rect.height * dpr)
+            canvas!.width = width
+            canvas!.height = height
+
+            // Contain the portrait inside the box, flush to the section edge.
+            const scale = Math.min(width / MASK_W, height / MASK_H)
+            const portraitH = MASK_H * scale
+            const originY = Math.max(0, (height - portraitH) / 2)
+
+            const pitch = Math.max(2, Math.round(PITCH * dpr))
+            dot = Math.max(1, Math.round(pitch * DOT_RATIO))
+            const cols = Math.max(1, Math.floor((MASK_W * scale) / pitch))
+            const rows = Math.max(1, Math.floor(portraitH / pitch))
+
+            // Source pixel window for each halftone cell, precomputed per axis.
+            const spanX0 = new Int32Array(cols)
+            const spanX1 = new Int32Array(cols)
+            for (let c = 0; c < cols; c++) {
+                spanX0[c] = Math.floor((c * pitch) / scale)
+                spanX1[c] = Math.min(
+                    MASK_W,
+                    Math.max(spanX0[c] + 1, Math.ceil(((c + 1) * pitch) / scale)),
+                )
+            }
+            const spanY0 = new Int32Array(rows)
+            const spanY1 = new Int32Array(rows)
+            for (let r = 0; r < rows; r++) {
+                spanY0[r] = Math.floor((r * pitch) / scale)
+                spanY1[r] = Math.min(
+                    MASK_H,
+                    Math.max(
+                        spanY0[r] + 1,
+                        Math.ceil(((r + 1) * pitch) / scale),
+                    ),
+                )
+            }
+
+            const cellX: number[] = []
+            const cellY: number[] = []
+            // Ordered-dither the tone: light passages become dense dots, the
+            // shadow side stays empty charcoal.
+            const bayer = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
+            for (let r = 0; r < rows; r++) {
+                const y0 = Math.max(0, spanY0[r])
+                const y1 = Math.max(y0, spanY1[r])
+                for (let c = 0; c < cols; c++) {
+                    const x0 = spanX0[c]
+                    const x1 = spanX1[c]
+                    let ink = 0
+                    let total = 0
+                    for (let y = y0; y < y1; y++) {
+                        const row = y * MASK_W
+                        for (let x = x0; x < x1; x++) {
+                            ink += source[row + x]
+                            total++
+                        }
+                    }
+                    const coverage = total ? ink / total : 0
+                    if (
+                        coverage <= 0 ||
+                        1 - coverage <=
+                            (bayer[(r & 3) * 4 + (c & 3)] + 0.5) / 16
+                    )
+                        continue
+                    cellX.push((c + 0.5) * pitch)
+                    cellY.push(originY + (r + 0.5) * pitch)
+                }
+            }
+
+            count = cellX.length
+            homeX = new Float32Array(count)
+            homeY = new Float32Array(count)
+            offsetX = new Float32Array(count)
+            offsetY = new Float32Array(count)
+            velocityX = new Float32Array(count)
+            velocityY = new Float32Array(count)
+            activeFlags = new Uint8Array(count)
+            active = new Uint32Array(count)
+            activeCount = 0
+
+            const half = dot / 2
+            const inkPath = new Path2D()
+            for (let i = 0; i < count; i++) {
+                homeX[i] = cellX[i]
+                homeY[i] = cellY[i]
+                inkPath.rect(
+                    Math.round(cellX[i] - half),
+                    Math.round(cellY[i] - half),
+                    dot,
+                    dot,
+                )
+            }
+
+            plate = document.createElement('canvas')
+            plate.width = width
+            plate.height = height
+            const plateCtx = plate.getContext('2d')
+            if (!plateCtx) return
+            plateCtx.fillStyle = INK
+            plateCtx.fill(inkPath)
+
+            painted = true
+            blit()
+        }
+
+        function blit(): void {
+            if (!plate) return
+            ctx!.globalCompositeOperation = 'copy'
+            ctx!.drawImage(plate, 0, 0)
+            ctx!.globalCompositeOperation = 'source-over'
+        }
+
+        function reset(): void {
+            for (let k = 0; k < activeCount; k++) {
+                const i = active[k]
+                activeFlags[i] = 0
+                offsetX[i] = 0
+                offsetY[i] = 0
+                velocityX[i] = 0
+                velocityY[i] = 0
+            }
+            activeCount = 0
+            blit()
+        }
+
+        function pause(): void {
+            if (frame) cancelAnimationFrame(frame)
+            frame = 0
+            pointerInside = false
+            if (painted) reset()
+        }
+
+        function wake(): void {
+            if (frame || disposed || !painted || !visible) return
+            if (!interactive()) return
+            lastTime = performance.now()
+            frame = requestAnimationFrame(step)
+        }
+
+        function step(now: number): void {
+            frame = 0
+            if (disposed || !visible || !painted || !plate) return
+            const dt = Math.min(0.032, Math.max(0.004, (now - lastTime) / 1000))
+            lastTime = now
+            const damping = Math.exp(-DRAG * dt)
+
+            const rect = canvas!.getBoundingClientRect()
+            const px = (pointerInside ? pointerX - rect.left : 0) * dpr
+            const py = (pointerInside ? pointerY - rect.top : 0) * dpr
+            const reach = REACH * dpr
+            const reach2 = reach * reach
+            const push = PUSH * dpr
+            const restOffset = 0.5 * dpr
+            const restSpeed = 3 * dpr
+
+            if (pointerInside) {
+                const maxActive = Math.min(count, 12000)
+                for (let i = 0; i < count && activeCount < maxActive; i++) {
+                    const dx = homeX[i] - px
+                    const dy = homeY[i] - py
+                    if (dx * dx + dy * dy > reach2 || activeFlags[i]) continue
+                    activeFlags[i] = 1
+                    active[activeCount++] = i
+                }
+            }
+
+            const erasePath = new Path2D()
+            const inkPath = new Path2D()
+            const half = dot / 2
+            let moved = false
+
+            for (let k = activeCount - 1; k >= 0; k--) {
+                const i = active[k]
+                const ox = offsetX[i]
+                const oy = offsetY[i]
+                let ax = -ox * SPRING
+                let ay = -oy * SPRING
+
+                if (pointerInside) {
+                    const dx = homeX[i] + ox - px
+                    const dy = homeY[i] + oy - py
+                    const distance2 = dx * dx + dy * dy
+                    if (distance2 < reach2) {
+                        const distance = Math.sqrt(distance2)
+                        const falloff = 1 - distance / reach
+                        const force = push * falloff * falloff
+                        if (distance > 0.001) {
+                            ax += (dx / distance) * force
+                            ay += (dy / distance) * force
+                        }
+                    }
+                }
+
+                let vx = (velocityX[i] + ax * dt) * damping
+                let vy = (velocityY[i] + ay * dt) * damping
+                vx = Math.max(-6000, Math.min(6000, vx))
+                vy = Math.max(-6000, Math.min(6000, vy))
+                const nx = ox + vx * dt
+                const ny = oy + vy * dt
+
+                offsetX[i] = nx
+                offsetY[i] = ny
+                velocityX[i] = vx
+                velocityY[i] = vy
+
+                if (
+                    Math.abs(nx) < restOffset &&
+                    Math.abs(ny) < restOffset &&
+                    Math.abs(vx) < restSpeed &&
+                    Math.abs(vy) < restSpeed
+                ) {
+                    offsetX[i] = 0
+                    offsetY[i] = 0
+                    velocityX[i] = 0
+                    velocityY[i] = 0
+                    activeFlags[i] = 0
+                    active[k] = active[--activeCount]
+                    continue
+                }
+
+                if (Math.abs(nx) < 0.6 && Math.abs(ny) < 0.6) continue
+                moved = true
+                erasePath.rect(
+                    Math.round(homeX[i] - half),
+                    Math.round(homeY[i] - half),
+                    dot,
+                    dot,
+                )
+                inkPath.rect(
+                    Math.round(homeX[i] + nx - half),
+                    Math.round(homeY[i] + ny - half),
+                    dot,
+                    dot,
+                )
+            }
+
+            blit()
+            if (moved) {
+                ctx!.globalCompositeOperation = 'destination-out'
+                ctx!.fillStyle = '#000'
+                ctx!.fill(erasePath)
+                ctx!.globalCompositeOperation = 'source-over'
+                ctx!.fillStyle = INK
+                ctx!.fill(inkPath)
+            }
+
+            if (activeCount || pointerInside) frame = requestAnimationFrame(step)
+        }
+
+        async function ensureField(): Promise<void> {
+            if (painted || loading) return
+            loading = true
+            const source = mask ?? (await loadMask())
+            loading = false
+            if (!source || disposed) return
+            paint(source)
+            if (visible) wake()
+        }
+
+        function onPointerMove(event: PointerEvent): void {
+            if (event.pointerType === 'touch' || !interactive()) return
+            pointerX = event.clientX
+            pointerY = event.clientY
+            pointerInside = true
+            wake()
+        }
+
+        function onPointerLeave(): void {
+            pointerInside = false
+            wake()
+        }
+
+        const observer = new IntersectionObserver(
+            entries => {
+                visible = entries[0].isIntersecting
+                if (visible) void ensureField()
+                else pause()
+            },
+            { rootMargin: '250px 0px' },
+        )
+
+        let resizeTimer = 0
+        const resizeObserver = new ResizeObserver(() => {
+            if (!painted) return
+            clearTimeout(resizeTimer)
+            resizeTimer = window.setTimeout(() => {
+                if (disposed || !mask) return
+                pause()
+                paint(mask)
+            }, 160)
+        })
+
+        function onPreferenceChange(): void {
+            if (!interactive()) pause()
+        }
+
+        function onVisibilityChange(): void {
+            if (document.visibilityState === 'hidden') pause()
+        }
+
+        section.addEventListener('pointermove', onPointerMove)
+        section.addEventListener('pointerleave', onPointerLeave)
+        document.addEventListener('visibilitychange', onVisibilityChange)
+        motionQuery.addEventListener('change', onPreferenceChange)
+        hoverQuery.addEventListener('change', onPreferenceChange)
+        observer.observe(section)
+        resizeObserver.observe(canvas)
+
+        disposeField = () => {
+            disposed = true
+            observer.disconnect()
+            resizeObserver.disconnect()
+            clearTimeout(resizeTimer)
+            pause()
+            section.removeEventListener('pointermove', onPointerMove)
+            section.removeEventListener('pointerleave', onPointerLeave)
+            document.removeEventListener('visibilitychange', onVisibilityChange)
+            motionQuery.removeEventListener('change', onPreferenceChange)
+            hoverQuery.removeEventListener('change', onPreferenceChange)
+            disposeField = undefined
+            fieldSection = undefined
+        }
+    }
+
+    // A component module can resolve after astro:page-load on a cold load, so
+    // initialise directly as well; init is idempotent per section.
+    if (document.readyState !== 'loading') initThinkingField()
+    document.addEventListener('astro:page-load', initThinkingField)
+    document.addEventListener('astro:before-swap', () => disposeField?.())
+
+    if (import.meta.hot) {
+        import.meta.hot.dispose(() => {
+            disposeField?.()
+            document.removeEventListener('astro:page-load', initThinkingField)
+        })
+    }
+</script>
+
+<style lang="scss">
+    .thinking-field {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: min(100svh, 100vw);
+        pointer-events: none;
+    }
+
+    .thinking-field canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mask-image: linear-gradient(
+            to bottom,
+            #000 0%,
+            #000 50%,
+            transparent 96%
+        );
+    }
+
+    /* Tablet and desktop pin the plate for the length of the section. */
+    @media (min-width: 641px) {
+        .thinking-field {
+            width: min(100svh, 100%);
+            height: auto;
+            inset: 0 auto 0 0;
+        }
+
+        .thinking-field canvas {
+            position: sticky;
+            top: 0;
+            height: 100svh;
+            mask-image:
+                linear-gradient(
+                    to right,
+                    #000 0%,
+                    #000 34%,
+                    rgba(0, 0, 0, 0.62) 56%,
+                    transparent 78%
+                ),
+                linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+            mask-composite: intersect;
+        }
+    }
+</style>

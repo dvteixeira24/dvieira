@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro'
 import RoleLoom from '../components/RoleLoom.astro'
 import HeroPaper from '../components/HeroPaper.astro'
 import HeroModes from '../components/HeroModes.astro'
+import ThinkingField from '../components/ThinkingField.astro'
 ---
 
 <Layout
@@ -53,6 +54,7 @@ import HeroModes from '../components/HeroModes.astro'
         </section>
 
         <section class="thinking" aria-labelledby="thinking-title">
+            <ThinkingField />
             <div class="thinking-heading">
                 <h2 id="thinking-title">
                     One approach.<br /><span>Variable depth.</span>
@@ -296,6 +298,8 @@ import HeroModes from '../components/HeroModes.astro'
     }
 
     .thinking {
+        position: relative;
+        isolation: isolate;
         display: grid;
         grid-template-columns: minmax(24rem, 0.88fr) 1fr;
         gap: 0px clamp(4rem, 9vw, 10rem);
